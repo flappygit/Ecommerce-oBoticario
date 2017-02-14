@@ -1,0 +1,74 @@
+<h4 class="f-black tittle-panel-2 ">{{entidad.nombre}} 
+<a href="" ng-click="cerrarNivel2()" style="float:right;">
+  <img src="images/icon-8.png">
+</a>
+    </h4>
+
+<div class="form-panel width1">
+<form>
+<div class="col-lg-6 col-iz col-spacing">
+  <label for="nombre">Nombre</label>
+  <input type="text" ng-model="entidad.nombre" placeholder="Nombre" class="form-control">
+</div>
+<div class="col-lg-6 col-iz col-spacing">
+  <label for="telefono">Teléfono</label>
+  <input type="text" ng-model="entidad.telefono" placeholder="Teléfono" class="form-control">
+</div>
+<div class="col-lg-12 col-iz col-spacing">
+  <label for="correo_contacto">Correo</label>
+  <input type="email" ng-model="entidad.correo_contacto" placeholder="Correo" class="form-control">
+</div>
+<div class="col-lg-12 col-iz col-spacing">
+  <label for="imagen">Logo</label>
+  <input type="text" ng-model="entidad.logo" placeholder="Logo" class="form-control">
+</div>
+
+
+<div class="col-lg-12 col-line col-spacing">
+  <label for="">Términos y condiciones</label>
+  <div trumbowyg-ng ng-model="entidad.descripcion" >
+  </div>
+  
+</div>
+
+<div class="col-lg-12 col-line col-spacing">
+<h4 class="f-black">redes sociales</h4>
+  <label for="">Facebook</label>
+  <input type="text" ng-model="entidad.facebook" placeholder="Link de Facebook" class="form-control">
+</div>
+
+<div class="col-lg-12 col-line col-spacing">
+  <label for="">Twitter</label>
+  <input type="text" ng-model="entidad.twitter" placeholder="Link de Twitter" class="form-control">
+</div>
+
+<div class="col-lg-12 col-line col-spacing">
+  <label for="">Instagram</label>
+  <input type="text" ng-model="entidad.instagram" placeholder="Link de Instagram" class="form-control">
+</div>
+<div class="col-lg-12 col-line col-spacing">
+  <label for="">YouTube</label>
+  <input type="text" ng-model="entidad.youtube" placeholder="Link de YouTube" class="form-control">
+</div>
+
+
+<div class="col-lg-6 col-iz btn-panel-bottom">
+<button ng-click="cerrarNivel2()" class="btn btn-gray">Cancelar</button>
+</div>
+
+<div class="col-lg-6 col-line btn-panel-bottom" >
+<button type="submit" ng-click="guardarEntidad()" class="btn btn-red">Guardar</button>
+</div>
+<div class="col-lg-12" >
+  
+<a ng-hide="entidadNueva" href="" confirmed-click="eliminarEntidad()" ng-confirm-click="Esta seguro que desea eliminar este elemento?" class="f-black">
+  <span > <img src="images/icon-11.png"></span> Eliminar
+</a>
+</div>
+</form>
+
+</div>
+
+
+
+

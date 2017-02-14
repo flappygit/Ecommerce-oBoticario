@@ -1,0 +1,35 @@
+
+<ul  class="upper">
+  <li class="li-table">
+    <a class="f-black"  ng-click="seleccionarTabla('boletin_usuarios')">
+      Usuarios
+    </a>
+  </li>
+  <li class="li-table">
+    <a class="f-black"  ng-click="seleccionarTabla('boletin_secciones')">
+      Boletines
+    </a>
+  </li>
+</ul>
+
+<script type="text/javascript">
+    $(window).ready(function () {
+        $('.dropdown-accordion').on('show.bs.dropdown', function (event) {
+            alert("yeeeah1");
+
+            var accordion = $(this).find($(this).data('accordion'));
+            accordion.find('.panel-collapse.in').collapse('hide');
+        });
+
+// Prevent dropdown to be closed when we click on an accordion link
+        $('.dropdown-accordion').on('click', 'a[data-toggle="collapse"]', function (event) {
+            alert("yeeeah");
+            event.preventDefault();
+            event.stopPropagation();
+            $($(this).data('parent')).find('.panel-collapse.in').collapse('hide');
+            $($(this).attr('href')).collapse('show');
+        });
+
+    });
+</script>
+

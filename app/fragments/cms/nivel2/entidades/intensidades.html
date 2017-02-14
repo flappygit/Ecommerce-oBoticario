@@ -1,0 +1,129 @@
+<h4 class="f-black tittle-panel-2 ">Intensidades
+<a href="" ng-click="cerrarNivel2()" style="float:right;">
+  <img src="images/icon-8.png">
+</a>
+</h4>
+
+
+
+
+
+<div class="tabla-nav">
+
+<table  border="1"  style="border-color:#d7d7d7;border-style:solid;border-width:1px;margin-top:0;width:100%;" class="upper">
+
+  <tr >
+          <td colspan="3" class="text-center"><a href="" class="f-red" ng-click="ver[0]=!ver[0]" >Nueva Intensidad </a></td>
+  </tr>
+<tr ng-show="ver[0]">
+    <td colspan="3">
+    <div class="form-panel">
+<form>
+  <div class="row"> 
+<div class="col-lg-12 col-line col-spacing">
+    <label for="nombre">Nombre</label>
+    <input type="text" id="nombre" ng-model="entidad.nombre" placeholder="Nombre" class="form-control">
+</div>
+  </div>
+  <div class="row"> 
+    <div class="col-lg-12 col-line col-spacing">
+        <label for="icono">Horas</label>
+        <input type="number" id="icono" ng-model="entidad.horas" placeholder="Horas" class="form-control">
+    </div>
+  </div>
+  <div class="row">
+      <div class="col-lg-12 col-line col-spacing">
+        <label for="descripcion">Descripción</label>
+        <div trumbowyg-ng ng-model="entidad.descripcion"  id="descripcion">
+            </div>}
+    </div>
+  </div>
+  <div class="row">
+      <div class="col-lg-6 col-iz btn-panel-bottom">
+        <button ng-click="ver[0] = !ver[0]" class="btn btn-gray">Cancelar</button>
+      </div>
+
+      <div class="col-lg-6 col-line btn-panel-bottom" >
+        <button ng-click="crear_entidad('intensidades',entidad, 2)" type="submit" class="btn btn-red">Guardar</button>
+      </div>
+  </div>
+
+
+</form></div>
+          </td>
+  </tr>
+
+  
+</table>
+
+
+<ul class="upper">
+<div ng-repeat="miEntidad in tabla">
+<li class="li-table1">
+  <a href="#" class="f-black name-table"  ng-click="v[miEntidad.id] = !v[miEntidad.id]">{{miEntidad.nombre}} </a>
+  <a href="" confirmed-click="eliminar_entidad('intensidades', miEntidad, 2)" ng-confirm-click="Esta seguro que desea eliminar este elemento?" class="a-edit-table">
+    <img src="images/icon-11.png">
+  </a>
+  <a href="" ng-click="ver[miEntidad.id] = !ver[miEntidad.id]" class="a-edit-table">
+    <img src="images/icon-9.png">
+  </a>
+  
+</li>
+<li class="li-table1" ng-show="ver[miEntidad.id]">
+  <form class="form-panel form-font"  style="z-index:58;">
+        <div class="row">
+          <div class="col-lg-12 col-line col-spacing">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" ng-model="miEntidad.nombre" placeholder="Nombre" class="form-control">
+          </div>
+        </div>  
+        <div class="row">   
+          <div class="col-lg-12 col-line col-spacing">
+            <label for="icono">Horas</label>
+            <input type="number" id="icono" ng-model="miEntidad.horas" placeholder="Horas" class="form-control">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12 col-line col-spacing">
+            <label for="descripcion">Descripción</label>
+            <div trumbowyg-ng ng-model="miEntidad.descripcion" >
+            </div>
+          </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6 col-iz btn-panel-bottom">
+            <button ng-click="ver[miEntidad.id] = !ver[miEntidad.id]" class="btn btn-gray">Cancelar</button>
+        </div>
+
+        <div class="col-lg-6 col-line btn-panel-bottom" >
+            <button ng-click="actualizar_entidad('intensidades',miEntidad)" type="submit" class="btn btn-red">Guardar</button>
+        </div>
+      </div>
+   </form>
+</li>
+</div>
+
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>

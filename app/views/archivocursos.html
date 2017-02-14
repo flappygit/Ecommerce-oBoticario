@@ -1,0 +1,54 @@
+<div class="flexcroll view-admin" >
+
+  <form ng-submit="uploadFile()">
+
+    <label><input type="radio" class="radio" ng-model="caracter" value=",">Coma (,)</label><br/>
+    <label><input type="radio" class="radio" ng-model="caracter" value=";">Punto y coma (;)</label><br/>
+    <label><input type="radio" class="radio" ng-model="caracter" value="">Otro <input type="text" ng-model="caracter" placeholder="Otro"></label>
+
+    <input type="file" uploader-model="file" accept="text/csv" name="file">
+    <input type="submit" value="Cargar CSV">
+  </form>
+
+  <img src="images/ajax-loader.gif" ng-show="loading" style="margin-top:20%;">
+  <div ng-if="error" class="alert alert-danger" role="alert">
+    <strong>Error!</strong> {{error}}
+  </div>
+  <div ng-if="success" class="alert alert-success" role="alert">
+    <strong>OK!</strong> {{success}}
+  </div>
+  <div ng-if="cursos">
+    <br><br><br>
+    <button class="btn btn-success" ng-click="subirCambios()">Subir cambios</button>
+    <button class="btn btn-info" ng-click="edicion = !edicion">Editar</button>
+
+    <table border="1">
+
+      <thead>
+      <tr>
+        <th colspan="12" class="text-center"><h3>CURSOS</h3></th>
+      </tr>
+      <tr>
+        <th>Id</th>
+        <th>Codigo</th>
+        <th>Precio</th>
+        <th>FechaInicio</th>
+        <th>FechaFinal</th>
+        <th>Nivel</th>
+        <th>Subnivel</th>
+        <th>Intensidad</th>
+        <th>Frecuencia</th>
+        <th>Hora Inicio</th>
+        <th>Hora Fin</th>
+        <th>Sede</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="curso in cursos track by $index">
+        <td ng-repeat="dato in curso"><label ng-hide="edicion">{{dato}}</label><input ng-hide="!edicion" type="text" ng-model="dato"></td>
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>

@@ -1,0 +1,32 @@
+
+
+
+<div class="flexcroll view-admin" >
+<div class="text-center">
+<img src="images/ajax-loader.gif" ng-show="loading==true" style="margin-top:20%;">   
+</div>
+  <div ng-repeat="proyecto in proyectos" >
+    <div class="col-lg-4 col-md-4 col-sm-12 " >
+
+    <div class="thumbnail thumbnail-xs thumbnail-auto thumbnail-hover-2">
+    
+                  <div class="img-background-color  text-center">
+                      <span>
+                        <img src="images/logo-project.png" class="img-logo-project">
+                        <a ng-href="#/cms/{{proyecto.nombre}}" class=" btn btn-white btn-admin">ADMINISTRAR</a>
+                      </span>
+                  </div>
+                
+                <div class="caption text-center" >
+                  <h4>{{proyecto.nombre}}</h4>
+                  <p class="text-center">
+                    <a ng-href="{{proyecto.link}}" target="_blank" class="project-link">www.alianzafrancesa.org.co</a>
+                  </p>
+                </div>
+              </div>
+        
+    </div>
+    
+
+</div>
+</div>

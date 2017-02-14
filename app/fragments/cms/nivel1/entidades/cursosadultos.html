@@ -1,0 +1,51 @@
+<h4>Cursos</h4>
+<table style="width: 100%">
+  <tr>
+    <td>
+      <table border="1" style="width: 100%">
+        <tr>
+          <td><button class="btn btn-success" ng-click="ver[0]=!ver[0]">Nuevo curso</button> </td>
+        </tr>
+        <tr ng-show="ver[0]">
+          <td>
+            <form>
+              <select ng-model="entidad.subnivel" ng-options="subnivel.id as subnivel.subnivel for subnivel in mul.subniveles"></select><br>
+              <select ng-model="entidad.intensidad" ng-options="intensidad.id as intensidad.nombre for intensidad in mul.intensidades"></select><br>
+              <select ng-model="entidad.frecuencia" ng-options="frecuencia.id as frecuencia.nombre for frecuencia in mul.frecuencias"></select><br>
+              <select ng-model="entidad.sede" ng-options="sede.id as sede.nombre for sede in mul.sedes"></select><br>
+
+              <input type="text" ng-model="entidad.link" placeholder="link">
+              <textarea ng-model="entidad.descripcion" placeholder="Descripción"></textarea><br>
+              <button ng-click="ver[0] = !ver[0]">Cancelar</button><button ng-click="crear_entidad('cursosadultos',entidad, 2)" type="submit">Guardar</button>
+            </form>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr ng-repeat="miEntidad in tabla">
+    <td>
+      <table border="1" style="width: 100%">
+        <tr>
+          <td><a href="" ng-click="abrirEntidadN3TablaN2('cursosadultos', miEntidad)">{{miEntidad.tostring}}</a></td>
+          <td><a href="" ng-click="ver[miEntidad.id] = !ver[miEntidad.id]"><span class="glyphicon glyphicon-pencil"></span></a></td>
+          <td><a href="" confirmed-click="eliminar_entidad('cursosadultos', miEntidad, 2)" ng-confirm-click="Esta seguro que desea eliminar este elemento?"><span class="glyphicon glyphicon-trash"></span></a> </td>
+        </tr>
+        <tr ng-show="ver[miEntidad.id]">
+          <td colspan="3">
+            <form>
+              <select ng-model="miEntidad.subnivel" ng-options="subnivel.id as subnivel.subnivel for subnivel in mul.subniveles"></select><br>
+              <select ng-model="miEntidad.intensidad" ng-options="intensidad.id as intensidad.nombre for intensidad in mul.intensidades"></select><br>
+              <select ng-model="miEntidad.frecuencia" ng-options="frecuencia.id as frecuencia.nombre for frecuencia in mul.frecuencias"></select><br>
+              <select ng-model="miEntidad.sede" ng-options="sede.id as sede.nombre for sede in mul.sedes"></select><br>
+
+              <input type="text" ng-model="miEntidad.link" placeholder="link">
+              <textarea ng-model="miEntidad.descripcion" placeholder="Descripción"></textarea><br>
+              <button ng-click="ver[miEntidad.id] = !ver[miEntidad.id]">Cancelar</button><button ng-click="actualizar_entidad('cursosadultos',miEntidad)" type="submit">Guardar</button>
+            </form>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>

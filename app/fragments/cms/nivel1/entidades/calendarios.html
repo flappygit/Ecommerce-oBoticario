@@ -1,0 +1,42 @@
+<h2>{{entidad.nombre}}1</h2>
+<form>
+
+  <input placeholder="Link" type="text" ng-model="entidad.inicio">
+  <textarea placeholder="Descripción" ng-model="entidad.descripcion"></textarea><br>
+  <select ng-model="entidad.subnivel" ng-options="subnivel.id as subnivel.subnivel for subnivel in mul.subniveles"></select><br>
+  <select ng-model="entidad.intensidad" ng-options="intensidad.id as intensidad.nombre for intensidad in mul.intensidades"></select><br>
+  <select ng-model="entidad.frecuencia" ng-options="frecuencia.id as frecuencia.nombre for frecuencia in mul.frecuencias"></select><br>
+  <select ng-model="entidad.sede" ng-options="sede.id as sede.nombre for sede in mul.sedes"></select><br>
+  <button ng-click="cerrarNivel1()">Cancelar</button>
+  <input type="submit" ng-click="guardarEntidad()" value="Guardar">
+</form>
+<br>
+<a ng-hide="entidadNueva" href="" confirmed-click="eliminarEntidad()" ng-confirm-click="Esta seguro que desea eliminar este elemento?">
+  <span class="glyphicon glyphicon-trash"></span>Eliminar
+</a>
+<br>
+<h3>Lista de Calendarios</h3>
+<button ng-click="v[0] = !v[0]" class="btn btn-primary">Nuevo Calendario</button>
+<form ng-show="v[0]">
+  <input placeholder="Fecha de Inicio" type="date" ng-model="nuevo_calendario.inicio">
+  <input placeholder="Fecha de Finalización" type="date" ng-model="nuevo_calendario.fin">
+  <textarea placeholder="Información" ng-model="nuevo_calendario.informacion"></textarea>
+
+  <button ng-click="crear_entidad('calendarios', nuevo_calendario, 1)" class="btn btn-primary">Guardar</button>
+</form>
+<ul>
+
+  <li class="list-unstyled" ng-repeat="calendario in entidad.calendarios">
+    <p><a href="" ng-click="seleccionarEntidad2('calendarios',calendario);">del {{calendario.inicio|date:'fullDate'}} al {{calendario.fin|date:'fullDate'}} </a>|
+      <a href="" ng-click="v[calendario.id] = !v[calendario.id]"><span class="glyphicon glyphicon-edit"></span></a> |
+      <a href="" confirmed-click="eliminar_entidad('calendarios',calendario, 1)" ng-confirm-click="Esta seguro que desea eliminar este elemento?"><span class="glyphicon glyphicon-trash"></span></a>
+    </p>
+    <form ng-show="v[calendario.id]">
+      <input placeholder="Fecha de Inicio" type="date" ng-model="calendario.inicio">
+      <input placeholder="Fecha de Finalización" type="date" ng-model="calendario.fin">
+      <textarea placeholder="Información" ng-model="calendario.informacion"></textarea>
+
+      <button ng-click="actualizar_entidad('calendarios', calendario)" class="btn btn-primary">Guardar</button>
+    </form>
+  </li>
+</ul>

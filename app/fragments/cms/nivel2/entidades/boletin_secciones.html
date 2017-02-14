@@ -1,0 +1,128 @@
+<h4 class="f-black tittle-panel-2 ">{{entidad.nombre}}
+    <a href="" ng-click="cerrarNivel2()" style="float:right;">
+        <img src="images/icon-8.png">
+    </a>
+</h4>
+
+<div class="form-panel">
+    <form>
+        <div class="col-lg-12 col-line col-spacing">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" ng-model="entidad.nombre" placeholder="Nombre" class="form-control">
+        </div>
+
+        <div class="col-lg-12 col-line col-spacing">
+            <label for="nivel">Nivel</label>
+            <input type="text" id="nivel" ng-model="entidad.nivel" placeholder="Nivel" class="form-control">
+        </div>
+
+        <div class="col-lg-12 col-line col-spacing">
+            <label for="orden">Orden</label>
+            <input type="text" id="orden" ng-model="entidad.orden" placeholder="Orden" class="form-control">
+        </div>
+        <div class="col-lg-12 col-line col-spacing">
+            <label for="descripcion">Descripción</label>
+            <div trumbowyg-ng ng-model="entidad.descripcion" id="descripcion">
+          </div>
+            
+        </div>
+
+        <div class="col-lg-6 col-iz btn-panel-bottom">
+            <button ng-click="cerrarNivel2()" class="btn btn-gray">Cancelar</button>
+        </div>
+
+        <div class="col-lg-6 col-line btn-panel-bottom" >
+            <button ng-click="guardarEntidad()" type="submit" class="btn btn-red">Guardar</button>
+        </div>
+    </form>
+    <br>
+    <a ng-hide="entidadNueva" href="" confirmed-click="eliminarEntidad()" class="f-black" ng-confirm-click="Esta seguro que desea eliminar este elemento?">
+        <img src="images/icon-11.png"> Eliminar
+    </a>
+    <br>
+
+
+</div>
+
+
+<div class="tabla-nav">
+    <h4>Boletines</h4>
+
+    <ul class="upper">
+        <li class="li-first text-center" >
+            <a href="" class="f-red" ng-click="v[0] = !v[0]" >Nuevo boletín</a>
+        </li>
+
+
+        <form  ng-show="v[0]" class="form-panel form-font">
+            <div class="col-lg-6 col-iz col-spacing">
+                <label for="Nombre">Nombre</label>
+                <input placeholder="Nombre" type="text" ng-model="nuevo_boletin.nombre" class="form-control">
+            </div>
+            <div class="col-lg-6 col-line col-spacing">
+                <label for="Nombre">Dirección</label>
+            <input placeholder="Imagen" type="text" ng-model="nuevo_boletin.imagen" class="form-control">
+            </div>
+            <div class="col-lg-6 col-line col-spacing">
+                <label for="Nombre">Dirección</label>
+            <input placeholder="Ancho" type="text" ng-model="nuevo_boletin.ancho" class="form-control">
+            </div>
+            <div class="col-lg-12 col-line col-spacing">
+                <label for="Nombre">Dirección</label>
+                <div trumbowyg-ng ng-model="nuevo_boletin.descripcion" >
+          </div>
+            </div>
+            <div class="col-lg-12 col-line col-spacing">
+                <label for="Nombre">Dirección</label>
+            <textarea placeholder="Contenido" ng-model="nuevo_boletin.contenido" class="form-control"></textarea>
+            </div>
+
+
+            <div class="col-lg-6 col-line btn-panel-bottom" >
+                <button ng-click="crear_entidad('boletin_boletines', nuevo_boletin, 1)" class="btn btn-red">Guardar</button>
+            </div>
+        </form>
+
+        <li class="li-table1" ng-repeat="boletin in entidad.boletines">
+            <a href="" class="f-black" ng-click="v[boletin.id] = !v[boletin.id]">{{boletin.nombre}} </a>
+            <a href="" confirmed-click="eliminar_entidad('boletin_boletines',boletin, 1)" ng-confirm-click="Esta seguro que desea eliminar este elemento?" class="a-edit-table">
+                <img src="images/icon-11.png">
+            </a>
+            <a href="" ng-click="v[boletin.id] = !v[boletin.id]" class="a-edit-table">
+                <img src="images/icon-9.png">
+            </a>
+            <form ng-show="v[boletin.id]" class="form-panel form-font">
+                <div class="col-lg-6 col-iz col-spacing">
+                    <label for="Nombre">Nombre</label>
+                    <input placeholder="Nombre" type="text" ng-model="eve.nombre" class="form-control">
+                </div>
+
+                <div class="col-lg-6 col-iz col-spacing">
+                    <label for="Nombre">Imagen</label>
+                    <input placeholder="Imagen" type="text" ng-model="boletin.imagen" class="form-control">
+                </div>
+
+                <div class="col-lg-6 col-iz col-spacing">
+                    <label for="Nombre">Ancho</label>
+                    <input placeholder="Ancho" type="text" ng-model="boletin.ancho" class="form-control">
+                </div>
+
+                <div class="col-lg-12 col-line col-spacing">
+                    <label for="Nombre">Descripción</label>
+                    <div trumbowyg-ng ng-model="boletin.descripcion" >
+                    </div>
+                </div>
+
+                <div class="col-lg-12 col-line col-spacing">
+                    <label for="Nombre">Contenido</label>
+                    <textarea placeholder="Contenido" ng-model="boletin.contenido"></textarea>
+                </div>
+
+                <div class="col-lg-6 col-line btn-panel-bottom" >
+                    <button ng-click="actualizar_entidad('boletin_boletines', boletin)" class="btn btn-red">Guardar</button>
+                </div>
+
+            </form>
+        </li>
+    </ul>
+</div>

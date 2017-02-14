@@ -1,0 +1,26 @@
+<div class="tabla-nav">
+	<h4 class="f-black tittle-panel-2 ">{{nomTabla}} 
+<a href="" ng-click="cerrarNivel1()" style="float:right;">
+	<img src="images/icon-8.png">
+</a>
+		</h4>
+
+<table  border="1"  style="border-color:#d7d7d7;border-style:solid;border-width:1px;margin-top:0;" class="upper">
+
+  <tr >
+          <td colspan="2" class="text-center"><a href="" class="f-red" ng-click="seleccionarEntidad(null)" >Crear Nueva {{nomTabla}} </a></td>
+  </tr>
+
+  <tr ng-repeat="columnas in tabla">
+          <td>{{columnas.nombre}}</td><td><a href="" ng-click="seleccionarEntidad(columnas)" ><span ><img src="images/icon-9.png"></span></a></td>
+  </tr>
+  
+</table>
+
+
+
+
+
+
+</div>
+

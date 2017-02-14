@@ -1,0 +1,40 @@
+<h4>Calendario</h4>
+<table style="width: 100%">
+  <tr>
+    <td>
+      <table border="1" style="width: 100%">
+        <tr>
+          <td>
+            <form>
+              <input type="date" ng-model="entidad2.inicio" placeholder="Fecha de Inicio">
+              <input type="date" ng-model="entidad2.fin" placeholder="Fecha de Finalización">
+              <textarea ng-model="entidad2.informacion" placeholder="Información"></textarea><br>
+              <button ng-click="ver[0] = !ver[0]">Cancelar</button><button ng-click="crear_entidad('calendarios',entidad2, 2)" type="submit">Guardar</button>
+            </form>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr ng-repeat="horario in entidad2.horarios">
+    <td>
+      <table border="1" style="width: 100%">
+        <tr>
+          <td><a href="" ng-click="abrirEntidadN3TablaN2('horarios', horario)">De {{horario.inicio|date:'h:i a'}} a {{horario.fin|date:'h:i a'}}</a></td>
+          <td><a href="" ng-click="ver[horario.id] = !ver[horario.id]"><span class="glyphicon glyphicon-pencil"></span></a></td>
+          <td><a href="" confirmed-click="eliminar_entidad('horarios', horario, 2)" ng-confirm-click="Esta seguro que desea eliminar este elemento?"><span class="glyphicon glyphicon-trash"></span></a> </td>
+        </tr>
+        <tr ng-show="ver[horario.id]">
+          <td colspan="3">
+            <form>
+              <input type="time" ng-model="horario.inicio" placeholder="Hora de inicio">
+              <input type="time" ng-model="horario.fin" placeholder="Hora de Finalización">
+              <input type="text" ng-model="horario.precio" placeholder="Precio">
+              <button ng-click="ver[horario.id] = !ver[horario.id]">Cancelar</button><button ng-click="actualizar_entidad('horarios',horario)" type="submit">Guardar</button>
+            </form>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>

@@ -1,0 +1,45 @@
+  <div class="container-content">
+<div class="text-center">
+<img src="images/ajax-loader.gif" ng-show="loading==true" style="position:fixed;top:50%;">
+</div>
+  <!-- Seccion 1 Muestra el listado de tablas del proyecto -->
+  <div class="col-lg-3 col-md-3 col-sm-12  panel-project flexcroll" >
+    <a href="#/administrar" class="exit-cms f-red"> <img src="images/icon-7.png"> VOLVER</a>
+
+    <h4>
+      <select ng-cloak ng-model="valor" ng-change="irA(valor)" >
+         <option ng-repeat="proyecto in proyectos" ng-selected="proyecto.nombre == nombre" value="{{proyecto.nombre}}">
+           {{proyecto.nombre}}
+         </option>
+      </select>
+
+    </h4>
+    <h4>
+      <a href="#imageUp">Subir Imagen</a>
+    </h4>
+    <mis-tablas class="tabla-nav"></mis-tablas>
+  </div>
+
+  <!-- seleccionada 2 - nivel 1, Muestra la tabla seleccionada -->
+  <div ng-if="nivel1" ng-hide="!nivel1" class="col-lg-4 col-md-4 col-sm-12 panel-level-2 flexcroll" id="level2">
+  <div class="text-center" >
+    <img src="images/ajax-loader.gif" ng-show="loading1==true" class="loader-panel">
+  </div>
+    <nivel1 class="div-level-2" >
+
+    </nivel1>
+  </div>
+
+
+  <!-- Seccion 3 Vista y Edicion del registro seleccionado -->
+  <div  ng-if="nivel2" ng-hide="!nivel2" class="col-lg-4 col-md-4 col-sm-12 panel-level-3 flexcroll" id="level3">
+  <div class="text-center" >
+
+  <img src="images/ajax-loader.gif" ng-show="loading2==true" class="loader-panel" >
+  </div>
+
+    <nivel2 ></nivel2>
+  </div>
+
+
+</div>

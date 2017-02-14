@@ -1,0 +1,172 @@
+<h4 class="f-black tittle-panel-2 ">{{entidad.nombre}}
+<a href="" ng-click="cerrarNivel2()" style="float:right;">
+  <img src="images/icon-8.png">
+</a>
+    </h4>
+
+<div class="form-panel width1">
+<form>
+<div class="col-lg-12 col-iz col-spacing">
+  <label for="nombre">Nombre</label>
+  <input type="text" ng-model="entidad.nombre" placeholder="Nombre" class="form-control">
+</div>
+<div class="col-lg-12 col-line col-spacing">
+  <label for="">Descripción Corta </label>
+  <textarea ng-model="entidad.descripcion_corta" placeholder="Descripción Corta" class="form-control"></textarea>
+</div>
+
+<div class="col-lg-12 col-line col-spacing">
+  <label for="">Información</label>
+  <div trumbowyg-ng ng-model="entidad.informacion" >
+  </div>
+</div>
+<div class="col-lg-12 col-line col-spacing">
+  <label for="">Horario</label>
+  <input type="text" ng-model="entidad.horario" placeholder="Horario" class="form-control">
+</div>
+
+
+
+
+<div class="col-lg-12 col-line col-spacing">
+  <label for="">Imagen</label>
+  <input type="text" ng-model="entidad.imagen" placeholder="Imagen" class="form-control">
+</div>
+
+<div class="col-lg-12 col-line col-spacing">
+  <label for="">Imagen 2</label>
+  <input type="text" ng-model="entidad.imagen2" placeholder="Imagen" class="form-control">
+</div>
+
+<div class="col-lg-12 col-line col-spacing">
+  <label for="">Ciudad</label>
+  <select  ng-model="entidad.ciudad" ng-options="ciudad.id as ciudad.nombre for ciudad in mul.ciudades"  ></select>
+</div>
+
+
+
+<div class="col-lg-6 col-iz btn-panel-bottom">
+<button ng-click="cerrarNivel2()" class="btn btn-gray">Cancelar</button>
+</div>
+
+<div class="col-lg-6 col-line btn-panel-bottom" >
+<button type="submit" ng-click="guardarEntidad()" class="btn btn-red">Guardar</button>
+</div>
+</form>
+</form>
+<br><br>
+<a ng-hide="entidadNueva" href="" confirmed-click="eliminarEntidad()" ng-confirm-click="Esta seguro que desea eliminar este elemento?">
+  <span class="glyphicon glyphicon-trash"></span>Eliminar
+</a>
+
+
+  <ul class="upper">
+    <li class="li-table1">
+      <a href="" ng-click="ver[0] = !ver[0]" class="f-black name-table" >Nuevo Calendario </a>
+
+    </li>
+    <li class="li-table1" ng-show="ver[0]">
+      <form class="form-panel form-font"  style="z-index:58;">
+
+        <div class="row">
+          <div class="col-lg-12 col-line col-spacing">
+            <label for="mesN">Mes</label>
+            <select id="mesN" ng-model="nuevo_calendario.mes" ng-options="mes for mes in meses"></select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12 col-line col-spacing">
+            <label for="fechaN">Fecha</label>
+            <textarea id="fechaN" ng-model="nuevo_calendario.fecha" class="form-control"></textarea>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12 col-line col-spacing">
+            <label for="informacionN">Información</label>
+
+            <textarea ng-model="nuevo_calendario.informacion" id="informacionN" class="form-control"></textarea>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12 col-line col-spacing">
+            <label for="descripcionN">Descripción</label>
+            <div trumbowyg-ng ng-model="nuevo_calendario.descripcion" id="descripcionN" >
+
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-6 col-iz btn-panel-bottom">
+            <button ng-click="ver[0] = !ver[0]" class="btn btn-gray">Cancelar</button>
+          </div>
+
+          <div class="col-lg-6 col-line btn-panel-bottom" >
+            <button ng-click="crear_entidad('calendariocertificados', nuevo_calendario, 1)" type="submit" class="btn btn-red">Guardar</button>
+          </div>
+        </div>
+
+
+
+      </form>
+    </li>
+
+
+    <div ng-repeat="miEntidad in entidad.calendarios">
+      <li class="li-table1">
+        <a href="" class="f-black name-table"  ng-click="abrirEntidadN3TablaN2('certificados', miEntidad)">{{miEntidad.mes}} </a>
+        <a href="" confirmed-click="eliminar_entidad('calendariocertificados', miEntidad, 2)" ng-confirm-click="Esta seguro que desea eliminar este elemento?" class="a-edit-table">
+          <img src="images/icon-11.png">
+        </a>
+        <a href="" ng-click="ver[miEntidad.id] = !ver[miEntidad.id]" class="a-edit-table">
+          <img src="images/icon-9.png">
+        </a>
+
+      </li>
+      <li class="li-table1" ng-show="ver[miEntidad.id]">
+        <form class="form-panel form-font"  style="z-index:58;">
+
+          <div class="row">
+            <div class="col-lg-12 col-line col-spacing">
+              <label for="mes">Mes</label>
+              <select id="mes" ng-model="miEntidad.mes" ng-options="mes for mes in meses"></select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12 col-line col-spacing">
+              <label for="fecha">Fecha</label>
+              <textarea id="fecha" ng-model="miEntidad.fecha" class="form-control"></textarea>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12 col-line col-spacing">
+              <label for="informacion">Información</label>
+              <textarea ng-model="miEntidad.informacion" id="informacion" class="form-control"></textarea>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12 col-line col-spacing">
+              <label for="descripcion">Descripción</label>
+              <div trumbowyg-ng ng-model="miEntidad.descripcion" >
+            </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-6 col-iz btn-panel-bottom">
+              <button ng-click="ver[0] = !ver[0]" class="btn btn-gray">Cancelar</button>
+            </div>
+
+            <div class="col-lg-6 col-line btn-panel-bottom" >
+              <button ng-click="actualizar_entidad('calendariocertificados',miEntidad)" type="submit" class="btn btn-red">Guardar</button>
+            </div>
+          </div>
+
+
+
+        </form>
+      </li>
+    </div>
+
+  </ul>
+</div>

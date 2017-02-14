@@ -1,0 +1,52 @@
+  <h4 class="f-black tittle-panel-2 ">{{entidad.nombre}} 
+<a href="" ng-click="cerrarNivel2()" style="float:right;">
+  <img src="images/icon-8.png">
+</a>
+    </h4>
+<div class="form-panel width1">
+<form>
+<div class="col-lg-12 col-line col-spacing">
+    <label for="nombre">Titulo Header</label>
+    <input type="text" id="nombre" ng-model="entidad.nombre" placeholder="Nombre" class="form-control">
+</div>
+
+<div class="col-lg-12 col-line col-spacing">
+    <label for="descripcion_corta">Descripción corta</label>
+    <textarea type="text" id="descripcion_corta" ng-model="entidad.descripcion_corta" placeholder="Descripción corta" class="form-control"></textarea>
+</div>
+
+
+<div class="col-lg-12 col-line col-spacing">
+    <label for="descripcion">Descripción</label>
+    <div trumbowyg-ng ng-model="entidad.informacion"  id="descripcion">
+            </div>
+</div>
+<div class="col-lg-12 col-line col-spacing">
+    <label for="imagen2">Imagen</label>
+    <input type="text" id="imagen2" ng-model="entidad.imagen" placeholder="Imagen" class="form-control">
+</div>
+<div class="col-lg-12 col-line col-spacing">
+    <label for="sede">Sede</label>
+    <select ng-model="entidad.sede" ng-options="sede.id as sede.nombre for sede in mul.sedes"></select>
+</div>
+
+<div class="col-lg-12 col-line col-spacing">
+    <label for="frecuencia">Frecuencia</label>
+    <select ng-model="entidad.frecuencia" ng-options="frecuencia.id as frecuencia.nombre for frecuencia in mul.frecuencias" ></select>
+</div>
+
+    
+  
+  <div class="col-lg-6 col-iz btn-panel-bottom">
+<button ng-click="cerrarNivel2()" class="btn btn-gray">Cancelar</button>
+</div>
+
+<div class="col-lg-6 col-line btn-panel-bottom" >
+<button ng-click="guardar_pagina(pagina)" class="btn btn-red">Guardar</button>
+</div>
+
+</form>
+<br><br>
+<a ng-hide="entidadNueva" href="" confirmed-click="eliminarEntidad()" ng-confirm-click="Esta seguro que desea eliminar este elemento?">
+  <span class="glyphicon glyphicon-trash"></span>Eliminar
+</a>
