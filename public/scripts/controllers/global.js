@@ -42,8 +42,12 @@ angular.module('dashboardApp')
       $cookieStore.put('usuario', usuario);
       $cookieStore.put('rol', "usuario_facebook");
     }
+    $scope.userPerfil = function () {
     
+    $location.path('/user/perfil');
 
+
+    }
     $scope.FBLogin = function () {
       FB.login(function(response) {
         if (response.authResponse) {

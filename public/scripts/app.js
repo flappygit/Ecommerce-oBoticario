@@ -37,7 +37,7 @@ angular
         controller: 'indexCtrl',
         controllerAs: 'index'
       })
-      .when('/user', {
+      .when('/user/perfil', {
         templateUrl: 'user.html',
         controller: 'userCtrl',
         controllerAs: 'user'

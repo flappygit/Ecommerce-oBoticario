@@ -44,7 +44,7 @@ ng-if="usrSesion.conectado"
                     </li>
                     <li>
                         <a class="page-scroll" href="" ng-if="logged==false" ng-click="FBLogin()">Ingresar / Registrate</a>
-                        <a href="" ng-if="logged==true">{{nombreFacebook}}</a>
+                        <a href="" ng-if="logged==true" ng-click="userPerfil()">{{nombreFacebook}}</a>
                         <a href="" class="btn btn-default" ng-if="logged==true" ng-click="cerrarSesion()">Cerrar Sesión</a>
 
                     </li>
