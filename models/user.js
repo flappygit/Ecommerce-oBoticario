@@ -12,7 +12,7 @@ validUser:function(user,callback){
 	db.end();
  },
    
- addUser:function(user,callback){
+addUser:function(user,callback){
 var today = new Date();
 var dd = today.getDate();
 var mm = today.getMonth()+1; //January is 0!

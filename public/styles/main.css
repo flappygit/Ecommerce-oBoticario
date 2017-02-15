@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
 @font-face {
 font-family: 'Nunito-Bold';
 src: url('../fonts/Nunito-Bold.eot');
@@ -18,11 +20,19 @@ url('../fonts/Sniglet-Regular.svg') format('svg');
 body {
   width: 100%;
   height: 100%;
-  background:#f8f8f8
+  background:#f8f8f8;
+  overflow-x:hidden;
+  font-family: 'Open Sans', sans-serif;
+
 }
 html {
   width: 100%;
   height: 100%;
+}
+p{
+  font-family: 'Open Sans', sans-serif;
+color:#000;
+font-size:15px;
 }
 h1,
 h2,
@@ -34,6 +44,15 @@ h6 {
 }
 h1{
   font-size:65px;color:#fff;
+}
+h2{
+  font-size:60px;color:#000;
+}
+h3{
+  font-size:55px;color:#000;
+}
+h4{
+  font-size:50px;color:#000;
 }
 a{
   color:#fff;
@@ -59,6 +78,26 @@ a:visited{
 }
 .f-black{
   color:#000;
+}
+.f-gray{
+  color: #989898;
+}
+.text-sub{
+  text-decoration:line-through;
+}
+.btn{
+  border-radius:30px;
+  border:none;
+  font-family:Nunito-Bold;
+  font-size:15px;
+  padding:10px 50px 15px 50px;
+}
+.btn1{
+  background-color:#e53936;
+}
+.btn1:hover{
+  color:#fff;
+
 }
 #footer-menu{
   border-bottom-width:1px;
@@ -147,13 +186,14 @@ a:visited{
     transition: background 0.5s ease-in-out, padding 0.5s ease-in-out;
   }
   .navbar-custom.top-nav-collapse {
-    padding: 30px 0;
+    padding: 5px 0;
     background:#fff;
     border-bottom:none;
   }
 }
 
 .intro {
+  position:relative;
   width: 100%;
   height: 952px;
   text-align: center;
@@ -163,6 +203,7 @@ a:visited{
   -moz-background-size: cover;
   background-size: cover;
   -o-background-size: cover;
+  overflow:hidden;
 }
 .intro .intro-body {
   padding-top:20%;
@@ -284,4 +325,202 @@ padding-left:0px;
     font-size: 26px;
   }
 }
+
+
+/* ANIMATIONS FLOAT - ELEMENTS EFFECTS */
+.div-product{
+  position:relative;
+  width:100%;
+  height:100%;
+}
+.lirio1{
+  width:285px;
+  height:331px;
+  background: url(../images/lily/lirio-1.png) no-repeat;
+  position:absolute;
+  top:0%;
+  right:-100px;
+}
+.lirio2{
+  width:125px;
+  height:228px;
+  background: url(../images/lily/lirio-2.png) no-repeat;
+  position:absolute;
+  top:0%;
+  left:0px;
+}
+.lirio3{
+  width:228px;
+  height:137px;
+  background: url(../images/lily/lirio-3.png) no-repeat;
+  position:absolute;
+  margin-bottom:-100px;
+    bottom:0%;
+  left:200px;
+}
+.div-modelo,.div-modelo1{
+  
+  position:relative;
+}
+.div-modelo img{
+  margin-top:-130px;
+}
+.img-product-lily{
+  width:340px;
+  height:334px;
+  background: url(../images/lily/perfumes.png) no-repeat;
+  position:absolute;
+  margin-bottom:-240px;
+  left:-70px;  
+}
+
+.img-product-make-b{
+  width:336px;
+  height:326px;
+  background: url(../images/make-b/labial.png) no-repeat;
+  position:absolute;
+  margin-bottom:-700px;
+  bottom:0px;
+  right:-170px;  
+}
+
+.div-lily-content{
+  margin-left:60px;
+}
+.div-lily-content p{
+  width:85%;
+  line-height:30px;
+}
+.div-img-content{
+  margin-right:-100px;
+}
+.div-img-content-1{
+  margin-right:-70px;
+}
+
+.li-price-money{
+  margin-top:-100px;
+}
+.ul-prices{
+  margin-left:160px;
+  width:100%
+}
+.ul-prices-1{
+  margin-left:80px;
+  width:100%;
+
+}
+.div-make-b-content{
+  margin-left:80px;
+}
+.div-make-b-content p{
+  width:95%;
+  line-height:30px;
+}
+.div-img-make-b{
+  margin-left:-130px;
+}
+.pintura1{
+  width:388px;
+  height:170px;
+  background: url(../images/make-b/pintura1.png) no-repeat;
+  position:absolute;
+  top:-160px;
+  right:0;
+  z-index:6;
+}
+.pintura2{
+  width:117px;
+  height:130px;
+  background: url(../images/make-b/pintura2.jpg) no-repeat;
+  position:absolute;
+  top:200px;
+  left:0px;
+}
+.pintura3{
+  width:293px;
+  height:141px;
+  background: url(../images/make-b/pintura3.png) no-repeat;
+  bottom:35px;
+  margin-top:-70px;
+  z-index:6;
+}
+
+/* Nativa Spa */
+.nativa1{
+  width:155px;
+  height:288px;
+  background: url(../images/nativa/flower3.png) no-repeat;
+  position:absolute;
+  bottom:0%;
+  margin-bottom:-1200px;
+  right:0px;
+}
+.nativa2{
+  width:225px;
+  height:360px;
+  background: url(../images/nativa/flower1.png) no-repeat;
+  position:absolute;
+  left:0px;
+}
+.nativa3{
+  width:228px;
+  height:137px;
+  background: url(../images/nativa/flower2.png) no-repeat;
+  top:0;
+  margin-bottom:-40px;
+  margin-left:100px;
+  z-index:6;
+}
+.img-product-nativa{
+  width:340px;
+  height:334px;
+  background: url(../images/nativa/cremas.png) no-repeat;
+  position:absolute;
+  margin-bottom:-1200px;
+  left:-70px;  
+}
+.div-nativa-content{
+  margin-left:-10px;
+  margin-top:110px;
+
+}
+.div-nativa-content p{
+  width:80%;
+  line-height:30px;
+}
+/* Nativa  Spa*/
+
+
+/* Malbec */
+.div-img-malbec{
+  margin-left:-100px;
+}
+.img-product-malbec{
+  width:336px;
+  height:326px;
+  background: url(../images/malbec/colonia.png) no-repeat;
+  position:absolute;
+  margin-bottom:-1000px;
+
+  bottom:0px;
+  right:-170px;  
+}
+
+
+.div-malbec-content{
+  margin-left:0px;
+}
+
+.div-malbec-content p{
+  width:90%;
+  line-height:30px;
+}
+
+/* Malbec */
+
+/**/
+/**
+
+/*  ANIMATIONS FLOAT - ELEMENTS EFFECTS */
 

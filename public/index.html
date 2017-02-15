@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="styles/main.css">
   
 </head>
-<body ng-app="dashboardApp" ng-controller="GlobalCtrl" class="flexcroll" id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<body ng-app="dashboardApp" ng-controller="indexCtrl" class="flexcroll" id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
 
 <!--[if lte IE 8]>
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -45,7 +45,7 @@ ng-if="usrSesion.conectado"
                     <li>
                         <a class="page-scroll" href="" ng-if="logged==false" ng-click="FBLogin()">Ingresar / Registrate</a>
                         <a href="" ng-if="logged==true" ng-click="userPerfil()">{{nombreFacebook}}</a>
-                        <a href="" class="btn btn-default" ng-if="logged==true" ng-click="cerrarSesion()">Cerrar Sesión</a>
+                       <!-- <a href="" class="" ng-if="logged==true" ng-click="cerrarSesion()">Cerrar Sesión</a>-->
 
                     </li>
                     <li>
@@ -76,6 +76,7 @@ ng-if="usrSesion.conectado"
     </nav>
 <!-- Intro Header -->
     <header class="intro">
+
         <div class="intro-body">
             <div class="container">
                 <div class="row">
@@ -85,12 +86,128 @@ ng-if="usrSesion.conectado"
                 </div>
             </div>
         </div>
+        
     </header>
-<br>
-<br>
-<br>
-<br>
-<br>
+    <!-- LILY SECTION -->
+    <div class="container-fluid div-product">
+        <div class="lirio1" id="lirio1"></div>
+        <div class="lirio2" id="lirio2"></div>
+        <div class="container">
+            <div class="col-lg-6 div-modelo div-img-content" >
+                <img src="images/lily/modelo.png"  id="modelo">
+                <div class="img-product-lily" id="img-product-lily"></div>
+                <div class="lirio3" id="lirio3"></div>
+
+            </div>
+            <div class="col-lg-6" >
+                <div class="div-lily-content">
+                    <h2>LA ESENCIA DE LO<br>QUE ERES</h2>
+                <p>Ahora también es posible tener el perfume que deseas, sé una mujer clásica y sofisticada con los suaves y delicadas notas de nuestra fragancia <b>Lily</b>.</p>
+                </div>
+                <div class="ul-prices">   
+                <ul class="list-inline">
+                    <li ><h4 class="f-gray li-price-money"> <small>Antes</small><br> <span class="text-sub">$90.000</span></h4> </li>
+                    <li><h3><small class="f-black">Ahora</small><br> 980 likes</h3></li>
+                </ul>
+                <a href="#"  class="btn btn1">Ver Producto</a>
+                </div>
+            </div>  
+            </div>
+    </div>
+    <!-- LILY SECTION -->
+<br><br><br><br><br><br><br><br><br><br>
+    <!-- MAKE B SECTION -->
+    <div class="container-fluid div-product">
+        <div class="pintura1" id="pintura1"></div>
+        <div class="pintura2" id="pintura2" style="z-index:7;"></div>
+        <div class="container">
+            <div class="col-lg-6" style="z-index:6;">
+                <div class="div-make-b-content" id="div-make">
+                    <h2>DALE COLOR A<br>TUS DÍAS</h2>
+                    <p>Dale a tus días un color intenso y potente con <b>Make B.</b> Tan pronto lo pruebes no querrás dejarlo de usar.</p>
+                    <ul class="list-inline">
+                    <li ><h4 class="f-gray li-price-money"> <small>Antes</small><br> <span class="text-sub">$90.000</span></h4> </li>
+                    <li><h3><small class="f-black">Ahora</small><br> 980 likes</h3></li>
+                </ul>
+                <a href="#"  class="btn btn1">Ver Producto</a>
+                </div>
+
+                
+
+            </div>
+
+            <div class="col-lg-6 div-modelo div-img-make-b" >
+                <img src="images/make-b/modelo.png"  style="z-index:5">
+                <div class="img-product-make-b" id="img-product-make-b"></div>
+        <div class="pintura3" id="pintura3" style="z-index:4;"></div>
+
+                </div>  
+
+            </div>
+    </div>
+    <!-- MAKE B SECTION -->
+<br><br><br><br><br><br>
+
+<!-- NATIVA SECTION -->
+    <div class="container-fluid div-product">
+        <div class="nativa1" id="nativa1"></div>
+        <div class="nativa2" id="nativa2" style="z-index:14"></div>
+        <div class="container">
+            <div class="col-lg-6 div-modelo div-img-content1" >
+                <div class="nativa3" id="nativa3" style="z-index:12;"></div>
+                <img src="images/nativa/modelo.png"  id="modelo" style="z-index:13;">
+                <div class="img-product-nativa" id="img-product-nativa" style="z-index:15;"></div>
+
+            </div>
+            <div class="col-lg-6" >
+                <div class="div-nativa-content">
+                    <h2>POR UN SPA TODOS<br>LOS DÍAS DEL AÑO</h2>
+                <p>Para consentirte y cuidarte no necesitas pasar todo el día en un spa. ¡Déjate llevar por el encanto de <b>Nativa SPA</b></p>
+                </div>
+                <div class="ul-prices-1">   
+                <ul class="list-inline">
+                    <li ><h4 class="f-gray li-price-money"> <small>Antes</small><br> <span class="text-sub">$90.000</span></h4> </li>
+                    <li><h3><small class="f-black">Ahora</small><br> 980 likes</h3></li>
+                </ul>
+                <a href="#"  class="btn btn1">Ver Producto</a>
+                </div>
+            </div>  
+            </div>
+    </div>
+    <!-- NATIVE SECTION -->
+
+
+
+    <br><br><br><br><br><br><br><br><br><br><br>    <br>    <br><br>
+
+
+    <!-- MALBEC SECTION -->
+    <div class="container-fluid div-product">
+        <div class="container">
+            <div class="col-lg-6" style="z-index:6;">
+                <div class="div-malbec-content">
+                    <h2>DEJA QUE LA<br>LA MAGIA SUCEDA</h2>
+                    <p>Con <b>Malbec</b> si es posible realizar tu presencia,<br>Un aroma diseñado para hombres contemporáneos, imponentes y elegantes.</p>
+                    <ul class="list-inline">
+                    <li ><h4 class="f-gray li-price-money"> <small>Antes</small><br> <span class="text-sub">$90.000</span></h4> </li>
+                    <li><h3><small class="f-black">Ahora</small><br> 980 likes</h3></li>
+                </ul>
+                <a href="#"  class="btn btn1">Ver Producto</a>
+                </div>
+
+                
+
+            </div>
+
+            <div class="col-lg-6 div-modelo div-img-malbec" >
+                <img src="images/malbec/modelo.png"  style="z-index:5">
+                <div class="img-product-malbec" id="img-product-malbec"></div>
+
+                </div>  
+
+            </div>
+    </div>
+    <!-- MAKE B SECTION -->
 <br>
 <br>
 <br>
@@ -98,8 +215,8 @@ ng-if="usrSesion.conectado"
         <div class="intro-body">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-12 ">
-                        <h1>oBoticário, cree en la belleza. Porque cuando te sientes linda, lo mágico ocurre</h1>
+                    <div class="col-lg-12 ">
+                        <h4 class="f-white" >oBoticário, cree en la belleza.<br>Porque cuando te sientes linda, lo mágico ocurre</h4>
 
                     </div>
                 </div>
@@ -152,9 +269,7 @@ ng-if="usrSesion.conectado"
 <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
 <script src="bower_components/angular-touch/angular-touch.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-    <script src="scripts/js/modernizr.js"></script>
-    <script src="scripts/js/classie.js"></script>
-    <script src="scripts/js/grayscale.js"></script>
+    
 <script src="scripts/app.js"></script>
 <script src="scripts/controllers/main.js"></script>
 <script src="scripts/controllers/index.js"></script>
@@ -165,6 +280,11 @@ ng-if="usrSesion.conectado"
 <script src="scripts/services/servers.js"></script>
 <script src="scripts/services/conexion.js"></script>
 <script src="scripts/directives/ngconfirmclick.js"></script>
+
+<!-- functions JS -->
+<script src="scripts/js/modernizr.js"></script>
+    <script src="scripts/js/classie.js"></script>
+    <script src="scripts/js/grayscale.js"></script>
 
 </body>
 </html>
