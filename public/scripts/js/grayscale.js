@@ -20,7 +20,7 @@ function parallax () {
               //aplicando possición
               layer_1.style.top= -(window.pageYOffset / 20) +'%';
               layer_2.style.top= -(window.pageYOffset / 300) +'%';
-              layer_3.style.top= -(window.pageYOffset / 8) +'px';
+              layer_3.style.top= -(window.pageYOffset / 2) +'px';
               layer_4.style.bottom= +(window.pageYOffset /2) +'px';
               layer_6.style.top= -(window.pageYOffset /14) +'px';
               layer_7.style.bottom= +(window.pageYOffset /35) +'%';
