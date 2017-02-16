@@ -9,8 +9,9 @@ var cors=require('cors');
 // Importar controladores de rutas
 var routes = require('./routes/index');
 var users = require('./routes/users');
-var Tasks=require('./routes/tareas');
-var usuariosNl=require('./routes/usuarios_nl');
+var Tasks = require('./routes/tareas');
+var usuariosNl = require('./routes/usuarios_nl');
+var usuarios = require('./routes/usuarios');
 
 var app = express();
 
@@ -28,5 +29,7 @@ app.use('/', routes);
 app.use('/users', users);
 app.use('/Tasks',Tasks);
 app.use('/usuarios-nl',usuariosNl);
+app.use('/usuarios',usuarios);
+
 
 module.exports = app;

@@ -17,9 +17,11 @@ router.get('/', function(req, res, next) {
 });
 
 
-
+/*
+ * post usuario {correo*, nombre}
+ */
 router.post('/add',function(req,res,next){
-    usuarios.addUsuario({correo:'correo 1', nombre:'nombre 1'},function(err,rows){
+    usuarios.add(req.body,function(err,rows){
         if(err)
         {
             console.log(err);
