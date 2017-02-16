@@ -2,50 +2,94 @@
 
 /**
  * @ngdoc overview
- * @name dashboardApp
+ * @name ecommerceApp
  * @description
- * # dashboardApp
+ * # ecommerceApp
  *
  * Main module of the application.
  */
 angular
-  .module('dashboardApp', [
+  .module('ecommerceApp', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
-    'ngRoute',
+    'ngRoute', 
     'ngSanitize',
     'ngTouch'
   ])
-  .run(function($rootScope, $location, $cookieStore){
-    $rootScope.permisoDenegado = false;
+  
+    .run(function($rootScope, $location, $cookieStore){
     $rootScope.$on('$routeChangeStart', function (event, next, current) {
-      if($cookieStore.get('conectado')==null || !$cookieStore.get('conectado')){
-        
+      if($cookieStore.get('conectado')){
+
+        /// Ctrl connection cookieStores
+        console.log("Conectado");
       }
     })
   })
-  .config(function ($locationProvider, $routeProvider, loggerProvider) {
-
+    .config(function ($locationProvider, $routeProvider, loggerProvider) {
     loggerProvider.enableConsole(true);
-
     $locationProvider.hashPrefix('');
     $routeProvider
 
-      .when('/index', {
-        templateUrl: 'index.html',
-        controller: 'indexCtrl',
-        controllerAs: 'index'
+      .when('/inicio', {
+        templateUrl: 'views/home.html',
+        controller: 'inicioCtrl',
+        controllerAs: 'inicio'
       })
       .when('/user', {
-        templateUrl: 'views/user.html',
+        templateUrl: 'views/user-panel.html',
         controller: 'userCtrl',
         controllerAs: 'user'
+      })
+      .when('/sobre-la-campana', {
+        templateUrl: 'views/sobre.html',
+        controller: 'pagesCtrl',
+        controllerAs: 'Sobre la Campaña'
+      })
+      .when('/mecanica', {
+        templateUrl: 'views/mecanica.html',
+        controller: 'pagesCtrl',
+        controllerAs: 'Mecánica'
+      })
+      .when('/terminos-y-condiciones', {
+        templateUrl: 'views/terminos.html',
+        controller: 'pagesCtrl',
+        controllerAs: 'Términos y Condiciones'
+      })
+
+      .when('/perfume-Lily', {
+        templateUrl: 'views/lily.html',
+        controller: 'productCtrl',
+        controllerAs: 'Perfume Lily'
+      })
+      .when('/labial-Make-B', {
+        templateUrl: 'views/makeb.html',
+        controller: 'productCtrl',
+        controllerAs: 'Labiales Make B'
+      })
+      .when('/Nativa-Spa', {
+        templateUrl: 'views/nativa.html',
+        controller: 'productCtrl',
+        controllerAs: 'Nativa SPA'
+      })
+      .when('/Malbec', {
+        templateUrl: 'views/malbec.html',
+        controller: 'productCtrl',
+        controllerAs: 'Malbec'
+      })
+      .when('/Carrito', {
+        templateUrl: 'views/carrito.html',
+        controller: 'CarritoCtrl',
+        controllerAs: 'Carrito de Compra'
       })
       .otherwise({
         redirectTo: '/'
       });
   });
+
+
+
 
 window.fbAsyncInit = function() {
     FB.init({

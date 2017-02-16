@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name dashboardApp.controller:MainCtrl
+ * @name ecommerceApp.controller:MainCtrl
  * @description
  * # MainCtrl
- * Controller of the dashboardApp
+ * Controller of the ecommerceApp
  */
-angular.module('dashboardApp')
+angular.module('ecommerceApp')
   .controller('MainCtrl', function ($scope) {
   	
 

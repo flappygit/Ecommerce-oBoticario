@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc service
- * @name dashboardApp.logger
+ * @name ecommerceApp.logger
  * @description
  * # logger
- * Provider in the dashboardApp.
+ * Provider in the ecommerceApp.
  */
-angular.module('dashboardApp')
+angular.module('ecommerceApp')
   .provider('logger', function () {
 
     var logToConsole = false;

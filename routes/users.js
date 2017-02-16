@@ -25,7 +25,7 @@ router.post('/ValidUserFacebook',function(req,res,next){
 user.validUser(req.body,function(err,rows){ 
   if(err)
   {
-
+  console.log(err);
   res.json({"success":false,"message":err});
   }
   else{
@@ -36,6 +36,7 @@ user.validUser(req.body,function(err,rows){
    	user.addUser(req.body,function(err,count){ 
    		if(err)
    		{
+        console.log(err);
    			res.json({"success":false,"message":err});
    		}else{
    			res.json({"success":true,"message":count});

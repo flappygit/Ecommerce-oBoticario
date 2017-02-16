@@ -2,11 +2,11 @@
 
 /**
  * @ngdoc directive
- * @name dashboardApp.directive:ngConfirmClick
+ * @name ecommerceApp.directive:ngConfirmClick
  * @description
  * # ngConfirmClick
  */
-angular.module('dashboardApp')
+angular.module('ecommerceApp')
   .directive('ngConfirmClick', function () {
     return {
       link: function (scope, element, attr) {

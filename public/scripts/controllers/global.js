@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name dashboardApp.controller:GlobalCtrl
+ * @name ecommerceApp.controller:GlobalCtrl
  * @description
  * # GlobalCtrl
- * Controller of the dashboardApp
+ * Controller of the ecommerceApp
  */
-angular.module('dashboardApp')
+angular.module('ecommerceApp')
   .controller('GlobalCtrl', function ($scope, $cookieStore, $location, $route, logger,$http) {
     logger.debug('RUNNING ANGULAR JS');
     $scope.usrSesion = {idfacebook: '', nombre: '', email: '', rol: '', location: '', conectado: false};

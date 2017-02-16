@@ -2,10 +2,10 @@
 
 /**
  * @ngdoc service
- * @name dashboardApp.servers
+ * @name ecommerceApp.servers
  * @description
  * # servers
- * Constant in the dashboardApp.
+ * Constant in the ecommerceApp.
  */
-angular.module('dashboardApp')
+angular.module('ecommerceApp')
   .constant('server', 'http://localhost:3000/Tasks/');

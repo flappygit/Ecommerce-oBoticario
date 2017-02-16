@@ -20,14 +20,15 @@ url('../fonts/Sniglet-Regular.svg') format('svg');
 body {
   width: 100%;
   height: 100%;
-  background:#f8f8f8;
+  background-color:#ededed;
   overflow-x:hidden;
   font-family: 'Open Sans', sans-serif;
-
+  font-size:15px;
 }
 html {
   width: 100%;
   height: 100%;
+  background-color:#ededed;
 }
 p{
   font-family: 'Open Sans', sans-serif;
@@ -52,7 +53,7 @@ h3{
   font-size:55px;color:#000;
 }
 h4{
-  font-size:50px;color:#000;
+  font-size:30px;color:#000;
 }
 a{
   color:#fff;
@@ -82,6 +83,9 @@ a:visited{
 .f-gray{
   color: #989898;
 }
+.f-color1{
+  color: #e53936;
+}
 .text-sub{
   text-decoration:line-through;
 }
@@ -90,7 +94,17 @@ a:visited{
   border:none;
   font-family:Nunito-Bold;
   font-size:15px;
-  padding:10px 50px 15px 50px;
+  padding:10px 45px 15px 45px;
+}
+.btnn1{
+  border-radius:30px;
+  border:none;
+  font-family:Nunito-Bold;
+  font-size:15px;
+  padding:10px 30px 15px 30px;
+}
+.btn2{
+  background-color:#27a2d6;
 }
 .btn1{
   background-color:#e53936;
@@ -198,7 +212,7 @@ a:visited{
   height: 952px;
   text-align: center;
   color: #000;
-  background: url(../images/landing-oboticario.png) no-repeat top center scroll;
+  background: url(../images/landing-oboticario.png) no-repeat bottom center scroll;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
@@ -241,6 +255,7 @@ a:visited{
 .cbp-spmenu-right.cbp-spmenu-open {
   right: 0px;
 }
+
 .cbp-spmenu {
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
@@ -267,6 +282,42 @@ padding-left:0px;
   padding-top:4%;
 } 
 }
+
+.overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  background: rgba(0,0,0,.7);
+  transition: all 0.5s ease;
+  cursor:pointer;
+}
+
+.flexy {
+  width: 58%;
+  margin: 5% auto;
+  position: relative;
+  height: 0;
+  padding-bottom: 33%;
+  min-height: 9em;
+  transition: all 0.5s ease;
+
+
+}
+iframe {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 50px;
+    left: 0;
+    box-shadow: 0 0 22px rgba(#000,.9);
+  transition: all 0.5s ease;
+
+  }
+
+
 #overlay {
     position: fixed;
     top: 0;
@@ -308,6 +359,7 @@ padding-left:0px;
   -moz-background-size: cover;
   background-size: cover;
   -o-background-size: cover;
+  height:100%;
 }
 .intro-1 .intro-body {
   vertical-align:middle;
@@ -399,7 +451,8 @@ padding-left:0px;
 }
 
 .li-price-money{
-  margin-top:-100px;
+  position:relative;
+  top:-30px;
 }
 .ul-prices{
   margin-left:160px;
@@ -411,7 +464,7 @@ padding-left:0px;
 
 }
 .div-make-b-content{
-  margin-left:80px;
+  margin-left:90px;
 }
 .div-make-b-content p{
   width:95%;
@@ -461,6 +514,8 @@ padding-left:0px;
   height:360px;
   background: url(../images/nativa/flower1.png) no-repeat;
   position:absolute;
+  top:0px;
+  margin-top:700px;
   left:0px;
 }
 .nativa3{
@@ -501,8 +556,7 @@ padding-left:0px;
   height:326px;
   background: url(../images/malbec/colonia.png) no-repeat;
   position:absolute;
-  margin-bottom:-1000px;
-
+  margin-bottom:-1200px;
   bottom:0px;
   right:-170px;  
 }
@@ -523,4 +577,64 @@ padding-left:0px;
 /**
 
 /*  ANIMATIONS FLOAT - ELEMENTS EFFECTS */
+
+
+/* PRODUCT DETAIL SECTION */
+
+.div-product-details{
+  margin-top:140px;
+}
+.list-pagination-image{
+  margin-top:12px;
+}
+.list-pagination-image  img{
+  height:132px;
+  width:180px;
+}
+.not-under{
+  text-decoration:none;
+}
+.not-under:hover{
+  text-decoration:none;
+}
+.list-url{
+padding-bottom:30px;
+}
+.div-img-details{
+  padding-left:0;
+}
+.small-p-description-product,.p-description-product{
+  line-height:30px;
+}
+.div-description-product{
+  padding-left:30px;
+}
+.list-prices-details{
+  margin-top:-30px;
+}
+.div-shared-product{
+  margin-top:50px;
+}
+.div-description-product-extra>div{
+  margin-top:50px;
+}
+.div-video-detail{
+  margin-top:150px;
+}
+
+.thumbnail {
+    position: relative;
+    padding: 0px;
+}
+
+.thumbnail img {
+    width: 100%;height:290px;
+}
+.caption{
+  border-top-color:#ededed;
+  border-top-width:1px;
+  border-top-style:solid;
+}
+
+/* PRODUCT DETAIL SECTION */
 

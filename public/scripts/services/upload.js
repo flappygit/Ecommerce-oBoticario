@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc service
- * @name dashboardApp.upload
+ * @name ecommerceApp.upload
  * @description
  * # upload
- * Service in the dashboardApp.
+ * Service in the ecommerceApp.
  */
-angular.module('dashboardApp')
+angular.module('ecommerceApp')
   .service('upload', function ($http, $q) {
     this.uploadFile = function (file, ruta, caracter) {
       var deferred = $q.defer();

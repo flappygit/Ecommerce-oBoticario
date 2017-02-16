@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc service
- * @name dashboardApp.conexion
+ * @name ecommerceApp.conexion
  * @description
  * # conexion
- * Factory in the dashboardApp.
+ * Factory in the ecommerceApp.
  */
-angular.module('dashboardApp')
+angular.module('ecommerceApp')
   .factory('conexion', function (logger) {
 
     return {
