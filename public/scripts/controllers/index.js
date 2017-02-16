@@ -10,6 +10,9 @@
 angular.module('ecommerceApp')
   .controller('indexCtrl', function ($scope, $cookieStore, $location, $http, logger, server, conexion) {
     logger.debug('Controller INDEX ');
+    $(function () {
+      $(".footer").hide();
+    });
     $scope.logged=false;
     $scope.error = null;
     if($location.path()=='/'){

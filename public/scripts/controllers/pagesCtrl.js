@@ -10,6 +10,8 @@
 angular.module('ecommerceApp')
   .controller('pagesCtrl', function ($scope, $cookieStore, $location, $http, logger, server, conexion) {
   		$(function () {
+      $(".footer").show();
+
             // wait till load event fires so all resources are available
             $(".nav-icon-normal").hide();
           $(".nav-icon-sticky").show();

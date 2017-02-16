@@ -92,6 +92,7 @@ $(window).scroll(function() {
 
 $(document).ready(function () {
         $("#nav-icon-sticky").hide();
+      $(".footer").hide();
 
     collapseNavbar();
     if ($(window).width() <= 992) {

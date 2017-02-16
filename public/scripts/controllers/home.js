@@ -10,6 +10,8 @@
 angular.module('ecommerceApp')
   .controller('inicioCtrl', function ($scope,$location) {
        $(function () {
+      $(".footer").show();
+
             // wait till load event fires so all resources are available
           $(".navbar-custom .navbar-nav a").css({"color":"#fff"});
           $(".nav-icon-normal").show();

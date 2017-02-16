@@ -10,6 +10,8 @@
 angular.module('ecommerceApp')
   .controller('CarritoCtrl', function ($scope, $cookieStore, $location) {
   	$(function () {
+      $(".footer").show();
+
             // wait till load event fires so all resources are available
             $(".nav-icon-normal").hide();
           $(".nav-icon-sticky").show();

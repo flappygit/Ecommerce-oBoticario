@@ -11,6 +11,8 @@ angular.module('ecommerceApp')
   .controller('productCtrl', function ($scope, $cookieStore, $location, $http, logger, server, conexion) {
   	console.log("PRODUCTO --->"+$location.path());
   	$(function () {
+      $(".footer").show();
+
       var $overlay = $('<div class="overlay"></div>');
 
 $('a[href*="https://www.youtube.com/"]').click( function(e) {

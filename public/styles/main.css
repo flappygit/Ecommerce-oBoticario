@@ -94,14 +94,14 @@ a:visited{
   border:none;
   font-family:Nunito-Bold;
   font-size:15px;
-  padding:10px 45px 15px 45px;
+  padding:15px 45px 19px 45px;
 }
 .btnn1{
   border-radius:30px;
   border:none;
   font-family:Nunito-Bold;
   font-size:15px;
-  padding:10px 30px 15px 30px;
+  padding:15px 60px 19px 30px;
 }
 .btn2{
   background-color:#27a2d6;
@@ -637,4 +637,3 @@ padding-bottom:30px;
 }
 
 /* PRODUCT DETAIL SECTION */
-
