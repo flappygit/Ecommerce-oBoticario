@@ -12,6 +12,7 @@ var users = require('./routes/users');
 var Tasks = require('./routes/tareas');
 var usuariosNl = require('./routes/usuarios_nl');
 var usuarios = require('./routes/usuarios');
+var correos = require('./routes/correos');
 
 var app = express();
 
@@ -30,6 +31,7 @@ app.use('/users', users);
 app.use('/Tasks',Tasks);
 app.use('/usuarios-nl',usuariosNl);
 app.use('/usuarios',usuarios);
+app.use('/correos',correos);
 
 
 module.exports = app;

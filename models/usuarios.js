@@ -4,7 +4,7 @@ var utiles = require('../libs/utiles');
 var usuarios={
 
     getAll:function(callback){
-        return db.query("SELECT correo, nombre, creacion, usuario, rol FROM usuarios",callback);
+        return db.query("SELECT id, correo, nombre, creacion, usuario, rol FROM usuarios",callback);
     },
 
     add:function(usuario,callback){
