@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var correos=require('../models/correos');
+var salidas=require('../models/salidas');
 
 
 Object.prototype.size = function(obj) {
@@ -13,15 +13,15 @@ Object.prototype.size = function(obj) {
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-    correos.getAll(function (err, rows) {
+    salidas.getAll(function (err, rows) {
         res.json(rows);
     });
 });
 /*
- * post correo {para*, asunto*, mensaje, cabeceras, descripcion}
+ * post usuario {usuario*, clave*, rol*, nombre correo}
  */
-router.post('/add',function(req,res,next){
-    correos.add(req.body,function(err,rows){
+router.get('/add',function(req,res,next){
+    salidas.add({id_comprador:'id comprador', nombre_comprador:'nombre comprador', descripcion:'descripcion', usuario_id:1, publicacion_id:7},function(err,rows){
         if(err)
         {
             console.log(err);
@@ -29,17 +29,17 @@ router.post('/add',function(req,res,next){
         }
         else{
 
-            res.json({"success":true,"message":rows});
+            res.json({"success":true,"message":'bn echo'});
 
         }
     });
 
 });
 /*
- * id del correo
+ * post usuario {usuario*, clave*}
  */
 router.get('/get/:id',function(req,res,next){
-    correos.findById(req.params.id,function(err,rows){
+    salidas.findById(req.params.id,function(err,rows){
         if(err)
         {
             console.log(err);

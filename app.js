@@ -15,6 +15,8 @@ var usuarios = require('./routes/usuarios');
 var correos = require('./routes/correos');
 var productos = require('./routes/productos');
 var publicaciones = require('./routes/publicaciones');
+var correosEnviados = require('./routes/correosEnviados');
+var salidas = require('./routes/salidas');
 
 var app = express();
 
@@ -36,6 +38,8 @@ app.use('/usuarios',usuarios);
 app.use('/correos',correos);
 app.use('/productos',productos);
 app.use('/publicaciones',publicaciones);
+app.use('/correos-enviados',correosEnviados);
+app.use('/salidas',salidas);
 
 
 module.exports = app;
