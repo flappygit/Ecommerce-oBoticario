@@ -84,7 +84,7 @@ angular
         controllerAs: 'Carrito de Compra'
       })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/inicio'
       });
   });
 
