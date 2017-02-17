@@ -121,7 +121,7 @@ angular.module('ecommerceApp')
         } else {
           console.log('User cancelled login or did not fully authorize.');
         }
-      }, {scope: 'email,publish_actions,user_likes,user_photos,user_posts,user_birthday,user_hometown,user_location,',
+      }, {scope: 'email,user_likes,user_location,user_posts',
           return_scopes: true });
     }
 
@@ -153,7 +153,7 @@ angular.module('ecommerceApp')
       });
       $scope.logged=false;
       $scope.nombreFacebook="";
-      if ($location.path()!='/inicio') {
+      if ($location.path()!='/inicio' && $location.path()!='/mecanica' && $location.path()!='/sobre-la-campana' && $location.path()!='/terminos-y-condiciones') {
         $location.path('/inicio');
       }
     };

@@ -2,7 +2,7 @@
 
 function collapseNavbar() {
     var pathname = window.location;
-    if (pathname!="http://localhost:3000/#/inicio") {
+    if (pathname!="http://localhost:3000/#/inicio" && pathname!="http://clientesnabica.com/oboticario/ecommerce/public/#/inicio") {
       $(".navbar-fixed-top").addClass("top-nav-collapse");
         $(".navbar-custom .navbar-nav a").css({"color":"#000"});
         $("#img-white").hide();

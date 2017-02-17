@@ -636,4 +636,25 @@ padding-bottom:30px;
   border-top-style:solid;
 }
 
+
 /* PRODUCT DETAIL SECTION */
+/* CONTENT-MAIN PAGE */
+.content-body{
+  margin-top:150px;
+}
+.content-body>h1,h2,h3,h4{
+  padding-bottom:30px;
+}
+.texto-img{
+  padding-top:15px;
+}
+.texto-img div:nth-child(1){
+  padding-right:0;
+}
+.texto-img p{
+  line-height:30px;
+}
+.div-message{
+  padding:120px 0 100px 0;
+}
+/* CONTENT-MAIN PAGE */

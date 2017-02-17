@@ -4,11 +4,12 @@ var user={
  
 getAll:function(callback){
  
-return db.query("SELECT * FROM user _facebook",callback);
+return db.query("SELECT * FROM usuarios_fb",callback);
  
 },
 validUser:function(user,callback){
-	return db.query("SELECT * FROM user_facebook WHERE id_facebook=?",[user.id],callback);
+	console.log(user);
+	return db.query("SELECT * FROM usuarios_fb WHERE id_fb=?",[user.id],callback);
 	db.end();
  },
    
@@ -27,8 +28,7 @@ if(mm<10) {
 } 
 
 today =yyyy+'-'+mm+'-'+dd;
-
- return db.query("INSERT INTO `user_facebook`(`id_user`, `id_facebook`, `name`, `email`, `location`, `date_create`) VALUES (null,?,?,?,?,?)",[user.id,user.name,user.email,user.location,today],callback);
+ return db.query("INSERT INTO `usuarios_fb`(`id`, `id_fb`, `nombre_fb`, `creacion`, `correo_fb`, `location_fb`, correo) VALUES (null,?,?,?,?,?,null)",[user.id,user.name,today,user.email,user.location],callback);
 	db.end();
  
  }
