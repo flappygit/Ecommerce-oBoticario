@@ -18,7 +18,7 @@ angular.module('ecommerceApp')
         if($location.path()=='/'){
             $location.path('/inicio')
         }
-        $scope.usrSesion = {idfacebook: '', nombre: '', email: '', rol: '', location: '', conectado: false};
+        $scope.usrSesion = { idfacebook: '', nombre: '', email: '', rol: '', location: '', conectado: false};
 
         if($cookieStore.get('conectado')){
 
@@ -37,15 +37,17 @@ angular.module('ecommerceApp')
 
         function usrASesion(usuario) {
             $scope.$watch('usrConectado', function () {
-                $scope.usrSesion.idfacebook = usuario.id;
-                $scope.usrSesion.nombre = usuario.name;
-                $scope.usrSesion.email = usuario.email;
+                $scope.usrSesion.idfacebook = usuario.id_fb;
+                $scope.usrSesion.nombre = usuario.nombre_fb;
+                $scope.usrSesion.email = usuario.correo_fb;
                 $scope.usrSesion.rol = "usuario_facebook";
-                $scope.usrSesion.location = usuario.location;
+                $scope.usrSesion.location = usuario.location_fb;
                 $scope.usrSesion.conectado = true;
             });
+            console.log(usuario.id);
             $cookieStore.put('conectado', true);
             $cookieStore.put('usuario', usuario);
+            $cookieStore.put('id', usuario.id);
             $cookieStore.put('rol', "usuario_facebook");
         }
         $scope.userPerfil = function () {
@@ -100,7 +102,7 @@ angular.module('ecommerceApp')
                         })
                             .then(function (request) {
                                 if (request.data.success==true) {
-                                    usrASesion(datos);
+                                    usrASesion(request.data.message[0]);
                                     $scope.logged=true;
                                     $scope.nombreFacebook=datos.name;
                                     if (request.data.repeat==true) {

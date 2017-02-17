@@ -36,6 +36,34 @@ router.post('/add',function(req,res,next){
 
 });
 /*
+ * post publicaciones {usuario_fb, producto}
+ */
+router.post('/addCarrito',function(req,res,next){
+    publicaciones.verificarProducto(req.body.usuario_fb, req.body.producto, function (err, rows) {
+        var rowStringyfy=JSON.stringify(rows);
+        var rows1=JSON.parse(rowStringyfy);
+        var size= Object.size(rows1);
+        if(size!=null && size>0 ){
+            res.json({"success":true,"message":rows, "existente":true});
+        }else{
+            publicaciones.addCarrito(req.body,function(err,rows){
+                if(err)
+                {
+                    console.log(err);
+                    res.json({"success":false,"message":err});
+                }
+                else{
+
+                    res.json({"success":true,"message":rows, "existente":false});
+
+                }
+            });
+        }
+    });
+
+
+});
+/*
  *
  */
 router.get('/get/:id',function(req,res,next){
