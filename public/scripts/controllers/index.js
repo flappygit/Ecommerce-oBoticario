@@ -8,119 +8,120 @@
  * Controller of the ecommerceApp
  */
 angular.module('ecommerceApp')
-  .controller('indexCtrl', function ($scope, $cookieStore, $location, $http, logger, server, conexion) {
-    logger.debug('Controller INDEX ');
-    $(function () {
-      $(".footer").hide();
-    });
-    $scope.logged=false;
-    $scope.error = null;
-    if($location.path()=='/'){
-      $location.path('/inicio')
-    }
-    $scope.usrSesion = {idfacebook: '', nombre: '', email: '', rol: '', location: '', conectado: false};
-    
-    if($cookieStore.get('conectado')){
-
-      var usuario = $cookieStore.get('usuario');
-      $scope.logged=true;
-      $scope.nombreFacebook=usuario.name;
-        $scope.$watch('usrConectado', function () {
-        $scope.usrSesion.idfacebook = usuario.id;
-        $scope.usrSesion.nombre = usuario.name;
-        $scope.usrSesion.email = usuario.email;
-        $scope.usrSesion.rol = "usuario_facebook";
-        $scope.usrSesion.location = usuario.location;
-        $scope.usrSesion.conectado = true;
-      });
-    }
-
-    function usrASesion(usuario) {
-      $scope.$watch('usrConectado', function () {
-        $scope.usrSesion.idfacebook = usuario.id;
-        $scope.usrSesion.nombre = usuario.name;
-        $scope.usrSesion.email = usuario.email;
-        $scope.usrSesion.rol = "usuario_facebook";
-        $scope.usrSesion.location = usuario.location;
-        $scope.usrSesion.conectado = true;
-      });
-      $cookieStore.put('conectado', true);
-      $cookieStore.put('usuario', usuario);
-      $cookieStore.put('rol', "usuario_facebook");
-    }
-    $scope.userPerfil = function () {
-    $location.path('/user');
-    }
-
-    //Shared Dialog
-    $scope.sharingPost= function  ( ) {
-        FB.ui({
-          method: 'share',
-          hashtag: '#CreeEnlabelleza#oBoticário',
-          quote: 'La belleza tiene un poder inexplicable para tocar el corazón y resaltar las cosas buenas de las personas.',
-          display: 'popup',
-          mobile_iframe: true,
-          href: 'http://oboticario.com.co/malbec/index.php',
-        }, function(response){
-          console.log(response);
-
+    .controller('indexCtrl', function ($scope, $cookieStore, $location, $http, logger, server, conexion) {
+        logger.debug('Controller INDEX ');
+        $(function () {
+            $(".footer").hide();
         });
-    }
+        $scope.logged=false;
+        $scope.error = null;
+        if($location.path()=='/'){
+            $location.path('/inicio')
+        }
+        $scope.usrSesion = {idfacebook: '', nombre: '', email: '', rol: '', location: '', conectado: false};
 
-    //Login Facebook
-    $scope.FBLogin = function () {
-      FB.login(function(response) {
-        if (response.authResponse) {
-          FB.api('/me?fields=id,name,email,birthday,location', function(response) {
-            if (response.location) {
-              var localidad=response.location.name;
-            }else{
-              var localidad="No hay localidad";
-            }
+        if($cookieStore.get('conectado')){
 
-            var email;
-            if (response.location) {
-              email=response.email;
-            }else{
-              email="Not Permission";
-            }
+            var usuario = $cookieStore.get('usuario');
+            $scope.logged=true;
+            $scope.nombreFacebook=usuario.name;
+            $scope.$watch('usrConectado', function () {
+                $scope.usrSesion.idfacebook = usuario.id;
+                $scope.usrSesion.nombre = usuario.name;
+                $scope.usrSesion.email = usuario.email;
+                $scope.usrSesion.rol = "usuario_facebook";
+                $scope.usrSesion.location = usuario.location;
+                $scope.usrSesion.conectado = true;
+            });
+        }
 
-            var datos=
-            {
-              id:response.id,
-              name:response.name,
-              email:email,
-              location:localidad
-            };
-            $http({
-              url: 'http://localhost:3000/users/ValidUserFacebook',
-              dataType: 'json',
-              method: 'POST',
-              data: datos
-            })
-            .then(function (request) {
-              if (request.data.success==true) {
-                usrASesion(datos);
-                $scope.logged=true;
-                $scope.nombreFacebook=datos.name;
-                if (request.data.repeat==true) {
-                  console.log("Usuario ya se encuentra registrado");
-                }else{
-                  console.log("nuevo Usuario");
-                }
-              }else{
-                console.log("Error");
-              }
-            })
-            .finally(function () {
-              
+        function usrASesion(usuario) {
+            $scope.$watch('usrConectado', function () {
+                $scope.usrSesion.idfacebook = usuario.id;
+                $scope.usrSesion.nombre = usuario.name;
+                $scope.usrSesion.email = usuario.email;
+                $scope.usrSesion.rol = "usuario_facebook";
+                $scope.usrSesion.location = usuario.location;
+                $scope.usrSesion.conectado = true;
+            });
+            $cookieStore.put('conectado', true);
+            $cookieStore.put('usuario', usuario);
+            $cookieStore.put('rol', "usuario_facebook");
+        }
+        $scope.userPerfil = function () {
+            $location.path('/user');
+        }
+
+        //Shared Dialog
+        $scope.sharingPost= function  ( ) {
+            FB.ui({
+                method: 'share',
+                hashtag: '#CreeEnlabelleza#oBoticário',
+                quote: 'La belleza tiene un poder inexplicable para tocar el corazón y resaltar las cosas buenas de las personas.',
+                display: 'popup',
+                mobile_iframe: true,
+                href: 'http://oboticario.com.co/malbec/index.php',
+            }, function(response){
+                console.log(response);
 
             });
-
-          });
-        } else {
-          console.log('User cancelled login or did not fully authorize.');
         }
+
+        //Login Facebook
+        $scope.FBLogin = function () {
+            FB.login(function(response) {
+                if (response.authResponse) {
+                    FB.api('/me?fields=id,name,email,birthday,location', function(response) {
+                        if (response.location) {
+                            var localidad=response.location.name;
+                        }else{
+                            var localidad="No hay localidad";
+                        }
+
+                        var email;
+                        if (response.location) {
+                            email=response.email;
+                        }else{
+                            email="Not Permission";
+                        }
+
+                        var datos=
+                            {
+                                id:response.id,
+                                name:response.name,
+                                email:email,
+                                location:localidad
+                            };
+                        $http({
+                            url: 'http://localhost:3000/users/ValidUserFacebook',
+                            dataType: 'json',
+                            method: 'POST',
+                            data: datos
+                        })
+                            .then(function (request) {
+                                if (request.data.success==true) {
+                                    usrASesion(datos);
+                                    $scope.logged=true;
+                                    $scope.nombreFacebook=datos.name;
+                                    if (request.data.repeat==true) {
+                                        console.log("Usuario ya se encuentra registrado");
+                                    }else{
+                                        console.log("nuevo Usuario");
+                                    }
+                                }else{
+                                    console.log("Error");
+                                }
+                            })
+                            .finally(function () {
+
+
+                            });
+
+                    });
+                } else {
+                    console.log('User cancelled login or did not fully authorize.');
+                }
+
       }, {scope: 'email,user_likes,user_location,user_posts',
           return_scopes: true });
     }
