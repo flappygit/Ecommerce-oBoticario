@@ -29,12 +29,20 @@ var publicaciones={
     },
 
     getUsuario:function(id, callback){
-        return db.query("SELECT p.id, p.creacion, pr.id as producto, pr.referencia, pr.nombre, pr.precio, pr.likes, pr.titulo, pr.descripcion, pr.imagen, pr.cantidad " +
+        return db.query("SELECT p.id, p.creacion, p.codigo_promo, pr.id as producto, pr.referencia, pr.nombre, pr.precio, pr.likes, pr.titulo, pr.descripcion, pr.imagen, pr.cantidad " +
             "FROM `publicaciones` p, productos pr WHERE p.usuario_fb_id=? AND p.id_post = '' AND pr.id = p.producto_id", [id],callback);
     },
 
     delete:function(id, callback){
         return db.query("DELETE FROM `publicaciones` WHERE id=?", [id],callback);
+    },
+
+    validarCodigo:function(usuario, callback){
+        return db.query("SELECT COUNT(id) as num FROM `publicaciones` WHERE `usuario_fb_id`=? AND `codigo_promo` IS NOT NULL", [usuario],callback);
+    },
+
+    guardarCodigo:function(usuario, publicacion, codigo, callback){
+        return db.query("UPDATE `publicaciones` SET codigo_promo = ? WHERE `usuario_fb_id`=? AND `id` = ?", [codigo, usuario, publicacion],callback);
     },
 };
 module.exports=publicaciones;

@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var publicaciones=require('../models/publicaciones');
+var usuarios_nl=require('../models/usuarios_nl');
+var usuarios_fb=require('../models/user');
 
 
 Object.prototype.size = function(obj) {
@@ -110,7 +112,7 @@ router.get('/getUsuario/:id',function(req,res,next){
 
 });
 /**
- * Buscar las publicaciones de un usuario
+ * Eliminar una publicación
  */
 router.get('/eliminar/:id',function(req,res,next){
     publicaciones.delete(req.params.id, function(err,rows){
@@ -123,6 +125,63 @@ router.get('/eliminar/:id',function(req,res,next){
 
                 res.json({"success":true})
 
+        }
+    });
+
+});
+/**
+ * validar el codigo promo en la publicacion de un usuario
+ */
+router.post('/validarCodigo',function(req,res,next){
+    usuarios_nl.findByCodigo(req.body.codigo, function(err,rows){
+        if(err)
+        {
+            console.log(err);
+            res.json({"success":false,"message":err});
+        }
+        else{
+            var rowStringyfy=JSON.stringify(rows);
+            var usuario_fb=JSON.parse(rowStringyfy);
+            var size= Object.size(usuario_fb);
+            if(size==0 || size==null ){
+                res.json({"success":true,"code":false})
+            }else{
+                publicaciones.validarCodigo(req.body.usuario, function (err, row) {
+                    if (err){
+                        console.error('error en la validacion de las publicaciones');
+                        res.json({"success":false,"message":err});
+                    }else {
+                        var rowStringyfy=JSON.stringify(row);
+                        var cant=JSON.parse(rowStringyfy);
+                        if(cant[0].num > 0){
+                            res.json({"success":true,"code":false});
+                        }else{
+                            usuarios_fb.importarNl({id:req.body.usuario, nombre:usuario_fb[0].nombre, correo:usuario_fb[0].correo}, function (err, row) {
+                                if (err){
+                                    console.error('error en la actualizacion del usuario');
+                                    res.json({"success":false,"message":err});
+                                }else {
+                                    usuarios_nl.actualizarValidacion(usuario_fb[0].id, function (err, row) {
+                                        if (err){
+                                            console.error('error en la actualizacion de los usuariosNl');
+                                            res.json({"success":false,"message":err});
+                                        }else {
+                                            publicaciones.guardarCodigo(req.body.usuario, req.body.producto, req.body.codigo, function (err, row) {
+                                                if (err){
+                                                    console.error('error en la actualizacion de la publicacion');
+                                                    res.json({"success":false,"message":err});
+                                                }else {
+                                                    res.json({"success":true,"code":true});
+                                                }
+                                            });
+                                        }
+                                    });
+                                }
+                            })
+                        }
+                    }
+                });
+            }
         }
     });
 
