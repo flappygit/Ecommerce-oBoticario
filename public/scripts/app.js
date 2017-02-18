@@ -84,7 +84,7 @@ angular
         controllerAs: 'Carrito de Compra'
       })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/inicio'
       });
   });
 
@@ -93,7 +93,7 @@ angular
 
 window.fbAsyncInit = function() {
     FB.init({
-      appId      : '398211490530444',
+      appId      : '400226926995567',//'398211490530444'
       status: true, 
       cookie: true, 
       xfbml: true,

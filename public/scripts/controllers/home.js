@@ -10,6 +10,7 @@
 angular.module('ecommerceApp')
   .controller('inicioCtrl', function ($scope,$location) {
        $(function () {
+
           $(".footer").show();
 
             // wait till load event fires so all resources are available

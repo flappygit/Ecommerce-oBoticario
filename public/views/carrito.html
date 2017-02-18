@@ -2,6 +2,21 @@
 	<h1 class="f-black">CARRITO DE COMPRA</h1>
 </div>
 <br>
+<div ng-show="error">
+	{{error}}
+</div>
+
+<ul>
+	<li ng-repeat="producto in productos">
+		{{producto.referencia}}<br>
+		{{producto.nombre}}<br>
+		{{producto.titulo}}<br>
+		{{producto.descripcion}}<br>
+		{{producto.imagen}}<br>
+		<button ng-click="eliminarProducto(producto)">Eliminar</button>
+	</li>
+</ul>
+>>>>>>> origin/master
 <br><br><br><br>
 <br><br><br><br>
 <br><br><br><br>

@@ -30,19 +30,20 @@ angular.module('ecommerceApp')
         if($location.path()=='/'){
             $location.path('/inicio')
         }
-        $scope.usrSesion = {idfacebook: '', nombre: '', email: '', rol: '', location: '', conectado: false};
+        $scope.usrSesion = { idfacebook: '', nombre: '', email: '', rol: '', location: '', conectado: false};
+
 
         if($cookieStore.get('conectado')){
 
             var usuario = $cookieStore.get('usuario');
             $scope.logged=true;
-            $scope.nombreFacebook=usuario.name;
+            $scope.nombreFacebook=usuario.nombre_fb;
             $scope.$watch('usrConectado', function () {
-                $scope.usrSesion.idfacebook = usuario.id;
-                $scope.usrSesion.nombre = usuario.name;
-                $scope.usrSesion.email = usuario.email;
+                $scope.usrSesion.idfacebook = usuario.id_fb;
+                $scope.usrSesion.nombre = usuario.nombre_fb;
+                $scope.usrSesion.email = usuario.correo_fb;
                 $scope.usrSesion.rol = "usuario_facebook";
-                $scope.usrSesion.location = usuario.location;
+                $scope.usrSesion.location = usuario.location_fb;
                 $scope.usrSesion.conectado = true;
             });
         }
@@ -64,19 +65,20 @@ angular.module('ecommerceApp')
                     
                 } 
 
-
             $scope.$watch('usrConectado', function () {
-                $scope.usrSesion.idfacebook = usuario.id;
-                $scope.usrSesion.nombre = usuario.name;
-                $scope.usrSesion.email = usuario.email;
+                $scope.usrSesion.idfacebook = usuario.id_fb;
+                $scope.usrSesion.nombre = usuario.nombre_fb;
+                $scope.usrSesion.email = usuario.correo_fb;
                 $scope.usrSesion.rol = "usuario_facebook";
-                $scope.usrSesion.location = usuario.location;
+                $scope.usrSesion.location = usuario.location_fb;
                 $scope.usrSesion.conectado = true;
             });
             $cookieStore.put('conectado', true);
             $cookieStore.put('usuario', usuario);
+            $cookieStore.put('id', usuario.id);
             $cookieStore.put('rol', "usuario_facebook");
         }
+
         $scope.userPerfil = function () {
             $location.path('/user');
         }
@@ -121,10 +123,6 @@ angular.module('ecommerceApp')
                                 email:email,
                                 location:localidad
                             };
-                              usrASesion(datos);
-                                    $scope.logged=true;
-                                    $scope.nombreFacebook=datos.name;
-                              /*    
 
                         $http({
                             url: 'http://localhost:3000/users/ValidUserFacebook',
@@ -134,7 +132,7 @@ angular.module('ecommerceApp')
                         })
                             .then(function (request) {
                                 if (request.data.success==true) {
-                                    usrASesion(datos);
+                                    usrASesion(request.data.message[0]);
                                     $scope.logged=true;
                                     $scope.nombreFacebook=datos.name;
                                     if (request.data.repeat==true) {
@@ -150,8 +148,6 @@ angular.module('ecommerceApp')
 
 
                             });
-                            */
-
 
 
                     });
@@ -159,25 +155,25 @@ angular.module('ecommerceApp')
                     console.log('User cancelled login or did not fully authorize.');
                 }
 
-      }, {scope: 'email,user_likes,user_location,user_posts',
-          return_scopes: true });
-    }
+            }, {scope: 'email,user_likes,user_location,user_posts',
+                return_scopes: true });
+        }
 
-    $scope.usrSesion = {id: '', usuario: '', correo: '', conectado: '', rol: ''};
-    if($cookieStore.get('conectado')!==null && $cookieStore.get('conectado')){
-      var usuario = $cookieStore.get('usuario');
-      $scope.$watch('usrConectado', function () {
-        $scope.usrSesion.id = usuario.id;
-        $scope.usrSesion.usuario = usuario.usuario;
-        $scope.usrSesion.nombre = usuario.nombre;
-        $scope.usrSesion.correo = usuario.correo;
-        $scope.usrSesion.conectado = true;
-        $scope.usrSesion.rol = usuario.rol;
-      });
-    }
+        $scope.usrSesion = {id: '', usuario: '', correo: '', conectado: '', rol: ''};
+        if($cookieStore.get('conectado')!==null && $cookieStore.get('conectado')){
+            var usuario = $cookieStore.get('usuario');
+            $scope.$watch('usrConectado', function () {
+                $scope.usrSesion.id = usuario.id;
+                $scope.usrSesion.usuario = usuario.usuario;
+                $scope.usrSesion.nombre = usuario.nombre;
+                $scope.usrSesion.correo = usuario.correo;
+                $scope.usrSesion.conectado = true;
+                $scope.usrSesion.rol = usuario.rol;
+            });
+        }
 
-    $scope.cerrarSesion = function () {
-        if($location.path()=="/inicio"){
+        $scope.cerrarSesion = function () {
+              if($location.path()=="/inicio"){
                     $(function () {
                     if ($(".navbar").offset().top > 650) {
                     $(".navbar-custom .navbar-nav a").css({"color":"#000"});
@@ -190,42 +186,43 @@ angular.module('ecommerceApp')
                     });
                     
                 } 
-      $cookieStore.remove('conectado');
-      $cookieStore.remove('usuario');
-      $cookieStore.remove('rol');
-
-      $scope.$watch('usrSesion', function () {
-        $scope.usrSesion.id = "";
-        $scope.usrSesion.usuario = "";
-        $scope.usrSesion.nombre = "";
-        $scope.usrSesion.correo = "";
-        $scope.usrSesion.conectado = true;
-        $scope.usrSesion.rol = "";
-      });
-      $scope.logged=false;
-      $scope.nombreFacebook="";
-      if ($location.path()!='/inicio' && $location.path()!='/mecanica' && $location.path()!='/sobre-la-campana' && $location.path()!='/terminos-y-condiciones') {
+                if ($location.path()!='/inicio' && $location.path()!='/mecanica' && $location.path()!='/sobre-la-campana' && $location.path()!='/terminos-y-condiciones') {
         $location.path('/inicio');
       }
     };
+            $cookieStore.remove('conectado');
+            $cookieStore.remove('usuario');
+            $cookieStore.remove('rol');
 
-    $scope.reloadRoute = function() {
-      $route.reload();
-    };
+            $scope.$watch('usrSesion', function () {
+                $scope.usrSesion.id = "";
+                $scope.usrSesion.usuario = "";
+                $scope.usrSesion.nombre = "";
+                $scope.usrSesion.correo = "";
+                $scope.usrSesion.conectado = true;
+                $scope.usrSesion.rol = "";
+            });
+            $scope.logged=false;
+            $scope.nombreFacebook="";
+        };
 
-    $scope.showView=function (view) {
-    $location.path('/'+view+''); 
-      
-    }
-    $scope.openCart= function () {
+        $scope.reloadRoute = function() {
+            $route.reload();
+        };
 
-      if($cookieStore.get('conectado')){
+        $scope.showView=function (view) {
+            $location.path('/'+view+'');
 
-        $location.path('/Carrito');
+        }
+        $scope.openCart= function () {
 
-      }else{
-        console.log("Error:: login Required ");
-      }
+            if($cookieStore.get('conectado')){
 
-    }
-  });
+                $location.path('/Carrito');
+
+            }else{
+                console.log("Error:: login Required ");
+            }
+
+        }
+    });

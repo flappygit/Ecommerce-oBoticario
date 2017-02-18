@@ -141,6 +141,7 @@ a:visited{
   padding-right:0;
   padding-left:10px;
 }
+  
 .div-count-cart{
   position:absolute;border-radius:100%;background-color:#000;color:#fff;font-size:10px;width:20px;height:22px;text-align:center;vertical-align:middle;right:4px;top:8px;
 }
@@ -203,7 +204,7 @@ a:visited{
     transition: background 0.5s ease-in-out, padding 0.5s ease-in-out;
   }
   .navbar-custom.top-nav-collapse {
-    
+
     background:#fff;
     border-bottom:none;
   }
@@ -251,12 +252,14 @@ a:visited{
 }
 .cbp-spmenu-vertical {
   width: 500px;
+
   height: 100%;
   top: 0;
   z-index:100;
 }
 
 .cbp-spmenu-right {
+
   right: -500px;
 }
 .cbp-spmenu-right.cbp-spmenu-open {

@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var correos=require('../models/correos');
+var correosEnviados=require('../models/correosEnviados');
 
 
 Object.prototype.size = function(obj) {
@@ -13,16 +13,15 @@ Object.prototype.size = function(obj) {
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-    correos.getAll(function (err, rows) {
+    correosEnviados.getAll(function (err, rows) {
         res.json(rows);
     });
 });
 /*
- * post correo {para*, asunto*, mensaje, cabeceras, descripcion}
+ * post usuario {para*, asunto*, mensaje, cabeceras, descripcion}
  */
 router.post('/add',function(req,res,next){
-    correos.add(req.body,function(err,rows){
->>>>>>> origin/master
+    correosEnviados.add(req.body,function(err,rows){
         if(err)
         {
             console.log(err);
@@ -40,7 +39,7 @@ router.post('/add',function(req,res,next){
  * id del correo
  */
 router.get('/get/:id',function(req,res,next){
-    correos.findById(req.params.id,function(err,rows){
+    correosEnviados.findById(req.params.id,function(err,rows){
         if(err)
         {
             console.log(err);

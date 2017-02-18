@@ -8,7 +8,7 @@
  * Controller of the ecommerceApp
  */
 angular.module('ecommerceApp')
-  .controller('CarritoCtrl', function ($scope, $cookieStore, $location) {
+  .controller('CarritoCtrl', function ($scope, $cookieStore, $http,$location){
   	$(function () {
       $(".footer").show();
 
@@ -19,37 +19,60 @@ angular.module('ecommerceApp')
         	 $(".navbar-custom .navbar-nav a").css({"color":"#000"});
         	 $("#img-white").hide();
         	 $("#img-black").show();
-        });  	
-	$scope.usrSesion = {idfacebook: '', nombre: '', email: '', rol: '', location: '', conectado: false};
-    if($cookieStore.get('conectado')){
+        });
 
-      var usuario = $cookieStore.get('usuario');
-      $scope.logged=true;
-      $scope.nombreFacebook=usuario.name;
-        $scope.$watch('usrConectado', function () {
-        $scope.usrSesion.idfacebook = usuario.id;
-        $scope.usrSesion.nombre = usuario.name;
-        $scope.usrSesion.email = usuario.email;
-        $scope.usrSesion.rol = "usuario_facebook";
-        $scope.usrSesion.location = usuario.location;
-        $scope.usrSesion.conectado = true;
-      });
-    }else{
-    	$location.path("/inicio");
-    }
 
-    function usrASesion(usuario) {
-      $scope.$watch('usrConectado', function () {
-        $scope.usrSesion.idfacebook = usuario.id;
-        $scope.usrSesion.nombre = usuario.name;
-        $scope.usrSesion.email = usuario.email;
-        $scope.usrSesion.rol = "usuario_facebook";
-        $scope.usrSesion.location = usuario.location;
-        $scope.usrSesion.conectado = true;
-      });
-      $cookieStore.put('conectado', true);
-      $cookieStore.put('usuario', usuario);
-      $cookieStore.put('rol', "usuario_facebook");
-    }
+      $http({
+          url: 'http://localhost:3000/publicaciones/getUsuario/'+$cookieStore.get('id'),
+          dataType: 'json',
+          method: 'GET'
+      })
+          .then(function (request) {
+              if (request.data.success) {
+                  if (request.data.code){
+                      console.log(request.data);
+                      $scope.productos = request.data.rows;
+                      $scope.error = null;
+                  }else {
+                      $scope.error = 'No tiene productos en el carrito';
+                      console.log('no tiene productos agregados');
+                  }
+              }else{
+                  console.log('Error al traer los productos');
+              }
+          })
+          .finally(function () {
+
+
+          });
+
+      $scope.eliminarProducto = function (producto) {
+          $http({
+              url: 'http://localhost:3000/publicaciones/eliminar/'+producto.id,
+              dataType: 'json',
+              method: 'GET'
+          })
+              .then(function (request) {
+                  if (request.data.success) {
+                      removeItem($scope.productos, producto);
+                  }else{
+                      console.log('Error al eliminar producto '+producto_id);
+                  }
+              })
+              .finally(function () {
+
+
+              });
+      };
+
+
+      function removeItem ( arr, item ) {
+          var i = arr.indexOf( item );
+
+          if ( i !== -1 ) {
+              arr.splice( i, 1 );
+          }
+      }
+
 
   });
