@@ -32,15 +32,11 @@ var user={
         return db.query("INSERT INTO `usuarios_fb`(`id`, `id_fb`, `nombre_fb`, `correo_fb`, `location_fb`, `creacion`) VALUES (null,?,?,?,?,?)",[user.id,user.name,user.email,user.location,today],callback);
         db.end();
 
-<<<<<<< HEAD
-    }
-=======
     },
     getById:function(id,callback){
         return db.query("SELECT * FROM usuarios_fb WHERE id=?",[id],callback);
         db.end();
     },
->>>>>>> origin/master
 
     /*,
      deleteTask:function(id,callback){

@@ -22,7 +22,6 @@ router.get('/', function(req, res, next) {
  */
 router.post('/add',function(req,res,next){
     correos.add(req.body,function(err,rows){
->>>>>>> origin/master
         if(err)
         {
             console.log(err);
