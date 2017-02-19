@@ -50,20 +50,20 @@ angular.module('ecommerceApp')
 
         function usrASesion(usuario) {
 
-            
-                if($location.path()=="/inicio"){
-                    $(function () {
-                    if ($(".navbar").offset().top > 650) {
-                    $(".navbar-custom .navbar-nav a").css({"color":"#000"});
-                    }
-                    });
 
-                }else{
-                    $(function () {
+            if($location.path()=="/inicio"){
+                $(function () {
+                    if ($(".navbar").offset().top > 650) {
+                        $(".navbar-custom .navbar-nav a").css({"color":"#000"});
+                    }
+                });
+
+            }else{
+                $(function () {
                     $(".navbar-custom .navbar-nav a").css({"color":"#000"});
-                    });
-                    
-                } 
+                });
+
+            }
 
             $scope.$watch('usrConectado', function () {
                 $scope.usrSesion.idfacebook = usuario.id_fb;
@@ -81,7 +81,7 @@ angular.module('ecommerceApp')
 
         $scope.userPerfil = function () {
             $location.path('/user');
-        }
+        };
 
         //Shared Dialog
         $scope.sharingPost= function  ( ) {
@@ -96,7 +96,7 @@ angular.module('ecommerceApp')
                 console.log(response);
 
             });
-        }
+        };
 
         //Login Facebook
         $scope.FBLogin = function () {
@@ -157,7 +157,7 @@ angular.module('ecommerceApp')
 
             }, {scope: 'email,user_likes,user_location,user_posts',
                 return_scopes: true });
-        }
+        };
 
         $scope.usrSesion = {id: '', usuario: '', correo: '', conectado: '', rol: ''};
         if($cookieStore.get('conectado')!==null && $cookieStore.get('conectado')){
@@ -173,39 +173,37 @@ angular.module('ecommerceApp')
         }
 
         $scope.cerrarSesion = function () {
-              if($location.path()=="/inicio"){
-                    $(function () {
+            if($location.path()=="/inicio"){
+                $(function () {
                     if ($(".navbar").offset().top > 650) {
-                    $(".navbar-custom .navbar-nav a").css({"color":"#000"});
+                        $(".navbar-custom .navbar-nav a").css({"color":"#000"});
                     }
-                    });
+                });
 
-                }else{
-                    $(function () {
+            }else{
+                $(function () {
                     $(".navbar-custom .navbar-nav a").css({"color":"#000"});
-                    });
-                    
-                } 
-                if ($location.path()!='/inicio' && $location.path()!='/mecanica' && $location.path()!='/sobre-la-campana' && $location.path()!='/terminos-y-condiciones') {
-        $location.path('/inicio');
-      }
-    };
-            $cookieStore.remove('conectado');
-            $cookieStore.remove('usuario');
-            $cookieStore.remove('rol');
+                });
 
-            $scope.$watch('usrSesion', function () {
-                $scope.usrSesion.id = "";
-                $scope.usrSesion.usuario = "";
-                $scope.usrSesion.nombre = "";
-                $scope.usrSesion.correo = "";
-                $scope.usrSesion.conectado = true;
-                $scope.usrSesion.rol = "";
-            });
-            $scope.logged=false;
-            $scope.nombreFacebook="";
+            }
+            if ($location.path()!='/inicio' && $location.path()!='/mecanica' && $location.path()!='/sobre-la-campana' && $location.path()!='/terminos-y-condiciones') {
+                $location.path('/inicio');
+            }
         };
+        $cookieStore.remove('conectado');
+        $cookieStore.remove('usuario');
+        $cookieStore.remove('rol');
 
+        $scope.$watch('usrSesion', function () {
+            $scope.usrSesion.id = "";
+            $scope.usrSesion.usuario = "";
+            $scope.usrSesion.nombre = "";
+            $scope.usrSesion.correo = "";
+            $scope.usrSesion.conectado = true;
+            $scope.usrSesion.rol = "";
+        });
+        $scope.logged=false;
+        $scope.nombreFacebook="";
         $scope.reloadRoute = function() {
             $route.reload();
         };
@@ -213,7 +211,7 @@ angular.module('ecommerceApp')
         $scope.showView=function (view) {
             $location.path('/'+view+'');
 
-        }
+        };
         $scope.openCart= function () {
 
             if($cookieStore.get('conectado')){
@@ -224,5 +222,5 @@ angular.module('ecommerceApp')
                 console.log("Error:: login Required ");
             }
 
-        }
-    });
+        };
+});
