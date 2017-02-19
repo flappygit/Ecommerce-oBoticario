@@ -37,6 +37,10 @@ var user={
         db.end();
     },
 
+    importarNl:function(usuario, callback){
+        return db.query("UPDATE usuarios_fb SET nombre = ?, correo = ? WHERE id = ?", [usuario.nombre, usuario.correo, usuario.id],callback);
+    },
+
     /*,
      deleteTask:function(id,callback){
      return db.query("delete from task where Id=?",[id],callback);

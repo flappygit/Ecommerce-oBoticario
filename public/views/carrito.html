@@ -12,12 +12,11 @@
 		{{producto.nombre}}<br>
 		{{producto.titulo}}<br>
 		{{producto.descripcion}}<br>
-		{{producto.imagen}}<br>
+		<input type="text" ng-model="producto.codigo_promo" />
+		<button ng-click="agregarCodigoPromo(producto)">Agregar Codigo promo</button><br>
+		<img src="{{producto.imagen}}" alt="{{producto.nombre}}"><br>
 		<button ng-click="eliminarProducto(producto)">Eliminar</button>
 	</li>
 </ul>
-<br><br><br><br>
-<br><br><br><br>
-<br><br><br><br>
-<br><br><br><br>
-<br><br><br><br>
+<br><br>
+<button ng-click="">Comprar</button>

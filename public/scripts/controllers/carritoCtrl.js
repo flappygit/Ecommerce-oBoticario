@@ -66,6 +66,33 @@ angular.module('ecommerceApp')
       };
 
 
+
+      $scope.agregarCodigoPromo = function (producto) {
+          $http({
+              url: 'http://localhost:3000/publicaciones/validarCodigo',
+              dataType: 'json',
+              method: 'POST',
+              data: {usuario:$cookieStore.get('id'), codigo:producto.codigo_promo, producto:producto.id}
+          })
+              .then(function (request) {
+                  if (request.data.success) {
+                      if (request.data.code){
+                          console.log('codigo validado');
+                      }else {
+                          console.log('codigo NO validado');
+                      }
+                  }
+                  else{
+                      console.log('Error al validar codigo '+producto.codigo+' del '+producto.id+' y usuario '+$cookieStore.get('id'));
+                  }
+              })
+              .finally(function () {
+
+
+              });
+      };
+
+
       function removeItem ( arr, item ) {
           var i = arr.indexOf( item );
 
