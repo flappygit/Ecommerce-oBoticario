@@ -1,4 +1,4 @@
-'use strict';
+'nuse strict';
 
 /**
  * @ngdoc function
@@ -121,6 +121,7 @@ angular.module('ecommerceApp')
         $scope.FBLogin = function () {
             FB.login(function(response) {
                 if (response.authResponse) {
+                    //get gender an link profile
                     FB.api('/me?fields=id,name,email,birthday,location,link,gender', function(response) {
                         if (response.location) {
                             var localidad=response.location.name;

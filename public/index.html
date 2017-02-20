@@ -48,7 +48,7 @@ ng-if="usrSesion.conectado"
                     <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
                     
                     <li>
-                        <a class="page-scroll" href="" ng-if="logged==false" ng-click="FBLogin()">Ingresar / Registrate</a>
+                        <a class="page-scroll" href="" ng-if="logged==false" ng-click="FBLogin()">Ingresar con Facebook</a>
 
 
                         <a href="" ng-if="logged==true" style="background-color:transparent;"  data-toggle="dropdown">Hola, <b ng-click="userPerfil()" style="cursor:pointer;"> {{nombreFacebook}}</b> &nbsp; <img src="images/icons/icon-dropdown.png" >

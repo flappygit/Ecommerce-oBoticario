@@ -76,7 +76,6 @@ angular.module('ecommerceApp')
               .then(function (request) {
                   if (request.data.success) {
                       removeItem($scope.productos, producto);
-                      $scope.$parent.productosCarrito=$scope.$parent.productosCarrito-1;
                       $scope.TotalLike=$scope.TotalLike-producto.likes;
                   }else{
                       console.log('Error al eliminar producto '+producto_id);
@@ -118,9 +117,11 @@ angular.module('ecommerceApp')
 
 
       function removeItem ( arr, item ) {
+
           var i = arr.indexOf( item );
 
           if ( i !== -1 ) {
+              $scope.$parent.productosCarrito=$scope.$parent.productosCarrito-1;
               arr.splice( i, 1 );
               if ($scope.productos.length==0 ) {
                       $scope.error = 'No tiene productos en el carrito';
@@ -152,7 +153,8 @@ angular.module('ecommerceApp')
           }, function(response){
 
             if (response) {
-              //get id post
+              //get id post 
+
               //función http para registrar la compra
               //quitar de la lista el producto que se acaba de postear.
 
