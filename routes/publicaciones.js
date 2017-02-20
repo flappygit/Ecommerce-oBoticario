@@ -186,5 +186,21 @@ router.post('/validarCodigo',function(req,res,next){
     });
 
 });
+/*
+ * req publicacion [id_post, caption_title, description, messages_tags, id]
+ */
+router.post('/productoPublicado',function(req,res,next){
+    publicaciones.actualizarProductoConPublicacion(req.body, function(err,rows){
+        if(err)
+        {
+            console.log(err);
+            res.json({"success":false,"message":err});
+        }
+        else{
+            res.json({"success":true, 'rows':rows})
+        }
+    });
+
+});
 
 module.exports = router;

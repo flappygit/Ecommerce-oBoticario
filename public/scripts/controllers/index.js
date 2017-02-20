@@ -105,6 +105,7 @@ angular.module('ecommerceApp')
         //Shared Dialog
         $scope.sharingPost= function  ( ) {
             FB.ui({
+                scope: 'email,user_posts,publish_actions',
                 method: 'share',
                 hashtag: '#CreeEnlaBelleza',
                 quote: 'La belleza tiene un poder inexplicable para tocar el corazón y resaltar las cosas buenas de las personas.',

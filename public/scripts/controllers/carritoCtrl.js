@@ -37,16 +37,13 @@ angular.module('ecommerceApp')
           .then(function (request) {
               if (request.data.success) {
                   if (request.data.code){
-                      console.log(request.data);
                       request.data.rows.forEach(function(producto) {
                           $scope.TotalLike= $scope.TotalLike+producto.likes;
                           if (producto.codigo_promo != null && producto.codigo_promo != '' ){
                               $scope.descuento = 120;
-                              console.log($scope.descuento);
                           }
                       });
                       $scope.productos = request.data.rows;
-                      console.log(request.data.rows.length);
                       $scope.$parent.productosCarrito=request.data.rows.length;
 
 
@@ -78,7 +75,7 @@ angular.module('ecommerceApp')
                       removeItem($scope.productos, producto);
                       $scope.TotalLike=$scope.TotalLike-producto.likes;
                   }else{
-                      console.log('Error al eliminar producto '+producto_id);
+                      console.log('Error al eliminar producto '+producto.id);
                   }
               })
               .finally(function () {
@@ -151,15 +148,30 @@ angular.module('ecommerceApp')
             href: 'http://oboticario.com.co/ecommerce/public/#/inicio',
 
           }, function(response){
+              console.log(response);
+                  if (response) {
 
-            if (response) {
-              //get id post 
+                      /*
+                       $http({
+                       url: 'http://localhost:3000/publicaciones/productoPublicado',
+                       dataType: 'json',
+                       method: 'POST',
+                       data: {id_post:'idDePrueba', caption_title:'Caption de prueba', description:'Descripcion de prueba', messages_tags:'Tags del mensaje', id:producto.id}
+                       })
+                       .then(function (request) {
+                       if (request.data.success) {
+                       removeItem($scope.productos, producto);
+                       $scope.TotalLike=$scope.TotalLike-producto.likes;
+                       }else{
+                       console.log('Error al Actualizar la publicacion '+producto.id);
+                       }
+                       })
+                       .finally(function () {
 
-              //función http para registrar la compra
-              //quitar de la lista el producto que se acaba de postear.
 
-            }
-
+                       });
+                       */
+                  }
           });
 
         }
