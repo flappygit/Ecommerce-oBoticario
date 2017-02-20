@@ -630,16 +630,20 @@ iframe {
 
 
 /* PRODUCT DETAIL SECTION */
+.hide-bullets {
+list-style:none;
+margin-left: -40px;
+}
 
 .div-content-view{
   margin-top:140px;
 }
-.list-pagination-image{
-  margin-top:12px;
-}
 .list-pagination-image  img{
   height:132px;
   width:180px;
+}
+.list-pagination-image li{
+  padding-left:0;
 }
 .not-under{
   text-decoration:none;
@@ -651,13 +655,13 @@ iframe {
 padding-bottom:30px;
 }
 .div-img-details{
-  padding-left:0;
+  padding-left:0;padding-right:40px;
 }
 .small-p-description-product,.p-description-product{
   line-height:30px;
 }
 .div-description-product{
-  padding-left:30px;
+  padding-left:0px;
 }
 .list-prices-details{
   margin-top:-30px;

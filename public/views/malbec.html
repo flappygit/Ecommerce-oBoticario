@@ -2,26 +2,53 @@
 <div class="list-url">
 	<a ng-click="showView('inicio')" class="not-under f-color1">Home </a> > NativaSpa
 </div>
-	<div class="col-lg-6 div-img-details">
-	
-		<img src="images/nativa/img-native-1.jpg">
-		<div class="row list-pagination-image">
-			<div class="col-lg-4 text-center " >
-				<img src="images/nativa/mini-img-native-2.png">
-			</div>
-			<div class="col-lg-4 text-center">
-				<img src="images/nativa/mini-img-native-2.png">
-			
-			</div>
-			<div class="col-lg-4 text-center">
-				<img src="images/nativa/mini-img-native-2.png" > 
-		
-			</div>
-			
-		</div>
-	</div>
+	    <div id="main_area">
+                <!-- Slider -->
+                <div class="row">
+                    <div class="col-xs-12" id="slider">
+                        <!-- Top part of the slider -->
+                        <div class="row">
+                            <div class="col-sm-6 div-img-details" id="carousel-bounding-box">
+                                <div class="carousel slide" id="myCarousel">
+                                    <!-- Carousel items -->
+                                    <div class="carousel-inner">
+                                        <div class="active item" data-slide-number="0">
+                                        	<img src="images/nativa/img-native-1.jpg" class="img-responsive">
+                                        </div>
 
-	<div class="col-lg-6 div-description-product" >
+                                        <div class="item" data-slide-number="1">
+                                        	<img src="images/nativa/img-native-1.jpg" class="img-responsive">
+                                        </div>
+
+                                        <div class="item" data-slide-number="2">
+                                        	<img src="images/nativa/img-native-1.jpg" class="img-responsive">
+                                        </div>
+
+                                    </div><!-- Carousel nav -->
+                <div class=" hidden-xs" id="slider-thumbs">
+
+                                         <ul class="hide-bullets list-pagination-image">
+
+                            <li class="col-sm-4">
+				
+                                <a href="" id="carousel-selector-0"><img src="images/nativa/mini-img-native-2.png" class="img-responsive"></a>
+                            </li>
+
+                            <li class="col-sm-4">
+                                <a href="" id="carousel-selector-1"><img src="images/nativa/mini-img-native-2.png" class="img-responsive"></a>
+                            </li>
+
+                            <li class="col-sm-4" style="padding-right:0;margin-right:0;">
+                                <a href="" id="carousel-selector-2"><img src="images/nativa/mini-img-native-2.png" class="img-responsive"></a>
+                            </li>
+
+                        </ul>     
+                </div>
+                                    </div>
+
+                            </div>
+
+          <div class="col-lg-6 div-description-product" >
 		<p>	<span style="color:#05a301;">Disponible</span> <span style="float:right;"><img src="images/icons/rating-bar.png"></span></p> 
 
 		<p>	<b>Categoría:</b> perfumes <span style="float:right;">Ref: 1123214</span></p> 
@@ -38,6 +65,15 @@
                 
 
 	</div>
+
+                        
+                    </div>
+                </div><!--/Slider-->
+        </div>
+</div>
+	
+
+	
 
                 <div class="row div-description-product-extra" >	
                 <div class="col-lg-8">
