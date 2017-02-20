@@ -11,6 +11,7 @@ angular.module('ecommerceApp')
   .controller('CarritoCtrl', function ($scope, $cookieStore, $http,$location){
 
 
+      $scope.descuento = 0;
     $scope.codes = {}; //arreglo para guar
     $scope.TotalLike=0;
     $scope.codigoDescuentoerror=false;
@@ -37,13 +38,17 @@ angular.module('ecommerceApp')
               if (request.data.success) {
                   if (request.data.code){
                       console.log(request.data);
+                      request.data.rows.forEach(function(producto) {
+                          $scope.TotalLike= $scope.TotalLike+producto.likes;
+                          if (producto.codigo_promo != null && producto.codigo_promo != '' ){
+                              $scope.descuento = 120;
+                              console.log($scope.descuento);
+                          }
+                      });
                       $scope.productos = request.data.rows;
                       console.log(request.data.rows.length);
                       $scope.$parent.productosCarrito=request.data.rows.length;
 
-                      request.data.rows.forEach(function(producto) {
-                        $scope.TotalLike= $scope.TotalLike+producto.likes;
-                      });
 
                       $scope.error = null;
                   }else {
@@ -62,6 +67,7 @@ angular.module('ecommerceApp')
           });
 
       $scope.eliminarProducto = function (producto) {
+
           $http({
               url: 'http://localhost:3000/publicaciones/eliminar/'+producto.id,
               dataType: 'json',
@@ -133,7 +139,7 @@ angular.module('ecommerceApp')
             method: 'share',
             hashtag: '#CreeEnlabelleza',
             quote: 'Acumulando likes para ganarme un kit de '+producto.nombre+' de oBoticário',
-            
+
             //config. content url. opcional
             title: producto.nombre+' - oBoticário',
             picture: 'http://oboticario.com.co/ecommerce/public/'+producto.imagen,
@@ -142,7 +148,7 @@ angular.module('ecommerceApp')
             display: 'popup',
             mobile_iframe: true,
             href: 'http://oboticario.com.co/ecommerce/public/#/inicio',
-            
+
           }, function(response){
 
             if (response) {

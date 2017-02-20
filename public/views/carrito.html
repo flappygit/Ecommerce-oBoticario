@@ -23,26 +23,27 @@
 	</div>
 
 	<div class="col-md-4 col-sm-4 div-text-description-cart">
-		Ref: 1123214
+		Ref: {{producto.referencia}}
 		<h2>{{producto.nombre}}</h2>
 		<h4 style="margin:0;">{{producto.likes}} Likes</h4>
 	</div>
 
 	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-10 tex-center div-input-promo-cart text-center">
-		<form >
-		<input type="text"  ng-model="producto.codigo_promo" placeholder="Código de descuento" class="form-control code-promo" title="Codigo de descuento"  ng-enter="agregarCodigoPromo(producto)">
-
+		<form ng-if="descuento == 0" >
+			<input type="text"  ng-model="producto.codigo_promo" placeholder="Código de descuento" class="form-control code-promo" title="Codigo de descuento"  ng-enter="agregarCodigoPromo(producto)">
 		</form>
+		<label ng-show="producto.codigo_promo != null" class="form-control code-promo" title="Codigo de descuento">Código registrado</label>
+
 	</div>
 
 	<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1  div-delete-product">
-		<a href="" ng-click="eliminarProducto(producto)" ><img src="images/icons/icon-delete.png" alt="Eliminar producto"></a>
+		<a href="" confirmed-click="eliminarProducto(producto)" ng-confirm-click="Esta seguro que desea eliminar este elemento?" ><img src="images/icons/icon-delete.png" alt="Eliminar producto"></a>
 	</div>
 </div>
 
 <div class="row text-right div-descuento-likes" ng-hide="error" ng-show="productos!=null" >
 <hr>
-	<h4>Descuento: {{totalDescuento}}<img src="images/icons/icon-like.png" style="margin-top:-5px;"></h4>
+	<h4>Descuento: {{descuento}} <img src="images/icons/icon-like.png" style="margin-top:-5px;"></h4>
 </div>
 
 <div class="row text-right div-total-likes" ng-hide="error"  ng-show="productos!=null">
@@ -56,7 +57,7 @@
 
 </div>
 </div>
-<header class="intro-1" style="height:568px;">
+<header ng-show="descuento == 0" class="intro-1" style="height:568px;">
         <div class="intro-body">
             <div class="container">
                 <div class="row">
