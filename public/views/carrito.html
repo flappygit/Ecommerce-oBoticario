@@ -1,24 +1,121 @@
-<div class="container text-center" style="margin-top:180px;">
-	<h1 class="f-black">CARRITO DE COMPRA</h1>
+
+<div class="container div-content-view div-cart">
+<div class="list-url">
+	<a ng-click="showView('inicio')" class="not-under f-color1">Home </a> > Carrito de Compra
 </div>
-<br>
+<h4>Carrito de Compra</h4>
 <div ng-show="error">
 	{{error}}
+	<br><br>
+	<br><br>
+	<br><br>
+	<br><br>
+	<br><br>
+	<br><br>
+
+</div>
+<div class="row" ng-repeat="producto in productos">
+
+<hr>
+	<div class="col-md-3 col-sm-3 div-text-img-producto-cart" style="padding-left:0;">
+	<img ng-src="{{producto.imagen}}" class="img-responsive img-product-cart">
+	</div>
+	<div class="col-md-4 col-sm-4 div-text-description-cart">
+		Ref: 1123214
+		<h2>{{producto.nombre}}</h2>
+		<h4 style="margin:0;">{{producto.likes}} Likes</h4>
+	</div>
+
+	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-10 tex-center div-input-promo-cart text-center">
+		<form >
+		<input type="text" ng-class="{'form-control-danger': codigoDescuento}" name="codigoPromo" ng-model="codes[producto.nombre]" placeholder="Código de descuento" class="form-control code-promo" title="Codigo de descuento"  ng-enter="validarPromo(producto.id,producto.nombre)">
+
+		</form>
+	</div>
+
+	<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1  div-delete-product">
+		<a href="" ng-click="eliminarProducto(producto)" ><img src="images/icons/icon-delete.png" alt="Eliminar producto"></a>
+	</div>
 </div>
 
-<ul>
-	<li ng-repeat="producto in productos">
-		{{producto.referencia}}<br>
-		{{producto.nombre}}<br>
-		{{producto.titulo}}<br>
-		{{producto.descripcion}}<br>
-		{{producto.imagen}}<br>
-		<button ng-click="eliminarProducto(producto)">Eliminar</button>
-	</li>
-</ul>
->>>>>>> origin/master
-<br><br><br><br>
-<br><br><br><br>
-<br><br><br><br>
-<br><br><br><br>
-<br><br><br><br>
+<div class="row text-right div-descuento-likes" ng-hide="error" ng-show="productos!=null" >
+<hr>
+	<h4>Descuento: {{totalDescuento}}<img src="images/icons/icon-like.png" style="margin-top:-5px;"></h4>
+</div>
+
+<div class="row text-right div-total-likes" ng-hide="error"  ng-show="productos!=null">
+	<h4  class="h4-cart f-black"><small class="f-black">Total orden:</small> {{TotalLike}} Likes</h4>
+</div>
+<br><br>
+<div class="row text-center" ng-hide="error"  ng-show="productos!=null">
+	<a  href="" data-toggle="modal" data-target="#myModal2" class="btn btn1">Confirmar y pagar</a>
+                <div class="div-shared-product">
+</div>
+
+</div>
+</div>
+<header class="intro-1" style="height:568px;">
+        <div class="intro-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 text-center" style="margin:0 auto;">
+
+                        <h3 class="f-white" >Suscribete y recibe 140 likes de regalo <br> para tu primera compra</h3>
+                        <br><br>
+        			<div class="col-sm-4 div-input-name-new">
+                    <input class="form-control"  type="text" name="" placeholder="Nombre Completo">
+                    </div>
+                    <div class="col-sm-4 div-input-email-new" >
+                    <input  class="form-control" type="email" name="" placeholder="Correo electrónico">
+                    </div>
+                    <div class="col-sm-3 col-xs-12 div-button-new" >
+					<a  class="btn btn1" href="" >Suscribirme</a>
+
+                    </div>
+                    </div>
+
+                    
+
+                </div>
+            </div>
+        </div>
+    </header>
+
+    
+   <div id="myModal2"  class="modal fade " role="dialog">
+  <div class="modal-dialog modal-lg">
+    <!-- Modal content-->
+    <div class="modal-content">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 div-new-text text-center " style="padding-bottom:40px;">
+
+        <h4 class="f-black">para empezar a acumular tus likes, debes compartir cada publicación por cada producto que compres.</h4>
+        
+
+        </div>
+        <div class="row" ng-repeat="producto in productos" style="padding-left:30px;padding-right:30px;">
+
+<hr>
+	<div class="col-md-3 col-sm-3 div-text-img-producto-cart" style="padding-left:0;">
+	<img ng-src="{{producto.imagen}}" class="img-responsive img-product-cart">
+	</div>
+	<div class="col-md-4 col-sm-4 div-text-description-cart">
+		{{producto.nombre}}
+		<h4 style="margin:0;">{{producto.likes}} Likes</h4>
+	</div>
+
+	<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center div-share-product">
+		<a href="" class="btn btn1">Compartir Publicación</a>
+	</div>
+</div>
+
+
+        <div class="col-lg-12 col-md-12 text-center">
+        	<a  class="f-gray btn" data-dismiss="modal" style="text-decoration:underline;font-size:16px;color:#c0c0c0;">En otro momento</a>
+        </div>
+    </div>
+      
+    </div>
+
+  </div>
+</div>

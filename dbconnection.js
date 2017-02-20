@@ -1,7 +1,7 @@
 var mysql=require('mysql');
 var connection=mysql.createPool({
     host:'localhost',
-    user:'nabica',
+    user:'root',
     password:'',
     database:'nabica_boticario_ecommerce'
 

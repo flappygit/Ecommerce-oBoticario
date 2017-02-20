@@ -24,6 +24,14 @@ angular.module('ecommerceApp')
                   datos = {usuario_fb:usuario_id, producto:1};
                   break;
 
+              case 'makeB':
+                  datos = {usuario_fb:usuario_id, producto:2};
+                  break;
+
+              case 'malbec':
+                  datos = {usuario_fb:usuario_id, producto:4};
+                  break;
+
               default:
                   console.error('Producto enviado no valido en la funcion anadirProducto');
                   verificado = false;
@@ -42,6 +50,7 @@ angular.module('ecommerceApp')
                           if (request.data.existente){
                               console.log('El usuario ya tiene agregado el producto: ' + datos.producto);
                           }else {
+                            $scope.$parent.productosCarrito=$scope.$parent.productosCarrito+1;
                               console.log('producto: ' + datos.producto + ' agregado al usuario: ' + datos.usuario_fb);
                           }
                       }else{

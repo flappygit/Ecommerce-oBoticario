@@ -10,6 +10,15 @@
 angular.module('ecommerceApp')
   .controller('inicioCtrl', function ($scope,$location) {
        $(function () {
+        $(window).ready(function(){   
+        window.setTimeout(function(){
+            if($(window).width() > 768)     
+        {
+                    $('#myModal').modal('show');
+
+        }
+          }, 10000);
+                }); 
 
           $(".footer").show();
 

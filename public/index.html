@@ -49,7 +49,6 @@ ng-if="usrSesion.conectado"
                     
                     <li>
                         <a class="page-scroll" href="" ng-if="logged==false" ng-click="FBLogin()">Ingresar / Registrate</a>
-<<<<<<< HEAD
                         
 
                         <a href="" ng-if="logged==true" style="background-color:transparent;"  data-toggle="dropdown">Hola, <b ng-click="userPerfil()" style="cursor:pointer;"> {{nombreFacebook}}</b> &nbsp; <img src="images/icons/icon-dropdown.png" >
@@ -61,15 +60,8 @@ ng-if="usrSesion.conectado"
                         
                     </li>
                     <li>
-                        <a class="page-scroll" href=""  ng-click="openCart()" style="position:relative"><div class="div-count-cart" ng-if="logged==true" id="contador-carrito">0</div><img src="images/icons/icons-cart.png"></a>
-=======
-                        <a href="" ng-if="logged==true" ng-click="userPerfil()">Hola, <b> {{nombreFacebook}}</b></a>
-                        <a href="" class="" ng-if="logged==true" ng-click="cerrarSesion()">Cerrar Sesión</a>
+                        <a class="page-scroll" href=""  ng-click="openCart()" style="position:relative"><div class="div-count-cart" ng-if="logged==true" id="contador-carrito">{{productosCarrito}}</div><img src="images/icons/icons-cart.png"></a>
 
-                    </li>
-                    <li>
-                        <a class="page-scroll" href=""  ng-click="openCart()"><img src="images/icons/icons-cart.png"></a>
->>>>>>> origin/master
                     </li>
                     <li>
                         <a class="page-scroll" href="" id="showRight">
@@ -83,7 +75,7 @@ ng-if="usrSesion.conectado"
             <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s2">
           
           <ul>
-<<<<<<< HEAD
+
             <a onclick="cerrar()" class="a-close-menu"  href=""><img id="img-close" src="images/icons/icon-close.png"></a>
 
             <li><a  href="" ng-click="showView('inicio')">Inicio</a></li>
@@ -94,15 +86,6 @@ ng-if="usrSesion.conectado"
             <li>
                Síguenos: &nbsp;&nbsp;<a href="https://www.facebook.com/OBoticarioColombia/" target="_blank"><img src="images/icons/icon-fb.png" alt="Visítanos en Facebook"></a>&nbsp;&nbsp;  <a href="https://www.instagram.com/oboticariocol/" target="_blank"><img src="images/icons/icon-in.png" alt="Síguenos en Instagram"></a>
             </li>
-=======
-            <a onclick="cerrar()" style="cursor:e-resize;" href="">Cerrar</a>
-
-            <li><a  href="" ng-click="showView('inicio')"><h4 class="f-black">Inicio</h4></a></li>
-
-            <li><a  href="" ng-click="showView('sobre-la-campana')"><h4 class="f-black">Sobre la campaña</h4></a></li>
-            <li><a ng-click="showView('mecanica')" href=""><h4 class="f-black">Mecánica</h4></a></li>
-            <li><a href="" ng-click="showView('terminos-y-condiciones')" ><h4 class="f-black">Términos y condiciones</h4></a></li>
->>>>>>> origin/master
           </ul>
         </nav>
       </div>
@@ -113,7 +96,6 @@ ng-if="usrSesion.conectado"
 
 
 <div ng-view></div>
-
 
 
 <div class="footer">
@@ -128,15 +110,9 @@ ng-if="usrSesion.conectado"
 
     <div class="col-lg-6 text-center" >
     <ul class="list-inline">
-<<<<<<< HEAD
         <li><a href="" ng-click="showView('sobre-la-campana')">Sobre la campaña</a></li>
         <li><a href="" ng-click="showView('mecanica')">Mecánica</a></li>
-        <li><a href="" ng-click="showView('terminos-y-condiciones')">Términos y condiciones</a></li>
-=======
-        <li><a href="">Sobre la campaña</a></li>
-        <li><a href="">Mecánica</a></li>
-        <li><a href="">Términos y condiciones</a></li>
->>>>>>> origin/master
+        <li><a href=""  ng-click="showView('terminos-y-condiciones')">Términos y condiciones</a></li>
     </ul>
     </div>
     </div>
@@ -150,16 +126,15 @@ ng-if="usrSesion.conectado"
         
         <li class="right li-socials">
             <div> <span style="position:relative;top:2px;">
-<<<<<<< HEAD
+
                 Síguenos:
-=======
-                Siguenos:
->>>>>>> origin/master
             </span> <img src="images/icons/icons-instagram.png"> <img src="images/icons/icons-1.png"></div>
         </li>
     </ul>
     </div>
 </section>
+
+
 
 </div>
 
@@ -173,18 +148,11 @@ ng-if="usrSesion.conectado"
 <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
 <script src="bower_components/angular-touch/angular-touch.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-<<<<<<< HEAD
 <script src="bower_components/dist/tinysort.js"></script>
 <script src="bower_components/dist/jquery.tinysort.js"></script>
 <script src="bower_components/dist/tinysort.charorder.js"></script>
 <script type="text/javascript" src="http://beneposto.pl/jqueryrotate/js/jQueryRotateCompressed.js"></script>
 
-=======
-    <script src="bower_components/dist/tinysort.js"></script>
-    <script src="bower_components/dist/jquery.tinysort.js"></script>
-    <script src="bower_components/dist/tinysort.charorder.js"></script>
-        
->>>>>>> origin/master
 <script src="scripts/app.js"></script>
 <script src="scripts/controllers/main.js"></script>
 <script src="scripts/controllers/index.js"></script>
@@ -199,6 +167,7 @@ ng-if="usrSesion.conectado"
 <script src="scripts/services/servers.js"></script>
 <script src="scripts/services/conexion.js"></script>
 <script src="scripts/directives/ngconfirmclick.js"></script>
+<script src="scripts/directives/ng-enter.js"></script>
 
 <!-- functions JS -->
 <script src="scripts/js/modernizr.js"></script>

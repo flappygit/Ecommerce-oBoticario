@@ -10,7 +10,10 @@
 angular.module('ecommerceApp')
     .controller('indexCtrl', function ($scope, $cookieStore, $location, $http, logger, server, conexion) {
         logger.debug('Controller INDEX ');
+
+        //Jquery 
         $(function () {
+            
             $("#img-close").mouseover(function(){$(this).rotate({animateTo:180})});
             $("#img-close").mouseout(function(){$(this).rotate({animateTo:-180})});
             $(".footer").hide();
@@ -25,13 +28,10 @@ angular.module('ecommerceApp')
             collapseNavbar();
         });
 
+        $scope.productosCarrito=0;
         $scope.logged=false;
         $scope.error = null;
-        if($location.path()=='/'){
-            $location.path('/inicio')
-        }
         $scope.usrSesion = { idfacebook: '', nombre: '', email: '', rol: '', location: '', conectado: false};
-
 
         if($cookieStore.get('conectado')){
 
@@ -46,6 +46,25 @@ angular.module('ecommerceApp')
                 $scope.usrSesion.location = usuario.location_fb;
                 $scope.usrSesion.conectado = true;
             });
+            consultarCarrito();
+        }
+        function consultarCarrito() {
+            $http({
+          url: 'http://localhost:3000/publicaciones/getUsuario/'+$cookieStore.get('id'),
+          dataType: 'json',
+          method: 'GET'
+      })
+          .then(function (request) {
+              if (request.data.success) {
+                  if (request.data.code){
+                      $scope.productosCarrito=request.data.rows.length;
+                  }
+              }
+          })
+          .finally(function () {
+
+
+          });
         }
 
         function usrASesion(usuario) {
@@ -87,7 +106,7 @@ angular.module('ecommerceApp')
         $scope.sharingPost= function  ( ) {
             FB.ui({
                 method: 'share',
-                hashtag: '#CreeEnlabelleza#oBoticário',
+                hashtag: '#CreeEnlaBelleza',
                 quote: 'La belleza tiene un poder inexplicable para tocar el corazón y resaltar las cosas buenas de las personas.',
                 display: 'popup',
                 mobile_iframe: true,
@@ -102,7 +121,7 @@ angular.module('ecommerceApp')
         $scope.FBLogin = function () {
             FB.login(function(response) {
                 if (response.authResponse) {
-                    FB.api('/me?fields=id,name,email,birthday,location', function(response) {
+                    FB.api('/me?fields=id,name,email,birthday,location,link,gender', function(response) {
                         if (response.location) {
                             var localidad=response.location.name;
                         }else{
@@ -115,13 +134,15 @@ angular.module('ecommerceApp')
                         }else{
                             email="Not Permission";
                         }
-
+                        console.log(response);
                         var datos=
                             {
                                 id:response.id,
                                 name:response.name,
                                 email:email,
-                                location:localidad
+                                location:localidad,
+                                gender:response.gender,
+                                link:response.link
                             };
 
                         $http({
@@ -135,6 +156,7 @@ angular.module('ecommerceApp')
                                     usrASesion(request.data.message[0]);
                                     $scope.logged=true;
                                     $scope.nombreFacebook=datos.name;
+                                    consultarCarrito();
                                     if (request.data.repeat==true) {
                                         console.log("Usuario ya se encuentra registrado");
                                     }else{
@@ -155,7 +177,7 @@ angular.module('ecommerceApp')
                     console.log('User cancelled login or did not fully authorize.');
                 }
 
-            }, {scope: 'email,user_likes,user_location,user_posts',
+            }, {scope: 'email,user_posts',
                 return_scopes: true });
         }
 
@@ -189,10 +211,10 @@ angular.module('ecommerceApp')
                 if ($location.path()!='/inicio' && $location.path()!='/mecanica' && $location.path()!='/sobre-la-campana' && $location.path()!='/terminos-y-condiciones') {
         $location.path('/inicio');
       }
-    };
-            $cookieStore.remove('conectado');
+       $cookieStore.remove('conectado');
             $cookieStore.remove('usuario');
             $cookieStore.remove('rol');
+            $cookieStore.remove('id');
 
             $scope.$watch('usrSesion', function () {
                 $scope.usrSesion.id = "";
@@ -204,7 +226,8 @@ angular.module('ecommerceApp')
             });
             $scope.logged=false;
             $scope.nombreFacebook="";
-        };
+    };
+           
 
         $scope.reloadRoute = function() {
             $route.reload();
@@ -212,6 +235,17 @@ angular.module('ecommerceApp')
 
         $scope.showView=function (view) {
             $location.path('/'+view+'');
+            $(function () {
+                //cerra menú al cambiar la vista
+                if (vd==true) {
+                    $("#overlay").remove();
+                $('body').css('overflow-y','visible');
+                vd=false;
+                
+                classie.toggle( document.getElementById( 'showRight' ), 'active' );
+                classie.toggle( menuRight, 'cbp-spmenu-open' );
+                };
+            })
 
         }
         $scope.openCart= function () {

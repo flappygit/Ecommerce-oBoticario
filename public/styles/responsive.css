@@ -8,6 +8,12 @@
 }
 
 @media (max-width:992px) {
+	.div-new-img img{
+		width:100%;
+		border-top-right-radius:5px;
+		border-bottom-right-radius:0px;	
+		border-bottom-left-radius:0px;	
+	}
 	.div-malbec-content{
 		margin-top:-50px;
 	}
@@ -43,6 +49,53 @@
 		margin-left:0px;
 	}
 }
+
+@media (max-width:768px) {
+	.div-text-description-cart{
+		text-align:center;
+	}
+	.img-product-cart{
+		width:100%;
+	}
+	.div-input-promo-cart{
+  		padding-top:0px;
+	}
+	.div-delete-product{
+  		padding-top:15px;
+	}
+	.div-share-product{
+  		padding-top:15px;
+  		text-align:center;
+	}
+	.div-input-name-new{
+  		padding-right:0;margin-left:0px;
+  			padding-bottom:10px;
+  		padding-left:0;
+	}
+	.div-input-name-new input{
+  		border-top-right-radius:8px;border-bottom-right-radius:8px;border-right:none;
+  		}
+  		.div-input-email-new{
+  			padding-left:0;padding-right:0;
+  			padding-bottom:30px;
+  			}
+  			.div-input-email-new input{
+  				border-top-left-radius:8px;border-bottom-left-radius:8px;border-left:none;
+  			}
+  			.div-button-new{
+  				padding-left:0;margin-left:-0px;padding-right:0;
+  			}
+  			.div-button-new a{
+  				width:auto;font-size:16px;
+  			}
+
+
+}
+
+
+
+
+
 @media (max-width:720px) {
 .div-img-malbec{
   margin-left:0px;
@@ -153,9 +206,10 @@ h2{
 h3{
   font-size:35px;color:#000;
 }
-h4{
+h4,.h4-cart{
   font-size:25px;color:#000;
 }
+
 .pintura1{width:194px;height:85px;margin-top:500px;background-size:cover;
 }
 .nativa2{
@@ -223,7 +277,7 @@ h2{
 h3{
   font-size:25px;color:#000;
 }
-h4{
+h4,.h4-cart{
   font-size:19px;color:#000;
 }
 }
