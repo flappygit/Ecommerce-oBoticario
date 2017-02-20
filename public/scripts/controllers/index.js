@@ -105,7 +105,6 @@ angular.module('ecommerceApp')
         //Shared Dialog
         $scope.sharingPost= function  ( ) {
             FB.ui({
-                scope: 'email,user_posts,publish_actions',
                 method: 'share',
                 hashtag: '#CreeEnlaBelleza',
                 quote: 'La belleza tiene un poder inexplicable para tocar el corazón y resaltar las cosas buenas de las personas.',
@@ -120,7 +119,8 @@ angular.module('ecommerceApp')
 
         //Login Facebook
         $scope.FBLogin = function () {
-            FB.login(function(response) {
+            FB.login(
+                function(response) {
                 if (response.authResponse) {
                     //get gender an link profile
                     FB.api('/me?fields=id,name,email,birthday,location,link,gender', function(response) {
@@ -179,7 +179,7 @@ angular.module('ecommerceApp')
                     console.log('User cancelled login or did not fully authorize.');
                 }
 
-            }, {scope: 'email,user_posts',
+            }, {scope: 'email,user_posts,publish_actions',
                 return_scopes: true });
         };
 

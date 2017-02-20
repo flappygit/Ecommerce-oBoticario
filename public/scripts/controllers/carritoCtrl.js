@@ -150,13 +150,11 @@ angular.module('ecommerceApp')
           }, function(response){
               console.log(response);
                   if (response) {
-
-                      /*
                        $http({
                        url: 'http://localhost:3000/publicaciones/productoPublicado',
                        dataType: 'json',
                        method: 'POST',
-                       data: {id_post:'idDePrueba', caption_title:'Caption de prueba', description:'Descripcion de prueba', messages_tags:'Tags del mensaje', id:producto.id}
+                       data: {id_post:response.post_id, caption_title:'', description:'', messages_tags:'', id:producto.id}
                        })
                        .then(function (request) {
                        if (request.data.success) {
@@ -170,7 +168,6 @@ angular.module('ecommerceApp')
 
 
                        });
-                       */
                   }
           });
 
