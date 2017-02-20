@@ -17,9 +17,11 @@
 <div class="row" ng-repeat="producto in productos">
 
 <hr>
+
 	<div class="col-md-3 col-sm-3 div-text-img-producto-cart" style="padding-left:0;">
 	<img ng-src="{{producto.imagen}}" class="img-responsive img-product-cart">
 	</div>
+
 	<div class="col-md-4 col-sm-4 div-text-description-cart">
 		Ref: 1123214
 		<h2>{{producto.nombre}}</h2>
@@ -28,7 +30,7 @@
 
 	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-10 tex-center div-input-promo-cart text-center">
 		<form >
-		<input type="text" ng-class="{'form-control-danger': codigoDescuento}" name="codigoPromo" ng-model="codes[producto.nombre]" placeholder="Código de descuento" class="form-control code-promo" title="Codigo de descuento"  ng-enter="validarPromo(producto.id,producto.nombre)">
+		<input type="text"  ng-model="producto.codigo_promo" placeholder="Código de descuento" class="form-control code-promo" title="Codigo de descuento"  ng-enter="agregarCodigoPromo(producto)">
 
 		</form>
 	</div>
@@ -90,9 +92,8 @@
         <div class="col-lg-12 col-md-12 div-new-text text-center " style="padding-bottom:40px;">
 
         <h4 class="f-black">para empezar a acumular tus likes, debes compartir cada publicación por cada producto que compres.</h4>
-        
-
         </div>
+
         <div class="row" ng-repeat="producto in productos" style="padding-left:30px;padding-right:30px;">
 
 <hr>
@@ -105,7 +106,7 @@
 	</div>
 
 	<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center div-share-product">
-		<a href="" class="btn btn1">Compartir Publicación</a>
+		<a href="" ng-click="compartirProducto(producto)"  class="btn btn1">Compartir Publicación</a>
 	</div>
 </div>
 

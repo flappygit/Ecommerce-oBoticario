@@ -75,9 +75,15 @@ a:hover{
 
 }
 a:focus{
-  outline:none;
+  outline:none;box-shadow:none;
 }
 a:visited{
+  outline:none;
+}
+a:link{
+  outline:none;
+}
+a:active{
   outline:none;
 }
 hr{
@@ -107,6 +113,19 @@ hr{
   font-family:Nunito-Bold;
   font-size:15px;
   padding:15px 45px 19px 45px;
+  cursor:pointer;
+}
+.btn:focus{
+  outline:none;box-shadow:none;
+}
+.btn:visited{
+  outline:none;
+}
+.btn:link{
+  outline:none;
+}
+.btn:active{
+  outline:none;
 }
 .btnn1{
   border-radius:30px;
@@ -728,6 +747,13 @@ padding-bottom:30px;
 
 .form-control-danger{
   border:1px solid #ff7171;
+}
+.form-control-danger:hover{
+  outline:none;
+}
+.form-control-danger:focus{
+  border-color:transparent;
+  outline:none;
 }
 
 .form-control:focus{

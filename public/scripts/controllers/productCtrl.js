@@ -114,18 +114,6 @@ $overlay.click( function() {
         	 $("#img-white").hide();
         	 $("#img-black").show();
         });
-        $scope.compartirProducto= function (product,description,url) {
-            FB.ui({
-          method: 'share',
-          hashtag: '#CreeEnlabelleza'+'#oBoticário',
-          quote: product+' '+description,
-          display: 'popup',
-          mobile_iframe: true,
-          href: url,
-        }, function(response){
-          console.log(response);
-
-        });
-        }  	  	
+          	  	
   });
 

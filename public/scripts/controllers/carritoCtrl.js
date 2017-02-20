@@ -13,7 +13,7 @@ angular.module('ecommerceApp')
 
     $scope.codes = {}; //arreglo para guar
     $scope.TotalLike=0;
-    $
+    $scope.codigoDescuentoerror=false;
   	$(function () {
       $(".footer").show();
       $('html, body').animate({scrollTop: '0px'}, 300);
@@ -83,6 +83,34 @@ angular.module('ecommerceApp')
       };
 
 
+      $scope.agregarCodigoPromo = function (producto) {
+          $http({
+              url: 'http://localhost:3000/publicaciones/validarCodigo',
+              dataType: 'json',
+              method: 'POST',
+              data: {usuario:$cookieStore.get('id'), codigo:producto.codigo_promo, producto:producto.id}
+          })
+              .then(function (request) {
+                  if (request.data.success) {
+                      if (request.data.code){
+                          console.log('codigo validado');
+
+                      }else {
+                          console.log('codigo NO validado');
+
+                      }
+                  }
+                  else{
+                      console.log('Error al validar codigo '+producto.codigo+' del '+producto.id+' y usuario '+$cookieStore.get('id'));
+                  }
+              })
+              .finally(function () {
+
+
+              });
+      };
+
+
       function removeItem ( arr, item ) {
           var i = arr.indexOf( item );
 
@@ -99,26 +127,40 @@ angular.module('ecommerceApp')
       }
 
 
-      $scope.validarPromo = function (idpublicacion) {
-        var usuario_id=$cookieStore.get('id');
-        var datos = {usuario_fb:usuario_id, idpublicacion:idpublicacion,codigoDescuento:''};
-        console.log($scope.codes); // código de descuento
-        console.log(id);
-        /*
-        //validate code promo
-          $http({
-              url: '',
-              dataType: 'json',
-              method: 'GET'
-          })
-              .then(function (request) {
-                  
-              })
-              .finally(function () {
+        $scope.compartirProducto= function (producto) {
 
-              });
-              */
-      };
+          FB.ui({
+            method: 'share',
+            hashtag: '#CreeEnlabelleza',
+            quote: 'Acumulando likes para ganarme un kit de '+producto.nombre+' de oBoticário',
+            
+            //config. content url. opcional
+            title: producto.nombre+' - oBoticário',
+            picture: 'http://oboticario.com.co/ecommerce/public/'+producto.imagen,
+            description: 'Hola amigos, ayúdenme acumulando likes para ganarme un kit de '+producto.nombre +' de oBoticário',
+
+            display: 'popup',
+            mobile_iframe: true,
+            href: 'http://oboticario.com.co/ecommerce/public/#/inicio',
+            
+          }, function(response){
+
+            if (response) {
+              //get id post
+              //función http para registrar la compra
+              //quitar de la lista el producto que se acaba de postear.
+
+            }
+
+          });
+
+        }
+
+
+
+
+
+
 
 
   });
