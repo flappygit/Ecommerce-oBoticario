@@ -112,6 +112,29 @@ router.get('/getUsuario/:id',function(req,res,next){
 
 });
 /**
+ * Buscar las publicaciones de un usuario
+ */
+router.get('/getPublicadoPorUsuario/:id',function(req,res,next){
+    publicaciones.getPublicadoPorUsuario(req.params.id, function(err,rows){
+        if(err)
+        {
+            console.log(err);
+            res.json({"success":false,"message":err});
+        }
+        else{
+            var rowStringyfy=JSON.stringify(rows);
+            var rows1=JSON.parse(rowStringyfy);
+            var size= Object.size(rows1);
+            if(size==0 || size==null ){
+                res.json({"success":true,"code":false})
+            }else{
+                res.json({"success":true,"code":true, 'rows':rows})
+            }
+        }
+    });
+
+});
+/**
  * Eliminar una publicación
  */
 router.get('/eliminar/:id',function(req,res,next){

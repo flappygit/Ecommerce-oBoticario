@@ -2,8 +2,22 @@
 	<h1 class="f-black">PANEL USER</h1>
 </div>
 <br>
-<br><br><br><br>
-<br><br><br><br>
-<br><br><br><br>
-<br><br><br><br>
-<br><br><br><br>
+<br><br>
+<div class="row" ng-repeat="publicacion in publicaciones">
+
+	<hr>
+
+	<div class="col-md-3 col-sm-3 div-text-img-publicacion-cart" style="padding-left:0;">
+		<img ng-src="{{publicacion.imagen}}" class="img-responsive img-product-cart">
+	</div>
+
+	<div class="col-md-4 col-sm-4 div-text-description-cart">
+		Ref: {{publicacion.referencia}}
+		<h2>{{publicacion.nombre}}</h2>
+		<h4 style="margin:0;"> {{ publicacion.likes_count|number }} de {{publicacion.likes}} Likes</h4>
+	</div>
+
+	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-10 tex-center div-input-promo-cart text-center">
+
+	</div>
+</div>
