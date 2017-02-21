@@ -1,5 +1,6 @@
 var db=require('../dbconnection'); //reference of dbconnection.js
 var utiles = require('../libs/utiles');
+var nodemailer = require("nodemailer");
 
 var correoEnviado={
 
@@ -16,5 +17,8 @@ var correoEnviado={
     findById:function(id, callback){
         return db.query("SELECT * FROM `correos_enviados` WHERE id=?", [id],callback);
     },
+    sendEmail:function(email, callback){
+
+    }
 };
 module.exports=correoEnviado;
