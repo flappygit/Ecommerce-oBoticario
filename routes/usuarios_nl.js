@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var usuarios=require('../models/usuarios_nl');
-
+var crypto = require('crypto');
+var utiles = require('../libs/utiles');
 
 Object.prototype.size = function(obj) {
     var size = 0, key;
@@ -34,6 +35,19 @@ router.post('/add',function(req,res,next){
         }
     });
 
+});
+
+
+/*
+ * Verificar codigo {correo*}
+ */
+router.get('/verificarCodigo/:correo/:codigo',function(req,res,next){
+    var hash = utiles.generarCodigo(req.params.correo);
+    if (hash === req.params.codigo){
+        res.send("Codigo correcto");
+    }else{
+        res.send("Codigo NO valido");
+    }
 });
 
 module.exports = router;
