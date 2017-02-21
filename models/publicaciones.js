@@ -44,5 +44,10 @@ var publicaciones={
     guardarCodigo:function(usuario, publicacion, codigo, callback){
         return db.query("UPDATE `publicaciones` SET codigo_promo = ? WHERE `usuario_fb_id`=? AND `id` = ?", [codigo, usuario, publicacion],callback);
     },
+    actualizarProductoConPublicacion:function(publicacion, callback){
+        var fechaAct = utiles.fechaAct();
+        return db.query("UPDATE `publicaciones` SET id_post = ?, caption_title = ?, description = ?, publicacion = ?, messages_tags = ? WHERE `id` = ? ",
+            [publicacion.id_post, publicacion.caption_title, publicacion.description, fechaAct, publicacion.messages_tags, publicacion.id ],callback);
+    }
 };
 module.exports=publicaciones;

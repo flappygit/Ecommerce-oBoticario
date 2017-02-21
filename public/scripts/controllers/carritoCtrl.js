@@ -11,6 +11,7 @@ angular.module('ecommerceApp')
   .controller('CarritoCtrl', function ($scope, $cookieStore, $http,$location){
 
 
+      $scope.descuento = 0;
     $scope.codes = {}; //arreglo para guar
     $scope.TotalLike=0;
     $scope.codigoDescuentoerror=false;
@@ -36,14 +37,15 @@ angular.module('ecommerceApp')
           .then(function (request) {
               if (request.data.success) {
                   if (request.data.code){
-                      console.log(request.data);
+                      request.data.rows.forEach(function(producto) {
+                          $scope.TotalLike= $scope.TotalLike+producto.likes;
+                          if (producto.codigo_promo != null && producto.codigo_promo != '' ){
+                              $scope.descuento = 120;
+                          }
+                      });
                       $scope.productos = request.data.rows;
-                      console.log(request.data.rows.length);
                       $scope.$parent.productosCarrito=request.data.rows.length;
 
-                      request.data.rows.forEach(function(producto) {
-                        $scope.TotalLike= $scope.TotalLike+producto.likes;
-                      });
 
                       $scope.error = null;
                   }else {
@@ -62,6 +64,7 @@ angular.module('ecommerceApp')
           });
 
       $scope.eliminarProducto = function (producto) {
+
           $http({
               url: 'http://localhost:3000/publicaciones/eliminar/'+producto.id,
               dataType: 'json',
@@ -72,7 +75,7 @@ angular.module('ecommerceApp')
                       removeItem($scope.productos, producto);
                       $scope.TotalLike=$scope.TotalLike-producto.likes;
                   }else{
-                      console.log('Error al eliminar producto '+producto_id);
+                      console.log('Error al eliminar producto '+producto.id);
                   }
               })
               .finally(function () {
@@ -134,7 +137,7 @@ angular.module('ecommerceApp')
             method: 'share',
             hashtag: '#CreeEnlabelleza',
             quote: 'Acumulando likes para ganarme un kit de '+producto.nombre+' de oBoticário',
-            
+
             //config. content url. opcional
             title: producto.nombre+' - oBoticário',
             picture: 'http://oboticario.com.co/ecommerce/public/'+producto.imagen,
@@ -143,18 +146,29 @@ angular.module('ecommerceApp')
             display: 'popup',
             mobile_iframe: true,
             href: 'http://oboticario.com.co/ecommerce/public/#/inicio',
-            
+
           }, function(response){
-
-            if (response) {
               console.log(response);
-              //get id post 
+                  if (response) {
+                       $http({
+                       url: 'http://localhost:3000/publicaciones/productoPublicado',
+                       dataType: 'json',
+                       method: 'POST',
+                       data: {id_post:response.post_id, caption_title:'', description:'', messages_tags:'', id:producto.id}
+                       })
+                       .then(function (request) {
+                       if (request.data.success) {
+                       removeItem($scope.productos, producto);
+                       $scope.TotalLike=$scope.TotalLike-producto.likes;
+                       }else{
+                       console.log('Error al Actualizar la publicacion '+producto.id);
+                       }
+                       })
+                       .finally(function () {
 
-              //función http para registrar la compra
-              //quitar de la lista el producto que se acaba de postear.
 
-            }
-
+                       });
+                  }
           });
 
         }

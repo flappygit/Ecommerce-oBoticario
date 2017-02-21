@@ -1,59 +1,53 @@
-<style type="text/css">
-	#progress-bar {
-    width: 2px;
-    background: #1a5aa8;
-    text-align: center;
-    overflow: hidden;
-    padding:2px;
-    -webkit-transition: width 2s; /* Safari */
-    transition: width 2s;
 
-}
-
-
-</style>
 <div class="container div-content-view div-cart">
+
 <div class="list-url">
 	<a ng-click="showView('inicio')" class="not-under f-color1">Home </a> > Likes Traking
 </div>
+
 <h4 class="h4-cart">Likes traking</h4>
-<div class="row" style="padding-left:160px;padding-right:60px;">
-	<div class="col-lg-1 col-md-1" style="width:auto;">
-<h4 class="f-black">0</h4>
-</div>
-<div class="col-lg-10 col-md-10 ">
- <div id="progress-bar" style="margin-top:25px;"></div>
-</div>
-<div class="col-lg-1 col-md-1 " style="width:auto;">
+
+<div class="product-shared " id="">
+
+<div class="row row-progress">
+	<div class="col-lg-1 col-md-1 col-xs-1 hidden-sm" style="width:auto;">
 <h4 class="f-black">0</h4>
 </div>
 
+<div class="col-lg-10 col-md-10" style="margin-top:25px;">
+
+<div id="progressBar">
+<div>
+</div>
+</div>
 </div>
 
-<div class="pace">
-	  <div class="pace-progress"></div>
+<div class="col-lg-1 col-md-1 col-xs-1 hidden-sm" style="width:auto;">
+<h4 class="f-black">100</h4>
+</div>
+
+</div>
+
+<div class="col-lg-12 text-center div-message-likes">
+    <h4 class="f-black h4-cart" ><small class="f-black">Estas a </small> <span style="color:#1a5aa8;" >20 likes</span> <small class="f-black" >de conseguir Nativa Spa</small> </h4>
+
+    <center>
+
+    	<div style="background: url(images/nativa/cremas.png) no-repeat center center;height:404px;width:414px;position:relative;">
+    		<div class="div-info-product-tracking">
+    			Ref. 1123214
+    			<h4 class="f-black h4-cart">Nativa Spa</h4>
+    			<h4 style="margin-top:-20px;padding:0;">840 likes</h4>
+    		</div>
+    	</div>
+
+    
+    </center>
+
 </div>
 
 </div>
 
 
-<script type="text/javascript">
-	var progressBar = $('#progress-bar'),
-	progressBar1 = $('#progress-bar'),
-    width = 0;
+</div>
 
-progressBar.width(width);
-progressBar1.width(width);
-
-var interval = setInterval(function() {
-
-    width += 10;
-
-    progressBar.css('width', width + '%');
-    progressBar1.css('width', width + '%');
-
-    if (width >= 100) {
-        clearInterval(interval);
-    }
-}, 1000)
-</script>

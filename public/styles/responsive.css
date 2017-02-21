@@ -8,6 +8,16 @@
 }
 
 @media (max-width:992px) {
+	.div-info-product-tracking{padding:30px;
+  		position:absolute;
+  		top:115px;right:-150px;	
+
+}
+.div-message-likes{
+	margin-top:150px;
+}
+
+.row-progress{margin-left:0px;}
 	.div-new-img img{
 		width:100%;
 		border-top-right-radius:5px;

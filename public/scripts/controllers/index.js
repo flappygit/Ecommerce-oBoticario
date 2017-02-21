@@ -119,7 +119,8 @@ angular.module('ecommerceApp')
 
         //Login Facebook
         $scope.FBLogin = function () {
-            FB.login(function(response) {
+            FB.login(
+                function(response) {
                 if (response.authResponse) {
                     //get gender an link profile
                     FB.api('/me?fields=id,name,email,birthday,location,link,gender', function(response) {
