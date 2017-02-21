@@ -147,6 +147,7 @@ angular.module('ecommerceApp')
           }, function(response){
 
             if (response) {
+              console.log(response);
               //get id post 
 
               //función http para registrar la compra

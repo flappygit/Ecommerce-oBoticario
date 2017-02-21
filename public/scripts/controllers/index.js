@@ -178,7 +178,7 @@ angular.module('ecommerceApp')
                     console.log('User cancelled login or did not fully authorize.');
                 }
 
-            }, {scope: 'email,user_posts',
+            }, {scope: 'email,user_posts,publish_actions',
                 return_scopes: true });
         };
 

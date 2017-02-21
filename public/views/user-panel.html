@@ -1,9 +1,59 @@
-<div class="container text-center" style="margin-top:180px;">
-	<h1 class="f-black">PANEL USER</h1>
+<style type="text/css">
+	#progress-bar {
+    width: 2px;
+    background: #1a5aa8;
+    text-align: center;
+    overflow: hidden;
+    padding:2px;
+    -webkit-transition: width 2s; /* Safari */
+    transition: width 2s;
+
+}
+
+
+</style>
+<div class="container div-content-view div-cart">
+<div class="list-url">
+	<a ng-click="showView('inicio')" class="not-under f-color1">Home </a> > Likes Traking
 </div>
-<br>
-<br><br><br><br>
-<br><br><br><br>
-<br><br><br><br>
-<br><br><br><br>
-<br><br><br><br>
+<h4 class="h4-cart">Likes traking</h4>
+<div class="row" style="padding-left:160px;padding-right:60px;">
+	<div class="col-lg-1 col-md-1" style="width:auto;">
+<h4 class="f-black">0</h4>
+</div>
+<div class="col-lg-10 col-md-10 ">
+ <div id="progress-bar" style="margin-top:25px;"></div>
+</div>
+<div class="col-lg-1 col-md-1 " style="width:auto;">
+<h4 class="f-black">0</h4>
+</div>
+
+</div>
+
+<div class="pace">
+	  <div class="pace-progress"></div>
+</div>
+
+</div>
+
+
+<script type="text/javascript">
+	var progressBar = $('#progress-bar'),
+	progressBar1 = $('#progress-bar'),
+    width = 0;
+
+progressBar.width(width);
+progressBar1.width(width);
+
+var interval = setInterval(function() {
+
+    width += 10;
+
+    progressBar.css('width', width + '%');
+    progressBar1.css('width', width + '%');
+
+    if (width >= 100) {
+        clearInterval(interval);
+    }
+}, 1000)
+</script>
