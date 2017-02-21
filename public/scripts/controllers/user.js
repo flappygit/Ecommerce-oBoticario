@@ -26,6 +26,7 @@ angular.module('ecommerceApp')
                           if (publicacion.codigo_promo != null && publicacion.codigo_promo != '' ){
                               publicacion.likes_count += 120;
                           }
+
                       });
                       $scope.publicaciones = request.data.rows;
                       $scope.error = null;
@@ -43,6 +44,31 @@ angular.module('ecommerceApp')
 
 
           });
+
+
+      $scope.actualizarLikes = function () {
+          $http({
+              url: 'http://localhost:3000/publicaciones/actualizarLikes',
+              dataType: 'json',
+              method: 'POST',
+              data: {likes_count:0, id_post:null, id:null}
+          })
+              .then(function (request) {
+                  if (request.data.success) {
+                      // TODO likes de publicación actualizada con éxito
+                  }else{
+                      console.log('Error al actualizar likes de la publicacion');
+                      $scope.error = 'Error al actualizar likes de la publicacion';
+
+                  }
+              })
+              .finally(function () {
+
+
+              });
+      };
+
+
     $(function () {
       $(".footer").show();
       

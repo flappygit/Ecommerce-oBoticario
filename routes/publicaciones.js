@@ -225,5 +225,21 @@ router.post('/productoPublicado',function(req,res,next){
     });
 
 });
+/*
+ * req publicacion [likes_count, id_post, id]
+ */
+router.post('/actualizarLikes',function(req,res,next){
+    publicaciones.actualizarLikes(req.body, function(err,rows){
+        if(err)
+        {
+            console.log(err);
+            res.json({"success":false,"message":err});
+        }
+        else{
+            res.json({"success":true, 'rows':rows})
+        }
+    });
+
+});
 
 module.exports = router;

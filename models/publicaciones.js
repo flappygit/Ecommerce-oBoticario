@@ -51,6 +51,10 @@ var publicaciones={
         var fechaAct = utiles.fechaAct();
         return db.query("UPDATE `publicaciones` SET id_post = ?, caption_title = ?, description = ?, publicacion = ?, messages_tags = ? WHERE `id` = ? ",
             [publicacion.id_post, publicacion.caption_title, publicacion.description, fechaAct, publicacion.messages_tags, publicacion.id ],callback);
+    },
+    actualizarLikes:function(publicacion, callback){
+        return db.query("UPDATE `publicaciones` SET likes_count = ? WHERE `id_post` = ? OR id = ? ",
+            [publicacion.likes_count, publicacion.id_post, publicacion.id ],callback);
     }
 };
 module.exports=publicaciones;
