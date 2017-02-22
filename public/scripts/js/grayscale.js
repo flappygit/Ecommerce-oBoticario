@@ -1,4 +1,7 @@
 
+$("div#divLoading").addClass('show');
+        $(".navbar").hide();
+
 function collapseNavbar() {
     var pathname = window.location;
     if (pathname!="http://localhost:3000/#/inicio" && pathname!="http://clientesnabica.com/oboticario/ecommerce/public/#/inicio") {

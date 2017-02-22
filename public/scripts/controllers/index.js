@@ -13,7 +13,9 @@ angular.module('ecommerceApp')
 
         //Jquery 
         $(function () {
-            
+        $("div#divLoading").addClass('show');
+        $(".navbar").hide();
+        
             $("#img-close").mouseover(function(){$(this).rotate({animateTo:180})});
             $("#img-close").mouseout(function(){$(this).rotate({animateTo:-180})});
             $(".footer").hide();
@@ -26,6 +28,12 @@ angular.module('ecommerceApp')
             $("#nav-icon-sticky").hide();
             $(".footer").hide();
             collapseNavbar();
+        });
+        angular.element(document).ready(function () {
+            $(function () {
+                $("div#divLoading").removeClass('show');
+                $(".navbar").show();
+            })
         });
 
         $scope.productosCarrito=0;

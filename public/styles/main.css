@@ -896,13 +896,13 @@ padding-bottom:30px;
 
 /* LIKES TRAKING */
 
-#progressBar {
+.progressBar {
     width: 100%;
     height: 3px;
     background-color: #d5d5d5;
 }
 
-#progressBar div {
+.progressBar div {
     height: 100%;
     color: #fff;
     text-align: right;
@@ -919,18 +919,55 @@ padding-bottom:30px;
 .div-info-product-tracking{
   background-color:#fff;
   padding:30px;
+  min-width:200px;
   position:absolute;
-  top:115px;right:-150px;
+  top:115px;left:350px;
   text-align:left;
   padding-bottom:15px;
-  box-shadow: 2px rgba(0,0,0,.2);
 
 }
 .row-progress{
   margin-left:60px;
 }
+.div-img-producto-traking{
+  background: url(../images/nativa/cremas.png) no-repeat center center;height:404px;width:414px;position:relative;
+}
+.product-shared{
+  margin-bottom:150px;
+}
 
 /* LIKES TRAKING */
 
 
-/**/
+/* overlay white */
+#divLoading
+{
+    display : none;
+}
+#divLoading.show
+{
+    display : block;
+    position : fixed;
+    z-index:101;
+    background-image : url('../images/Logo.gif');
+    background-color:#fff;
+    background-repeat : no-repeat;
+    background-position : center;
+    left : 0;
+    bottom : 0;
+    right : 0;
+    top : 0;
+}
+#loadinggif.show
+{
+    left : 50%;
+    top : 50%;
+    position : absolute;
+    z-index : 101;
+    width : 226px;
+    height : 41px;
+    margin-left : -16px;
+    margin-top : -16px;
+}
+
+/*overlay white */
