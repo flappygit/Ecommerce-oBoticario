@@ -10,7 +10,7 @@ var usuarios={
     },
     add:function(usuario,callback){
         var fechaAct = utiles.fechaAct();
-        var codigo = utiles.generarCodigo();
+        var codigo = utiles.generarCodigo(usuario.correo);
         var validado = 0;
         return db.query("INSERT INTO `usuarios_nl` (correo, nombre, creacion, codigo, validado) VALUES (?,?,?,?,?)",[usuario.correo, usuario.nombre, fechaAct, codigo, validado],callback);
     },
@@ -19,6 +19,6 @@ var usuarios={
     },
     actualizarValidacion:function(id,callback){
         return db.query("UPDATE `usuarios_nl` SET validado=1 WHERE id=?", [id],callback);
-    },
+    }
 };
 module.exports=usuarios;

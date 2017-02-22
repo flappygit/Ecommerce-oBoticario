@@ -1,3 +1,5 @@
+var crypto = require('crypto');
+
 var utiles={
 
     fechaAct:function(){
@@ -17,9 +19,8 @@ var utiles={
         return yyyy+'-'+mm+'-'+dd;
 
     },
-    generarCodigo:function(){
-        return '123456789';
-
+    generarCodigo:function(name){
+         return crypto.createHash('md5').update(name).digest('hex');
     }
 };
 module.exports=utiles;

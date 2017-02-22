@@ -9,7 +9,7 @@
                 </div>
             </div>
         </div>
-        
+
     </header>
     <!-- LILY SECTION -->
     <div class="container-fluid div-product">
@@ -29,7 +29,7 @@
                     <p> Lily, un perfume Eau De Parfum  para una mujer romántica y sofisticada. 
                     Nuestro perfume <b>Lily</b> rescata la técnica artesanal del Enfleurage para traer la esencia del lirio, transformamos dicha técnica para lograr una fragancia única, delicada y sofisticada para todas las mujeres amantes de los aromas frutales y florales. .</p>
                 </div>
-                <div class="ul-prices">   
+                <div class="ul-prices">
                 <ul class="list-inline">
                     <li ><h4 class="f-gray li-price-money"> <small>Antes</small><br> <span class="text-sub">$90.000</span></h4> </li>
                     <li><h3><small class="f-black">Ahora</small><br> 980 likes</h3></li>
@@ -37,7 +37,7 @@
                 </ul>
                 <a href="" ng-click="verProducto('perfume-Lily')"  class="btn btn1">Ver Producto</a>
                 </div>
-            </div>  
+            </div>
             </div>
     </div>
     <!-- LILY SECTION -->
@@ -60,7 +60,7 @@
                 <a href="" ng-click="verProducto('labial-Make-B')"  class="btn btn1">Ver Producto</a>
                 </div>
 
-                
+
 
             </div>
 
@@ -69,7 +69,7 @@
                 <div class="img-product-make-b" id="img-product-make-b"></div>
         <div class="pintura3" id="pintura3" style="z-index:4;"></div>
 
-                </div>  
+                </div>
 
             </div>
     </div>
@@ -93,7 +93,7 @@
                 <p>Para relajarte, consentirte y cuidarte no necesitas pasar todo el día en un spa. ¡Déjate llevar por el encanto de Nativa SPA, lleno de aromas, texturas y colores!
                 </p>
                 </div>
-                <div class="ul-prices-1">   
+                <div class="ul-prices-1">
                 <ul class="list-inline">
                     <li ><h4 class="f-gray li-price-money"> <small>Antes</small><br> <span class="text-sub">$84.800</span></h4> </li>
                     <li><h3><small class="f-black">Ahora</small><br> 300 likes</h3></li>
@@ -101,7 +101,7 @@
                 </ul>
                 <a href="" ng-click="verProducto('Nativa-Spa')"  class="btn btn1">Ver Producto</a>
                 </div>
-            </div>  
+            </div>
             </div>
     </div>
     <!-- NATIVE SECTION -->
@@ -124,6 +124,7 @@
                 </ul>
                 <a href="" ng-click="verProducto('Malbec')"  class="btn btn1">Ver Producto</a>
                 </div>
+
             </div>
 
 
@@ -131,7 +132,7 @@
                 <img src="images/malbec/modelo.png"  style="z-index:5">
                 <div class="img-product-malbec" id="img-product-malbec"></div>
 
-                </div>  
+                </div>
 
             </div>
     </div>
@@ -145,31 +146,33 @@
     <div class="row">
         <div class="col-lg-5 col-md-5  div-new-img"><img src="images/new-oboticario.jpg" class="img-reponsive"> </div>
         <div class="col-lg-7 col-md-7 div-new-text text-center">
-        
+
             <p>Porque queremos que te sientas linda construimos<br>para ti, el primer ecommerce donde puedes comprar<br> nuestros productos con likes de facebook</p>
             <p class="f-color1">
                 Suscribete y recibe un código para sumar 120 likes de<br>regalo para tu primera compra
             </p>
 
             <div style="padding-left:80px;padding-right: 70px;margin-top:40px;">
-                <input type="text" name="nombre" class="form-control" placeholder="Nombre Completo">
-                <input type="text" name="nombre" class="form-control" placeholder="Correo Electrónico" required="">
-                <div class="radio text-left" style="font-size:12px;">
-                <input type="radio" id="test1" name="radio-group"  required>
-                <label for="test1" class="f-black">Acepto<a style="text-decoration:underline;color:#000;" ng-href="#/terminos-y-condiciones" target="_blank"> Términos y Condiciones</a></label>
-              </div>
-              <br>
-                <a href="" style="width:100%;" class="btn btn1">Suscribirme</a>
-   <a  class="f-gray btn" data-dismiss="modal" style="text-decoration:underline;font-size:16px;color:#c0c0c0;">En otro momento</a>
+                <form>
+                    <input type="text" name="nombre" ng-model="usuarioNl.nombre" class="form-control" placeholder="Nombre Completo">
+                    <input type="email" name="nombre" ng-model="usuarioNl.correo" class="form-control" placeholder="Correo Electrónico" required>
+                    <div class="radio text-left" style="font-size:12px;">
+                        <input type="radio" id="test1" name="radio-group" ng-model="terminosCondiciones" value="aceptado" required="required">
+                        <label for="test1" class="f-black">Acepto<a style="text-decoration:underline;color:#000;" ng-href="#/terminos-y-condiciones" target="_blank"> Términos y Condiciones</a></label>
+                    </div>
+                    <br>
+                    <button type="submit" ng-click="registrarNewsletter()" href="" style="width:100%;" class="btn btn1">Suscribirme</button>
+                    <a  class="f-gray btn" data-dismiss="modal" style="text-decoration:underline;font-size:16px;color:#c0c0c0;">En otro momento</a>
+                </form>
             </div>
 
-             
-        
-        
-        
+
+
+
+
         </div>
     </div>
-      
+
     </div>
 
   </div>
@@ -190,6 +193,7 @@
 
                         <h3 class="f-white" >oBoticário, cree en la belleza.<br>Porque cuando te sientes linda, lo mágico ocurre</h3>
                         <br><br>
+
                         <a class="btnn1 btn-social btn-lg btn-facebook" ng-click="sharingPost()"><i class="fa fa-facebook"></i>Compartir</a>
         
                     </div>

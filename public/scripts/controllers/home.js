@@ -8,17 +8,17 @@
  * Controller of the ecommerceApp
  */
 angular.module('ecommerceApp')
-  .controller('inicioCtrl', function ($scope,$location) {
+  .controller('inicioCtrl', function ($scope,$location, $http) {
        $(function () {
-        $(window).ready(function(){   
+        $(window).ready(function(){
         window.setTimeout(function(){
-            if($(window).width() > 768)     
+            if($(window).width() > 768)
         {
                     $('#myModal').modal('show');
 
         }
           }, 10000);
-                }); 
+                });
 
           $(".footer").show();
 
@@ -31,7 +31,40 @@ angular.module('ecommerceApp')
           $(".navbar-fixed-top").removeClass("top-nav-collapse");
         });
     $scope.verProducto=function (product) {
-    $location.path('/'+product+''); 
-    	
-    }
+    $location.path('/'+product+'');
+
+    };
+
+      $scope.usuarioNl = {nombre:'', correo:''};
+      $scope.terminosCondiciones = '';
+      $scope.registrarNewsletter = function () {
+          if ($scope.usuarioNl.correo != '') {
+              if ($scope.terminosCondiciones == 'aceptado') {
+                  $http({
+                      url: 'http://localhost:3000/usuarios-nl/add',
+                      dataType: 'json',
+                      method: 'POST',
+                      data: $scope.usuarioNl
+                  })
+                      .then(function (request) {
+                          if (request.data.success) {
+                              console.log('usuario registrado con éxito');
+                          } else {
+                              console.log('Error al registrar es usuario al newsletter ' + producto.id);
+                          }
+                      })
+                      .finally(function () {
+
+
+                      });
+              }else{
+                  console.log('No ha aceptado términos y condiciones');
+              }
+          }else{
+              console.log('No se ha ingresado el correo');
+          }
+      }
+
+
+
   });
