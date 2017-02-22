@@ -940,10 +940,6 @@ padding-bottom:30px;
 
 
 /* overlay white */
-#divLoading
-{
-    display : none;
-}
 #divLoading.show
 {
     display : block;

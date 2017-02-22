@@ -13,9 +13,10 @@ angular.module('ecommerceApp')
 
         //Jquery 
         $(function () {
-        $("div#divLoading").addClass('show');
         $(".navbar").hide();
-        
+        $("#nav-icon-sticky").hide();
+        $(".footer").hide();
+        collapseNavbar();
             $("#img-close").mouseover(function(){$(this).rotate({animateTo:180})});
             $("#img-close").mouseout(function(){$(this).rotate({animateTo:-180})});
             $(".footer").hide();
@@ -25,13 +26,12 @@ angular.module('ecommerceApp')
             }else{
                 tinysort('.line-home>div',{attr:'accesskey'});
             }
-            $("#nav-icon-sticky").hide();
-            $(".footer").hide();
-            collapseNavbar();
+            
         });
-        angular.element(document).ready(function () {
+        angular.element(window).ready(function () {
             $(function () {
-                $("div#divLoading").removeClass('show');
+                $("#divLoading").removeClass("show");
+                $("#divLoading").hide();
                 $(".navbar").show();
             })
         });
