@@ -52,7 +52,7 @@ $(function () {
                                 actualizarLikes(response.reactions.summary.total_count,publicacion.id_post,publicacion.id);
 
                                 if (publicacion.codigo_promo != null && publicacion.codigo_promo != '' ){
-                                      publicacion.likes_count += 120;
+                                      publicacion.likes_count += 130;
                                 }
 
 
