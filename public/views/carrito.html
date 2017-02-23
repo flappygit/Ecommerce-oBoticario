@@ -110,10 +110,13 @@
                             <a class="btnn1 btn-social btn-lg btn-facebook"  ng-click="compartirProducto(producto)" ><i class="fa fa-facebook"></i>Compartir</a>
                         </div>
                 </div>
-
-
+                <div class="col-lg-12 col-md-12 text-center" ng-if="Compartidos">
+                <h4>Compartido satisfactoriamente</h4>
+                <br>    
+                    <a  class="btn btn1" data-dismiss="modal" ng-href="#/user">Listo! , ir a monitoriar mis publicaciones </a>
+                </div>
                 <div class="col-lg-12 col-md-12 text-center">
-                    <a  class="f-gray btn" data-dismiss="modal" style="text-decoration:underline;font-size:16px;color:#c0c0c0;">En otro momento</a>
+                    <a  class="f-gray btn" data-dismiss="modal" style="text-decoration:underline;font-size:16px;color:#c0c0c0;">Cerrar</a>
                 </div>
             </div>
 

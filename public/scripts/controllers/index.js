@@ -8,8 +8,11 @@
  * Controller of the ecommerceApp
  */
 angular.module('ecommerceApp')
-    .controller('indexCtrl', function ($scope, $cookieStore, $location, $http, logger, server, conexion) {
+    .controller('indexCtrl', function ($scope, $cookieStore, $location, $http, logger, server, conexion, $rootScope,Facebook) {
         logger.debug('Controller INDEX ');
+
+        $rootScope.$on("CallParentMethod", function(){}); //función para usar en otros scopes
+
 
         //Jquery 
         $(function () {
@@ -31,6 +34,7 @@ angular.module('ecommerceApp')
         angular.element(window).ready(function () {
             $(function () {
                 $("#divLoading").removeClass("show");
+                $(".navbar").removeClass("hidden");
                 $("#divLoading").hide();
                 $(".navbar").show();
             })
@@ -110,28 +114,86 @@ angular.module('ecommerceApp')
             $location.path('/user');
         };
 
-        //Shared Dialog
-        $scope.sharingPost= function  ( ) {
-            FB.ui({
-                method: 'share',
-                hashtag: '#CreeEnlaBelleza',
-                quote: 'La belleza tiene un poder inexplicable para tocar el corazón y resaltar las cosas buenas de las personas.',
-                display: 'popup',
-                mobile_iframe: true,
-                href: 'http://oboticario.com.co/malbec/index.php',
-            }, function(response){
-                console.log(response);
+        
 
-            });
+
+
+
+
+//Shared Dialog
+        $scope.sharingPost= function  ( ) {
+
+            if(!Facebook){
+                Facebook.login(function(responses1) {
+
+                            Facebook.api('/me/feed',
+                                'post',
+                                {   message: "#CreeEnlaBelleza",
+                                    link: "http://oboticario.com.co/malbec/"
+                                }
+                                ,function(response) {
+                                    if (!response || response.error) {
+                                        console.log("in error");
+                                       console.log(response.error);
+                                    } else {
+                                        console.log(response);
+                                        $(function () {
+                                            $("#myModalshared").show();
+                                        });
+                                    }
+                                });
+                    });
+
+            }else{
+                Facebook.api('/me/feed',
+                                'post',
+                                {   message: "#CreeEnlaBelleza",
+                                    link: "http://oboticario.com.co/malbec/"
+                                }
+                                ,function(response) {
+                                    if (!response || response.error) {
+                                        console.log("in error");
+                                       console.log(response.error);
+                                    } else {
+                                        console.log(response);
+                                        $(function () {
+                                            $("#myModalshared").modal("show")
+                                        });
+                                    }
+                                });
+            }
+
+
+
+
+
         };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         //Login Facebook
         $scope.FBLogin = function () {
-            FB.login(
+            Facebook.login(
                 function(response) {
                 if (response.authResponse) {
+
+
+
                     //get gender an link profile
-                    FB.api('/me?fields=id,name,email,birthday,location,link,gender', function(response) {
+                    Facebook.api('/me?fields=id,name,email,birthday,location,link,gender', function(response) {
                         if (response.location) {
                             var localidad=response.location.name;
                         }else{

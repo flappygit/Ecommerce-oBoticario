@@ -15,7 +15,10 @@ angular
     'ngResource',
     'ngRoute', 
     'ngSanitize',
-    'ngTouch'
+    'facebook',
+    'ngAria',
+    'ngMaterial'
+    
   ])
   
     .run(function($rootScope, $location, $cookieStore){
@@ -27,7 +30,8 @@ angular
       }
     })
   })
-    .config(function ($locationProvider, $routeProvider, loggerProvider) {
+    .config(function ($locationProvider, $routeProvider, loggerProvider,FacebookProvider) {
+    FacebookProvider.init('400226926995567');
     loggerProvider.enableConsole(true);
     $locationProvider.hashPrefix('');
     $routeProvider
@@ -89,23 +93,3 @@ angular
   });
 
 
-
-
-window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '400226926995567',//'398211490530444'
-      status: true, 
-      cookie: true, 
-      xfbml: true,
-      version    : 'v2.8'
-    });
-    FB.AppEvents.logPageView();
-  };
-
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "//connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));

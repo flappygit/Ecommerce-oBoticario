@@ -8,14 +8,19 @@
  * Controller of the ecommerceApp
  */
 angular.module('ecommerceApp')
-  .controller('CarritoCtrl', function ($scope, $cookieStore, $http,$location){
+  .controller('CarritoCtrl', function ($scope, $cookieStore, $http,$location,Facebook){
 
 
-      $scope.descuento = 0;
+
+ 
+
+    $scope.descuento = 0;
+    $scope.Compartidos=false;
     $scope.codes = {}; //arreglo para guar
     $scope.TotalLike=0;
     $scope.codigoDescuentoerror=false;
   	$(function () {
+
       $(".footer").show();
       $('html, body').animate({scrollTop: '0px'}, 300);
 
@@ -132,44 +137,49 @@ angular.module('ecommerceApp')
 
 
         $scope.compartirProducto= function (producto) {
+          console.log(producto);
+          Facebook.login(function(responses1) {
 
-          FB.ui({
-            method: 'share',
-            hashtag: '#CreeEnlabelleza',
-            quote: 'Acumulando likes para ganarme un kit de '+producto.nombre+' de oBoticário',
+                            Facebook.api('/me/feed',
+                                'post',
+                                {   message: "#CreeEnlaBelleza Hola amigos, ayúdenme acumulando likes para ganarme un kit de " + producto.nombre +" de oBoticário  PRUEBAS PRUEBAS",
+                                    link: "http://oboticario.com.co/ecommerce/public/#/inicio",
+                                    picture: 'http://oboticario.com.co/ecommerce/public/'+producto.imagen,
 
-            //config. content url. opcional
-            title: producto.nombre+' - oBoticário',
-            picture: 'http://oboticario.com.co/ecommerce/public/'+producto.imagen,
-            description: 'Hola amigos, ayúdenme acumulando likes para ganarme un kit de '+producto.nombre +' de oBoticário',
+                                }
+                                ,function(response) {
+                                    if (!response || response.error) {
 
-            display: 'popup',
-            mobile_iframe: true,
-            href: 'http://oboticario.com.co/ecommerce/public/#/inicio',
+                                        console.log("in error");
+                                       console.log(response.error);
+                                    } else {
+                                        console.log(response);
+                                        $http({
+                                            url: 'http://localhost:3000/publicaciones/productoPublicado',
+                                            dataType: 'json',
+                                            method: 'POST',
+                                            data: {id_post:response.id, caption_title:'', description:'', messages_tags:'', id:producto.id}
+                                            })
+                                            .then(function (request) {
+                                            if (request.data.success) {
+                                            removeItem($scope.productos, producto);
+                                            $scope.TotalLike=$scope.TotalLike-producto.likes;
+                                            
+                                            }else{
 
-          }, function(response){
-              console.log(response);
-                  if (response) {
-                       $http({
-                       url: 'http://localhost:3000/publicaciones/productoPublicado',
-                       dataType: 'json',
-                       method: 'POST',
-                       data: {id_post:response.post_id, caption_title:'', description:'', messages_tags:'', id:producto.id}
-                       })
-                       .then(function (request) {
-                       if (request.data.success) {
-                       removeItem($scope.productos, producto);
-                       $scope.TotalLike=$scope.TotalLike-producto.likes;
-                       }else{
-                       console.log('Error al Actualizar la publicacion '+producto.id);
-                       }
-                       })
-                       .finally(function () {
+                                            console.log('Error al Actualizar la publicacion '+producto.id);
+                                            }
+                                            })
+                                            .finally(function () {
+                                              $scope.Compartidos=true;
+                      
+                                            });
+
+                                    }
+                                });
+                    }, { scope: "user_posts,publish_actions" });
 
 
-                       });
-                  }
-          });
 
         }
 

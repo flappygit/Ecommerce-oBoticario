@@ -25,7 +25,9 @@ url('../fonts/OpenSans.ttf') format('truetype'),
 url('../fonts/OpenSans.svg') format('svg');
 }
 
-
+.hidden{
+  display:none;
+}
 body {
   width: 100%;
   height: 100%;
@@ -921,17 +923,18 @@ padding-bottom:30px;
   padding:30px;
   min-width:200px;
   position:absolute;
-  top:115px;left:350px;
+  top:100px;right:23%;
   text-align:left;
   padding-bottom:15px;
 
 }
 .row-progress{
-  margin-left:60px;
+  margin-left:30px;
 }
 .div-img-producto-traking{
-  background: url(../images/nativa/cremas.png) no-repeat center center;height:404px;width:414px;position:relative;
+    position:relative;
 }
+
 .product-shared{
   margin-bottom:150px;
 }
