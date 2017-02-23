@@ -969,4 +969,19 @@ padding-bottom:30px;
     margin-top : -16px;
 }
 
+
+.progress {
+  background-color: #d5d5d5;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border-radius:none;
+  height:5px;
+}
+.progress-striped .progress-bar-success {
+    background-image:none;
+    background-color:#1a5aa8;
+}
+.progress-bar{
+  text-align:right;
+}
 /*overlay white */
