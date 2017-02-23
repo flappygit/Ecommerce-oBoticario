@@ -12,7 +12,9 @@ angular.module('ecommerceApp')
               //  $rootScope.$emit("CallParentMethod", {}); //llamar a una función de otro Controller
 
 $(function () {
-
+$("#myModal2").modal("hide");
+$(".modal-backdrop").hide();
+$("body").css({'overflow-y':'scroll','width':'100%'});
 
       $(".footer").show();
 

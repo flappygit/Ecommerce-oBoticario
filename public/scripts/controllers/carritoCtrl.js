@@ -183,6 +183,13 @@ angular.module('ecommerceApp')
 
         }
 
+        $scope.pathtraking= function () {
+          $(function () {
+            $("#myModal2").modal("hide");
+          })
+          $location.path('/user')
+        }
+
 
 
 
