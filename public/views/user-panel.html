@@ -53,5 +53,39 @@
 
 </div>
 
+<div class="container" ng-if="error" style="margin-bottom:500px;">
+    {{error}} <br>
+    <a ng-href="#/inicio" class="btn btn1" >Anímate a comprar con tus likes</a>
+        
+</div>
 
 <br>    <br>    <br>    
+
+
+<header ng-show="descuento == 0" class="intro-1" style="height:568px;">
+    <div class="intro-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 text-center" style="margin:0 auto;">
+
+                    <h3 class="f-white" >Suscribete y recibe 140 likes de regalo <br> para tu primera compra</h3>
+                    <br><br>
+                    <div class="col-sm-4 div-input-name-new">
+                        <input class="form-control" ng-model="usuarioNl.nombre" type="text" name="" placeholder="Nombre Completo">
+                    </div>
+                    <div class="col-sm-4 div-input-email-new" >
+                        <input  class="form-control" type="email" name="" ng-model="usuarioNl.correo" placeholder="Correo electrónico">
+                    </div>
+                    <div class="col-sm-3 col-xs-12 div-button-new" >
+                        <a  class="btn btn1" href="" ng-click="registrarNewsletter()" >Suscribirme</a>
+
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+</header>
+

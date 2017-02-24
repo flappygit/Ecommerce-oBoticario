@@ -6,6 +6,39 @@
   margin-left:20px;
 }
 }
+@media (max-width:1090px) {
+	.img-product-malbec{
+			bottom:200px;
+		right:18%; }
+	.img-product-nativa{
+  				bottom:-130px;
+  				margin-bottom:0;
+		left:20%;
+
+  	}
+	.img-product-make-b{
+				bottom:-90px;
+				margin-bottom:0;
+				right:22%;
+	}
+	.img-product-lily{
+		bottom:200px;
+		left:18%;
+	}
+
+	.div-lily-content{
+  		padding-top:30px;
+	}
+	.div-make-b-content{
+  		padding-top:30px;
+	}
+	.div-nativa-content{
+		padding-top:150px;
+	}
+	.div-malbec-content{
+		margin-left:0;
+	}
+}
 
 @media (max-width:992px) {
 	.div-info-product-tracking{padding:30px;
@@ -27,24 +60,7 @@
 	.div-malbec-content{
 		margin-top:-50px;
 	}
-	.img-product-malbec{
-		margin-bottom:-2000px;right:0px;  }
-	.img-product-nativa{
-  		margin-bottom:-1500px;
-  	}
-	.nativa1{
-		margin-bottom:-2700px;
-	}
-	.nativa2{
-		margin-top:900px;
-	}
-	.pintura1{
-		margin-top:800px;
-	}
-	.img-product-make-b{
-		margin-bottom:-800px;
-		right:0px;
-	}
+	
 	.div-nativa-content{
 		margin-left:60px;
 		margin-top:0px;
@@ -107,50 +123,12 @@
 
 
 @media (max-width:720px) {
-.div-img-malbec{
-  margin-left:0px;
-}
-	.img-product-malbec{
-		margin-bottom:-1500px;right:0px;  }
-	.img-product-nativa{
-  		margin-bottom:-1200px;
-  	}
-	.nativa1{
-		margin-bottom:-2700px;
-	}
-	.nativa2{
-		margin-top:900px;
-	}
-	.pintura1{
-		margin-top:800px;
-	}
-	.img-product-make-b{
-		margin-bottom:-800px;
-		right:0px;
-	}
-.div-img-content{
-  margin-right:0px;
-  margin-left:-50px;
-}
-.ul-prices,.ul-prices-1{
-	margin-left:60px;
-}
+
  .line-home img{
 	width:100%;
 }
 }
 
-@media (max-width:650px) {
-	.img-product-malbec{
-		margin-bottom:-1050px;right:0px;  }
-	.img-product-nativa{
-  		margin-bottom:-1000px;
-  	}
-	.img-product-make-b{
-		margin-bottom:-700px;
-		right:0px;
-	}
-}
 @media (max-width:580px) {
 	.ul-prices,.ul-prices-1{
 	margin-left:0px;
@@ -166,18 +144,6 @@
 .div-nativa-content p{width:100%;}
 .div-malbec-content p{width:100%;}
 
-}
-
-@media (max-width:550px) {
-	.img-product-malbec{
-		margin-bottom:-850px;right:0px;  }
-	.img-product-nativa{
-  		margin-bottom:-900px;
-  	}
-	.img-product-make-b{
-		margin-bottom:-600px;
-		right:0px;
-	}
 }
 
 @media (max-width:450px) {
@@ -225,59 +191,19 @@ h4,.h4-cart{
 .nativa2{
 	display:none;
 }
-	.img-product-malbec{
-		width:207px;height:203px;background-size:cover;margin-bottom:-550px;right:0px;  }
-	.img-product-nativa{
-		width:207px;height:203px;background-size:cover;margin-bottom:-550px;left:0px;
-  	}
-	.img-product-make-b{
-		margin-bottom:-300px;width:207px;height:203px;background-size:cover;
-		right:0px;
-	}
-	.img-product-lily{
-		width:207px;height:203px;background-size:cover;
-		margin-bottom:-100px;left:0px; 
 
-	}
+
 }
 
-@media (max-width:400px) {
-	.img-product-malbec{
-		margin-bottom:-350px;right:0px;  }
-	.img-product-nativa{
-  		margin-bottom:-500px;
-  	}
-	.img-product-make-b{
-		margin-bottom:-250px;
-		right:0px;
-	}
-}
+
 @media (max-width:360px) {
+	.btn{padding:15px 10px 19px 10px;margin-top:15px;margin-left:0;}
 
 	#footer-copy{
 		font-size:15px;
 		padding:15px 5px 10px 5px;
 
 }
-
-	.img-product-malbec{
-		width:103px;height:101px;background-size:cover;  }
-	.img-product-nativa{
-		width:103px;height:101px;background-size:cover;
-  	}
-	.img-product-make-b{
-		margin-bottom:-280px;width:103px;height:101px;background-size:cover;
-		right:0px;
-	}
-	.img-product-malbec{
-		margin-bottom:-400px;right:0px;  }
-	.img-product-nativa{
-  		margin-bottom:-300px;
-  	}
-	.img-product-make-b{
-		margin-bottom:-150px;
-		right:0px;
-	}
 	h1{
   font-size:40px;color:#fff;
 }

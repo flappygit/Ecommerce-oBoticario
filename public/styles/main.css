@@ -55,13 +55,13 @@ h6 {
   font-family: Sniglet-Regular;
 }
 h1{
-  font-size:65px;color:#fff;
+  font-size:55px;color:#fff;
 }
 h2{
-  font-size:60px;color:#000;
+  font-size:50px;color:#000;
 }
 h3{
-  font-size:55px;color:#000;
+  font-size:45px;color:#000;
 }
 h4{
   font-size:30px;color:#000;
@@ -69,6 +69,10 @@ h4{
 a{
   color:#fff;
   text-decoration:none;
+  cursor: pointer;
+}
+button{
+  cursor:pointer;
 }
 a:hover{
   text-decoration:none;
@@ -249,15 +253,17 @@ hr{
 .intro {
   position:relative;
   width: 100%;
-  height: 952px;
+  height:100%;
+  max-height:100%;
   text-align: center;
   color: #000;
-  background: url(../images/landing-oboticario.png) no-repeat bottom center scroll;
+  background: url(../images/landing-oboticario.png) no-repeat center center scroll;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
   -o-background-size: cover;
   overflow:hidden;
+  margin-bottom:50px;
 }
 .intro .intro-body {
   padding-top:20%;
@@ -467,9 +473,6 @@ iframe {
   
   position:relative;
 }
-.div-modelo img{
-  margin-top:-130px;
-}
 .img-product-lily{
   width:340px;
   height:334px;
@@ -480,28 +483,30 @@ iframe {
 }
 
 .img-product-make-b{
-  width:336px;
-  height:326px;
+  width:414px;
+  height:406px;
   background: url(../images/make-b/labial.png) no-repeat;
   position:absolute;
-  margin-bottom:-700px;
+  margin-bottom:-1000px;
   bottom:0px;
   right:-170px;  
 }
 
 .div-lily-content{
   margin-left:60px;
+  padding-top:150px;
 }
 .div-lily-content p{
-  width:85%;
+  width:100%;
   line-height:30px;
 }
 .div-img-content{
-  margin-right:-100px;
+  margin-right:-70px;
 }
 .div-img-content-1{
   margin-right:-70px;
 }
+
 
 .li-price-money{
   position:relative;
@@ -521,21 +526,22 @@ iframe {
 
 }
 .div-make-b-content{
-  margin-left:90px;
+  margin-left:120px;
+  padding-top:90px;
+
 }
 .div-make-b-content p{
-  width:95%;
   line-height:30px;
 }
 .div-img-make-b{
   margin-left:-130px;
 }
 .pintura1{
-  width:388px;
-  height:170px;
+  width:233px;
+  height:168px;
   background: url(../images/make-b/pintura1.png) no-repeat;
   position:absolute;
-  margin-top:600px;
+  margin-top:800px;
   right:0;
 }
 .pintura2{
@@ -550,8 +556,8 @@ iframe {
   width:293px;
   height:141px;
   background: url(../images/make-b/pintura3.png) no-repeat;
-  bottom:35px;
-  margin-top:-70px;
+  bottom:15px;
+  margin-top:-80px;
   z-index:6;
 }
 
@@ -571,7 +577,7 @@ iframe {
   background: url(../images/nativa/flower1.png) no-repeat;
   position:absolute;
   top:0px;
-  margin-top:700px;
+  margin-top:880px;
   left:0px;
 }
 .nativa3{
@@ -579,7 +585,7 @@ iframe {
   height:137px;
   background: url(../images/nativa/flower2.png) no-repeat;
   top:0;
-  margin-bottom:-40px;
+  margin-bottom:-170px;
   margin-left:100px;
   z-index:6;
 }
@@ -592,12 +598,12 @@ iframe {
   left:-70px;  
 }
 .div-nativa-content{
-  margin-left:-10px;
-  margin-top:110px;
+  margin-left:0px;
+  padding-top:60px;
 
 }
 .div-nativa-content p{
-  width:80%;
+  width:70%;
   line-height:30px;
 }
 /* Nativa  Spa*/
@@ -605,25 +611,26 @@ iframe {
 
 /* Malbec */
 .div-img-malbec{
-  margin-left:-100px;
+  margin-left:-150px;
 }
 .img-product-malbec{
   width:336px;
   height:326px;
   background: url(../images/malbec/colonia.png) no-repeat;
   position:absolute;
-  margin-bottom:-1200px;
+  margin-bottom:-1500px;
   bottom:0px;
   right:-170px;  
 }
 
 
 .div-malbec-content{
-  margin-left:0px;
+    margin-left:10px;
+  padding-top:80px;
 }
 
 .div-malbec-content p{
-  width:90%;
+  width:80%;
   line-height:30px;
 }
 
@@ -663,8 +670,11 @@ padding-bottom:30px;
 .div-img-details{
   padding-left:0;padding-right:40px;
 }
-.small-p-description-product,.p-description-product{
+.small-p-description-product,.p-description-product {
   line-height:30px;
+}
+.p-description-product ul li{
+  line-height:30px;color:#000;
 }
 .div-description-product{
   padding-left:0px;
