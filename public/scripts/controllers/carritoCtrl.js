@@ -45,7 +45,7 @@ angular.module('ecommerceApp')
                       request.data.rows.forEach(function(producto) {
                           $scope.TotalLike= $scope.TotalLike+producto.likes;
                           if (producto.codigo_promo != null && producto.codigo_promo != '' ){
-                              $scope.descuento = 120;
+                              $scope.descuento = 40;
                           }
                       });
                       $scope.productos = request.data.rows;

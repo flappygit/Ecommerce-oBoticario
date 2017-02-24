@@ -43,7 +43,7 @@ router.get('/posts',function(req,res,next){
                         if (res.reactions.summary.total_count > post.likes_count) {
                             var promo = 0;
                             if (post.codigo_promo != null && post.codigo_promo != '') {
-                                promo = 140;
+                                promo = 40;
                             }
                             var likes = promo + res.reactions.summary.total_count;
                             if (likes >= post.likes) {
