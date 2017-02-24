@@ -235,6 +235,7 @@ angular.module('ecommerceApp')
                                     }
                                 }else{
                                     console.log("Error");
+                                    console.log(request);
                                 }
                             })
                             .finally(function () {
