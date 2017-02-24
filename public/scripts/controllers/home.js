@@ -41,7 +41,7 @@ angular.module('ecommerceApp')
           if ($scope.usuarioNl.correo != '') {
               if ($scope.terminosCondiciones == 'aceptado') {
                   $http({
-                      url: 'http://localhost:3000/usuarios-nl/add',
+                      url: 'https://174.142.65.156/usuarios-nl/add',
                       dataType: 'json',
                       method: 'POST',
                       data: $scope.usuarioNl

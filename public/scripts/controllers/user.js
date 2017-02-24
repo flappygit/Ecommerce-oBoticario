@@ -28,7 +28,7 @@ $("body").css({'overflow-y':'scroll','width':'100%'});
            $("#img-black").show();
         });
       $http({
-          url: 'http://localhost:3000/publicaciones/getPublicadoPorUsuario/'+$cookieStore.get('id'),
+          url: 'https://174.142.65.156/publicaciones/getPublicadoPorUsuario/'+$cookieStore.get('id'),
           dataType: 'json',
           method: 'GET'
       })
@@ -104,7 +104,7 @@ $("body").css({'overflow-y':'scroll','width':'100%'});
 
 function actualizarLikes(likecount,idpost,idpubli) {
   $http({
-              url: 'http://localhost:3000/publicaciones/actualizarLikes',
+              url: 'https://174.142.65.156/publicaciones/actualizarLikes',
               dataType: 'json',
               method: 'POST',
               data: {likes_count:likecount, id_post:idpost, id:idpubli}
@@ -128,7 +128,7 @@ function actualizarLikes(likecount,idpost,idpubli) {
 
       $scope.actualizarLikes = function (likecount,idpost,idpubli) {
           $http({
-              url: 'http://localhost:3000/publicaciones/actualizarLikes',
+              url: 'https://174.142.65.156/publicaciones/actualizarLikes',
               dataType: 'json',
               method: 'POST',
               data: {likes_count:likecount, id_post:idpost, id:idpubli}

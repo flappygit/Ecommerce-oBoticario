@@ -27,7 +27,7 @@ angular.module('ecommerceApp')
       }
     function getpublicacionesPorId() {
       $http({
-                  url: 'http://localhost:3000/publicaciones/getPublicadoPorUsuario/'+$cookieStore.get('id'),
+                  url: 'https://174.142.65.156/publicaciones/getPublicadoPorUsuario/'+$cookieStore.get('id'),
                   dataType: 'json',
                   method: 'GET'
               })
@@ -103,7 +103,7 @@ angular.module('ecommerceApp')
 
           if (verificado){
               $http({
-                  url: 'http://localhost:3000/publicaciones/addCarrito',
+                  url: 'https://174.142.65.156/publicaciones/addCarrito',
                   dataType: 'json',
                   method: 'POST',
                   data: datos
