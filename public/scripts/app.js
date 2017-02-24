@@ -47,7 +47,7 @@ angular
         controller: 'userCtrl',
         controllerAs: 'user'
       })
-      .when('/sobre-la-campana', {
+      .when('/sobre-cree-en-la-belleza', {
         templateUrl: 'views/sobre.html',
         controller: 'pagesCtrl',
         controllerAs: 'Sobre la Campaña'
