@@ -17,7 +17,8 @@ angular
     'ngSanitize',
     'facebook',
     'ngAria',
-    'ngMaterial'
+    "ui.bootstrap",
+    "countTo"
     
   ])
   

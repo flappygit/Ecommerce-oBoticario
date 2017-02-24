@@ -24,7 +24,6 @@ angular.module('ecommerceApp')
             $("#img-close").mouseout(function(){$(this).rotate({animateTo:-180})});
             $(".footer").hide();
             if ($(window).width() <= 992) {
-                alert("yaaa");
                 tinysort('.line-home>div',{attr:'title'});
             }else{
                 tinysort('.line-home>div',{attr:'accesskey'});

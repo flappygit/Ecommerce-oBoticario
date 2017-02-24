@@ -13,9 +13,14 @@
 <h4 class="f-black">0</h4>
 </div>
 
-<div class="col-lg-10 col-md-10" style="margin-top:25px;">
+<div class="col-lg-10 col-md-10" style="margin-top:22px;">
 
-<md-progress-linear md-mode="determinate"  value="{{determinateValue}}"  ></md-progress-linear>
+<progressbar class="progress-striped" style="" animate="true" max="100" value="values[$index].progressValue" type="success"><img src="images/icons/icon-like-tracking.png" style="float:right;margin-top:-16px;position:absolute">
+<span  style="position:absolute;margin-top:12px;">
+    <h4   count-to="{{values[$index].counTo}}" duration="1" count-from="0">
+        
+    </h4>
+</span> </progressbar>
 
 </div>
 
@@ -26,7 +31,7 @@
 </div>
 
 <div class="col-lg-12 text-center div-message-likes" style="padding-bottom:100px;">
-    <h4 class="f-black h4-cart" ><small class="f-black">Estas a </small> <span style="color:#1a5aa8;" > {{ +publicacion.likes - +publicacion.likes_count }} </span> <small class="f-black" >de conseguir {{publicacion.nombre}}</small> </h4>
+    <h4 class="f-black h4-cart" ><small class="f-black">Estas a </small> <span style="color:#1a5aa8;" > {{ +publicacion.likes - +publicacion.likes_count }} likes </span> <small class="f-black" >de conseguir {{publicacion.nombre}}</small> </h4>
 
     <center>
 
@@ -49,5 +54,4 @@
 </div>
 
 
-<br>    <br>    <br>    
 <br>    <br>    <br>    

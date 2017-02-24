@@ -60,8 +60,9 @@
                     <li ><h4 class="f-gray li-price-money"> <small>Antes</small><br> <span class="text-sub">$90.000</span></h4> </li>
                     <li><h3><small class="f-black">Ahora</small><br> 980 likes</h3></li>
                 </ul>
-                <a href="" ng-click="anadirProducto('malbec')" style="position:relative;" class="btn btn2"><span >	Añadir al carrito</span> <img src="images/icons/icon-add.png" style="position:absolute;top:14px;right:10px;" ></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a ng-href="#/Carrito"  class="btn btn1">Ir al carrito de compras</a>
+                <a href="" ng-click="anadirProducto('malbec')" style="position:relative;" class="btn btn2"><span >{{addCart}}</span> <img src="images/icons/icon-add.png" style="position:absolute;top:14px;right:10px;" ></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a  ng-href="#/Carrito" ng-hide="addCart=='COMPRADO'"  class="btn btn1">Ir al carrito de compras</a>
+                <a  ng-href="#/user" ng-if="addCart=='COMPRADO'"  class="btn btn1">Ver el estado de la compra</a>
                 
 
 	</div>
@@ -99,45 +100,61 @@ Un producto práctico para el hombre que quiere dos beneficios en un producto, i
                 </div>	
 					<hr>
 					<div class="row">
+                    <div id="effect-1" class="effects clearfix">
+
 						<div class="col-lg-4" >
 						<div class="thumbnail">
-						<img src="images/lily/mini-img-lily.png" alt="">
-						<div class="caption ">
+						<img src="images/lily/mini-img-lily.png" alt="Kit Lily - oBoticário Colombia.">
+                        <div class="overlay1">
+                            <a ng-href="#/perfume-Lily" class="expand">Ver Producto</a>
+                            <!-- <a class="close-overlay hidden">x</a> -->
+                        </div>
+						<div class="caption">
 							<h4>Lily</h4>
 							
-							<ul class="list-inline list-prices-details text-center">
-                    <li ><h4 class="f-gray li-price-money"> <small>Antes</small><br> <span class="text-sub">$90.000</span></h4> </li>
-                    <li><h4><small class="f-black">Ahora</small><br> 980 likes</h4></li>
-                </ul>
+							<ul class="list-inline list-prices-thumbnail ">
+                                <li ><h4 class="f-gray li-price-thumbnail"> <small>Antes</small><br> <span class="text-sub">$90.000</span></h4> </li>
+                                <li><h4 class="h4-cart"><small class="f-black ">Ahora</small><br> 980 likes</h4></li>
+                            </ul>
 						</div>
           				</div>
                 		</div>
                 		<div class="col-lg-4" >
                 		<div class="thumbnail">
-						<img src="images/make-b/mini-img-makeb.png" alt="">
+						<img src="images/make-b/mini-img-makeb.png" alt="Kit Make B - oBoticário Colombia">
+                        <div class="overlay1">
+                            <a ng-href="#/labial-Make-B" class="expand">Ver Producto</a>
+                            <!-- <a class="close-overlay hidden">x</a> -->
+                        </div>
 						<div class="caption ">
 							<h4>Make B</h4>
 							
-							<ul class="list-inline list-prices-details text-center">
-                    <li ><h4 class="f-gray li-price-money"> <small>Antes</small><br> <span class="text-sub">$90.000</span></h4> </li>
-                    <li><h4><small class="f-black">Ahora</small><br> 980 likes</h4></li>
-                </ul>
+							<ul class="list-inline list-prices-thumbnail ">
+                                <li ><h4 class="f-gray li-price-thumbnail"> <small>Antes</small><br> <span class="text-sub">$90.000</span></h4> </li>
+                                <li><h4 class="h4-cart"><small class="f-black ">Ahora</small><br> 980 likes</h4></li>
+                            </ul>
+
 						</div>
           				</div>
                 		</div>
                 		<div class="col-lg-4" >
                 		<div class="thumbnail">
-						<img src="images/malbec/mini-img-malbec.png" alt="">
+						<img src="images/malbec/mini-img-malbec.png" alt="Kit Malbec - oBoticário Colombia">
+                        <div class="overlay1">
+                            <a ng-href="#/Malbec" class="expand">Ver Producto</a>
+                            <!-- <a class="close-overlay hidden">x</a> -->
+                        </div>
 						<div class="caption ">
 							<h4>Malbec</h4>
-							
-							<ul class="list-inline list-prices-details text-center">
-                    <li ><h4 class="f-gray li-price-money"> <small>Antes</small><br> <span class="text-sub">$90.000</span></h4> </li>
-                    <li><h4><small class="f-black">Ahora</small><br> 980 likes</h4></li>
-                </ul>
+                            <ul class="list-inline list-prices-thumbnail ">
+                                <li ><h4 class="f-gray li-price-thumbnail"> <small>Antes</small><br> <span class="text-sub">$90.000</span></h4> </li>
+                                <li><h4 class="h4-cart"><small class="f-black ">Ahora</small><br> 980 likes</h4></li>
+                            </ul>
+                            
 						</div>
           				</div>
                 		</div>
+                    </div>
 					</div>
 
 </div>

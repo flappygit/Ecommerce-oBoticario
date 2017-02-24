@@ -9,6 +9,69 @@
  */
 angular.module('ecommerceApp')
   .controller('productCtrl', function ($scope, $cookieStore, $location, $http, logger, server, conexion) {
+    
+    $scope.addCart= "Añadir al carrito";
+    getpublicacionesPorId();
+
+      function validPubliProduct(url,publicacion) {
+        if ( $location.path()==url ) {
+
+              if (publicacion.id_post!=null) {
+                    $scope.addCart="COMPRADO";
+              }else{
+                      $scope.addCart="Añadido al carrito";
+              }
+
+          }else{
+        }
+      }
+    function getpublicacionesPorId() {
+      $http({
+                  url: 'http://localhost:3000/publicaciones/getPublicadoPorUsuario/'+$cookieStore.get('id'),
+                  dataType: 'json',
+                  method: 'GET'
+              })
+                  .then(function (request) {
+                      if (request.data.success) {
+                        console.log(request.data);
+                        request.data.rows.forEach(function (publicacion,i) {
+
+                          switch (publicacion.producto){
+
+                            case 1:
+                            validPubliProduct("/perfume-Lily",publicacion);
+                            break;
+
+                            case 2:
+                            validPubliProduct("/labial-Make-B",publicacion);
+                            break;
+
+                            case 3:
+                            validPubliProduct("/Nativa-Spa",publicacion);
+                            break;
+
+                            case 4:
+                            validPubliProduct("/Malbec",publicacion);
+                            break;
+
+                            default:
+                            console.error('producto no consultado');
+                            break;
+          }
+                          
+                          
+                        })
+                        
+                          
+                      }else{
+                          console.log('Error consultando productos');
+                      }
+                  })
+                  .finally(function () {
+
+
+                  });
+    }
 
       $scope.anadirProducto = function (producto) {
           var verificado = true;
@@ -51,6 +114,7 @@ angular.module('ecommerceApp')
                               console.log('El usuario ya tiene agregado el producto: ' + datos.producto);
                           }else {
                             $scope.$parent.productosCarrito=$scope.$parent.productosCarrito+1;
+                            $scope.addCart="Añadido al Carrito";
                               console.log('producto: ' + datos.producto + ' agregado al usuario: ' + datos.usuario_fb);
                           }
                       }else{
@@ -116,6 +180,35 @@ $overlay.click( function() {
         });
 
       $(document).ready(function() {
+
+
+        if (Modernizr.touch) {
+            // show the close overlay button
+            $(".close-overlay").removeClass("hidden");
+            // handle the adding of hover class when clicked
+            $(".thumbnail").click(function(e){
+                if (!$(this).hasClass("hover")) {
+                    $(this).addClass("hover");
+                }
+            });
+            // handle the closing of the overlay
+            $(".close-overlay").click(function(e){
+                e.preventDefault();
+                e.stopPropagation();
+                if ($(this).closest(".img").hasClass("hover")) {
+                    $(this).closest(".img").removeClass("hover");
+                }
+            });
+        } else {
+            // handle the mouseenter functionality
+            $(".thumbnail").mouseenter(function(){
+                $(this).addClass("hover");
+            })
+            // handle the mouseleave functionality
+            .mouseleave(function(){
+                $(this).removeClass("hover");
+            });
+        }
  
         $('#myCarousel').carousel({
                 interval: 2800

@@ -8,18 +8,14 @@
  * Controller of the ecommerceApp
  */
 angular.module('ecommerceApp')
-  .controller('userCtrl', function ($scope, $http,$cookieStore, server, conexion,$rootScope,Facebook) {
-
+  .controller('userCtrl', function ($scope, $http,$cookieStore, server, conexion,$rootScope,Facebook,$timeout) {
               //  $rootScope.$emit("CallParentMethod", {}); //llamar a una función de otro Controller
 
 $(function () {
-      function progress(percent, $element) {
-                              var progressBarWidth = percent * $element.width() / 100;
-                              $element.find('div').animate({ width: progressBarWidth }, 500).html(' <img class="img-progress" src="images/icons/icon-like-tracking.png" Style="margin-top:-25px;"> <h4 style="font-size:20px;padding-right:5px;">'+percent+'</h4>');
-                          }
-                          $(window).resize(function() {
-                          progress(80, $('.progressBar'));
-                          });
+$("#myModal2").modal("hide");
+$(".modal-backdrop").hide();
+$("body").css({'overflow-y':'scroll','width':'100%'});
+
       $(".footer").show();
 
           
@@ -39,27 +35,34 @@ $(function () {
           .then(function (request) {
               if (request.data.success) {
                   if (request.data.code){
-                    var i=0;
-                      request.data.rows.forEach(function(publicacion) {
-                        i=i+20;
+                    $scope.values = [];
+
+                      request.data.rows.forEach(function(publicacion, i) {
+                        
                           if (publicacion.likes_count == null){
                               publicacion.likes_count = 0;
                           }
                           Facebook.getLoginStatus(function(response) {
-                            Facebook.api('/'+publicacion.id_post+"/?fields=likes.summary(1)"
+                            Facebook.api('/'+publicacion.id_post+"/?fields=reactions.summary(1)"
                                 ,function(response) {
-                                publicacion.likes_count=response.likes.summary.total_count;
-                                actualizarLikes(response.likes.summary.total_count,publicacion.id_post,publicacion.id);
+                                  console.log(i);
+
+                                     publicacion.index = i;
+
+                                publicacion.likes_count=response.reactions.summary.total_count;
+
+                                actualizarLikes(response.reactions.summary.total_count,publicacion.id_post,publicacion.id);
+
                                 if (publicacion.codigo_promo != null && publicacion.codigo_promo != '' ){
-                                      publicacion.likes_count += 120;
+                                      publicacion.likes_count += 130;
                                 }
 
-                                $scope.mode = 'query';
-                                $scope.activated = true;
 
-                                    
-                                $scope.determinateValue =(publicacion.likes_count*100)/publicacion.likes; //Calcula Porcentaje según likes obtenidos por la meta de likes
-                                console.log((publicacion.likes_count*100)/publicacion.likes);
+                                $scope.values.push({'countTo':publicacion.likes_count,'countFrom':0,'progressValue':publicacion.likes_count*100/publicacion.likes});
+                                console.log($scope.values);
+
+
+
                                 $scope.restante_likes=publicacion.likes-publicacion.likes_count;
 
 
@@ -79,7 +82,6 @@ $(function () {
 
 
                       });
-
                       $scope.publicaciones = request.data.rows;
                       $scope.error = null;
                   }else {
