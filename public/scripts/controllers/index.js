@@ -61,7 +61,7 @@ angular.module('ecommerceApp')
         }
         function consultarCarrito() {
             $http({
-          url: 'https://localhost:3000/publicaciones/getUsuario/'+$cookieStore.get('id'),
+          url: 'https://localhost/publicaciones/getUsuario/'+$cookieStore.get('id'),
           dataType: 'json',
           method: 'GET'
       })
@@ -217,7 +217,7 @@ angular.module('ecommerceApp')
                             };
 
                         $http({
-                            url: 'https://localhost:3000/users/ValidUserFacebook',
+                            url: 'https://localhost/users/ValidUserFacebook',
                             dataType: 'json',
                             method: 'POST',
                             data: datos
