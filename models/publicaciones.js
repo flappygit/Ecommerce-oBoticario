@@ -7,6 +7,10 @@ var publicaciones={
         return db.query("SELECT * FROM publicaciones",callback);
     },
 
+    getPosted:function(callback){
+        return db.query("SELECT p.id_post, p.codigo_promo, p.usuario_fb_id, p.likes_count, pr.likes, pr.id as producto FROM publicaciones p, productos pr WHERE p.producto_id = pr.id AND p.id_post is not null AND p.id_post <> '' AND p.culminacion is null",callback);
+    },
+
     add:function(publicacion,callback){
         var fechaAct = utiles.fechaAct();
         return db.query("INSERT INTO `publicaciones` (id_post, creacion, id_shared, caption_title, description, messages_tags, usuario_fb_id, producto_id) VALUES (?,?,?,?,?,?,?,?)",
@@ -55,6 +59,11 @@ var publicaciones={
     actualizarLikes:function(publicacion, callback){
         return db.query("UPDATE `publicaciones` SET likes_count = ? WHERE `id_post` = ? OR id = ? ",
             [publicacion.likes_count, publicacion.id_post, publicacion.id ],callback);
+    },
+    actualizarCulminacion:function(publicacion, callback){
+        var fechaHoraAct = utiles.fechaHoraAct();
+        return db.query("UPDATE `publicaciones` SET likes_count = ?, culminacion = ? WHERE `id_post` = ? OR id = ? ",
+            [publicacion.likes_count, fechaHoraAct, publicacion.id_post, publicacion.id ],callback);
     }
 };
 module.exports=publicaciones;

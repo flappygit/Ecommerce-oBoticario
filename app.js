@@ -18,6 +18,7 @@ var productos = require('./routes/productos');
 var publicaciones = require('./routes/publicaciones');
 var correosEnviados = require('./routes/correosEnviados');
 var salidas = require('./routes/salidas');
+var revision = require('./routes/revision');
 
 
 var app = express();
@@ -42,6 +43,7 @@ app.use('/productos',productos);
 app.use('/publicaciones',publicaciones);
 app.use('/correos-enviados',correosEnviados);
 app.use('/salidas',salidas);
+app.use('/revision',revision);
 
 
 module.exports = app;

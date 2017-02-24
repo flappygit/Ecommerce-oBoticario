@@ -54,7 +54,7 @@ $("body").css({'overflow-y':'scroll','width':'100%'});
                                 actualizarLikes(response.reactions.summary.total_count,publicacion.id_post,publicacion.id);
 
                                 if (publicacion.codigo_promo != null && publicacion.codigo_promo != '' ){
-                                      publicacion.likes_count += 130;
+                                      publicacion.likes_count += 40;
                                 }
 
 
