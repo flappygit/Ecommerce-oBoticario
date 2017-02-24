@@ -7,6 +7,10 @@ var publicaciones={
         return db.query("SELECT * FROM publicaciones",callback);
     },
 
+    getPosted:function(callback){
+        return db.query("SELECT * FROM publicaciones WHERE id_post is not null AND id_post <> ''",callback);
+    },
+
     add:function(publicacion,callback){
         var fechaAct = utiles.fechaAct();
         return db.query("INSERT INTO `publicaciones` (id_post, creacion, id_shared, caption_title, description, messages_tags, usuario_fb_id, producto_id) VALUES (?,?,?,?,?,?,?,?)",
