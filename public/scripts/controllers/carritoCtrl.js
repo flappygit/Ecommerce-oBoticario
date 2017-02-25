@@ -146,7 +146,7 @@ angular.module('ecommerceApp')
                                 {   message: producto.estadoFacebook,
                                     link: "https://creeenlabelleza.com/",
                                     picture: "https://creeenlabelleza.com/public/"+producto.imagen,
-                                    caption: "#CreeEnlaBelleza Hola amigos, ayúdenme acumulando likes para ganarme un kit de " + producto.nombre +" de oBoticário.",
+                                    description: "#CreeEnlaBelleza Hola amigos, ayúdenme acumulando likes para ganarme un kit de " + producto.nombre +" de oBoticário.",
                                     privacy: privacy
 
                                 }
