@@ -16,25 +16,7 @@ angular.module('ecommerceApp')
 
         //Jquery 
         $(function () {
-        var ID;
-
-        var loaded = 0;
-        function showprogress() {
-
-            
-                loaded=loaded+5;
-
-        }
-
-
-            ID = setInterval(function()
-            { 
-                showprogress();
-                $(".progress").html(""+
-                loaded + "%");
-
-            
-            }, 500);
+     
 
 
 
@@ -57,7 +39,7 @@ angular.module('ecommerceApp')
         angular.element(window).ready(function () {
 
             $(function () {
-                clearInterval(ID);
+                $(".progress").html("100 %");
                 $("#divLoading").removeClass("show");
                 $(".navbar").removeClass("hidden");
                 $("#divLoading").hide();
