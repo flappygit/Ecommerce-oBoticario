@@ -34,6 +34,7 @@ percentage + "%");
 }
 
 
+}
 var ID = setInterval(function()
     { 
 showprogress();
