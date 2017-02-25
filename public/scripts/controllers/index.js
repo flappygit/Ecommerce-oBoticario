@@ -124,21 +124,26 @@ angular.module('ecommerceApp')
         
 
 
+        $scope.openmodalShared= function  ( ) {
+            $(function () {
+                $("#myModalshared").modal("show");
+            });
+        }
 
 
-
-//Shared Dialog
-        $scope.sharingPost= function  ( ) {
+        $scope.sharingPost= function  (estado) {
+            
+            var privacy={"value":"EVERYONE"};
 
             if(!Facebook){
                 Facebook.login(function(responses1) {
-            var privacy={"value":"EVERYONE"};
 
                             Facebook.api('/me/feed',
                                 'post',
                                 {   caption: "#CreeEnlaBelleza",
                                     link: "https://www.creeenlabelleza.com/",
-                                    privacy: privacy
+                                    privacy: privacy,
+                                    message: estado
                                 }
                                 ,function(response) {
                                     if (!response || response.error) {
@@ -146,9 +151,7 @@ angular.module('ecommerceApp')
                                        console.log(response.error);
                                     } else {
                                         console.log(response);
-                                        $(function () {
-                                            $("#myModalshared").show();
-                                        });
+                                        
                                     }
                                 });
                     });
@@ -156,8 +159,12 @@ angular.module('ecommerceApp')
             }else{
                 Facebook.api('/me/feed',
                                 'post',
-                                {   message: "#CreeEnlaBelleza",
-                                    link: "http://oboticario.com.co/malbec/"
+                                {  
+                                    caption: "#CreeEnlaBelleza",
+                                    link: "https://www.creeenlabelleza.com/",
+                                    privacy: privacy,
+                                    message: estado
+                                    
                                 }
                                 ,function(response) {
                                     if (!response || response.error) {
@@ -165,9 +172,7 @@ angular.module('ecommerceApp')
                                        console.log(response.error);
                                     } else {
                                         console.log(response);
-                                        $(function () {
-                                            $("#myModalshared").modal("show")
-                                        });
+                                        
                                     }
                                 });
             }
