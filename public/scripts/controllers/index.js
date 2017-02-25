@@ -17,7 +17,6 @@ angular.module('ecommerceApp')
         //Jquery 
         $(function () {
 var loaded = 0;
-var percentage;
 function showprogress() {
 if (document.images.length == 0) {
 return false;
@@ -27,18 +26,24 @@ for (var i=0; i<document.images.length; i++) {
 
 
 loaded++;
-percentage = Math.round(
-100 * loaded / document.images.length);
-$(".progress").html(""+
-percentage + "%");
+
 }
 
+var percentage = Math.round(
+100 * loaded / document.images.length);
+alert(percentage);
 
+$(".progress").append(""+
+percentage + "%");
+
+if (percentage == 100) {
+clearInterval(ID);
+}
 }
 var ID = setInterval(function()
     { 
 showprogress();
-    }, 300);
+    }, 100);
 
 
 
