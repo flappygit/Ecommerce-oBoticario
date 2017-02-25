@@ -40,9 +40,13 @@ if (percentage == 100) {
 clearInterval(ID);
 }
 }
+
+
+
 var ID = setInterval(function()
     { 
 showprogress();
+alert("entraaaa");
     }, 100);
 
 
