@@ -1082,5 +1082,18 @@ a.expand {
 }
 
 
+.texto-terminos h4{
+  padding-bottom:0;
+
+}
+.texto-terminos a{
+  color:#000;
+}
+.texto-terminos ul li{
+  line-height:30px;
+  font-family: OpenSans;
+color:#000;
+font-size:15px;
+}
 
 /*overlay white */
