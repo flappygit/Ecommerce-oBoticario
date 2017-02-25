@@ -8,7 +8,7 @@
  * Controller of the ecommerceApp
  */
 angular.module('ecommerceApp')
-    .controller('indexCtrl', function ($scope, $cookieStore, $location, $http, logger, server, conexion, $rootScope,Facebook) {
+    .controller('indexCtrl', function ($scope, $cookieStore, $location, $http, logger, server, conexion, $rootScope,Facebook,$timeout) {
         logger.debug('Controller INDEX ');
 
         $rootScope.$on("CallParentMethod", function(){}); //función para usar en otros controllers
@@ -126,6 +126,9 @@ angular.module('ecommerceApp')
 
         $scope.openmodalShared= function  ( ) {
             $(function () {
+                $(".div-form-shared").show();
+                $(".div-message-shared").hide();
+
                 $("#myModalshared").modal("show");
             });
         }
@@ -150,7 +153,18 @@ angular.module('ecommerceApp')
                                         console.log("in error");
                                        console.log(response.error);
                                     } else {
-                                        console.log(response);
+                                        $(function () {
+                                            $(".div-form-shared").hide();
+                                            $(".div-message-shared").show();
+                                        });
+
+                                            $timeout(
+                                                $(function () {
+                                                    $("#myModalshared").modal("hide")
+
+                                                });
+                                            ,500);
+
                                         
                                     }
                                 });
@@ -164,7 +178,7 @@ angular.module('ecommerceApp')
                                     link: "https://www.creeenlabelleza.com/",
                                     privacy: privacy,
                                     message: estado
-                                    
+
                                 }
                                 ,function(response) {
                                     if (!response || response.error) {
@@ -172,6 +186,17 @@ angular.module('ecommerceApp')
                                        console.log(response.error);
                                     } else {
                                         console.log(response);
+                                        $(function () {
+                                            $(".div-form-shared").hide();
+                                            $(".div-message-shared").show();
+                                        });
+
+                                            $timeout(
+                                                $(function () {
+                                                    $("#myModalshared").modal("hide")
+
+                                                });
+                                            ,500);
                                         
                                     }
                                 });
