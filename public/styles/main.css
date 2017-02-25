@@ -124,14 +124,17 @@ hr{
 .btn:focus{
   outline:none;box-shadow:none;
 }
+.btn:click{
+  outline:none;box-shadow:none;
+}
 .btn:visited{
-  outline:none;
+  outline:none;box-shadow:none;
 }
 .btn:link{
-  outline:none;
+  outline:none;box-shadow:none;
 }
 .btn:active{
-  outline:none;
+  outline:none;box-shadow:none;
 }
 .btnn1{
   border-radius:30px;

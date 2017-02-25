@@ -17,7 +17,7 @@ angular.module('ecommerceApp')
                     $('#myModal').modal('show');
 
         }
-          }, 10000);
+          }, 20000);
                 });
 
           $(".footer").show();
