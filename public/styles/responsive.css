@@ -149,6 +149,7 @@
 }
 
 @media (max-width:450px) {
+	.fb-page{margin-left:2%;margin-right:0px;margin-top:-80px;}
 	.cbp-spmenu {
   padding-left:30px;
   padding-right:30px;
