@@ -158,12 +158,12 @@ angular.module('ecommerceApp')
                                             $(".div-message-shared").show();
                                         });
 
-                                            $timeout(
+                                            $timeout( function () {
                                                 $(function () {
-                                                    $("#myModalshared").modal("hide")
+                                                    $("#myModalshared").modal("hide");
 
-                                                });
-                                            ,500);
+                                                }); 
+                                            },500);
 
                                         
                                     }
@@ -191,12 +191,12 @@ angular.module('ecommerceApp')
                                             $(".div-message-shared").show();
                                         });
 
-                                            $timeout(
+                                            $timeout( function () {
                                                 $(function () {
-                                                    $("#myModalshared").modal("hide")
+                                                    $("#myModalshared").modal("hide");
 
-                                                });
-                                            ,500);
+                                                }); 
+                                            },500);
                                         
                                     }
                                 });
