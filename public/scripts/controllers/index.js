@@ -163,7 +163,7 @@ angular.module('ecommerceApp')
                                                     $("#myModalshared").modal("hide");
 
                                                 }); 
-                                            },500);
+                                            },2000);
 
                                         
                                     }
@@ -196,7 +196,7 @@ angular.module('ecommerceApp')
                                                     $("#myModalshared").modal("hide");
 
                                                 }); 
-                                            },500);
+                                            },2000);
                                         
                                     }
                                 });
