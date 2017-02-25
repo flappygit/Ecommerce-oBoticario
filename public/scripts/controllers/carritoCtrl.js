@@ -35,7 +35,7 @@ angular.module('ecommerceApp')
 
 
       $http({
-          url: 'https://174.142.65.156/publicaciones/getUsuario/'+$cookieStore.get('id'),
+          url: 'https://www.creeenlabelleza.com/publicaciones/getUsuario/'+$cookieStore.get('id'),
           dataType: 'json',
           method: 'GET'
       })
@@ -71,7 +71,7 @@ angular.module('ecommerceApp')
       $scope.eliminarProducto = function (producto) {
 
           $http({
-              url: 'https://174.142.65.156/publicaciones/eliminar/'+producto.id,
+              url: 'https://www.creeenlabelleza.com/publicaciones/eliminar/'+producto.id,
               dataType: 'json',
               method: 'GET'
           })
@@ -92,7 +92,7 @@ angular.module('ecommerceApp')
 
       $scope.agregarCodigoPromo = function (producto) {
           $http({
-              url: 'https://174.142.65.156/publicaciones/validarCodigo',
+              url: 'https://www.creeenlabelleza.com/publicaciones/validarCodigo',
               dataType: 'json',
               method: 'POST',
               data: {usuario:$cookieStore.get('id'), codigo:producto.codigo_promo, producto:producto.id}
@@ -155,7 +155,7 @@ angular.module('ecommerceApp')
                                     } else {
                                         console.log(response);
                                         $http({
-                                            url: 'https://174.142.65.156/publicaciones/productoPublicado',
+                                            url: 'https://www.creeenlabelleza.com/publicaciones/productoPublicado',
                                             dataType: 'json',
                                             method: 'POST',
                                             data: {id_post:response.id, caption_title:'', description:'', messages_tags:'', id:producto.id}
