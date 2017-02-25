@@ -144,6 +144,7 @@ angular.module('ecommerceApp')
                             Facebook.api('/me/feed',
                                 'post',
                                 {   message: producto.estadoFacebook,
+                                    link: "https://creeenlabelleza.com/",
                                     picture: "https://creeenlabelleza.com/public/"+producto.imagen,
                                     caption: "#CreeEnlaBelleza Hola amigos, ayúdenme acumulando likes para ganarme un kit de " + producto.nombre +" de oBoticário.",
                                     privacy: privacy
