@@ -16,12 +16,12 @@ angular.module('ecommerceApp')
 
         //Jquery 
         $(function () {
-
+var loaded = 0;
 function showprogress() {
 if (document.images.length == 0) {
 return false;
 }
-var loaded = 0;
+
 for (var i=0; i<document.images.length; i++) {
 
 
@@ -39,7 +39,7 @@ clearInterval(ID);
 var ID = setInterval(function()
     { 
 showprogress();
-    }, 500);
+    }, 300);
 
 
 
