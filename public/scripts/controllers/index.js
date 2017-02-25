@@ -16,7 +16,7 @@ angular.module('ecommerceApp')
 
         //Jquery 
         $(function () {
-
+        var ID;
 
         var loaded = 0;
         function showprogress() {
@@ -24,12 +24,10 @@ angular.module('ecommerceApp')
             
                 loaded=loaded+5;
 
-            
-
         }
 
 
-            var ID = setInterval(function()
+            ID = setInterval(function()
             { 
                 showprogress();
                 $(".progress").html(""+
