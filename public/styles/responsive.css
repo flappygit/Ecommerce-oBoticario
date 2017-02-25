@@ -79,6 +79,9 @@
 }
 
 @media (max-width:768px) {
+	.a-close-menu{
+  position:absolute;top:20px;right:20px;
+}
 	.cbp-spmenu {padding-top:2%;}
 	.cbp-spmenu ul li a{font-size:25px;}
 	.cbp-spmenu ul li{padding-bottom:10px;}

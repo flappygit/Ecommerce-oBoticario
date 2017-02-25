@@ -85,16 +85,15 @@ ng-if="usrSesion.conectado"
             <li><a  href="" ng-click="showView('inicio')">Inicio</a></li>
             <li class="hidden-lg hidden-md hidden-sm visible-xs">
                 <a class="page-scroll" href="" ng-if="logged==false" ng-click="FBLogin()">Ingresar con Facebook</a>
+                        <a href="" ng-if="logged==true" style="background-color:transparent;" >Hola, <b ng-click="userPerfil()" style="cursor:pointer;"> {{nombreFacebook}}</b></a>
 
-
-                        <a href="" ng-if="logged==true" style="background-color:transparent;" >Hola, <b ng-click="userPerfil()" style="cursor:pointer;"> {{nombreFacebook}}</b></a> 
             </li>
+            <li ng-if="logged==true" class="hidden-lg hidden-md hidden-sm visible-xs"><a  href=""  ng-click="cerrarSesion()">Cerrar Sesión</a></li>
             <li class="hidden-lg hidden-md hidden-sm visible-xs"><a  href="" ng-click="openCart()">Carrito de compra </a></li>
-            <li class="hidden-lg hidden-md hidden-sm visible-xs"><a  href=""  ng-click="userPerfil()">Panel de Usuario </a></li>
             <li><a  href="" ng-click="showView('sobre-cree-en-la-belleza')">Sobre Cree en la Belleza</a></li>
             <li><a ng-click="showView('mecanica')" href="">Mecánica</a></li>
             <li><a href="" ng-click="showView('terminos-y-condiciones')" >Términos y condiciones</a></li></li>
-            <li ng-if="logged==true" class="hidden-lg hidden-md hidden-sm visible-xs"><a  href=""  ng-click="cerrarSesion()">Cerrar Sesión</a></li>
+            
 
             <li>
                Síguenos: &nbsp;&nbsp;<a href="https://www.facebook.com/OBoticarioColombia/" target="_blank"><img src="images/icons/icon-fb.png" alt="Visítanos en Facebook"></a>&nbsp;&nbsp;  <a href="https://www.instagram.com/oboticariocol/" target="_blank"><img src="images/icons/icon-in.png" alt="Síguenos en Instagram"></a>
