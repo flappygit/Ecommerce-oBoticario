@@ -36,7 +36,6 @@ angular
     loggerProvider.enableConsole(true);
     $locationProvider.hashPrefix('');
     $routeProvider
-
       .when('/inicio', {
         templateUrl: 'views/home.html',
         controller: 'inicioCtrl',
