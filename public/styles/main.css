@@ -972,7 +972,7 @@ padding-bottom:30px;
 {
     display : block;
     position : fixed;
-    z-index:101;
+    z-index:99;
     background-image : url('../images/Logo.gif');
     background-color:#fff;
     background-repeat : no-repeat;
@@ -987,7 +987,7 @@ padding-bottom:30px;
     left : 50%;
     top : 50%;
     position : absolute;
-    z-index : 101;
+    z-index : 98;
     width : 226px;
     height : 41px;
     margin-left : -16px;

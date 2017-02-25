@@ -16,6 +16,34 @@ angular.module('ecommerceApp')
 
         //Jquery 
         $(function () {
+
+function showprogress() {
+if (document.images.length == 0) {
+return false;
+}
+var loaded = 0;
+for (var i=0; i<document.images.length; i++) {
+if (document.images[i].complete) {
+loaded++;
+}
+}
+var percentage = Math.round(
+100 * loaded / document.images.length);
+$(".progress").html(""+
+percentage + "%");
+if (percentage == 100) {
+clearInterval(ID);
+}
+}
+var ID = setInterval(function()
+    { 
+showprogress();
+    }, 500);
+
+
+
+
+
         $(".navbar").hide();
         $("#nav-icon-sticky").hide();
         $(".footer").hide();
@@ -31,6 +59,7 @@ angular.module('ecommerceApp')
             
         });
         angular.element(window).ready(function () {
+
             $(function () {
                 $("#divLoading").removeClass("show");
                 $(".navbar").removeClass("hidden");
