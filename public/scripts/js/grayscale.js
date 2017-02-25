@@ -1,10 +1,7 @@
 var loaded = 0;
 function showprogress() {
-if (document.images.length == 0) {
-return false;
-}
 
-for (var i=0; i<document.images.length; i++) {
+for (var i=0; i<=100; i++) {
 
 
 loaded++;
@@ -13,7 +10,6 @@ loaded++;
 
 var percentage = Math.round(
 100 * loaded / document.images.length);
-alert(percentage);
 
 $(".progress").append(""+
 percentage + "%");
@@ -28,7 +24,6 @@ clearInterval(ID);
 var ID = setInterval(function()
     { 
 showprogress();
-alert("entraaaa");
     }, 100);
 
 

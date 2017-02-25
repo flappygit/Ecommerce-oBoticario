@@ -11,12 +11,34 @@ angular.module('ecommerceApp')
     .controller('indexCtrl', function ($scope, $cookieStore, $location, $http, logger, server, conexion, $rootScope,Facebook) {
         logger.debug('Controller INDEX ');
 
-        $rootScope.$on("CallParentMethod", function(){}); //función para usar en otros scopes
+        $rootScope.$on("CallParentMethod", function(){}); //función para usar en otros controllers
 
 
         //Jquery 
         $(function () {
 
+
+        var loaded = 0;
+        function showprogress() {
+
+            
+                loaded=loaded+5;
+
+            
+
+            $(".progress").append(""+
+                loaded + "%");
+
+            
+
+            }
+
+
+
+            var ID = setInterval(function()
+            { 
+                showprogress();
+            }, 500);
 
 
 
@@ -39,6 +61,7 @@ angular.module('ecommerceApp')
         angular.element(window).ready(function () {
 
             $(function () {
+                clearInterval(ID);
                 $("#divLoading").removeClass("show");
                 $(".navbar").removeClass("hidden");
                 $("#divLoading").hide();
