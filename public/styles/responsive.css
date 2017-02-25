@@ -42,8 +42,7 @@
 
 @media (max-width:992px) {
 	.div-login-img img{width:100%;}
-	.fb-page{
-  margin-left:0px;margin-left-right:0px;margin-top:-80px;
+	.fb-page{margin:0 auto; margin-top:-80px;
 }
 	.div-info-product-tracking{padding:30px;
   		position:absolute;
