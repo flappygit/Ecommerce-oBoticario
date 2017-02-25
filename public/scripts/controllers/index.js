@@ -23,9 +23,10 @@ return false;
 }
 var loaded = 0;
 for (var i=0; i<document.images.length; i++) {
-if (document.images[i].complete) {
+
+
 loaded++;
-}
+
 }
 var percentage = Math.round(
 100 * loaded / document.images.length);
