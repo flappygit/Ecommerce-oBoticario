@@ -26,18 +26,19 @@ angular.module('ecommerceApp')
 
             
 
-            $(".progress").append(""+
-                loaded + "%");
-
             
-
-            }
 
 
 
             var ID = setInterval(function()
             { 
                 showprogress();
+                $(".progress").append(""+
+                loaded + "%");
+
+            
+
+            }
             }, 500);
 
 
