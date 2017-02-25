@@ -139,12 +139,14 @@ angular.module('ecommerceApp')
         $scope.compartirProducto= function (producto) {
           console.log(producto);
           Facebook.login(function(responses1) {
+            var privacy={"value":"EVERYONE"};
 
                             Facebook.api('/me/feed',
                                 'post',
-                                {   message: "#CreeEnlaBelleza Hola amigos, ayúdenme acumulando likes para ganarme un kit de " + producto.nombre +" de oBoticário  PRUEBAS PRUEBAS",
-                                    link: "http://oboticario.com.co/ecommerce/public/#/inicio",
-                                    picture: 'http://oboticario.com.co/ecommerce/public/'+producto.imagen,
+                                {   message: producto.estadoFacebook,
+                                    picture: "https://creeenlabelleza.com/public/"+producto.imagen,
+                                    caption: "#CreeEnlaBelleza Hola amigos, ayúdenme acumulando likes para ganarme un kit de " + producto.nombre +" de oBoticário.",
+                                    privacy: privacy
 
                                 }
                                 ,function(response) {

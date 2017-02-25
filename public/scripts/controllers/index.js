@@ -152,11 +152,13 @@ angular.module('ecommerceApp')
 
             if(!Facebook){
                 Facebook.login(function(responses1) {
+            var privacy={"value":"EVERYONE"};
 
                             Facebook.api('/me/feed',
                                 'post',
-                                {   message: "#CreeEnlaBelleza",
-                                    link: "http://oboticario.com.co/malbec/"
+                                {   caption: "#CreeEnlaBelleza",
+                                    link: "https://www.creeenlabelleza.com/",
+                                    privacy: privacy
                                 }
                                 ,function(response) {
                                     if (!response || response.error) {

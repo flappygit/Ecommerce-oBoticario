@@ -1,31 +1,3 @@
-var loaded = 0;
-function showprogress() {
-
-for (var i=0; i<=100; i++) {
-
-
-loaded++;
-
-}
-
-var percentage = Math.round(
-100 * loaded / document.images.length);
-
-$(".progress").append(""+
-percentage + "%");
-
-if (percentage == 100) {
-clearInterval(ID);
-}
-}
-
-
-
-var ID = setInterval(function()
-    { 
-showprogress();
-    }, 100);
-
 
 
 
