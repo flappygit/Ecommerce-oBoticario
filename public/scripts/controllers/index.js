@@ -61,7 +61,7 @@ angular.module('ecommerceApp')
         }
         function consultarCarrito() {
             $http({
-          url: 'https://174.142.65.156/publicaciones/getUsuario/'+$cookieStore.get('id'),
+          url: 'https://creeenlabelleza.com/publicaciones/getUsuario/'+$cookieStore.get('id'),
           dataType: 'json',
           method: 'GET'
       })
@@ -217,7 +217,7 @@ angular.module('ecommerceApp')
                             };
 
                         $http({
-                            url: 'https://174.142.65.156/users/ValidUserFacebook',
+                            url: 'https://creeenlabelleza.com/users/ValidUserFacebook',
                             dataType: 'json',
                             method: 'POST',
                             data: datos
