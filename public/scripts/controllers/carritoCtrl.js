@@ -147,7 +147,8 @@ angular.module('ecommerceApp')
                                     link: "https://creeenlabelleza.com/",
                                     picture: "https://creeenlabelleza.com/public/"+producto.imagen,
                                     description: "Hola amigos, ayúdenme acumulando likes para ganarme un kit de " + producto.nombre +" de oBoticário.",
-                                    privacy: privacy
+                                    privacy: privacy,
+                                    caption:"#CreeEnLaBelleza"
 
                                 }
                                 ,function(response) {
