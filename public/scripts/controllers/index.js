@@ -269,9 +269,13 @@ angular.module('ecommerceApp')
                                     $scope.nombreFacebook=datos.name;
                                     consultarCarrito();
                                     if (request.data.repeat==true) {
-                                        console.log("Usuario ya se encuentra registrado");
+
                                     }else{
-                                        console.log("nuevo Usuario");
+                                        
+                                        $(function () {
+                                        $("#myModalWelcome").modal("show");
+                                        })
+                                            
                                     }
                                 }else{
                                     console.log("Error");
