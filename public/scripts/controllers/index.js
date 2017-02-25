@@ -32,10 +32,8 @@ percentage = Math.round(
 $(".progress").html(""+
 percentage + "%");
 }
-if (percentage == 100) {
-clearInterval(ID);
-}
-}
+
+
 var ID = setInterval(function()
     { 
 showprogress();
