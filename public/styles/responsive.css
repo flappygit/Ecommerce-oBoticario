@@ -81,6 +81,7 @@
 @media (max-width:768px) {
 	.cbp-spmenu {padding-top:2%;}
 	.cbp-spmenu ul li a{font-size:25px;}
+	.cbp-spmenu ul li{padding-bottom:10px;}
 	.div-text-description-cart{
 		text-align:center;
 	}
