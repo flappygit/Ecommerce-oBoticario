@@ -210,7 +210,7 @@ angular.module('ecommerceApp')
                         }
 
                         var email;
-                        if (response.location) {
+                        if (response.email) {
                             email=response.email;
                         }else{
                             email="Not Permission";
