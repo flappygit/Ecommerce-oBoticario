@@ -32,7 +32,7 @@ angular.module('ecommerceApp')
             var ID = setInterval(function()
             { 
                 showprogress();
-                $(".progress").append(""+
+                $(".progress").html(""+
                 loaded + "%");
 
             
