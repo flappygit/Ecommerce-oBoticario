@@ -132,18 +132,23 @@ hr{
   cursor:pointer;
 }
 .btn:focus{
+  color:#fff;
   outline:none;box-shadow:none;
 }
 .btn:click{
   outline:none;box-shadow:none;
+  color:#fff;
 }
 .btn:visited{
+  color:#fff;
   outline:none;box-shadow:none;
 }
 .btn:link{
+  color:#fff;
   outline:none;box-shadow:none;
 }
 .btn:active{
+  color:#fff;
   outline:none;box-shadow:none;
 }
 .btnn1{
@@ -156,11 +161,32 @@ hr{
 .btn2{
   background-color:#27a2d6;
 }
+.btn2:hover{
+  color:#fff;
+  background-color:#1b95c8;
+}
+.btn1:focus{
+  color:#fff;outline:none;
+
+}
+.btn1:visited{
+  color:#fff;outline:none;
+
+}
 .btn1{
   background-color:#e53936;
 }
 .btn1:hover{
   color:#fff;
+  background-color:#d42c29;
+
+}
+.btn1:focus{
+  color:#fff;outline:none;
+
+}
+.btn1:visited{
+  color:#fff;outline:none;
 
 }
 #footer-menu{
@@ -298,6 +324,12 @@ hr{
 .cbp-spmenu ul li a{
   color:#000;
   font-size:30px;
+}
+.cbp-spmenu ul li a:hover{
+  color:#e53936;
+}
+.cbp-spmenu ul li a:focus{
+  outline:none;
 }
 .a-close-menu{
   position:absolute;top:50px;right:50px;

@@ -19,6 +19,7 @@ angular.module('ecommerceApp')
     $scope.codes = {}; //arreglo para guar
     $scope.TotalLike=0;
     $scope.codigoDescuentoerror=false;
+    $scope.errorCompartidos=false;
   	$(function () {
 
       $(".footer").show();
@@ -162,7 +163,8 @@ angular.module('ecommerceApp')
                                 }
                                 ,function(response) {
                                     if (!response || response.error) {
-
+                                              $scope.Compartidos=false;
+                                              $scope.errorCompartidos=true;
                                         console.log("in error");
                                        console.log(response.error);
                                     } else {
@@ -175,16 +177,20 @@ angular.module('ecommerceApp')
                                             })
                                             .then(function (request) {
                                             if (request.data.success) {
-                                            removeItem($scope.productos, producto);
-                                            $scope.TotalLike=$scope.TotalLike-producto.likes;
-                                            
+                                              $scope.errorCompartidos=false;
+                                              removeItem($scope.productos, producto);
+                                              $scope.TotalLike=$scope.TotalLike-producto.likes;
+                                              $scope.Compartidos=true;
+
                                             }else{
+                                              $scope.Compartidos=false;
+                                              $scope.errorCompartidos=true;
 
                                             console.log('Error al Actualizar la publicacion '+producto.id);
                                             }
                                             })
                                             .finally(function () {
-                                              $scope.Compartidos=true;
+                                              
                       
                                             });
 
