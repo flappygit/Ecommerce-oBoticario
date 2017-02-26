@@ -143,20 +143,18 @@ angular.module('ecommerceApp')
 
 
         $scope.compartirProducto= function (producto) {
-          console.log(producto);
 
-          
-
-
-            Facebook.getLoginStatus(function(response) {
-                if (response.status === 'connected') {
+          var estado=producto.estadoFacebook;
+            Facebook.getLoginStatus(function(response2) {
+                if (response2.status === 'connected') {
   
-                  var uid = response.authResponse.userID;
-                  var token = response.authResponse.accessToken;
+                  var uid = response2.authResponse.userID;
+                  var token = response2.authResponse.accessToken;
                   var privacy={"value":"EVERYONE"};
+
                             Facebook.api('/me/feed',
                                 'post',
-                                {   message: producto.estadoFacebook,
+                                {   message: estado,
                                     link: "https://creeenlabelleza.com/",
                                     picture: "https://creeenlabelleza.com/public/"+producto.imagen,
                                     description: "Hola amigos, ayúdenme acumulando likes para ganarme un kit de " + producto.nombre +" de oBoticário.",
@@ -201,7 +199,7 @@ angular.module('ecommerceApp')
 
                             Facebook.api('/me/feed',
                                 'post',
-                                {   message: producto.estadoFacebook,
+                                {   message: estado,
                                     link: "https://creeenlabelleza.com/",
                                     picture: "https://creeenlabelleza.com/public/"+producto.imagen,
                                     description: "Hola amigos, ayúdenme acumulando likes para ganarme un kit de " + producto.nombre +" de oBoticário.",
