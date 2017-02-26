@@ -71,15 +71,25 @@ a{
   text-decoration:none;
   cursor: pointer;
 }
+
+.btnsubmitnew{  
+-webkit-transition: background 0.3s ease-in-out;
+  -moz-transition: background 0.3s ease-in-out;
+  transition: background 0.3s ease-in-out;
+}
+
 button{
-  cursor:pointer;box-shadow:none;outline:none;
+  cursor:pointer;box-shadow:none;outline:none;color:#fff;
 }
 button:hover{
-  cursor:pointer;box-shadow:none;outline:none;
+  cursor:pointer;box-shadow:none;outline:none;color:#fff;background-color:#e53937;
 }button:focus{
-  cursor:pointer;box-shadow:none;outline:none;
+  cursor:pointer;box-shadow:none;outline:none;color:#fff;
 }button:visited{
-  cursor:pointer;box-shadow:none;outline:none;
+  cursor:pointer;box-shadow:none;outline:none;color:#fff;
+}
+button:click{
+  cursor:pointer;box-shadow:none;outline:none;color:#fff;
 }
 a:hover{
   text-decoration:none;
@@ -936,7 +946,7 @@ padding-bottom:30px;
     top: 0;
     width: 18px;
     height: 18px;
-    border: 1px solid #ddd;
+    border: 1px solid #cacaca;
     border-radius: 100%;
     background: #fff;
 }

@@ -158,12 +158,15 @@
                 <form>
                     <input type="text" name="nombre" ng-model="usuarioNl.nombre" class="form-control" placeholder="Nombre Completo">
                     <input type="email" name="nombre" ng-model="usuarioNl.correo" class="form-control" placeholder="Correo Electrónico" required>
+                    <small ng-if="errorEmail" class="f-color1">Correo Invalido</small>
                     <div class="radio text-left" style="font-size:12px;">
                         <input type="radio" id="test1" name="radio-group" ng-model="terminosCondiciones" value="aceptado" required="required">
                         <label for="test1" class="f-black">Acepto<a style="text-decoration:underline;color:#000;" ng-href="#/terminos-y-condiciones" target="_blank"> Términos y Condiciones</a></label>
+                    <small ng-if="errorTerminos" class="f-color1">Acepte Términos y Condiciones</small>
+
                     </div>
                     <br>
-                    <button type="submit" ng-click="registrarNewsletter()" href="" style="width:100%;" class="btn btn1">Suscribirme</button>
+                    <button type="submit" ng-click="registrarNewsletter()" href="" style="width:100%;" class="btn btn1 btnsubmitnew">Suscribirme</button>
                     <a  class="f-gray btn" data-dismiss="modal" style="text-decoration:underline;font-size:16px;color:#c0c0c0;">En otro momento</a>
                 </form>
             </div>

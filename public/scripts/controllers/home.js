@@ -9,7 +9,8 @@
  */
 angular.module('ecommerceApp')
   .controller('inicioCtrl', function ($scope,$location, $http) {
-       
+       $scope.errorEmail=false;
+       $scope.errorTerminos=false;
 
           function parallax () {
             var layer_1= document.getElementById('lirio1');
@@ -113,6 +114,10 @@ angular.element(window).scroll(function () {
       $scope.usuarioNl = {nombre:'', correo:''};
       $scope.terminosCondiciones = '';
       $scope.registrarNewsletter = function () {
+            $(function () {
+              $(".btnsubmitnew").css({"background":"#ff9796"})
+              $(".btnsubmitnew").text("Enviando ...")
+            })
           if ($scope.usuarioNl.correo != '') {
               if ($scope.terminosCondiciones == 'aceptado') {
                   $http({
@@ -124,6 +129,12 @@ angular.element(window).scroll(function () {
                       .then(function (request) {
                           if (request.data.success) {
                               console.log('usuario registrado con éxito');
+                              $scope.errorEmail=false;
+                              $scope.errorTerminos=false;
+                              $(function () {
+                            $(".btnsubmitnew").css({"background":"#e53936"});
+                            $(".btnsubmitnew").text("¡Suscrito!");
+                          })
                           } else {
                               console.log('Error al registrar es usuario al newsletter ' + producto.id);
                           }
@@ -133,10 +144,14 @@ angular.element(window).scroll(function () {
 
                       });
               }else{
+                $scope.errorEmail=false;
+                $scope.errorTerminos=true;
                   console.log('No ha aceptado términos y condiciones');
               }
           }else{
               console.log('No se ha ingresado el correo');
+              $scope.errorEmail=true;
+                $scope.errorTerminos=false;
           }
       }
 
