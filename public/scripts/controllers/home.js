@@ -13,7 +13,6 @@ angular.module('ecommerceApp')
 
 
           $(window).scroll(function() {
-            console.log("esta función");
               var wScroll=$(this).scrollTop();
                     $(".img-product-lily").css({
                     "transform": "translate(0px "+wScroll/2 +"%)"

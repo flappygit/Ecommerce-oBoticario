@@ -60,7 +60,6 @@ angular.module('ecommerceApp')
                              }
                           })
                         }else{
-                          console.log("entraaa");
                         }
                           
                       }else{

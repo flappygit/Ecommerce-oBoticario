@@ -4,8 +4,7 @@
 $("div#divLoading").addClass('show');
         $(".navbar").hide();
 
-function collapseNavbar() { 
-  console.log("Es estaaa");
+function collapseNavbar() {
     var pathname = window.location;
     if (pathname!="https://www.creeenlabelleza.com/#/inicio" && pathname!="https://www.creeenlabelleza.com/") {
       $(".navbar-fixed-top").addClass("top-nav-collapse");
@@ -87,6 +86,7 @@ function collapseNavbar() {
               
 
 $(window).scroll(function() {
+  console.log("Acaaaa");
  collapseNavbar();
  
 });
