@@ -86,8 +86,7 @@ function collapseNavbar() {
               
 
 $(window).scroll(function() {
-  console.log("Acaaaa");
-
+ collapseNavbar();
  
 });
 
