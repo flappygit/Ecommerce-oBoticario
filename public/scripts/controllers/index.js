@@ -265,7 +265,7 @@ angular.module('ecommerceApp')
                                     $scope.nombreFacebook=datos.name;
                                     consultarCarrito();
                                     $(function () {
-                                            if ($('#myModal1').is(':show')) {
+                                            if ($('#myModal1').is(':visible')) {
                                                 $('#myModal1').modal('hide');
                                             }
                                         });
