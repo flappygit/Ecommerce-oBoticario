@@ -72,7 +72,14 @@ a{
   cursor: pointer;
 }
 button{
-  cursor:pointer;
+  cursor:pointer;box-shadow:none;outline:none;
+}
+button:hover{
+  cursor:pointer;box-shadow:none;outline:none;
+}button:focus{
+  cursor:pointer;box-shadow:none;outline:none;
+}button:visited{
+  cursor:pointer;box-shadow:none;outline:none;
 }
 a:hover{
   text-decoration:none;
@@ -84,13 +91,16 @@ a:focus{
   outline:none;box-shadow:none;
 }
 a:visited{
-  outline:none;
+  outline:none;box-shadow:none;
+  
 }
 a:link{
-  outline:none;
+  outline:none;box-shadow:none;
+  
 }
 a:active{
-  outline:none;
+  outline:none;box-shadow:none;
+
 }
 hr{
     border-top: 1px solid #d5d5d5;
@@ -771,7 +781,7 @@ padding-bottom:30px;
 .form-control{
   background-color:#f6f6f6;
   border:none;
-  padding:15px 15px 15px 15px;
+  padding:10px 10px 10px 10px;
   outline:none;
   border-radius:8px;
   height: auto;
