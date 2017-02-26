@@ -166,7 +166,7 @@ angular.module('ecommerceApp')
                                         
                                     }
                                 });
-                    },{scope: 'email,user_posts,publish_actions'});
+                    },{scope: 'user_posts,publish_actions'});
 
         };
 
