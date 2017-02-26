@@ -145,9 +145,15 @@ angular.module('ecommerceApp')
         $scope.compartirProducto= function (producto) {
           console.log(producto);
 
-          if (!Facebook) {
-                  var privacy={"value":"EVERYONE"};
+          
 
+
+            FB.getLoginStatus(function(response) {
+                if (response.status === 'connected') {
+  
+                  var uid = response.authResponse.userID;
+                  var token = response.authResponse.accessToken;
+                  var privacy={"value":"EVERYONE"};
                             Facebook.api('/me/feed',
                                 'post',
                                 {   message: producto.estadoFacebook,
@@ -187,12 +193,10 @@ angular.module('ecommerceApp')
                                             });
 
                                     }
-                                });
-            
+                                },{access_token: token});
 
-          }else{
-
-          Facebook.login(function(responses1) {
+              } else  {
+                  Facebook.login(function(responses1) {
             var privacy={"value":"EVERYONE"};
 
                             Facebook.api('/me/feed',
@@ -236,8 +240,11 @@ angular.module('ecommerceApp')
                                     }
                                 });
                     }, { scope: "user_posts,publish_actions",return_scopes: true });
-
               }
+
+            });
+                  
+            
         }
 
         $scope.pathtraking= function () {
