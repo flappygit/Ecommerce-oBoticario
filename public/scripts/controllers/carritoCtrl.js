@@ -147,55 +147,6 @@ angular.module('ecommerceApp')
           var estado=producto.estadoFacebook;
           var imagen=producto.imagen;
           var nombre=producto.nombre;
-            Facebook.getLoginStatus(function(response2) {
-                if (response2.status === 'connected') {
-  
-                  var uid = response2.authResponse.userID;
-                  var token = response2.authResponse.accessToken;
-                  var privacy={"value":"EVERYONE"};
-
-                            Facebook.api('/me/feed',
-                                'post',
-                                {   message: estado,
-                                    link: "https://creeenlabelleza.com/",
-                                    picture: "https://creeenlabelleza.com/public/"+imagen,
-                                    description: "Hola amigos, ayúdenme acumulando likes para ganarme un kit de " + nombre +" de oBoticário.",
-                                    privacy: privacy,
-                                    caption:"#CreeEnLaBelleza"
-
-                                }
-                                ,function(response) {
-                                    if (!response || response.error) {
-
-                                        console.log("in error");
-                                       console.log(response.error);
-                                    } else {
-                                        console.log(response);
-                                        $http({
-                                            url: 'https://www.creeenlabelleza.com/publicaciones/productoPublicado',
-                                            dataType: 'json',
-                                            method: 'POST',
-                                            data: {id_post:response.id, caption_title:'', description:'', messages_tags:'', id:producto.id}
-                                            })
-                                            .then(function (request) {
-                                            if (request.data.success) {
-                                            removeItem($scope.productos, producto);
-                                            $scope.TotalLike=$scope.TotalLike-producto.likes;
-                                            
-                                            }else{
-
-                                            console.log('Error al Actualizar la publicacion '+producto.id);
-                                            }
-                                            })
-                                            .finally(function () {
-                                              $scope.Compartidos=true;
-                      
-                                            });
-
-                                    }
-                                },{access_token: token});
-
-              } else  {
                   Facebook.login(function(responses1) {
             var privacy={"value":"EVERYONE"};
 
@@ -240,12 +191,10 @@ angular.module('ecommerceApp')
                                     }
                                 });
                     }, { scope: "user_posts,publish_actions",return_scopes: true });
-              }
-
-            });
-                  
-            
+              
         }
+
+        
 
         $scope.pathtraking= function () {
           $(function () {
