@@ -9,6 +9,7 @@
  */
 angular.module('ecommerceApp')
   .controller('productCtrl', function ($scope, $cookieStore, $location, $http, logger, server, conexion) {
+            var counter = 0;
     
     $scope.addCart= "Añadir al carrito";
         if($cookieStore.get('conectado')){
@@ -75,6 +76,8 @@ angular.module('ecommerceApp')
     }
 
       $scope.anadirProducto = function (producto) {
+                  counter += 1;
+
         if($cookieStore.get('conectado')){
           var verificado = true;
           var usuario_id=$cookieStore.get('id');
@@ -128,6 +131,14 @@ angular.module('ecommerceApp')
 
                   });
           }
+        }else{
+          if (counter>=5) {
+            $(function () {
+              if ($('#myModal1').is(':hidden')) {
+              $('#myModal1').modal('show');
+            }
+            });
+          }
         }
 
       };
@@ -141,10 +152,10 @@ angular.module('ecommerceApp')
         $(function () {
 
           window.setTimeout(function(){
-            if ($('#myModal').is(':hidden')) {
+            if ($('#myModal1').is(':hidden')) {
               $('#myModal1').modal('show');
             }
-          },5000);
+          },7000);
 
         })
 
