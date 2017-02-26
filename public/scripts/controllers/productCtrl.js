@@ -11,7 +11,9 @@ angular.module('ecommerceApp')
   .controller('productCtrl', function ($scope, $cookieStore, $location, $http, logger, server, conexion) {
     
     $scope.addCart= "Añadir al carrito";
-    getpublicacionesPorId();
+        if($cookieStore.get('conectado')){
+          getpublicacionesPorId();
+        }
 
       function validPubliProduct(url,publicacion) {
         if ( $location.path()==url ) {
@@ -73,6 +75,7 @@ angular.module('ecommerceApp')
     }
 
       $scope.anadirProducto = function (producto) {
+        if($cookieStore.get('conectado')){
           var verificado = true;
           var usuario_id=$cookieStore.get('id');
           var datos = {usuario_fb:usuario_id, producto:0};
@@ -125,11 +128,29 @@ angular.module('ecommerceApp')
 
                   });
           }
+        }
 
       };
 
   	$(function () {
       $(".footer").show();
+
+      
+      if (!$cookieStore.get('conectado')) {
+      if ($location.path()!='/inicio') {
+        $(function () {
+
+          window.setTimeout(function(){
+            if ($('#myModal').is(':hidden')) {
+              $('#myModal1').modal('show');
+            }
+          },5000);
+
+        })
+
+
+      }
+    }
 
       var $overlay = $('<div class="overlay"></div>');
 

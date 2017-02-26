@@ -64,7 +64,7 @@ angular.element(window).scroll(function () {
 
           if (angular.element(window).width()>1090) {
             parallax ();
-
+            
           }
           
           $(function () {

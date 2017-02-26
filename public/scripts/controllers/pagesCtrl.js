@@ -21,23 +21,22 @@ angular.module('ecommerceApp')
         	 $("#img-white").hide();
         	 $("#img-black").show();
         });  	
-  	console.log($location.path());
+
     if (!$cookieStore.get('conectado')) {
       if ($location.path()!='/inicio') {
         $(function () {
-        console.log("running timeout");
 
           window.setTimeout(function(){
-            if($(window).width() > 768)     
-        {
+         
                     $('#myModal1').modal('show');
 
-        }
-          }, 10000);
+        
+          },2000);
 
         })
 
 
       }
     }
+
   });
