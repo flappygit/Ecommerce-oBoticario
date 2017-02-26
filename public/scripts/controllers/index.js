@@ -338,6 +338,7 @@ angular.module('ecommerceApp')
         });
         $scope.logged=false;
         $scope.nombreFacebook="";
+        $scope.productosCarrito=0;
         };
         
         $scope.reloadRoute = function() {
