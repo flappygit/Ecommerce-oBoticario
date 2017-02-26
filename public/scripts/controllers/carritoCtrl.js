@@ -145,6 +145,8 @@ angular.module('ecommerceApp')
         $scope.compartirProducto= function (producto) {
 
           var estado=producto.estadoFacebook;
+          var imagen=producto.imagen;
+          var nombre=producto.nombre;
             Facebook.getLoginStatus(function(response2) {
                 if (response2.status === 'connected') {
   
@@ -156,8 +158,8 @@ angular.module('ecommerceApp')
                                 'post',
                                 {   message: estado,
                                     link: "https://creeenlabelleza.com/",
-                                    picture: "https://creeenlabelleza.com/public/"+producto.imagen,
-                                    description: "Hola amigos, ayúdenme acumulando likes para ganarme un kit de " + producto.nombre +" de oBoticário.",
+                                    picture: "https://creeenlabelleza.com/public/"+imagen,
+                                    description: "Hola amigos, ayúdenme acumulando likes para ganarme un kit de " + nombre +" de oBoticário.",
                                     privacy: privacy,
                                     caption:"#CreeEnLaBelleza"
 
@@ -201,8 +203,8 @@ angular.module('ecommerceApp')
                                 'post',
                                 {   message: estado,
                                     link: "https://creeenlabelleza.com/",
-                                    picture: "https://creeenlabelleza.com/public/"+producto.imagen,
-                                    description: "Hola amigos, ayúdenme acumulando likes para ganarme un kit de " + producto.nombre +" de oBoticário.",
+                                    picture: "https://creeenlabelleza.com/public/"+imagen,
+                                    description: "Hola amigos, ayúdenme acumulando likes para ganarme un kit de " + nombre +" de oBoticário.",
                                     privacy: privacy,
                                     caption:"#CreeEnLaBelleza"
 
