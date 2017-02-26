@@ -774,6 +774,8 @@ padding-bottom:30px;
   padding:27px 15px 28px 15px;
   outline:none;
   border-radius:8px;
+  height: auto;
+
 }
 
 .form-control-danger{
