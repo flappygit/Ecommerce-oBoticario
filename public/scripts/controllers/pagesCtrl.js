@@ -23,7 +23,6 @@ angular.module('ecommerceApp')
         });  	
 
     if (!$cookieStore.get('conectado')) {
-      alert("entraaa");
       if ($location.path()!='/inicio') {
         $(function () {
 
