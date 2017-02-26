@@ -36,7 +36,10 @@ $("body").css({'overflow-y':'scroll','width':'100%'});
               if (request.data.success) {
                   if (request.data.code){
                     $scope.values = [];
+                    
+                    if (request.data.rows!=undefined && request.data.rows!=null) {
 
+                    
                       request.data.rows.forEach(function(publicacion, i) {
                         
                           if (publicacion.likes_count == null){
@@ -69,19 +72,13 @@ $("body").css({'overflow-y':'scroll','width':'100%'});
 
                                 });
                           });
-                                
-
-
-
-                          
-
-                          
-
-
-                            
-
 
                       });
+
+                    }else{
+                      console.log("request.rows null or undefined")
+                    }
+
                       $scope.publicaciones = request.data.rows;
                       $scope.error = null;
                   }else {

@@ -42,17 +42,23 @@ angular.module('ecommerceApp')
           .then(function (request) {
               if (request.data.success) {
                   if (request.data.code){
+                    if (request.data.rows!=undefined && request.data.rows!=null) {
+
+                    
                       request.data.rows.forEach(function(producto) {
                           $scope.TotalLike= $scope.TotalLike+producto.likes;
                           if (producto.codigo_promo != null && producto.codigo_promo != '' ){
                               $scope.descuento = 40;
                           }
                       });
+                    }else{
+                      console.log("request.data.rows is null or undefined");
+                    }
+
                       $scope.productos = request.data.rows;
                       $scope.$parent.productosCarrito=request.data.rows.length;
-
-
                       $scope.error = null;
+
                   }else {
                       $scope.error = 'No tiene productos en el carrito';
                       console.log('no tiene productos agregados');

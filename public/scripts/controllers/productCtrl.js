@@ -1,4 +1,4 @@
-'use strict';
+7'use strict';
 
 /**
  * @ngdoc function
@@ -34,8 +34,8 @@ angular.module('ecommerceApp')
                   .then(function (request) {
                       if (request.data.success) {
                         console.log(request.data);
+                        if (request.data.rows!=undefined && request.data.rows!=null)  {
                         request.data.rows.forEach(function (publicacion,i) {
-
                           switch (publicacion.producto){
 
                             case 1:
@@ -57,11 +57,11 @@ angular.module('ecommerceApp')
                             default:
                             console.error('producto no consultado');
                             break;
-          }
-                          
-                          
-                        })
-                        
+                             }
+                          })
+                        }else{
+                          console.log("entraaa");
+                        }
                           
                       }else{
                           console.log('Error consultando productos');
