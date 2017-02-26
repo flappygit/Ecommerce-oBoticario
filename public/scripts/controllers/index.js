@@ -264,6 +264,11 @@ angular.module('ecommerceApp')
                                     $scope.logged=true;
                                     $scope.nombreFacebook=datos.name;
                                     consultarCarrito();
+                                    $(function () {
+                                            if ($('#myModal1').is(':show')) {
+                                                $('#myModal1').modal('hide');
+                                            }
+                                        });
                                     if (request.data.repeat==true) {
 
                                     }else{
