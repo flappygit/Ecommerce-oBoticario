@@ -10,6 +10,17 @@
 angular.module('ecommerceApp')
   .controller('inicioCtrl', function ($scope,$location, $http) {
        $(function () {
+
+
+          $(window).scroll(function() {
+ 
+              var wScroll=$(this).scrollTop();
+                    $(".img-product-lily").css({
+                    "transform": "translate(0px "+wScroll/2 +"%)"
+              })
+          });
+
+
         $(window).ready(function(){
         window.setTimeout(function(){
             if($(window).width() > 768)
@@ -17,7 +28,7 @@ angular.module('ecommerceApp')
                     $('#myModal').modal('show');
 
         }
-          }, 20000);
+          }, 60000);
                 });
 
           $(".footer").show();
@@ -34,6 +45,7 @@ angular.module('ecommerceApp')
     $location.path('/'+product+'');
 
     };
+
 
       $scope.usuarioNl = {nombre:'', correo:''};
       $scope.terminosCondiciones = '';

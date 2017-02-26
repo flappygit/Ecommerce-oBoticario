@@ -88,10 +88,6 @@ function collapseNavbar() {
 $(window).scroll(function() {
  collapseNavbar();
  
- var wScroll=$(this).scrollTop();
- $(".img-product-lily").css({
-    "transform": "translate(0px "+wScroll/2 +"%)"
- })
 });
 
       $(window).resize(function() {

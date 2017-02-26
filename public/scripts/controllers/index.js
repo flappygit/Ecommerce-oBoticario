@@ -16,11 +16,7 @@ angular.module('ecommerceApp')
 
         //Jquery 
         $(function () {
-     
-
-
-
-
+            
 
         $(".navbar").hide();
         $("#nav-icon-sticky").hide();
