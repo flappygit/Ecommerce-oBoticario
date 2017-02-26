@@ -144,6 +144,54 @@ angular.module('ecommerceApp')
 
         $scope.compartirProducto= function (producto) {
           console.log(producto);
+
+          if (!Facebook) {
+                  var privacy={"value":"EVERYONE"};
+
+                            Facebook.api('/me/feed',
+                                'post',
+                                {   message: producto.estadoFacebook,
+                                    link: "https://creeenlabelleza.com/",
+                                    picture: "https://creeenlabelleza.com/public/"+producto.imagen,
+                                    description: "Hola amigos, ayúdenme acumulando likes para ganarme un kit de " + producto.nombre +" de oBoticário.",
+                                    privacy: privacy,
+                                    caption:"#CreeEnLaBelleza"
+
+                                }
+                                ,function(response) {
+                                    if (!response || response.error) {
+
+                                        console.log("in error");
+                                       console.log(response.error);
+                                    } else {
+                                        console.log(response);
+                                        $http({
+                                            url: 'https://www.creeenlabelleza.com/publicaciones/productoPublicado',
+                                            dataType: 'json',
+                                            method: 'POST',
+                                            data: {id_post:response.id, caption_title:'', description:'', messages_tags:'', id:producto.id}
+                                            })
+                                            .then(function (request) {
+                                            if (request.data.success) {
+                                            removeItem($scope.productos, producto);
+                                            $scope.TotalLike=$scope.TotalLike-producto.likes;
+                                            
+                                            }else{
+
+                                            console.log('Error al Actualizar la publicacion '+producto.id);
+                                            }
+                                            })
+                                            .finally(function () {
+                                              $scope.Compartidos=true;
+                      
+                                            });
+
+                                    }
+                                });
+            
+
+          }else{
+
           Facebook.login(function(responses1) {
             var privacy={"value":"EVERYONE"};
 
@@ -187,10 +235,9 @@ angular.module('ecommerceApp')
 
                                     }
                                 });
-                    }, { scope: "user_posts,publish_actions" });
+                    }, { scope: "user_posts,publish_actions",return_scopes: true });
 
-
-
+              }
         }
 
         $scope.pathtraking= function () {

@@ -164,7 +164,7 @@ angular.module('ecommerceApp')
                                         
                                     }
                                 });
-                    });
+                    },{scope: 'email,user_posts,publish_actions',return_scopes: true });
 
             }else{
                 Facebook.api('/me/feed',

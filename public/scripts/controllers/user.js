@@ -45,7 +45,8 @@ $("body").css({'overflow-y':'scroll','width':'100%'});
                           if (publicacion.likes_count == null){
                               publicacion.likes_count = 0;
                           }
-                          Facebook.getLoginStatus(function(response) {
+                          if (Facebook){
+
                             Facebook.api('/'+publicacion.id_post+"/?fields=reactions.summary(1)"
                                 ,function(response) {
                                   console.log(i);
@@ -71,7 +72,39 @@ $("body").css({'overflow-y':'scroll','width':'100%'});
 
 
                                 });
-                          });
+                          }else{
+                          Facebook.login(function(responses1) {
+
+                            Facebook.api('/'+publicacion.id_post+"/?fields=reactions.summary(1)"
+                                ,function(response) {
+                                  console.log(i);
+
+                                     publicacion.index = i;
+
+                                publicacion.likes_count=response.reactions.summary.total_count;
+
+                                actualizarLikes(response.reactions.summary.total_count,publicacion.id_post,publicacion.id);
+
+                                if (publicacion.codigo_promo != null && publicacion.codigo_promo != '' ){
+                                      publicacion.likes_count += 40;
+                                }
+
+
+                                $scope.values.push({'countTo':publicacion.likes_count,'countFrom':0,'progressValue':publicacion.likes_count*100/publicacion.likes});
+                                console.log($scope.values);
+
+
+
+                                $scope.restante_likes=publicacion.likes-publicacion.likes_count;
+
+
+
+                                });
+                          
+
+                          }, { scope: "user_posts,publish_actions",return_scopes: true });
+
+                          }
 
                       });
 
