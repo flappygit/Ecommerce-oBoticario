@@ -47,7 +47,16 @@ angular.module('ecommerceApp')
 
 
 }
+angular.element(window).scroll(function () {
 
+    if ($location.path()=="/inicio") {
+      if (angular.element(window).width()>1090) {
+        parallax ();
+
+      }
+
+    }
+  });
 
   angular.element(window).ready(function () {
 
@@ -57,14 +66,21 @@ angular.module('ecommerceApp')
             parallax ();
 
           }
+          
+          $(function () {
+            window.setTimeout(function(){
 
-        angular.element(window).setTimeout(function(){
-            if(angular.element(window).width() > 768)
-        {
+              if($(window).width() > 768)
+
+              {
                     $('#myModal').modal('show');
+              }
 
-        }
           }, 60000);
+
+          })
+
+
      }
   });
 
