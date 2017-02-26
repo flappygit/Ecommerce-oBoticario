@@ -148,7 +148,7 @@ angular.module('ecommerceApp')
           
 
 
-            FB.getLoginStatus(function(response) {
+            Facebook.getLoginStatus(function(response) {
                 if (response.status === 'connected') {
   
                   var uid = response.authResponse.userID;

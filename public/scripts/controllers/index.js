@@ -134,7 +134,7 @@ angular.module('ecommerceApp')
             
             var privacy={"value":"EVERYONE"};
 
-                FB.getLoginStatus(function(response) {
+                Facebook.getLoginStatus(function(response) {
                     if (response.status === 'connected') {
                         var uid = response.authResponse.userID;
                         var token = response.authResponse.accessToken;

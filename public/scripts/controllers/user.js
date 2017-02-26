@@ -47,9 +47,10 @@ $("body").css({'overflow-y':'scroll','width':'100%'});
                           }
 
 
-                          FB.getLoginStatus(function(response) {
+                          Facebook.getLoginStatus(function(response) {
 
                             if (response.status === 'connected') {
+                              alert("entraaaa 1");
 
                               var uid = response.authResponse.userID;
                               var token = response.authResponse.accessToken;
@@ -80,7 +81,7 @@ $("body").css({'overflow-y':'scroll','width':'100%'});
                                 },{access_token: token});
 
                             }else{
-
+                              alert("entraaaa");
                               Facebook.login(function(responses1) {
 
                             Facebook.api('/'+publicacion.id_post+"/?fields=reactions.summary(1)"
