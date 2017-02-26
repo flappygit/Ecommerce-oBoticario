@@ -130,47 +130,13 @@ angular.module('ecommerceApp')
         }
 
 
+
+
+
         $scope.sharingPost= function  (estado) {
             
             var privacy={"value":"EVERYONE"};
 
-                Facebook.getLoginStatus(function(response) {
-                    if (response.status === 'connected') {
-                        var uid = response.authResponse.userID;
-                        var token = response.authResponse.accessToken;
-
-                        Facebook.api('/me/feed',
-                                'post',
-                                {  
-                                    caption: "#CreeEnlaBelleza",
-                                    link: "https://www.creeenlabelleza.com/",
-                                    privacy: privacy,
-                                    message: estado
-
-                                }
-                                ,function(response) {
-                                    if (!response || response.error) {
-                                        console.log("in error");
-                                       console.log(response.error);
-                                    } else {
-                                        console.log(response);
-                                        $(function () {
-                                            $(".div-form-shared").hide();
-                                            $(".div-message-shared").show();
-                                        });
-
-                                            $timeout( function () {
-                                                $(function () {
-                                                    $("#myModalshared").modal("hide");
-
-                                                }); 
-                                            },2000);
-                                        
-                                    }
-                                },{access_token: token});
-
-
-                    }else{
                         Facebook.login(function(responses1) {
 
                             Facebook.api('/me/feed',
@@ -202,30 +168,7 @@ angular.module('ecommerceApp')
                                 });
                     },{scope: 'email,user_posts,publish_actions',return_scopes: true });
 
-
-                    }
-
-                });
-  
-                
-
-
-
-
-
         };
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
