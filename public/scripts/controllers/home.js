@@ -114,6 +114,7 @@ angular.element(window).scroll(function () {
       $scope.usuarioNl = {nombre:'', correo:''};
       $scope.terminosCondiciones = '';
       $scope.registrarNewsletter = function () {
+        alert("Entraaa");
             $(function () {
               $(".btnsubmitnew").css({"background":"#ff9796"})
               $(".btnsubmitnew").text("Enviando ...")
