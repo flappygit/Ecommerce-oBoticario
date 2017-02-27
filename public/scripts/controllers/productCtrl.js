@@ -114,8 +114,9 @@ angular.module('ecommerceApp')
                   data: datos
               })
                   .then(function (request) {
-                      if (request.data.success) {
                         console.log(request);
+                    
+                      if (request.data.success) {
                           if (request.data.existente){
                               console.log('El usuario ya tiene agregado el producto: ' + datos.producto);
                           }else {
