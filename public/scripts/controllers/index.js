@@ -65,7 +65,7 @@ angular.module('ecommerceApp')
         }
         function consultarCarrito() {
             $http({
-          url: 'https://www.creeenlabelleza.com/publicaciones/getUsuario/'+$cookieStore.get('id'),
+          url: server+'publicaciones/getUsuario/'+$cookieStore.get('id'),
           dataType: 'json',
           method: 'GET'
       })
@@ -142,7 +142,7 @@ angular.module('ecommerceApp')
                             Facebook.api('/me/feed',
                                 'post',
                                 {   caption: "#CreeEnlaBelleza",
-                                    link: "https://www.creeenlabelleza.com/",
+                                    link: server,
                                     privacy: privacy,
                                     message: estado
                                 }
@@ -206,8 +206,9 @@ angular.module('ecommerceApp')
                                 link:response.link
                             };
 
+                        console.log(server+'users/ValidUserFacebook');
                         $http({
-                            url: 'https://www.creeenlabelleza.com/users/ValidUserFacebook',
+                            url: server+'users/ValidUserFacebook',
                             dataType: 'json',
                             method: 'POST',
                             data: datos

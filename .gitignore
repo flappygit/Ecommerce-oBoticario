@@ -1,2 +1,4 @@
 /dbconnection.js
 /.idea/
+/public/scripts/app.js
+/public/scripts/services/servers.js

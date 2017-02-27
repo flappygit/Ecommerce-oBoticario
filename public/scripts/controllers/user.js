@@ -32,7 +32,7 @@ function removeItem ( arr, item ) {
 
 function eliminarpubli(publicacion) {
  $http({
-              url: 'https://www.creeenlabelleza.com/publicaciones/eliminar/'+publicacion.id,
+              url: server+'publicaciones/eliminar/'+publicacion.id,
               dataType: 'json',
               method: 'GET'
           })
@@ -64,7 +64,7 @@ $("body").css({'overflow-y':'scroll','width':'100%'});
            $("#img-black").show();
         });
       $http({
-          url: 'https://www.creeenlabelleza.com/publicaciones/getPublicadoPorUsuario/'+$cookieStore.get('id'),
+          url: server+'publicaciones/getPublicadoPorUsuario/'+$cookieStore.get('id'),
           dataType: 'json',
           method: 'GET'
       })
@@ -190,7 +190,7 @@ $("body").css({'overflow-y':'scroll','width':'100%'});
 
 function actualizarLikes(likecount,idpost,idpubli) {
   $http({
-              url: 'https://www.creeenlabelleza.com/publicaciones/actualizarLikes',
+              url: server+'publicaciones/actualizarLikes',
               dataType: 'json',
               method: 'POST',
               data: {likes_count:likecount, id_post:idpost, id:idpubli}
@@ -214,7 +214,7 @@ function actualizarLikes(likecount,idpost,idpubli) {
 
       $scope.actualizarLikes = function (likecount,idpost,idpubli) {
           $http({
-              url: 'https://www.creeenlabelleza.com/publicaciones/actualizarLikes',
+              url: server+'publicaciones/actualizarLikes',
               dataType: 'json',
               method: 'POST',
               data: {likes_count:likecount, id_post:idpost, id:idpubli}
