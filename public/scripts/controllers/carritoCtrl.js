@@ -217,13 +217,13 @@ angular.module('ecommerceApp')
  $scope.usuarioNl = {nombre:'', correo:''};
       $scope.terminosCondiciones = '';
       
-      $scope.registrarNewsletter = function () {
+      $scope.registrarNewsletter = function (correo) {
 
             $(function () {
               $(".btnsubmitnew").css({"background":"#ff9796"})
               $(".btnsubmitnew").text("Enviando ...")
             })
-          if ($scope.usuarioNl.correo != '') {
+          if (correo != '') {
               if ($scope.terminosCondiciones == 'aceptado') {
                   $http({
                       url: 'https://www.creeenlabelleza.com/usuarios-nl/add',
