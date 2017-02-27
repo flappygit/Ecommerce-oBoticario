@@ -20,6 +20,8 @@ angular.module('ecommerceApp')
     $scope.TotalLike=0;
     $scope.codigoDescuentoerror=false;
     $scope.errorCompartidos=false;
+    $scope.errorEmail=false;
+    $scope.errorTerminos=false;
   	$(function () {
 
       $(".footer").show();
