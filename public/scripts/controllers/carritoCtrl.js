@@ -23,6 +23,8 @@ angular.module('ecommerceApp')
     $scope.errorEmail=false;
     $scope.errorTerminos=false;
     $scope.successRegister=false;
+    $scope.dangerRegister=false;
+
 
   	$(function () {
 
@@ -117,7 +119,8 @@ angular.module('ecommerceApp')
                           $scope.successRegister=true;
 
                       }else {
-                          console.log('codigo NO validado');
+                          $scope.dangerRegister=true;
+                          
 
                       }
                   }
