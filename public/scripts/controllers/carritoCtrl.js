@@ -151,8 +151,7 @@ angular.module('ecommerceApp')
           var imagen=producto.imagen;
           var nombre=producto.nombre;
                   Facebook.login(function(responses1) {
-            var privacy={"value":"EVERYONE"};
-
+                  var privacy={"value":"EVERYONE"};
                             Facebook.api('/me/feed',
                                 'post',
                                 {   message: estado,

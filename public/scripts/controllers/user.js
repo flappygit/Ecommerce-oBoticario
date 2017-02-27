@@ -144,8 +144,7 @@ $("body").css({'overflow-y':'scroll','width':'100%'});
                                 $scope.restante_likes=publicacion.likes-publicacion.likes_count;
                               }else{
                                     eliminarpubli(publicacion);
-
-
+                                
                               }
 
                                 });
