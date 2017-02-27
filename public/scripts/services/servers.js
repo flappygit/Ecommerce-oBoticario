@@ -8,4 +8,4 @@
  * Constant in the ecommerceApp.
  */
 angular.module('ecommerceApp')
-  .constant('server', 'http://localhost:3000/');
+  .constant('server', 'https://www.creeenlabelleza.com/');
