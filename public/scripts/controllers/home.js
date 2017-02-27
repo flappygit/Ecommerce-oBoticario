@@ -77,7 +77,7 @@ angular.element(window).scroll(function () {
                     $('#myModal').modal('show');
               }
 
-          }, 60000);
+          }, 30000);
 
           })
 
