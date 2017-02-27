@@ -133,6 +133,8 @@ angular.element(window).scroll(function () {
                               console.log('usuario registrado con éxito');
                               $scope.errorEmail=false;
                               $scope.errorTerminos=false;
+                              $scope.usuarioNl.correo="";
+                              $scope.usuarioNl.name="";
 
                               $(function () {
                                 $(".btnsubmitnew").css({"background":"#e53936"});
@@ -154,13 +156,16 @@ angular.element(window).scroll(function () {
 
                       });
               }else{
+                $scope.usuarioNl.correo="";
                 $(function () {
+
+
                                 $(".btnsubmitnew").css({"background":"#e53936"})
                                 $(".btnsubmitnew").text("Acepte Términos y condiciones");
                                 window.setTimeout(function(){
                                 $(".btnsubmitnew").text("Suscribirme");
 
-                                }, 3000);
+                                }, 2000);
                             })
                 $scope.errorEmail=false;
                 $scope.errorTerminos=true;

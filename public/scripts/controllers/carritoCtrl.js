@@ -236,6 +236,9 @@ angular.module('ecommerceApp')
                               console.log('usuario registrado con éxito');
                               $scope.errorEmail=false;
                               $scope.errorTerminos=false;
+                              $scope.usuarioNl.correo="";
+                              $scope.usuarioNl.name="";
+
                               $(function () {
                             $(".btnsubmitnew").css({"background":"#e53936"});
                             $(".btnsubmitnew").text("¡Suscrito!");
@@ -255,6 +258,7 @@ angular.module('ecommerceApp')
               }else{
                 $scope.errorEmail=false;
                 $scope.errorTerminos=true;
+                $scope.usuarioNl.correo="";
                   console.log('No ha aceptado términos y condiciones');
                   $(function () {
                                 $(".btnsubmitnew").css({"background":"#e53936"})
@@ -262,7 +266,7 @@ angular.module('ecommerceApp')
                                 window.setTimeout(function(){
                                 $(".btnsubmitnew").text("Suscribirme");
 
-                                }, 3000);
+                                }, 2000);
                             })
               }
           }else{
