@@ -68,7 +68,36 @@ router.get("/sendemail", function(req, res){
     var email = 'clesmesc@gmail.com';
     if( /(.+)@(.+){2,}\.(.+){2,}/.test(email) ){
 
-        var transporter = nodemailer.createTransport({
+        var transporter =  nodemailer.createTransport({
+            host: 'smtp.gmail.com',
+            port: 587,
+            secure: false, // upgrade later with STARTTLS
+            auth: {
+                user: 'boticarioecommerce@gmail.com',
+                pass: 'boti12ecommerce34'
+            }
+        });
+        var message = {
+            from: 'mailer@nodemailer.com', // listed in rfc822 message header
+            to: 'daemon@nodemailer.com', // listed in rfc822 message header
+            envelope: {
+                from: 'Daemon <deamon@nodemailer.com>', // used as MAIL FROM: address for SMTP
+                to: 'mailer@nodemailer.com, Mailer <mailer2@nodemailer.com>' // used as RCPT TO: address for SMTP
+            }
+        };
+
+        transporter.sendMail(message, function(error, info){
+            if (error){
+                console.log(error);
+                res.status(500).send(error.message);
+            } else {
+                console.log("Email sent");
+                res.status(200).jsonp(info.body);
+            }
+        });
+
+
+        /*var transporter = nodemailer.createTransport({
             service: 'Gmail',
             auth: {
                 user: 'boticarioecommerce@gmail.com',
@@ -89,7 +118,7 @@ router.get("/sendemail", function(req, res){
                 console.log("Email sent");
                 res.status(200).jsonp(info.body);
             }
-        });
+        });*/
 
     } else {
         res.send("El email no se valido Volver")
