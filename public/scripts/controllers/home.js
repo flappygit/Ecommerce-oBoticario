@@ -133,16 +133,19 @@ angular.element(window).scroll(function () {
                               console.log('usuario registrado con éxito');
                               $scope.errorEmail=false;
                               $scope.errorTerminos=false;
+
                               $(function () {
-                            $(".btnsubmitnew").css({"background":"#e53936"});
-                            $(".btnsubmitnew").text("¡Suscrito!");
-                          })
+                                $(".btnsubmitnew").css({"background":"#e53936"});
+                                $(".btnsubmitnew").text("¡Suscrito!");
+                              })
+
                           } else {
 
                             $(function () {
                                 $(".btnsubmitnew").css({"background":"#e53936"})
                                 $(".btnsubmitnew").text("Suscribirme");
                             })
+
                               console.log('Error al registrar es usuario al newsletter ' + producto.id);
                           }
                       })
@@ -153,7 +156,11 @@ angular.element(window).scroll(function () {
               }else{
                 $(function () {
                                 $(".btnsubmitnew").css({"background":"#e53936"})
+                                $(".btnsubmitnew").text("Acepte Términos y condiciones");
+                                window.setTimeout(function(){
                                 $(".btnsubmitnew").text("Suscribirme");
+
+                                }, 000);
                             })
                 $scope.errorEmail=false;
                 $scope.errorTerminos=true;
