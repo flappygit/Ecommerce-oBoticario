@@ -24,6 +24,7 @@ angular.module('ecommerceApp')
     $scope.errorTerminos=false;
     $scope.successRegister=false;
     $scope.dangerRegister=false;
+    $scope.successRegisterNew=false;
 
 
   	$(function () {
@@ -249,6 +250,8 @@ angular.module('ecommerceApp')
                               $scope.errorTerminos=false;
                               $scope.usuarioNl.correo="";
                               $scope.usuarioNl.name="";
+                              $scope.successRegisterNew=true;
+
 
                               $(function () {
                             $(".btnsubmitnew").css({"background":"#e53936"});
@@ -260,6 +263,8 @@ angular.module('ecommerceApp')
                                 $(".btnsubmitnew").text("Suscribirme");
                             })
                               console.log('Error al registrar es usuario al newsletter ' + producto.id);
+                              $scope.successRegisterNew=false;
+
                           }
                       })
                       .finally(function () {
@@ -269,6 +274,7 @@ angular.module('ecommerceApp')
               }else{
                 $scope.errorEmail=false;
                 $scope.errorTerminos=true;
+                $scope.successRegisterNew=false;
                 $scope.usuarioNl.correo="";
                   console.log('No ha aceptado términos y condiciones');
                   $(function () {
@@ -285,9 +291,12 @@ angular.module('ecommerceApp')
                                 $(".btnsubmitnew").css({"background":"#e53936"})
                                 $(".btnsubmitnew").text("Suscribirme");
                             })  
+
               console.log('No se ha ingresado el correo');
               $scope.errorEmail=true;
-                $scope.errorTerminos=false;
+              $scope.errorTerminos=false;
+              $scope.successRegisterNew=false;
+
           }
       }
 
