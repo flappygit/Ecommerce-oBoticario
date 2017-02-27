@@ -258,14 +258,18 @@ angular.module('ecommerceApp')
                   console.log('No ha aceptado términos y condiciones');
                   $(function () {
                                 $(".btnsubmitnew").css({"background":"#e53936"})
+                                $(".btnsubmitnew").text("Acepte Términos y condiciones");
+                                window.setTimeout(function(){
                                 $(".btnsubmitnew").text("Suscribirme");
+
+                                }, 3000);
                             })
               }
           }else{
             $(function () {
                                 $(".btnsubmitnew").css({"background":"#e53936"})
                                 $(".btnsubmitnew").text("Suscribirme");
-                            })
+                            })  
               console.log('No se ha ingresado el correo');
               $scope.errorEmail=true;
                 $scope.errorTerminos=false;
