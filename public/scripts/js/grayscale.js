@@ -94,6 +94,7 @@ $(window).scroll(function() {
         var vd=true;
         if ($(window).width() <= 992) {
           tinysort('.line-home>div',{attr:'title'});
+          
         }else{
           tinysort('.line-home>div',{attr:'accesskey'});
         }

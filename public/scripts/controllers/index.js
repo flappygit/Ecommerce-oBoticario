@@ -16,8 +16,7 @@ angular.module('ecommerceApp')
 
         //Jquery 
         $(function () {
-            
-
+        
         $(".navbar").hide();
         $("#nav-icon-sticky").hide();
         $(".footer").hide();
@@ -29,6 +28,7 @@ angular.module('ecommerceApp')
                 tinysort('.line-home>div',{attr:'title'});
             }else{
                 tinysort('.line-home>div',{attr:'accesskey'});
+            
             }
             
         });

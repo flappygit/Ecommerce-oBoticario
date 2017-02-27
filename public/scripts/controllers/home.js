@@ -60,6 +60,13 @@ angular.element(window).scroll(function () {
   });
 
   angular.element(window).ready(function () {
+    $(function () {
+      if ($(window).width() <= 992) {
+          tinysort('.line-home>div',{attr:'title'});
+        }else{
+          tinysort('.line-home>div',{attr:'accesskey'});
+        }
+    })
 
     if ($location.path()=="/inicio") {
 
