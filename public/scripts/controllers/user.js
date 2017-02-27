@@ -58,7 +58,9 @@ $("body").css({'overflow-y':'scroll','width':'100%'});
                                 ,function(response) {
                                   console.log(response);
                                   if (!response.error) {
-                                     publicacion.index = i;
+
+
+    publicacion.index = i;
 
                                 publicacion.likes_count=response.reactions.summary.total_count;
 
@@ -83,17 +85,16 @@ $("body").css({'overflow-y':'scroll','width':'100%'});
 
                                 }
 
+
                                   }else{
-                                    alert("error no existe");
+                                    alert("no existe");
                                   }
-                                    
+                                 
 
 
 
 
                                 },{access_token: token});
-                                  }
-                                  }
 
                             }else{
                               Facebook.login(function(responses1) {
