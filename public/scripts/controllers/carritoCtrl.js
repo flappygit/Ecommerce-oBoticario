@@ -212,6 +212,54 @@ angular.module('ecommerceApp')
 
 
 
+ $scope.usuarioNl = {nombre:'', correo:''};
+      $scope.terminosCondiciones = '';
+      
+      $scope.registrarNewsletter = function () {
+
+            $(function () {
+              $(".btnsubmitnew").css({"background":"#ff9796"})
+              $(".btnsubmitnew").text("Enviando ...")
+            })
+          if ($scope.usuarioNl.correo != '') {
+              if ($scope.terminosCondiciones == 'aceptado') {
+                  $http({
+                      url: 'https://www.creeenlabelleza.com/usuarios-nl/add',
+                      dataType: 'json',
+                      method: 'POST',
+                      data: $scope.usuarioNl
+                  })
+                      .then(function (request) {
+                          if (request.data.success) {
+                              console.log('usuario registrado con éxito');
+                              $scope.errorEmail=false;
+                              $scope.errorTerminos=false;
+                              $(function () {
+                            $(".btnsubmitnew").css({"background":"#e53936"});
+                            $(".btnsubmitnew").text("¡Suscrito!");
+                          })
+                          } else {
+                              console.log('Error al registrar es usuario al newsletter ' + producto.id);
+                          }
+                      })
+                      .finally(function () {
+
+
+                      });
+              }else{
+                $scope.errorEmail=false;
+                $scope.errorTerminos=true;
+                  console.log('No ha aceptado términos y condiciones');
+              }
+          }else{
+              console.log('No se ha ingresado el correo');
+              $scope.errorEmail=true;
+                $scope.errorTerminos=false;
+          }
+      }
+
+
+
 
 
 
