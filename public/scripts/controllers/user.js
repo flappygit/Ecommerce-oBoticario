@@ -56,7 +56,7 @@ $("body").css({'overflow-y':'scroll','width':'100%'});
                               var token = response.authResponse.accessToken;
                               Facebook.api('/'+publicacion.id_post+"/?fields=reactions.summary(1)"
                                 ,function(response) {
-                                  console.log(i);
+                                  console.log(response);
 
                                      publicacion.index = i;
 
@@ -69,14 +69,19 @@ $("body").css({'overflow-y':'scroll','width':'100%'});
                                 }
 
 
-                                $scope.values.push({'countTo':publicacion.likes_count,'countFrom':0,'progressValue':publicacion.likes_count*100/publicacion.likes});
+                                $scope.values.push({'countTo':publicacion.likes_count,'countFrom':0,'progressValue':publicacion.likes_count*100/publicacion.likes,'idpost':publicacion.id_post});
                                 console.log($scope.values);
 
 
 
                                 $scope.restante_likes=publicacion.likes-publicacion.likes_count;
+                                if ($scope.restante_likes<=0) {
+                                    $scope.values.push({'finallyLikes':true});
+                                    //actualizar o finalizar el tracking
 
 
+
+                                }
 
                                 },{access_token: token});
 
