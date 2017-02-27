@@ -63,8 +63,8 @@ router.get('/get/:id',function(req,res,next){
 });
 router.get("/sendemail", function(req, res){
 
-    var mailAccountUser = '<boticarioecommerce@gmail.com>';
-    var mailAccountPassword = '<boti12ecommerce34>';
+    var mailAccountUser = 'boticarioecommerce@gmail.com';
+    var mailAccountPassword = 'boti12ecommerce34';
 
     var fromEmailAddress = '<boticarioecommerce@gmail.com>';
     var toEmailAddress = 'clesmesc@gmail.com';
