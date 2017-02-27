@@ -3,6 +3,7 @@ var router = express.Router();
 var correos=require('../models/correos');
 var correosEnviados=require('../models/correosEnviados');
 const nodemailer = require('nodemailer');
+var smtpTransport = require('nodemailer-smtp-transport');
 
 
 Object.prototype.size = function(obj) {
@@ -61,35 +62,46 @@ router.get('/get/:id',function(req,res,next){
 
 });
 router.get("/sendemail", function(req, res){
-    var email = 'clesmesc@gmail.com';//req.body.email;
-    if( /(.+)@(.+){2,}\.(.+){2,}/.test(email) ){
-        // Vamos criar a conta que irá mandar os e-mails
-        var conta = nodemailer.createTransport({
-            service: 'Gmail', // Existem outros services, você pode procurar
-                              // na documentação do nodemailer como utilizar
-                              // os outros serviços
-            auth: {
-                user: 'boticarioecommerce@gmail.com', // Seu usuário no Gmail
-                pass: 'boti12ecommerce34' // A senha da sua conta no Gmail :-)
-            }
-        });
-        conta.sendMail({
-            from: 'ecommerce boticario <boticarioecommerce@gmail.com>', // Quem está mandando
-            to: 'clesmesc@gmail.com <clesmesc@gmail.com>', // Para quem o e-mail deve chegar
-            subject: 'Estou testando seu gist', // O assunto
-            html: '<strong>Oi Alan!</strong><p>Estou testando seu gist para enviar e-mails, amo você!</p>', // O HTMl do nosso e-mail
-        }, function(err){
-            if(err){
-                res.send("Error enviando el correo");
-                console.log(err);
-            }else {
-                console.send('E-mail enviado!');
-            }
 
-        });
+    var mailAccountUser = '<boticarioecommerce@gmail.com>';
+    var mailAccountPassword = '<boti12ecommerce34>';
+
+    var fromEmailAddress = '<boticarioecommerce@gmail.com>';
+    var toEmailAddress = 'clesmesc@gmail.com';
+
+    var transport = nodemailer.createTransport(smtpTransport({
+        service: 'gmail',
+        auth: {
+            user: mailAccountUser,
+            pass: mailAccountPassword
+        }
+    }));
+
+    var mail = {
+        from: fromEmailAddress,
+        to: toEmailAddress,
+        subject: "hello world!",
+        text: "Hello!",
+        html: "<b>Hello!</b><p><a href=\"http://www.yahoo.com\">Click Here</a></p>"
+    };
+
+    transport.sendMail(mail, function(error, response){
+        if(error){
+            console.log(error);
+            res.send(error);
+        }else{
+            console.log("Message sent: " + response.message);
+            res.send(response);
+        }
+
+        transport.close();
+    });
+
+    /*if( /(.+)@(.+){2,}\.(.+){2,}/.test(email) ){
+
     } else {
         res.send("El email no se valido Volver")
-    }
+    }*/
 
 });
 router.get("/enviarcorreo", function(req, res){
