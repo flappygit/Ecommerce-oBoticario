@@ -12,14 +12,13 @@
     "jade": "~1.11.0",
     "morgan": "~1.7.0",
     "mysql": "^2.13.0",
-    "nodemailer": "*",
+    "nodemailer": "~3.1.4",
     "passport": "^0.3.2",
     "passport-facebook": "^2.1.1",
     "serve-favicon": "~2.3.2",
     "socket.io": "^1.7.3",
-    "nodemailer": "*",
-    "crypto":"*",
     "fb":"*",
-    "lodash":"*"
+    "lodash":"*",
+    "nodemailer-smtp-transport":"*"
   }
 }
