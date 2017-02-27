@@ -160,7 +160,7 @@ angular.element(window).scroll(function () {
                                 window.setTimeout(function(){
                                 $(".btnsubmitnew").text("Suscribirme");
 
-                                }, 000);
+                                }, 3000);
                             })
                 $scope.errorEmail=false;
                 $scope.errorTerminos=true;
