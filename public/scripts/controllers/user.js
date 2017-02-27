@@ -13,11 +13,11 @@ angular.module('ecommerceApp')
 
 function removeItem ( arr, item ) {
 
-          var i = arr.indexOf( item );
+          var a = arr.indexOf( item );
 
-          if ( i !== -1 ) {
-              $scope.$parent.publicaciones=$scope.$parent.publicaciones-1;
-              arr.splice( i, 1 );
+          if ( a !== -1 ) {
+              $scope.publicaciones=$scope.publicaciones-1;
+              arr.splice( a, 1 );
               if ($scope.publicacion.length==0 ) {
                       $scope.error = 'No tiene productos publicados';
 
@@ -144,7 +144,7 @@ $("body").css({'overflow-y':'scroll','width':'100%'});
                                 $scope.restante_likes=publicacion.likes-publicacion.likes_count;
                               }else{
                                     eliminarpubli(publicacion);
-                                
+
 
                               }
 
