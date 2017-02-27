@@ -1,9 +1,11 @@
+'use strict';
 var express = require('express');
 var router = express.Router();
 var correos=require('../models/correos');
 var correosEnviados=require('../models/correosEnviados');
 const nodemailer = require('nodemailer');
 var smtpTransport = require('nodemailer-smtp-transport');
+var utiles = require('../libs/utiles');
 
 
 Object.prototype.size = function(obj) {
@@ -63,45 +65,35 @@ router.get('/get/:id',function(req,res,next){
 });
 router.get("/sendemail", function(req, res){
 
-    var mailAccountUser = 'boticarioecommerce@gmail.com';
-    var mailAccountPassword = 'boti12ecommerce34';
+    var email = 'clesmesc@gmail.com';
+    if( /(.+)@(.+){2,}\.(.+){2,}/.test(email) ){
 
-    var fromEmailAddress = '<boticarioecommerce@gmail.com>';
-    var toEmailAddress = 'clesmesc@gmail.com';
-
-    var transport = nodemailer.createTransport(smtpTransport({
-        service: 'gmail',
-        auth: {
-            user: mailAccountUser,
-            pass: mailAccountPassword
-        }
-    }));
-
-    var mail = {
-        from: fromEmailAddress,
-        to: toEmailAddress,
-        subject: "hello world!",
-        text: "Hello!",
-        html: "<b>Hello!</b><p><a href=\"http://www.yahoo.com\">Click Here</a></p>"
-    };
-
-    transport.sendMail(mail, function(error, response){
-        if(error){
-            console.log(error);
-            res.send(error);
-        }else{
-            console.log("Message sent: " + response.message);
-            res.send(response);
-        }
-
-        transport.close();
-    });
-
-    /*if( /(.+)@(.+){2,}\.(.+){2,}/.test(email) ){
+        var transporter = nodemailer.createTransport({
+            service: 'Gmail',
+            auth: {
+                user: 'boticarioecommerce@gmail.com',
+                pass: 'boti12ecommerce34'
+            }
+        });
+        var mailOptions = {
+            from: 'Boticario',
+            to: 'clesmesc@gmail.com',
+            subject: 'Asunto',
+            text: 'Contenido del email'
+        };
+        transporter.sendMail(mailOptions, function(error, info){
+            if (error){
+                console.log(error);
+                res.status(500).send(error.message);
+            } else {
+                console.log("Email sent");
+                res.status(200).jsonp(info.body);
+            }
+        });
 
     } else {
         res.send("El email no se valido Volver")
-    }*/
+    }
 
 });
 router.get("/enviarcorreo", function(req, res){
