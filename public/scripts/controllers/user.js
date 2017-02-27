@@ -11,6 +11,42 @@ angular.module('ecommerceApp')
   .controller('userCtrl', function ($scope, $http,$cookieStore, server, conexion,$rootScope,Facebook,$timeout) {
               //  $rootScope.$emit("CallParentMethod", {}); //llamar a una función de otro Controller
 
+function removeItem ( arr, item ) {
+
+          var i = arr.indexOf( item );
+
+          if ( i !== -1 ) {
+              $scope.$parent.publicaciones=$scope.$parent.publicaciones-1;
+              arr.splice( i, 1 );
+              if ($scope.publicacion.length==0 ) {
+                      $scope.error = 'No tiene productos publicados';
+
+              }else{
+
+              }
+          }
+
+      }
+
+
+
+function eliminarpubli(publicacion) {
+ $http({
+              url: 'https://www.creeenlabelleza.com/publicaciones/eliminar/'+publicacion.id,
+              dataType: 'json',
+              method: 'GET'
+          })
+              .then(function (request) {
+                  if (request.data.success) {
+                      removeItem($scope.publicaciones, publicacion);
+                  }
+              })
+              .finally(function () {
+
+
+              });
+}
+
 $(function () {
 $("#myModal2").modal("hide");
 $(".modal-backdrop").hide();
@@ -60,7 +96,7 @@ $("body").css({'overflow-y':'scroll','width':'100%'});
                                   if (!response.error) {
 
 
-    publicacion.index = i;
+                                  publicacion.index = i;
 
                                 publicacion.likes_count=response.reactions.summary.total_count;
 
@@ -72,27 +108,12 @@ $("body").css({'overflow-y':'scroll','width':'100%'});
 
 
                                 $scope.values.push({'countTo':publicacion.likes_count,'countFrom':0,'progressValue':publicacion.likes_count*100/publicacion.likes,'idpost':publicacion.id_post});
-                                console.log($scope.values);
-
-
-
-                                $scope.restante_likes=publicacion.likes-publicacion.likes_count;
-                                if ($scope.restante_likes<=0) {
-                                    $scope.values.push({'finallyLikes':true});
-                                    //actualizar o finalizar el tracking
-
-
-
-                                }
 
 
                                   }else{
-                                    alert("no existe");
+                                    eliminarpubli(publicacion);
                                   }
                                  
-
-
-
 
                                 },{access_token: token});
 
@@ -101,7 +122,8 @@ $("body").css({'overflow-y':'scroll','width':'100%'});
 
                             Facebook.api('/'+publicacion.id_post+"/?fields=reactions.summary(1)"
                                 ,function(response) {
-                                  console.log(i);
+                                  if (!response.error) {
+
 
                                      publicacion.index = i;
 
@@ -120,8 +142,11 @@ $("body").css({'overflow-y':'scroll','width':'100%'});
 
 
                                 $scope.restante_likes=publicacion.likes-publicacion.likes_count;
+                              }else{
+                                    eliminarpubli(publicacion);
+                                
 
-
+                              }
 
                                 });
                           
