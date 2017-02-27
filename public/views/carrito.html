@@ -32,8 +32,7 @@
             <form ng-if="descuento == 0" >
                 <input type="text"  ng-model="producto.codigo_promo" placeholder="Código de descuento" class="form-control code-promo" title="Codigo de descuento"  ng-enter="agregarCodigoPromo(producto)">
             </form>
-            <label ng-show="producto.codigo_promo != null" class="form-control code-promo" title="Codigo de descuento">Código registrado</label>
-
+                <small ng-if="producto.codigo_promo != null && successRegister==true" style="color:#05a301;" ><b>Código registrado</b></small>
         </div>
 
         <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1  div-delete-product">

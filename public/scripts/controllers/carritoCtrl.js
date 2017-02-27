@@ -22,6 +22,8 @@ angular.module('ecommerceApp')
     $scope.errorCompartidos=false;
     $scope.errorEmail=false;
     $scope.errorTerminos=false;
+    $scope.successRegister=false;
+
   	$(function () {
 
       $(".footer").show();
@@ -50,8 +52,10 @@ angular.module('ecommerceApp')
                     
                       request.data.rows.forEach(function(producto) {
                           $scope.TotalLike= $scope.TotalLike+producto.likes;
-                          if (producto.codigo_promo != null && producto.codigo_promo != '' ){
+                            if (producto.codigo_promo != null && producto.codigo_promo != '' ){
                               $scope.descuento = 40;
+                              $scope.successRegister=true;
+
                           }
                       });
                     }else{
@@ -109,7 +113,8 @@ angular.module('ecommerceApp')
               .then(function (request) {
                   if (request.data.success) {
                       if (request.data.code){
-                          console.log('codigo validado');
+                          $scope.descuento=scope.descuento+40;
+                          $scope.successRegister=true;
 
                       }else {
                           console.log('codigo NO validado');
