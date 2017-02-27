@@ -113,11 +113,12 @@ angular.element(window).scroll(function () {
 
       $scope.usuarioNl = {nombre:'', correo:''};
       $scope.terminosCondiciones = '';
+
       $scope.registrarNewsletter = function () {
-        alert("Entraaa");
+
             $(function () {
               $(".btnsubmitnew").css({"background":"#ff9796"})
-              $(".btnsubmitnew").text("Enviando ...")
+              $(".btnsubmitnew").text("Enviando ...");
             })
           if ($scope.usuarioNl.correo != '') {
               if ($scope.terminosCondiciones == 'aceptado') {
@@ -137,6 +138,11 @@ angular.element(window).scroll(function () {
                             $(".btnsubmitnew").text("¡Suscrito!");
                           })
                           } else {
+
+                            $(function () {
+                                $(".btnsubmitnew").css({"background":"#e53936"})
+                                $(".btnsubmitnew").text("Suscribirme");
+                            })
                               console.log('Error al registrar es usuario al newsletter ' + producto.id);
                           }
                       })
@@ -145,11 +151,19 @@ angular.element(window).scroll(function () {
 
                       });
               }else{
+                $(function () {
+                                $(".btnsubmitnew").css({"background":"#e53936"})
+                                $(".btnsubmitnew").text("Suscribirme");
+                            })
                 $scope.errorEmail=false;
                 $scope.errorTerminos=true;
                   console.log('No ha aceptado términos y condiciones');
               }
           }else{
+            $(function () {
+                                $(".btnsubmitnew").css({"background":"#e53936"})
+                                $(".btnsubmitnew").text("Suscribirme");
+                            })
               console.log('No se ha ingresado el correo');
               $scope.errorEmail=true;
                 $scope.errorTerminos=false;

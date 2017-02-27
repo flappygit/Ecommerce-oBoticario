@@ -241,6 +241,10 @@ angular.module('ecommerceApp')
                             $(".btnsubmitnew").text("¡Suscrito!");
                           })
                           } else {
+                            $(function () {
+                                $(".btnsubmitnew").css({"background":"#e53936"})
+                                $(".btnsubmitnew").text("Suscribirme");
+                            })
                               console.log('Error al registrar es usuario al newsletter ' + producto.id);
                           }
                       })
@@ -252,8 +256,16 @@ angular.module('ecommerceApp')
                 $scope.errorEmail=false;
                 $scope.errorTerminos=true;
                   console.log('No ha aceptado términos y condiciones');
+                  $(function () {
+                                $(".btnsubmitnew").css({"background":"#e53936"})
+                                $(".btnsubmitnew").text("Suscribirme");
+                            })
               }
           }else{
+            $(function () {
+                                $(".btnsubmitnew").css({"background":"#e53936"})
+                                $(".btnsubmitnew").text("Suscribirme");
+                            })
               console.log('No se ha ingresado el correo');
               $scope.errorEmail=true;
                 $scope.errorTerminos=false;
