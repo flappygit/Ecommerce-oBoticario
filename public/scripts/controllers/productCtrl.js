@@ -30,7 +30,7 @@ angular.module('ecommerceApp')
       }
     function getpublicacionesPorId() {
       $http({
-                  url: 'https://www.creeenlabelleza.com/publicaciones/getPublicadoPorUsuario/'+$cookieStore.get('id'),
+                  url: server+'publicaciones/getPublicadoPorUsuario/'+$cookieStore.get('id'),
                   dataType: 'json',
                   method: 'GET'
               })
@@ -108,7 +108,7 @@ angular.module('ecommerceApp')
 
           if (verificado){
               $http({
-                  url: 'https://www.creeenlabelleza.com/publicaciones/addCarrito',
+                  url: server+'publicaciones/addCarrito',
                   dataType: 'json',
                   method: 'POST',
                   data: datos

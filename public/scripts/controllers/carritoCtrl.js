@@ -8,7 +8,7 @@
  * Controller of the ecommerceApp
  */
 angular.module('ecommerceApp')
-  .controller('CarritoCtrl', function ($scope, $cookieStore, $http,$location,Facebook){
+  .controller('CarritoCtrl', function ($scope, $cookieStore, $http,$location,Facebook, server){
 
 
 
@@ -38,7 +38,7 @@ angular.module('ecommerceApp')
 
 
       $http({
-          url: 'https://www.creeenlabelleza.com/publicaciones/getUsuario/'+$cookieStore.get('id'),
+          url: server+'publicaciones/getUsuario/'+$cookieStore.get('id'),
           dataType: 'json',
           method: 'GET'
       })
@@ -80,7 +80,7 @@ angular.module('ecommerceApp')
       $scope.eliminarProducto = function (producto) {
 
           $http({
-              url: 'https://www.creeenlabelleza.com/publicaciones/eliminar/'+producto.id,
+              url: server+'publicaciones/eliminar/'+producto.id,
               dataType: 'json',
               method: 'GET'
           })
@@ -101,7 +101,7 @@ angular.module('ecommerceApp')
 
       $scope.agregarCodigoPromo = function (producto) {
           $http({
-              url: 'https://www.creeenlabelleza.com/publicaciones/validarCodigo',
+              url: server+'publicaciones/validarCodigo',
               dataType: 'json',
               method: 'POST',
               data: {usuario:$cookieStore.get('id'), codigo:producto.codigo_promo, producto:producto.id}
@@ -172,7 +172,7 @@ angular.module('ecommerceApp')
                                     } else {
                                         console.log(response);
                                         $http({
-                                            url: 'https://www.creeenlabelleza.com/publicaciones/productoPublicado',
+                                            url: server+'publicaciones/productoPublicado',
                                             dataType: 'json',
                                             method: 'POST',
                                             data: {id_post:response.id, caption_title:'', description:'', messages_tags:'', id:producto.id}
@@ -226,7 +226,7 @@ angular.module('ecommerceApp')
           if (correo != '') {
               if ($scope.terminosCondiciones == 'aceptado') {
                   $http({
-                      url: 'https://www.creeenlabelleza.com/usuarios-nl/add',
+                      url: server+'usuarios-nl/add',
                       dataType: 'json',
                       method: 'POST',
                       data: $scope.usuarioNl

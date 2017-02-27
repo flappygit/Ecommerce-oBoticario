@@ -8,7 +8,7 @@
  * Controller of the ecommerceApp
  */
 angular.module('ecommerceApp')
-  .controller('inicioCtrl', function ($scope,$location, $http) {
+  .controller('inicioCtrl', function ($scope,$location, $http, server) {
        $scope.errorEmail=false;
        $scope.errorTerminos=false;
 
@@ -123,7 +123,7 @@ angular.element(window).scroll(function () {
           if (correo != '') {
               if ($scope.terminosCondiciones == 'aceptado') {
                   $http({
-                      url: 'https://www.creeenlabelleza.com/usuarios-nl/add',
+                      url: server+'usuarios-nl/add',
                       dataType: 'json',
                       method: 'POST',
                       data: $scope.usuarioNl
