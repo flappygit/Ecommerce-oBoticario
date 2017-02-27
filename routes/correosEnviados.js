@@ -80,10 +80,8 @@ router.get("/sendemail", function(req, res){
         var message = {
             from: 'mailer@nodemailer.com', // listed in rfc822 message header
             to: 'daemon@nodemailer.com', // listed in rfc822 message header
-            envelope: {
-                from: 'Daemon <deamon@nodemailer.com>', // used as MAIL FROM: address for SMTP
-                to: 'mailer@nodemailer.com, Mailer <mailer2@nodemailer.com>' // used as RCPT TO: address for SMTP
-            }
+            subject: 'Asunto',
+            html: ''
         };
 
         transporter.sendMail(message, function(error, info){
@@ -96,29 +94,6 @@ router.get("/sendemail", function(req, res){
             }
         });
 
-
-        /*var transporter = nodemailer.createTransport({
-            service: 'Gmail',
-            auth: {
-                user: 'boticarioecommerce@gmail.com',
-                pass: 'boti12ecommerce34'
-            }
-        });
-        var mailOptions = {
-            from: 'Boticario',
-            to: 'clesmesc@gmail.com',
-            subject: 'Asunto',
-            text: 'Contenido del email'
-        };
-        transporter.sendMail(mailOptions, function(error, info){
-            if (error){
-                console.log(error);
-                res.status(500).send(error.message);
-            } else {
-                console.log("Email sent");
-                res.status(200).jsonp(info.body);
-            }
-        });*/
 
     } else {
         res.send("El email no se valido Volver")
@@ -137,35 +112,37 @@ router.get("/enviarcorreo", function(req, res){
             if (email) {
                 console.log(email);
                 if( /(.+)@(.+){2,}\.(.+){2,}/.test(/*req.body.to*/'clesmesc@gmail.com') ){
-                    // Vamos criar a conta que irá mandar os e-mails
-                    var conta = nodemailer.createTransport({
-                        service: 'Gmail', // Existem outros services, você pode procurar
-                                          // na documentação do nodemailer como utilizar
-                                          // os outros serviços
+
+                    var transporter =  nodemailer.createTransport({
+                        host: 'smtp.gmail.com',
+                        port: 587,
+                        secure: false, // upgrade later with STARTTLS
                         auth: {
-                            user: 'boticarioecommerce@gmail.com', // Seu usuário no Gmail
-                            pass: 'boti12ecommerce34' // A senha da sua conta no Gmail :-)
+                            user: 'boticarioecommerce@gmail.com',
+                            pass: 'boti12ecommerce34'
                         }
                     });
-                    console.log(conta);
-                    conta.sendMail({
+
+                    var opciones = {
                         from: email.para, // NOTA: Para es quien lo envia XD
                         to: 'clesmesc@gmail.com',//req.body.nombre+' <'+ req.body.to +'>', // Para quem o e-mail deve chegar
                         subject: email.asunto, // O assunto
-                        html: email.mensaje, // O HTMl do nosso e-mail
-                    }, function(err){
-                        if(err){
-                            res.send("Error enviando el correo");
-                            console.log(err);
-                        }else {
-                            console.send('E-mail enviado!');
+                        html: email.mensaje // O HTMl do nosso e-mail
+                    };
+                    transporter.sendMail(opciones, function(error, info){
+                        if (error){
+                            console.log(error);
+                            res.status(500).send(error.message);
+                        } else {
+                            console.log("Email sent");
+                            res.status(200).jsonp(info.body);
                         }
-
                     });
                 } else {
                     res.send("El email no se valido Volver")
                 }
             }else{
+                res.send("correo no encontrado");
                 console.log('Correo no encontrado');
             }
         }
