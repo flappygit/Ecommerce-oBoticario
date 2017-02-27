@@ -122,7 +122,6 @@
                     <div ng-if="errorCompartidos" class="alert alert-danger fade in">
                         <strong>Error !</strong> en la publicación, vuelva a intentarlo
                     </div>
-                <h4 ng-if="productos.length > 1">Vamos, sigue compartiendo. <b>#CreeEnlaBelleza</b> </h4>   
                 </div>
 
                 <div class="row" ng-repeat="producto in productos" style="padding-left:30px;padding-right:30px;">
@@ -138,7 +137,7 @@
                     <div class="col-lg-5 col-md-5  text-center div-share-product">
                             <input type="text" name="estadoFacebook" ng-model="producto.estadoFacebook" class="form-control text-center" placeholder="Haz un comentario...">
                             <small><b>*Comenta con el Hashtag #CreeEnLaBelleza</b></small> <br><br>
-                            <a class="btnn1 btn-social btn-lg btn-facebook"  ng-click="compartirProducto(producto)" ><i class="fa fa-facebook"></i>Compartir publicación</a>
+                            <a class="btnn1 btn-social btn-lg btn-facebook"  ng-click="compartirProducto(producto)" ><i class="fa fa-facebook"></i>Compartir</a>
 
                     </div>
 
