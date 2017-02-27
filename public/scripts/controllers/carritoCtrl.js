@@ -117,8 +117,12 @@ angular.module('ecommerceApp')
                       if (request.data.code){
                           $scope.descuento=$scope.descuento+40;
                           $scope.successRegister=true;
+                          $scope.dangerRegister=false;
+
 
                       }else {
+                          $scope.successRegister=false;
+
                           $scope.dangerRegister=true;
                           
 
