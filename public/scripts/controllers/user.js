@@ -57,7 +57,7 @@ $("body").css({'overflow-y':'scroll','width':'100%'});
                               Facebook.api('/'+publicacion.id_post+"/?fields=reactions.summary(1)"
                                 ,function(response) {
                                   console.log(response);
-
+                                  if (!response.error) {
                                      publicacion.index = i;
 
                                 publicacion.likes_count=response.reactions.summary.total_count;
@@ -83,7 +83,17 @@ $("body").css({'overflow-y':'scroll','width':'100%'});
 
                                 }
 
+                                  }else{
+                                    alert("error no existe");
+                                  }
+                                    
+
+
+
+
                                 },{access_token: token});
+                                  }
+                                  }
 
                             }else{
                               Facebook.login(function(responses1) {
