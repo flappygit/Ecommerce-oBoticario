@@ -1,5 +1,12 @@
 @media (max-width:1200px) {
-
+	.caption>h4{padding-left:0px;}.caption{text-align:center;}
+.thumbnail img {height:auto;}
+.list-prices-thumbnail{
+  margin-top:0px;
+}
+.list-prices-thumbnail>li>h4{
+  padding-top:0;padding-bottom:0;padding-left:0;margin:0;
+}
 }
 @media (max-width:1024px) {
 	h1{
@@ -9,6 +16,9 @@
 }
 
 @media (max-width:992px) {
+	.links-product{
+		text-align:center;
+	}
 	.btn-product{
   margin-top:0px;
 }
@@ -112,6 +122,20 @@
 }
 
 @media (max-width:768px) {
+	.referencia{
+  		float:none;
+  		display:inline-block;
+	}
+	.div-description-product{
+  		padding-left:25px;
+  		margin-top:40px;
+	}
+	.div-img-details{
+		padding-right:0px;
+	}
+	.div-img-details img{
+		width:100%;
+	}
 	.intro {height:700px;}
 	.a-close-menu{
   position:absolute;top:20px;right:20px;
@@ -271,6 +295,9 @@ h4,.h4-cart{
 
 
 @media (max-width:360px) {
+	.list-prices-details{
+  margin-top:0px;
+}
 	.div-lily-content{
   				margin-top:120px;
 			}
@@ -303,7 +330,7 @@ h3,.li-price-money{
   font-size:25px;
 }
 h4,.h4-cart{
-  font-size:19px;color:#000;
+  font-size:25px;color:#000;
 }
 
 .navbar-brand img{width:160px;}

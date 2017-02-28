@@ -25,7 +25,7 @@
                                         </div>
 
                                     </div><!-- Carousel nav -->
-                <div class=" hidden-xs" id="slider-thumbs">
+                <div class=" hidden-sm hidden-xs" id="slider-thumbs">
 
                                          <ul class="hide-bullets list-pagination-image">
 
@@ -49,7 +49,7 @@
                             </div>
 
           <div class="col-lg-6 div-description-product" >
-		<p>	<span style="color:#05a301;">Disponible</span> <span style="float:right;"><img src="images/icons/rating-bar.png"></span></p> 
+		<p>	<span style="color:#05a301;">Disponible</span> <span class="referencia"><img src="images/icons/rating-bar.png"></span></p> 
 
 		<p>	<b>Categoría:</b> perfumes <span style="float:right;">Ref: 1123214</span></p> 
 		<h2>Si quieres dejar huella, Malbec es la mejor opción</h2>
@@ -60,10 +60,13 @@
                     <li ><h4 class="f-gray li-price-money"> <small>Antes</small><br> <span class="text-sub">$133.800</span></h4> </li>
                     <li><h3><small class="f-black">Ahora</small><br> 500 likes</h3></li>
                 </ul>
+
+                <div class="links-product">
+
                 <a href="" ng-click="anadirProducto('malbec')" style="position:relative;" class="btn btn2"><span >{{addCart}}</span> <img src="images/icons/icon-add.png" style="position:absolute;top:14px;right:10px;" ></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <a  ng-href="#/Carrito" ng-hide="addCart=='COMPRADO'"  class="btn btn1">Ir al carrito de compras</a>
                 <a  ng-href="#/user" ng-if="addCart=='COMPRADO'"  class="btn btn1">Ver el estado de la compra</a>
-                
+                </div>                
 
 	</div>
 
@@ -109,7 +112,7 @@
 					<div class="row">
                     <div id="effect-1" class="effects clearfix">
 
-						<div class="col-lg-4" >
+						<div class="col-sm-4" >
 						<div class="thumbnail">
 						<img src="images/lily/mini-img-lily.png" alt="Kit Lily - oBoticário Colombia.">
                         <div class="overlay1">
@@ -126,7 +129,7 @@
 						</div>
           				</div>
                 		</div>
-                		<div class="col-lg-4" >
+                		<div class="col-sm-4" >
                 		<div class="thumbnail">
 						<img src="images/make-b/mini-img-makeb.png" alt="Kit Make B - oBoticário Colombia">
                         <div class="overlay1">
@@ -144,7 +147,7 @@
 						</div>
           				</div>
                 		</div>
-                	   <div class="col-lg-4" >
+                	   <div class="col-sm-4" >
                         <div class="thumbnail">
                         <img src="images/nativa/mini-img-nativa.png" alt="Nativa Spa - oBoticário Colombia">
                         <div class="overlay1">
