@@ -25,6 +25,39 @@ url('../fonts/OpenSans.ttf') format('truetype'),
 url('../fonts/OpenSans.svg') format('svg');
 }
 
+
+@font-face {
+font-family: 'oBoticario';
+src: url('../fonts/oBoticario.eot');
+src: url('../fonts/oBoticario?#iefix') format('embedded-opentype'),
+url('../fonts/oBoticario.woff') format('woff'),
+url('../fonts/oBoticario.ttf') format('truetype'),
+url('../fonts/oBoticario.svg#futura_bk_btbook') format('svg');
+}
+@font-face {
+font-family: 'EffraRegular';
+src: url('../fonts/Effra_Std_Rg.eot');
+src: url('../fonts/Effra_Std_Rg.eot?#iefix') format('embedded-opentype'),
+url('../fonts/Effra_Std_Rg.woff') format('woff'),
+url('../fonts/Effra_Std_Rg.ttf') format('truetype'),
+url('../fonts/Effra_Std_Rg.svg') format('svg');
+}
+
+@font-face {
+font-family: 'EffraBold';src: url('../fonts/Effra_Std_Bd.eot');
+src: url('../fonts/Effra_Std_Bd.eot?#iefix') format('embedded-opentype'),url('../fonts/Effra_Std_Bd.woff') format('woff'),url('../fonts/Effra_Std_Bd.ttf') format('truetype'),url('../fonts/Effra_Std_Bd.svg') format('svg');
+}
+@font-face {
+font-family: 'EffraHevy';src: url('../fonts/Effra_Std_He.eot');src: url('../fonts/Effra_Std_He.eot?#iefix') format('embedded-opentype'),url('../fonts/Effra_Std_He.woff') format('woff'),url('../fonts/Effra_Std_He.ttf') format('truetype'),url('../fonts/Effra_Std_He.svg') format('svg');}
+
+@font-face {
+font-family: 'EffraLight';src: url('../fonts/Effra_Std_Lt.eot');src: url('../fonts/Effra_Std_Lt.eot?#iefix') format('embedded-opentype'),url('../fonts/Effra_Std_Lt.woff') format('woff'),url('../fonts/Effra_Std_Lt.ttf') format('truetype'),url('../fonts/Effra_Std_Lt.svg') format('svg');}
+
+
+
+
+
+
 .hidden{
   display:none;
 }
@@ -33,7 +66,7 @@ body {
   height: 100%;
   background-color:#ededed;
   overflow-x:hidden;
-  font-family: OpenSans;
+  font-family:EffraRegular;
   font-size:15px;
 }
 html {
@@ -42,7 +75,7 @@ html {
   background-color:#ededed;
 }
 p{
-  font-family: OpenSans;
+  font-family:EffraRegular;
 color:#000;
 font-size:15px;
 }
@@ -52,7 +85,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: Sniglet-Regular;
+  font-family:oBoticario;
 }
 h1{
   font-size:65px;color:#000;
@@ -78,6 +111,9 @@ a{
   transition: background 0.3s ease-in-out;
 }
 
+b{
+  font-family:EffraBold;
+}
 button{
   cursor:pointer;box-shadow:none;outline:none;color:#fff;
 }
@@ -136,10 +172,11 @@ hr{
 .btn{
   border-radius:30px;
   border:none;
-  font-family:Nunito-Bold;
+  font-family:EffraRegular;
   font-size:15px;
   padding:15px 60px 19px 60px;
   cursor:pointer;
+  height:auto;
 }
 .btn:focus{
   color:#fff;
@@ -164,7 +201,7 @@ hr{
 .btnn1{
   border-radius:30px;
   border:none;
-  font-family:Nunito-Bold;
+  font-family:EffraRegular;
   font-size:15px;
   padding:18px 60px 23px 40px;
 }
@@ -217,14 +254,14 @@ hr{
 .span-footer-copy{
 
   color:#fff;
-  font-family:OpenSans;
+  font-family:EffraRegular;
 }
 #footer-menu{
   border-bottom-width:1px;
   border-bottom-style:solid;
   border-bottom-color:rgba(255,255,255,0.1);
   padding:30px 30px 30px 30px;
-  font-family:Nunito-Bold;
+  font-family:EffraRegular;
 }
 #footer-menu a{
   font-size:14px;
@@ -267,9 +304,9 @@ hr{
 
 .navbar-custom {
 
-  font-family: Nunito-Bold;
+  font-family: EffraBold;
   background-color: transparent;
-  font-size:14px;
+  font-size:15px;
 }
 
 .navbar-custom .navbar-toggle {
@@ -361,7 +398,7 @@ hr{
   padding-right:50px;
   font-size:17px;
   color:#000;
-  font-family:Sniglet-Regular;
+  font-family:oBoticario;
   -webkit-transition: width 3s ease-in-out;
     -moz-transition: width 3s ease-in-out;
     -o-transition: width 3s ease-in-out;
@@ -856,6 +893,9 @@ padding-bottom:30px;
 .div-message{
   padding:120px 0 100px 0;
 }
+.div-form-shared{
+  padding-bottom:30px;padding-left:30px;padding-right:30px;
+}
 /* CONTENT-MAIN PAGE */
 
 
@@ -953,7 +993,7 @@ padding-bottom:30px;
   text-align: center;
 }
 .modal p{
-  font-size:13px; 
+  font-size:14px; 
   line-height:25px;
 }
 .div-new-img img{
@@ -1173,7 +1213,7 @@ a.expand {
   color:#000;
   border-radius:30px;
   border:none;
-  font-family:Nunito-Bold;
+  font-family:EffraRegular;
   font-size:15px;
   max-width:180px;
   padding:15px 0 19px 0;
@@ -1211,7 +1251,7 @@ a.expand {
 }
 .texto-terminos ul li{
   line-height:30px;
-  font-family: OpenSans;
+  font-family: EffraRegular;
 color:#000;
 font-size:15px;
 }
