@@ -55,10 +55,30 @@ var correoEnviado={
                     JSON.stringify({"success": false, "code": 1, "message": error.message}, callback);
                 } else {
 
-                     var fechaAct = utiles.fechaAct();
-                     db.query("INSERT INTO `correos_enviados` (fecha, descripcion,correo_id, publicacion_id, usuario_fb_id) VALUES (?,?,?,?,?)",
-                        [fechaAct, usuario.nombre+' gano '+producto.nombre,email.id, email.publicacion_id, usuario.id]);
-                     return JSON.stringify({"success": true}, callback);
+                    var fechaAct = utiles.fechaAct();
+                    if (email.id == 1 ){
+                        db.query("INSERT INTO `correos_enviados` (fecha, descripcion,correo_id, usuario_nl_id) VALUES (?,?,?,?)",
+                            [fechaAct, usuario.nombre,email.id, usuario.id],function(err,rows){
+                                if(err){
+                                    console.log('error '+err);
+                                }
+                            });
+                    }else if (email.id == 2){
+                        db.query("INSERT INTO `correos_enviados` (fecha, descripcion,correo_id, publicacion_id, usuario_fb_id) VALUES (?,?,?,?,?)",
+                            [fechaAct, usuario.nombre+' gano '+producto.nombre,email.id, email.publicacion_id, usuario.id],function(err,rows){
+                                if(err){
+                                    console.log('error '+err);
+                                }
+                            });
+                    }else{
+                        db.query("INSERT INTO `correos_enviados` (fecha, descripcion,correo_id) VALUES (?,?,?)",
+                            [fechaAct, usuario.id+'-'+usuario.nombre,email.id],function(err,rows){
+                                if(err){
+                                    console.log('error '+err);
+                                }
+                            });
+                    }
+                    return JSON.stringify({"success": true}, callback);
 
                 }
             });
