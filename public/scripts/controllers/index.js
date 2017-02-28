@@ -145,8 +145,7 @@ angular.module('ecommerceApp')
                                     link: server,
                                     privacy: privacy,
                                     message: estado,
-                                    picture: "https://creeenlabelleza.com/public/images/Campana.png"+,
-
+                                    picture: "https://creeenlabelleza.com/public/images/Campana.png",
                                     name:"Cree en la Belleza con oBoticário",
                                     description: "#oBoticário ha traído a colombia el primer e-commerce donde el único medio de pago autizados son likes."
                                 }
