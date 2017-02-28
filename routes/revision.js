@@ -59,18 +59,18 @@ router.get('/posts',function(req,response,next){
                                 }, function (err) {
                                     if(err){
                                         console.log('error actualizando la culminacion de los likes');
-                                        response.json({"success":false,"message":err});
+                                        //response.json({"success":false,"message":err});
                                     }else{
                                         usuarios_fb.getById(post.usuario_fb_id, function (err, usu) {
                                             if (err){
                                                 console.log('error obteniendo el usuario');
-                                                response.json({"success":false,"message":err});
+                                                //response.json({"success":false,"message":err});
                                             }else{
                                                 // Enviar Correo De posible ganador
                                                 correos.findById(2, function (err, correo) {
                                                     if (err) {
                                                         console.log('error obteniendo el correo');
-                                                        response.json({"success":false,"message":err});
+                                                        //response.json({"success":false,"message":err});
                                                     }
                                                     else {
                                                         var usuario = JSON.parse(JSON.stringify(usu))[0];
@@ -81,18 +81,21 @@ router.get('/posts',function(req,response,next){
                                                                 if(err)
                                                                 {
                                                                     console.log('error enviando el correo');
-                                                                    response.json({"success":false,"message":err});
+                                                                    //response.json({"success":false,"message":err});
                                                                 }
                                                                 else {
                                                                     if (info.success){
-                                                                        response.json({"success":true});
+                                                                        console.log('envio correo');
+                                                                        //response.json({"success":true});
                                                                     }else{
-                                                                        response.json({"success":false, "message":info.message});
+                                                                        console.log('error en el envio correo');
+                                                                        console.log(info.message);
+                                                                        //response.json({"success":false, "message":info.message});
                                                                     }
                                                                 }
                                                             });
                                                         } else {
-                                                            response.json({"success": false, "code": 2, "message": "Correo no encontrado"});
+                                                            //response.json({"success": false, "code": 2, "message": "Correo no encontrado"});
                                                         }
                                                     }
                                                 });
@@ -106,12 +109,13 @@ router.get('/posts',function(req,response,next){
                                     likes_count: res.reactions.summary.total_count,
                                     id_post: res.id
                                 });
-                                response.json({"success":true});
+                                //response.json({"success":true});
                             }
                         }
                     }
                 });
             });
+            response.json({"success":true});
         }
     });
 
