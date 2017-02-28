@@ -29,7 +29,7 @@ angular
         /// Ctrl connection cookieStores
         console.log("Conectado");
       }
-        if($cookieStore.get('admin')==null || !$cookieStore.get('admin') || $cookieStore.get('rol') != 1) {
+        if($cookieStore.get('admin')==null || !$cookieStore.get('admin')) {
             if (next.templateUrl == 'views/admin/correos.html' ||
                 next.templateUrl == 'views/admin/productos.html' ||
                 next.templateUrl == 'views/admin/publicaciones.html' ||
@@ -41,8 +41,8 @@ angular
     })
   })
     .config(function ($locationProvider, $routeProvider, loggerProvider,FacebookProvider) {
-    //FacebookProvider.init('398211490530444');//produccion
-    FacebookProvider.init('400226926995567');//desarrollo
+    FacebookProvider.init('398211490530444');//produccion
+        //FacebookProvider.init('400226926995567');//desarrollo
     loggerProvider.enableConsole(true);
     $locationProvider.hashPrefix('');
     $routeProvider
