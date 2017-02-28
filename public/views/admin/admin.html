@@ -1,0 +1,21 @@
+<div class="container  content-body " >
+
+    <div ng-show="!administrador">
+        <h2 class="f-black">login</h2>
+        <form>
+            <label for="usuario">Usuario:</label> <input id="usuario" type="text" ng-model="usuarioAdmin"><br>
+            <label for="clave">Contraseña:</label> <input id="clave" type="password" ng-model="claveAdmin"><br>
+            <button type="submit" ng-click="ingresar()">Entrar</button>
+        </form>
+    </div>
+    <div ng-show="administrador">
+        <ul>
+            <li><a ng-click="cerrarSesionAdmin()" class="btn btn-success">Cerrar Sesión</a></li>
+            <li><a href="#/admin/correos" class="btn btn-primary">Correos</a></li>
+            <li><a href="#/admin/productos" class="btn btn-primary">Productos</a></li>
+            <li><a href="#/admin/publicaciones" class="btn btn-primary">Publicaciones</a></li>
+            <li><a href="#/admin/usuarios-fb" class="btn btn-primary">Usuarios facebook</a></li>
+            <li><a href="#/admin/usuarios-nl" class="btn btn-primary">Usuarios newsletter</a></li>
+        </ul>
+    </div>
+</div>

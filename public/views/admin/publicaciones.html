@@ -1,0 +1,36 @@
+<div class="container  content-body " >
+    <div>
+        <ul>
+            <li><a ng-click="cerrarSesionAdmin()" class="btn btn-success">Cerrar Sesión</a></li>
+            <li><a href="#/admin/correos" class="btn btn-primary">Correos</a></li>
+            <li><a href="#/admin/productos" class="btn btn-primary">Productos</a></li>
+            <li><a href="#/admin/publicaciones" class="btn btn-primary">Publicaciones</a></li>
+            <li><a href="#/admin/usuarios-fb" class="btn btn-primary">Usuarios facebook</a></li>
+            <li><a href="#/admin/usuarios-nl" class="btn btn-primary">Usuarios newsletter</a></li>
+        </ul>
+    </div>
+
+    <div>
+        <table border="1">
+            <tr>
+                <th>Id</th><th>Post</th><th>Usuario</th><th>Producto</th><th>Likes</th><th>Publicado</th><th>Código promo</th><th>Culminado</th>
+                <th>Validado</th><th>Estado Validación</th><th>Descripcion validación</th><th>Código</th><th>Creación</th>
+            </tr>
+            <tr ng-repeat="campo in entidad">
+                <td>{{campo.id}}</td>
+                <td>{{campo.id_post}}</td>
+                <td>{{campo.usuario_fb_id}}-{{campo.nombre_fb}}</td>
+                <td>{{campo.nombre_pr}}</td>
+                <td>{{campo.likes_count}} de {{campo.likes_pr}}</td>
+                <td>{{campo.publicacion}}</td>
+                <td>{{campo.codigo_promo}}</td>
+                <td>{{campo.culminacion}}</td>
+                <td>{{campo.validacion_fecha}}</td>
+                <td>{{campo.validacion_estado}}</td>
+                <td>{{campo.validacion_descripcion}}</td>
+                <td>{{campo.codigo}}</td>
+                <td>{{campo.creacion}}</td>
+            </tr>
+        </table>
+    </div>
+</div>

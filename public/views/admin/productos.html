@@ -1,0 +1,29 @@
+<div class="container  content-body " >
+    <div>
+        <ul>
+            <li><a ng-click="cerrarSesionAdmin()" class="btn btn-success">Cerrar Sesión</a></li>
+            <li><a href="#/admin/correos" class="btn btn-primary">Correos</a></li>
+            <li><a href="#/admin/productos" class="btn btn-primary">Productos</a></li>
+            <li><a href="#/admin/publicaciones" class="btn btn-primary">Publicaciones</a></li>
+            <li><a href="#/admin/usuarios-fb" class="btn btn-primary">Usuarios facebook</a></li>
+            <li><a href="#/admin/usuarios-nl" class="btn btn-primary">Usuarios newsletter</a></li>
+        </ul>
+    </div>
+
+    <div>
+        <table border="1">
+            <tr>
+                <th>Id</th><th>Referencia</th><th>Nombre</th><th>Precio</th><th>Likes</th><th>Cantidad</th><th>Creado</th>
+            </tr>
+            <tr ng-repeat="campo in entidad">
+                <td>{{campo.id}}</td>
+                <td>{{campo.referencia}}</td>
+                <td>{{campo.nombre}}</td>
+                <td>{{campo.precio}}</td>
+                <td>{{campo.likes}}</td>
+                <td>{{campo.cantidad}}</td>
+                <td>{{campo.creacion}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
