@@ -16,7 +16,7 @@ Object.prototype.size = function(obj) {
 /* GET users listing. */
 router.get('/', function(req, res, next) {
     publicaciones.getAll(function (err, rows) {
-        res.json(rows);
+        res.json({"success":true,"message":rows});
     });
 });
 /*

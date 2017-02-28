@@ -14,7 +14,9 @@ Object.prototype.size = function(obj) {
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-    res.send('Usuarios newsletter');
+    usuarios.getAll(function (err, rows) {
+        res.json({"success":true,"message":rows});
+    });
 });
 
 

@@ -29,6 +29,15 @@ angular
         /// Ctrl connection cookieStores
         console.log("Conectado");
       }
+        if($cookieStore.get('admin')==null || !$cookieStore.get('admin')) {
+            if (next.templateUrl == 'views/admin/correos.html' ||
+                next.templateUrl == 'views/admin/productos.html' ||
+                next.templateUrl == 'views/admin/publicaciones.html' ||
+                next.templateUrl == 'views/admin/usuarios_fb.html' ||
+                next.templateUrl == 'views/admin/usuarios_nl.html') {
+                $location.path('/admin/login');
+            }
+        }
     })
   })
     .config(function ($locationProvider, $routeProvider, loggerProvider,FacebookProvider) {
@@ -88,6 +97,36 @@ angular
         controller: 'CarritoCtrl',
         controllerAs: 'Carrito de Compra'
       })
+        .when('/admin/login', {
+            templateUrl: 'views/admin/admin.html',
+            controller: 'AdminCtrl',
+            controllerAs: 'admin'
+        })
+        .when('/admin/correos', {
+            templateUrl: 'views/admin/correos.html',
+            controller: 'CorreosCtrl',
+            controllerAs: 'correos'
+        })
+        .when('/admin/productos', {
+            templateUrl: 'views/admin/productos.html',
+            controller: 'ProductosCtrl',
+            controllerAs: 'productos'
+        })
+        .when('/admin/publicaciones', {
+            templateUrl: 'views/admin/publicaciones.html',
+            controller: 'PublicacionesCtrl',
+            controllerAs: 'publicaciones'
+        })
+        .when('/admin/usuarios-fb', {
+            templateUrl: 'views/admin/usuarios_fb.html',
+            controller: 'UsuariosFbCtrl',
+            controllerAs: 'usuarios_fb'
+        })
+        .when('/admin/usuarios-nl', {
+            templateUrl: 'views/admin/usuarios_nl.html',
+            controller: 'UsuariosNlCtrl',
+            controllerAs: 'usuarios_nl'
+        })
       .otherwise({
         redirectTo: '/inicio'
       });

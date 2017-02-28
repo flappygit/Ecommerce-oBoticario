@@ -4,7 +4,8 @@ var utiles = require('../libs/utiles');
 var publicaciones={
 
     getAll:function(callback){
-        return db.query("SELECT * FROM publicaciones",callback);
+        return db.query("SELECT p.*, fb.nombre as nombre_fb, fb.correo as correo_fb, t.nombre as nombre_pr, t.likes as likes_pr " +
+            "FROM publicaciones as p, usuarios_fb as fb, productos as t WHERE p.usuario_fb_id = fb.id AND p.producto_id = t.id ORDER BY p.likes_count Desc, p.creacion",callback);
     },
 
     getPosted:function(callback){
