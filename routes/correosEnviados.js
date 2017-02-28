@@ -160,7 +160,7 @@ router.post("/enviarcorreonl", function(req, res){
                         var email = JSON.parse(JSON.stringify(row))[0];
                         if (email) {
                             var mensaje = mensajenl(usuNl.nombre, usuNl.codigo);
-                            correosEnviados.enviarcorreo(email, req.body.usuario, null, {mensaje:mensaje}, function (err, info) {
+                            correosEnviados.enviarcorreo(email, usuNl, null, {mensaje:mensaje}, function (err, info) {
                                 if (err) {
                                     res.json({"success": false, "message": err});
                                 }

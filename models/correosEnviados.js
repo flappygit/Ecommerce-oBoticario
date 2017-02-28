@@ -38,7 +38,6 @@ var correoEnviado={
                     pass: 'boti12ecommerce34'
                 }
             });
-            var mensaje = email.mensaje;
             if (extra != null && extra.mensaje && extra.mensaje!=null){
                 mensaje = extra.mensaje;
             }
