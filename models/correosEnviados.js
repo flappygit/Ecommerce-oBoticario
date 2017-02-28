@@ -49,6 +49,7 @@ var correoEnviado={
                 subject: email.asunto, // O assunto
                 html: mensaje // O HTMl do nosso e-mail
             };
+            console.log(opciones);
             transporter.sendMail(opciones, function (error, info) {
                 if (error) {
                     console.log(error);
