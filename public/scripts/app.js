@@ -32,7 +32,7 @@ angular
     })
   })
     .config(function ($locationProvider, $routeProvider, loggerProvider,FacebookProvider) {
-    FacebookProvider.init('398211490530444');
+    FacebookProvider.init('398211490530444');//400226926995567
     loggerProvider.enableConsole(true);
     $locationProvider.hashPrefix('');
     $routeProvider

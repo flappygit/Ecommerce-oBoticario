@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 var usuarios_fb=require('../models/user');
 var publicaciones=require('../models/publicaciones');
+var correos=require('../models/correos');
+var enviarCorreo=require('../models/correosEnviados');
 var FB = require("fb");
 var lodash = require("lodash");
 
@@ -30,6 +32,9 @@ router.get('/posts',function(req,res,next){
         }
         else{
             lodash.forEach(rows, function (row) {
+
+                console.log(row);
+
                 FB.options({
                     appId: '400226926995567',
                     version: 'v2.8',
@@ -40,6 +45,9 @@ router.get('/posts',function(req,res,next){
                         console.log(!res ? 'error occurred' : res.error);
                     }else{
                         var post =  JSON.parse(JSON.stringify(lodash.filter(rows, { 'id_post': res.id } )))[0];
+
+                        console.log(post);
+
                         if (res.reactions.summary.total_count > post.likes_count) {
                             var promo = 0;
                             if (post.codigo_promo != null && post.codigo_promo != '') {
@@ -50,8 +58,49 @@ router.get('/posts',function(req,res,next){
                                 publicaciones.actualizarCulminacion({
                                     likes_count: res.reactions.summary.total_count,
                                     id_post: res.id
+                                }, function (err) {
+                                    if(err){
+                                        console.log('error actualizando la culminacion de los likes');
+                                        res.json({"success":false,"message":err});
+                                    }else{
+                                        usuarios_fb.getById(usuario_fb_id, function (err, usu) {
+                                            if (err){
+                                                console.log('error obteniendo el usuario');
+                                                res.json({"success":false,"message":err});
+                                            }else{
+                                                // Enviar Correo De posible ganador
+                                                correos.findById(2, function (err, correo) {
+                                                    if (err) {
+                                                        console.log('error obteniendo el correo');
+                                                        res.json({"success":false,"message":err});
+                                                    }
+                                                    else {
+                                                        var email = JSON.parse(JSON.stringify(correo))[0];
+                                                        if (email) {
+                                                            enviarCorreo.enviarcorreo(email, usu, row.producto_id, null, function(err,info){
+                                                                if(err)
+                                                                {
+                                                                    console.log('error enviando el correo');
+                                                                    res.json({"success":false,"message":err});
+                                                                }
+                                                                else {
+                                                                    if (info.success){
+                                                                        res.json({"success":true});
+                                                                    }else{
+                                                                        res.send(info);
+                                                                    }
+                                                                }
+                                                            })
+                                                        } else {
+                                                            res.json({"success": false, "code": 2, "message": "Correo no encontrado"});
+                                                        }
+                                                    }
+                                                });
+                                            }
+                                        });
+                                    }
                                 });
-                                // Todo Enviar Correo De posible ganador
+
                             }else{
                                 publicaciones.actualizarLikes({
                                     likes_count: res.reactions.summary.total_count,
@@ -63,8 +112,7 @@ router.get('/posts',function(req,res,next){
                 });
             });
 
-
-            res.send('terminó');
+            res.json({"success":true});
         }
     });
 

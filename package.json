@@ -18,7 +18,6 @@
     "serve-favicon": "~2.3.2",
     "socket.io": "^1.7.3",
     "fb":"*",
-    "lodash":"*",
-    "nodemailer-smtp-transport":"*"
+    "lodash":"*"
   }
 }

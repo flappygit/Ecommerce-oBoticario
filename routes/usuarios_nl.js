@@ -30,7 +30,7 @@ router.post('/add',function(req,res,next){
         }
         else{
 
-            res.json({"success":true,"message":'bn echo'});
+            res.json({"success":true,"message":rows});
 
         }
     });
