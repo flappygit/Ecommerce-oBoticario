@@ -77,12 +77,7 @@ angular.element(window).scroll(function () {
           
           $(function () {
             window.setTimeout(function(){
-
-              if($(window).width() > 768)
-
-              {
                     $('#myModal').modal('show');
-              }
 
           }, 30000);
 
@@ -146,7 +141,13 @@ angular.element(window).scroll(function () {
                               $(function () {
                                 $(".btnsubmitnew").css({"background":"#e53936"});
                                 $(".btnsubmitnew").text("¡Suscrito!");
+                                
+                                window.setTimeout(function(){
+                                  $('#myModal').modal('show');
+                                }, 30000);
+
                               })
+
 
                           } else {
 
