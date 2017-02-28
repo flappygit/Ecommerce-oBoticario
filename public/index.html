@@ -35,7 +35,7 @@ ng-if="usrSesion.conectado"
         <div class="container">
             <div class="navbar-header">
             <a href=""  class="navbar-toggle" id="showRight1" style="background-color:transparent;">
-                <img src="images/icons/icon-nav.png" id="nav-icon-normal">
+                <img src="images/icons/icon-nav-1.png" id="nav-icon-normal">
                 <img src="images/icons/icon-nav-1.png" id="nav-icon-sticky">
             </a>
                 <a class="navbar-brand page-scroll" href="" ng-click="showView('/inicio')">
@@ -74,8 +74,11 @@ ng-if="usrSesion.conectado"
                     </li>
                 </ul>
                 </div>
-            <!-- /.navbar-collapse -->
-            <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s2">
+            
+      </div>
+    </nav>
+    <!-- /.navbar-collapse -->
+            <div class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s2">
           
           <ul>
 
@@ -99,12 +102,9 @@ ng-if="usrSesion.conectado"
                Síguenos: &nbsp;&nbsp;<a href="https://www.facebook.com/OBoticarioColombia/" target="_blank"><img src="images/icons/icon-fb.png" alt="Visítanos en Facebook"></a>&nbsp;&nbsp;  <a href="https://www.instagram.com/oboticariocol/" target="_blank"><img src="images/icons/icon-in.png" alt="Síguenos en Instagram"></a>
             </li>
           </ul>
-        </nav>
-      </div>
-    </nav>
+
+
         </div>
-        <!-- /.container -->
-    </nav>
 
 
 <div ng-view></div>
@@ -142,14 +142,14 @@ ng-if="usrSesion.conectado"
 <section class="container-fluid bg-color-1 " id="footer-menu">
     <div class="container">
 
-    <div class="col-lg-6 " >
+    <div class="col-lg-6 div-logo-footer">
         <img src="images/logo-oboticario-w.png">
         <br>
-        <span></span>
+        <span class="span-footer-copy">© 2017 Todos los derechos reservados</span>
     </div>
 
-    <div class="col-lg-6 text-center" >
-    <ul class="list-inline hidden-xs">
+    <div class="col-lg-6 text-right " >
+    <ul class="list-inline hidden-sm hidden-xs list-footer">
         <li><a href=""  ng-click="showView('sobre-cree-en-la-belleza')">Sobre Cree en la Belleza</a></li>
         <li><a href="" ng-click="showView('mecanica')">Mecánica</a></li>
 
@@ -159,14 +159,14 @@ ng-if="usrSesion.conectado"
     </div>
 </section>
 
-<section class="container-fluid bg-color-1 hidden-xs">
+<section class="container-fluid bg-color-1 ">
     <div class="container" id="footer-copy">
     <ul class="list-inline f-white">
-        <li><div> <span style="position:relative;top:5px;">
+        <li class="hidden-sm hidden-xs"><div> <span style="position:relative;top:5px;">
                 Medio de pago aceptado:
             </span> <img src="images/icons/icons-like.png"></div></li>
         
-        <li class="right li-socials">
+        <li class="li-socials">
             <div> <span style="position:relative;top:2px;">
                 Síguenos:
             </span> <img src="images/icons/icons-instagram.png"> <img src="images/icons/icons-1.png"></div>

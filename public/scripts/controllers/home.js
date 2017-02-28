@@ -51,7 +51,7 @@ angular.module('ecommerceApp')
         angular.element(window).scroll(function () {
 
             if ($location.path()=="/inicio") {
-                if (angular.element(window).width()>1090) {
+                if (angular.element(window).width()>992) {
                     parallax ();
 
                 }
@@ -70,15 +70,16 @@ angular.module('ecommerceApp')
 
             if ($location.path()=="/inicio") {
 
-                if (angular.element(window).width()>1090) {
-                    parallax ();
 
-                }
+          if (angular.element(window).width()>992) {
+            parallax ();
+            
+          }
+          
+          $(function () {
+            window.setTimeout(function(){
+                    $('#myModal').modal('show');
 
-                $(function () {
-                    window.setTimeout(function(){
-
-                        if($(window).width() > 768)
 
                         {
                             $('#myModal').modal('show');
@@ -87,7 +88,6 @@ angular.module('ecommerceApp')
                     }, 30000);
 
                 })
-
 
             }
         });
@@ -124,7 +124,12 @@ angular.module('ecommerceApp')
         $scope.registrarNewsletter = function (correo) {
 
             $(function () {
+<<<<<<< HEAD
                 $(".btnsubmitnew").css({"background":"#ff9796"});
+=======
+
+                $(".btnsubmitnew").css({"background":"#ff9796"})
+>>>>>>> origin/master
                 $(".btnsubmitnew").text("Enviando ...");
             });
             if (/(.+)@(.+){2,}\.(.+){2,}/.test(correo)) {
@@ -199,6 +204,7 @@ angular.module('ecommerceApp')
                     console.log('No ha aceptado términos y condiciones');
                 }
             }else{
+
                 $(function () {
                     $(".btnsubmitnew").css({"background":"#e53936"})
                     $(".btnsubmitnew").text("Suscribirme");

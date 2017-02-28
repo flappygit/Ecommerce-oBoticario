@@ -138,7 +138,7 @@ hr{
   border:none;
   font-family:Nunito-Bold;
   font-size:15px;
-  padding:15px 45px 19px 45px;
+  padding:15px 60px 19px 60px;
   cursor:pointer;
 }
 .btn:focus{
@@ -166,7 +166,7 @@ hr{
   border:none;
   font-family:Nunito-Bold;
   font-size:15px;
-  padding:15px 60px 19px 30px;
+  padding:18px 60px 23px 40px;
 }
 .btn2{
   background-color:#27a2d6;
@@ -199,10 +199,30 @@ hr{
   color:#fff;outline:none;
 
 }
+
+
+.btn-product{
+  margin-top:-30px;
+}
+
+
+
+
+
+
+.div-logo-footer img{
+  margin-bottom:15px;
+
+}
+.span-footer-copy{
+
+  color:#fff;
+  font-family:OpenSans;
+}
 #footer-menu{
   border-bottom-width:1px;
   border-bottom-style:solid;
-  border-bottom-color:#fff;
+  border-bottom-color:rgba(255,255,255,0.1);
   padding:30px 30px 30px 30px;
   font-family:Nunito-Bold;
 }
@@ -220,7 +240,14 @@ hr{
   padding:15px 40px 10px 40px;
 
 }
+
+.list-footer{
+  margin-top:10px;
+}
 .right{
+  float:right;
+}
+.li-socials{
   float:right;
 }
 .li-socials div img{
@@ -230,6 +257,12 @@ hr{
   
 .div-count-cart{
   position:absolute;border-radius:100%;background-color:#000;color:#fff;font-size:10px;width:20px;height:22px;text-align:center;vertical-align:middle;right:4px;top:8px;
+}
+
+
+
+.navbar-fixed-top, .navbar-fixed-bottom {
+    z-index: 300;
 }
 
 .navbar-custom {
@@ -247,6 +280,9 @@ hr{
 .navbar-custom .navbar-toggle:focus,
 .navbar-custom .navbar-toggle:active {
   outline: none;
+}
+.navbar-brand img{
+  margin-top:-10px;
 }
 .navbar-custom .navbar-brand:focus {
   outline: none;
@@ -279,11 +315,7 @@ hr{
 .navbar-custom .nav li.active a:hover {
   color: white;
 }
-@media (min-width: 768px) {
-  .modal-sm{
-    width:435px;
-  }
-  .navbar-custom {
+.navbar-custom {
     padding: 20px 0;
     border-bottom: none;
     letter-spacing: 1px;
@@ -297,6 +329,11 @@ hr{
     background:#fff;
     border-bottom:none;
   }
+@media (min-width: 768px) {
+  .modal-sm{
+    width:435px;
+  }
+  
 }
 
 .intro {
@@ -311,7 +348,7 @@ hr{
   -moz-background-size: cover;
   background-size: cover;
   -o-background-size: cover;
-  overflow:hidden
+  overflow:hidden;
 }
 .intro .intro-body {
   padding-top:7%;
@@ -321,11 +358,14 @@ hr{
   background: #ffffff;
   position: fixed;
   padding-left:50px;
-  padding-top:12%;
   padding-right:50px;
   font-size:17px;
   color:#000;
   font-family:Sniglet-Regular;
+  -webkit-transition: width 3s ease-in-out;
+    -moz-transition: width 3s ease-in-out;
+    -o-transition: width 3s ease-in-out;
+    transition: width 3s ease-in-out;
 }
 .cbp-spmenu ul li{
   padding-bottom:20px;
@@ -344,11 +384,15 @@ hr{
   position:absolute;top:50px;right:50px;
 }
 .cbp-spmenu-vertical {
+  display: table;
   width: 500px;
-
   height: 100%;
   top: 0;
-  z-index:100;
+  z-index:400;
+  -webkit-transition: width 3s ease-in-out;
+    -moz-transition: width 3s ease-in-out;
+    -o-transition: width 3s ease-in-out;
+    transition: width 3s ease-in-out;
 }
 
 .cbp-spmenu-right {
@@ -357,6 +401,10 @@ hr{
 }
 .cbp-spmenu-right.cbp-spmenu-open {
   right: 0px;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+
 }
 
 .cbp-spmenu {
@@ -366,7 +414,8 @@ hr{
 }
 .cbp-spmenu ul{
 list-style: none;
-padding-left:0px;
+display: table-cell;
+  vertical-align: middle;
 }
 .cbp-spmenu ul li{
   padding-top:15px;
@@ -378,12 +427,6 @@ padding-left:0px;
 }
 .cbp-spmenu ul li a:hover {
   color:currentColor;
-}
- @media (max-height: 360px) {
- .cbp-spmenu {
- 
-  padding-top:4%;
-} 
 }
 
 
@@ -439,7 +482,7 @@ iframe {
     -moz-opacity:.9;
     -khtml-opacity:.9;
     opacity:.9;
-    z-index:200;
+    z-index:360;
 }
 
 
@@ -521,23 +564,35 @@ iframe {
   
   position:relative;
 }
+.img-products{
+  position:absolute;bottom:50px;left:30%;
+}
+.img-products-1{
+  position:absolute;bottom:30px;left:30%;
+}
 .img-product-lily{
-  width:340px;
-  height:334px;
-  background: url(../images/lily/perfumes.png) no-repeat;
+  width:300px;
+  height:293px;
+  background: url(../images/lily/perfumes.jpg) no-repeat;
   position:absolute;
   margin-bottom:-240px;
-  left:-70px;  
+  left:-30px; 
+  -webkit-box-shadow: 0px -1px 94px -22px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px -1px 94px -22px rgba(0,0,0,0.75);
+box-shadow: 0px -1px 94px -22px rgba(0,0,0,0.75); 
 }
 
 .img-product-make-b{
-  width:414px;
-  height:406px;
-  background: url(../images/make-b/labial.png) no-repeat;
+  width:300px;
+  height:293px;
+  background: url(../images/make-b/labial.jpg) no-repeat;
   position:absolute;
   margin-bottom:-1000px;
   bottom:0px;
-  right:-170px;  
+  right:-160px; 
+  -webkit-box-shadow: 0px -1px 94px -22px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px -1px 94px -22px rgba(0,0,0,0.75);
+box-shadow: 0px -1px 94px -22px rgba(0,0,0,0.75);
 }
 
 .div-lily-content{
@@ -575,12 +630,16 @@ iframe {
 }
 
 .div-make-b-content{
-  margin-left:120px;
+  margin-left:80px;
   padding-top:90px;
 }
 
 .div-make-b-content p{
   line-height:30px;
+  width:100%;
+}
+.ul-right-prices{
+  float:right;
 }
 .div-img-make-b{
   margin-left:-130px;
@@ -639,12 +698,15 @@ iframe {
   z-index:6;
 }
 .img-product-nativa{
-  width:340px;
-  height:334px;
-  background: url(../images/nativa/cremas.png) no-repeat;
+  width:301px;
+  height:293px;
+  background: url(../images/nativa/cremas.jpg) no-repeat;
   position:absolute;
   margin-bottom:-1200px;
-  left:-70px;  
+  left:-40px;  
+  -webkit-box-shadow: 0px -1px 94px -22px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px -1px 94px -22px rgba(0,0,0,0.75);
+box-shadow: 0px -1px 94px -22px rgba(0,0,0,0.75);
 }
 .div-nativa-content{
   margin-left:0px;
@@ -659,27 +721,31 @@ iframe {
 
 
 /* Malbec */
+
 .div-img-malbec{
   margin-left:-150px;
 }
 .img-product-malbec{
-  width:336px;
-  height:326px;
-  background: url(../images/malbec/colonia.png) no-repeat;
+  width:301px;
+  height:293px;
+  background: url(../images/malbec/colonia.jpg) no-repeat;
   position:absolute;
-  margin-bottom:-1500px;
+  margin-bottom:-1800px;
   bottom:0px;
-  right:-170px;  
+  right:-180px;
+  -webkit-box-shadow: 0px -1px 94px -22px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px -1px 94px -22px rgba(0,0,0,0.75);
+box-shadow: 0px -1px 94px -22px rgba(0,0,0,0.75);
 }
 
 
 .div-malbec-content{
-    margin-left:10px;
+  margin-left:60px;
   padding-top:80px;
 }
 
 .div-malbec-content p{
-  width:80%;
+  width:90%;
   line-height:30px;
 }
 
