@@ -78,7 +78,7 @@ router.get("/prueba", function(req, res){
                 if (email) {
 
                     var mensaje = mensajePrueba('Christian rpeuba', '5asd1f65sdf56asd1fas56d1f6sad5f');
-                    correosEnviados.enviarcorreo(email, {correo:'clesmesc@gmail.com', id:1, nombre:'Christian Lesmes'}, null, {mensaje:mensaje}, function(err,info){
+                    correosEnviados.enviarcorreo(email, {correo:'clesmesc@gmail.com', id:2, nombre:'Christian Lesmes'}, null, {mensaje:mensaje}, function(err,info){
                         if(err)
                         {
                             res.json({"success":false,"message":err});
