@@ -38,13 +38,14 @@ var correoEnviado={
                     pass: 'boti12ecommerce34'
                 }
             });
+            var mensaje = email.mensaje;
             if (extra != null && extra.mensaje && extra.mensaje!=null){
                 mensaje = extra.mensaje;
             }
 
             var opciones = {
                 from: email.para, // NOTA: Para es quien lo envia XD
-                to: correo+',marcela.ramirez@nabica.com.co',//req.body.nombre+' <'+ req.body.to +'>', // Para quem o e-mail deve chegar
+                to: correo+',boticarioecommerce@gmail.com',//req.body.nombre+' <'+ req.body.to +'>', // Para quem o e-mail deve chegar
                 subject: email.asunto, // O assunto
                 html: mensaje // O HTMl do nosso e-mail
             };
@@ -66,6 +67,13 @@ var correoEnviado={
                     }else if (email.id == 2){
                         db.query("INSERT INTO `correos_enviados` (fecha, descripcion,correo_id, publicacion_id, usuario_fb_id) VALUES (?,?,?,?,?)",
                             [fechaAct, usuario.nombre+' gano '+producto.nombre,email.id, email.publicacion_id, usuario.id],function(err,rows){
+                                if(err){
+                                    console.log('error '+err);
+                                }
+                            });
+                    }else if(email.id = 3){
+                        db.query("INSERT INTO `correos_enviados` (fecha, descripcion,correo_id, usuario_fb_id) VALUES (?,?,?,?)",
+                            [fechaAct, usuario.id_fb+'-'+usuario.nombre_fb,email.id,usuario.id],function(err,rows){
                                 if(err){
                                     console.log('error '+err);
                                 }
