@@ -14,6 +14,9 @@ var usuarios={
         var validado = 0;
         return db.query("INSERT INTO `usuarios_nl` (correo, nombre, creacion, codigo, validado) VALUES (?,?,?,?,?)",[usuario.correo, usuario.nombre, fechaAct, codigo, validado],callback);
     },
+    findById:function(id,callback){
+        return db.query("SELECT * FROM `usuarios_nl` WHERE id = ?", [id],callback);
+    },
     findByCodigo:function(codigo,callback){
         return db.query("SELECT * FROM `usuarios_nl` WHERE codigo = ? AND validado = 0", [codigo],callback);
     },

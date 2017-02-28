@@ -3,8 +3,8 @@ var express = require('express');
 var router = express.Router();
 var correos=require('../models/correos');
 var correosEnviados=require('../models/correosEnviados');
+var usuariosNl=require('../models/usuarios_nl');
 const nodemailer = require('nodemailer');
-var smtpTransport = require('nodemailer-smtp-transport');
 var utiles = require('../libs/utiles');
 
 
@@ -63,87 +63,84 @@ router.get('/get/:id',function(req,res,next){
     });
 
 });
-router.get("/sendemail", function(req, res){
 
-    var email = 'clesmesc@gmail.com';
-    if( /(.+)@(.+){2,}\.(.+){2,}/.test(email) ){
 
-        var transporter = nodemailer.createTransport({
-            service: 'Gmail',
-            auth: {
-                user: 'boticarioecommerce@gmail.com',
-                pass: 'boti12ecommerce34'
+/**
+ * req {correo:'id del correo a enviar', to:'correo del destinatario', clave:'clave para la transaccion'}
+ */
+router.post("/enviarcorreo", function(req, res){
+
+    console.log(req.body);
+    if (req.body.clave = '400226926995567') {
+        correos.findById(req.body.correo, function (err, row) {
+            if (err) {
+                console.log(err);
+                res.json({"success": false, "message": err});
+            }
+            else {
+                var email = JSON.parse(JSON.stringify(row))[0];
+                if (email) {
+                    correosEnviados.enviarcorreo(email, req.body.usuario, null, null, function(err,info){
+                        if(err)
+                        {
+                            res.json({"success":false,"message":err});
+                        }
+                        else {
+                            if (info.success){
+                                res.json({"success":true});
+                            }else{
+                                res.json({"success": false, "code": 2, "message": info});
+                            }
+                        }
+                    })
+                } else {
+                    res.json({"success": false, "code": 2, "message": "Correo no encontrado"});
+                }
             }
         });
-        var mailOptions = {
-            from: 'Boticario',
-            to: 'clesmesc@gmail.com',
-            subject: 'Asunto',
-            text: 'Contenido del email'
-        };
-        transporter.sendMail(mailOptions, function(error, info){
-            if (error){
-                console.log(error);
-                res.status(500).send(error.message);
-            } else {
-                console.log("Email sent");
-                res.status(200).jsonp(info.body);
-            }
-        });
-
-    } else {
-        res.send("El email no se valido Volver")
     }
 
 });
-router.get("/enviarcorreo", function(req, res){
 
-    correos.findById(1, function(err, row){
-        if (err) {
-            console.log(err);
-            res.json({"success":false,"message":err});
-        }
-        else{
-            var email =  JSON.parse(JSON.stringify(row))[0];
-            if (email) {
-                console.log(email);
-                if( /(.+)@(.+){2,}\.(.+){2,}/.test(/*req.body.to*/'clesmesc@gmail.com') ){
-                    // Vamos criar a conta que irá mandar os e-mails
-                    var conta = nodemailer.createTransport({
-                        service: 'Gmail', // Existem outros services, você pode procurar
-                                          // na documentação do nodemailer como utilizar
-                                          // os outros serviços
-                        auth: {
-                            user: 'boticarioecommerce@gmail.com', // Seu usuário no Gmail
-                            pass: 'boti12ecommerce34' // A senha da sua conta no Gmail :-)
-                        }
-                    });
-                    console.log(conta);
-                    conta.sendMail({
-                        from: email.para, // NOTA: Para es quien lo envia XD
-                        to: 'clesmesc@gmail.com',//req.body.nombre+' <'+ req.body.to +'>', // Para quem o e-mail deve chegar
-                        subject: email.asunto, // O assunto
-                        html: email.mensaje, // O HTMl do nosso e-mail
-                    }, function(err){
-                        if(err){
-                            res.send("Error enviando el correo");
-                            console.log(err);
-                        }else {
-                            console.send('E-mail enviado!');
-                        }
 
-                    });
-                } else {
-                    res.send("El email no se valido Volver")
-                }
-            }else{
-                console.log('Correo no encontrado');
+router.post("/enviarcorreonl", function(req, res){
+
+    if (req.body.clave = '400226926995567') {
+        correos.findById(req.body.correo, function (err, row) {
+            if (err) {
+                console.log(err);
+                res.json({"success": false, "message": err});
             }
-        }
-    });
+            else {
+                usuariosNl.findById(req.body.nl, function (err, nl) {
+                    if (err){
+                        res.json({"success": false, "message": "usuario nl no encontrado"});
+                    }else {
+                        var usuNl = JSON.parse(JSON.stringify(nl))[0];
+                        var email = JSON.parse(JSON.stringify(row))[0];
+                        if (email) {
+                            var mensaje = 'Hola <b>'+usuNl.nombre+'</b>, Gracias por registrarte, tu codigo es <br> <h2>'+usuNl.codigo+'</h2> canjealo y obtendras 40 likes de regalo'
+                            correosEnviados.enviarcorreo(email, req.body.usuario, null, {mensaje:mensaje}, function (err, info) {
+                                if (err) {
+                                    res.json({"success": false, "message": err});
+                                }
+                                else {
+                                    if (info.success) {
+                                        res.json({"success": true});
+                                    } else {
+                                        res.json({"success": false, "code": 2, "message": info});
+                                    }
+                                }
+                            })
+                        } else {
+                            res.json({"success": false, "code": 2, "message": "Correo no encontrado"});
+                        }
+                    }
+                });
 
-    //
-    res.send('terminó');
+            }
+        });
+    }
 
 });
 

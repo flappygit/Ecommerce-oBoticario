@@ -189,18 +189,12 @@ angular.module('ecommerceApp')
                             var localidad="No hay localidad";
                         }
 
-                        var email;
-                        if (response.email) {
-                            email=response.email;
-                        }else{
-                            email="Not Permission";
-                        }
                         console.log(response);
                         var datos=
                             {
                                 id:response.id,
                                 name:response.name,
-                                email:email,
+                                email:response.email,
                                 location:localidad,
                                 gender:response.gender,
                                 link:response.link
@@ -214,7 +208,27 @@ angular.module('ecommerceApp')
                             data: datos
                         })
                             .then(function (request) {
-                                if (request.data.success==true) {
+                                if (request.data.success) {
+                                    if (!request.data.repeat){
+                                        if (datos.email && datos.email != null){
+                                            //Enviar correo
+                                            $http({
+                                                url: server+'correos-enviados/enviarcorreo',
+                                                dataType: 'json',
+                                                method: 'POST',
+                                                data: {correo:3, to:datos.email, clave:'400226926995567'}
+                                            })
+                                                .then(function (request) {
+                                                    if (!request.data.success) {
+                                                        console.log("Error, no envio correo");
+                                                        console.log(request);
+                                                    }
+                                                });
+
+                                        }else {
+                                            console.log('No tiene correo');
+                                        }
+                                    }
                                     usrASesion(request.data.message[0]);
                                     $scope.logged=true;
                                     $scope.nombreFacebook=datos.name;

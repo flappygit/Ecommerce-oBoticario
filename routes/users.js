@@ -38,7 +38,7 @@ router.post('/ValidUserFacebook',function(req,res,next){
                     }else{
 
                         user.getById(count.insertId,function(err,rows2){
-                            res.json({"success":true,"message":rows2});
+                            res.json({"success":true,"message":rows2,"repeat":false});
                         });
                     }
                 });
