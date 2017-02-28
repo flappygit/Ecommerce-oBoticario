@@ -213,10 +213,10 @@ angular.module('ecommerceApp')
                                         if (datos.email && datos.email != null){
                                             //Enviar correo
                                             $http({
-                                                url: server+'correos-enviados/enviarcorreo',
+                                                url: server+'correos-enviados/enviarcorreofb',
                                                 dataType: 'json',
                                                 method: 'POST',
-                                                data: {correo:3, to:datos.email, clave:'400226926995567'}
+                                                data: {correo:3, to:datos.email, nombre:datos.name, clave:'400226926995567'}
                                             })
                                                 .then(function (request) {
                                                     if (!request.data.success) {

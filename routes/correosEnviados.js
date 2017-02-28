@@ -144,4 +144,39 @@ router.post("/enviarcorreonl", function(req, res){
 
 });
 
+
+router.post("/enviarcorreofb", function(req, res){
+
+    if (req.body.clave = '400226926995567') {
+        correos.findById(req.body.correo, function (err, row) {
+            if (err) {
+                console.log(err);
+                res.json({"success": false, "message": err});
+            }
+            else {
+                var email = JSON.parse(JSON.stringify(row))[0];
+                if (email) {
+                    var mensaje = 'Hola <b>'+req.body.nombre+'</b>, Gracias por registrarte con facebook, bla bla bla';
+                    correosEnviados.enviarcorreo(email, req.body.usuario, null, {mensaje:mensaje}, function (err, info) {
+                        if (err) {
+                            res.json({"success": false, "message": err});
+                        }
+                        else {
+                            if (info.success) {
+                                res.json({"success": true});
+                            } else {
+                                res.json({"success": false, "code": 2, "message": info});
+                            }
+                        }
+                    })
+                } else {
+                    res.json({"success": false, "code": 2, "message": "Correo no encontrado"});
+                }
+
+            }
+        });
+    }
+
+});
+
 module.exports = router;

@@ -124,7 +124,7 @@ angular.module('ecommerceApp')
         $scope.registrarNewsletter = function (correo) {
 
             $(function () {
-                $(".btnsubmitnew").css({"background":"#ff9796"})
+                $(".btnsubmitnew").css({"background":"#ff9796"});
                 $(".btnsubmitnew").text("Enviando ...");
             });
             if (/(.+)@(.+){2,}\.(.+){2,}/.test(correo)) {

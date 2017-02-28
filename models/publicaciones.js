@@ -8,7 +8,7 @@ var publicaciones={
     },
 
     getPosted:function(callback){
-        return db.query("SELECT p.id_post, p.codigo_promo, p.usuario_fb_id, p.likes_count, pr.likes, pr.id as producto FROM publicaciones p, productos pr WHERE p.producto_id = pr.id AND p.id_post is not null AND p.id_post <> '' AND p.culminacion is null",callback);
+        return db.query("SELECT p.id_post, p.codigo_promo, p.usuario_fb_id, p.likes_count, pr.likes, pr.id as producto, pr.nombre as prod_nombre FROM publicaciones p, productos pr WHERE p.producto_id = pr.id AND p.id_post is not null AND p.id_post <> '' AND p.culminacion is null",callback);
     },
 
     add:function(publicacion,callback){

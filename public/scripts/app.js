@@ -32,7 +32,8 @@ angular
     })
   })
     .config(function ($locationProvider, $routeProvider, loggerProvider,FacebookProvider) {
-    FacebookProvider.init('398211490530444');//400226926995567
+    //FacebookProvider.init('398211490530444');//produccion
+    FacebookProvider.init('400226926995567');//desarrollo
     loggerProvider.enableConsole(true);
     $locationProvider.hashPrefix('');
     $routeProvider

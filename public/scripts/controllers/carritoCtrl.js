@@ -228,14 +228,14 @@ angular.module('ecommerceApp')
 
  $scope.usuarioNl = {nombre:'', correo:''};
       $scope.terminosCondiciones = '';
-      
+
       $scope.registrarNewsletter = function (correo) {
 
-            $(function () {
-              $(".btnsubmitnew").css({"background":"#ff9796"})
-              $(".btnsubmitnew").text("Enviando ...")
-            })
-          if (correo != '') {
+          $(function () {
+              $(".btnsubmitnew").css({"background":"#ff9796"});
+              $(".btnsubmitnew").text("Enviando ...");
+          });
+          if (/(.+)@(.+){2,}\.(.+){2,}/.test(correo)) {
               if ($scope.terminosCondiciones == 'aceptado') {
                   $http({
                       url: server+'usuarios-nl/add',
@@ -245,58 +245,75 @@ angular.module('ecommerceApp')
                   })
                       .then(function (request) {
                           if (request.data.success) {
-                              console.log('usuario registrado con éxito');
-                              $scope.errorEmail=false;
-                              $scope.errorTerminos=false;
-                              $scope.usuarioNl.correo="";
-                              $scope.usuarioNl.name="";
-                              $scope.successRegisterNew=true;
+                              //Enviar correo
+                              $http({
+                                  url: server+'correos-enviados/enviarcorreonl',
+                                  dataType: 'json',
+                                  method: 'POST',
+                                  data: {correo:1, usuario:{nombre:$scope.usuarioNl.nombre, to:$scope.usuarioNl.correo}, clave:'400226926995567', nl:request.data.message.insertId}
+                              })
+                                  .then(function (request) {
+                                      if (!request.data.success) {
+                                          console.log("no envio correo");
+                                          console.log(request);
+                                      }else {
+                                          console.log('usuario registrado con éxito');
+                                          $scope.errorEmail=false;
+                                          $scope.errorTerminos=false;
+                                          $scope.usuarioNl.correo="";
+                                          $scope.usuarioNl.name="";
 
+                                          $(function () {
+                                              $(".btnsubmitnew").css({"background":"#e53936"});
+                                              $(".btnsubmitnew").text("¡Suscrito!");
+                                          })
+                                      }
+                                  })
+                                  .catch(function (error) {
+                                      console.log('Error, No se envio el correo');
+                                      console.log(error);
+                                  });
+                          } else {
 
                               $(function () {
-                            $(".btnsubmitnew").css({"background":"#e53936"});
-                            $(".btnsubmitnew").text("¡Suscrito!");
-                          })
-                          } else {
-                            $(function () {
-                                $(".btnsubmitnew").css({"background":"#e53936"})
-                                $(".btnsubmitnew").text("Suscribirme");
-                            })
-                              console.log('Error al registrar es usuario al newsletter ' + producto.id);
-                              $scope.successRegisterNew=false;
+                                  $(".btnsubmitnew").css({"background":"#e53936"});
+                                  $(".btnsubmitnew").text("Suscribirme");
+                              });
 
+                              console.log('Error al registrar es usuario al newsletter ' + producto.id);
                           }
                       })
                       .finally(function () {
 
 
                       });
-              }else{
-                $scope.errorEmail=false;
-                $scope.errorTerminos=true;
-                $scope.successRegisterNew=false;
-                $scope.usuarioNl.correo="";
-                  console.log('No ha aceptado términos y condiciones');
-                  $(function () {
-                                $(".btnsubmitnew").css({"background":"#e53936"})
-                                $(".btnsubmitnew").text("Acepte Términos y condiciones");
-                                window.setTimeout(function(){
-                                $(".btnsubmitnew").text("Suscribirme");
 
-                                }, 2000);
-                            })
+
+                  ;
+              }else{
+                  $scope.usuarioNl.correo="";
+                  $(function () {
+
+
+                      $(".btnsubmitnew").css({"background":"#e53936"})
+                      $(".btnsubmitnew").text("Acepte Términos y condiciones");
+                      window.setTimeout(function(){
+                          $(".btnsubmitnew").text("Suscribirme");
+
+                      }, 2000);
+                  })
+                  $scope.errorEmail=false;
+                  $scope.errorTerminos=true;
+                  console.log('No ha aceptado términos y condiciones');
               }
           }else{
-            $(function () {
-                                $(".btnsubmitnew").css({"background":"#e53936"})
-                                $(".btnsubmitnew").text("Suscribirme");
-                            })  
-
+              $(function () {
+                  $(".btnsubmitnew").css({"background":"#e53936"})
+                  $(".btnsubmitnew").text("Suscribirme");
+              })
               console.log('No se ha ingresado el correo');
               $scope.errorEmail=true;
               $scope.errorTerminos=false;
-              $scope.successRegisterNew=false;
-
           }
       }
 

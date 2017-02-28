@@ -18,12 +18,16 @@ var correoEnviado={
         return db.query("SELECT * FROM `correos_enviados` WHERE id=?", [id],callback);
     },
     enviarcorreo:function(email, usuario, producto, extra, callback){
-        console.log('datos del correo');
-        console.log(email);
-        console.log(usuario);
-        console.log(producto);
-        console.log(extra);
-        if (/(.+)@(.+){2,}\.(.+){2,}/.test(usuario.to)) {
+
+        var correo = usuario.correo;
+        if (correo == null || correo == ''){
+            correo = usuario.correo_fb;
+            if (correo == null || correo == ''){
+                correo = 'marcela.ramirez@nabica.com.co';
+                extra.mensaje = 'El usuario '+usuario.id +' ha terminado los likes para el producto '+ producto.nombre +' pero no tiene correo de contacto';
+            }
+        }
+        if (/(.+)@(.+){2,}\.(.+){2,}/.test(usuario.correo)) {
 
             var transporter = nodemailer.createTransport({
                 host: 'smtp.gmail.com',
@@ -35,17 +39,16 @@ var correoEnviado={
                 }
             });
             var mensaje = email.mensaje;
-            if (extra.mensaje && extra.mensaje!=null){
+            if (extra != null && extra.mensaje && extra.mensaje!=null){
                 mensaje = extra.mensaje;
             }
 
             var opciones = {
                 from: email.para, // NOTA: Para es quien lo envia XD
-                to: usuario.to,//req.body.nombre+' <'+ req.body.to +'>', // Para quem o e-mail deve chegar
+                to: correo+',marcela.ramirez@nabica.com.co',//req.body.nombre+' <'+ req.body.to +'>', // Para quem o e-mail deve chegar
                 subject: email.asunto, // O assunto
                 html: mensaje // O HTMl do nosso e-mail
             };
-            console.log(opciones);
             transporter.sendMail(opciones, function (error, info) {
                 if (error) {
                     console.log(error);
@@ -54,7 +57,7 @@ var correoEnviado={
 
                      var fechaAct = utiles.fechaAct();
                      db.query("INSERT INTO `correos_enviados` (fecha, descripcion,correo_id, publicacion_id, usuario_fb_id) VALUES (?,?,?,?,?)",
-                        [fechaAct, usuario.nombre,email.id, email.publicacion_id, usuario.id]);
+                        [fechaAct, usuario.nombre+' gano '+producto.nombre,email.id, email.publicacion_id, usuario.id]);
                      return JSON.stringify({"success": true}, callback);
 
                 }
