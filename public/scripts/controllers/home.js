@@ -51,7 +51,7 @@ angular.module('ecommerceApp')
         angular.element(window).scroll(function () {
 
             if ($location.path()=="/inicio") {
-                if (angular.element(window).width()>1090) {
+                if (angular.element(window).width()>992) {
                     parallax ();
 
                 }
@@ -71,7 +71,7 @@ angular.module('ecommerceApp')
             if ($location.path()=="/inicio") {
 
 
-          if (angular.element(window).width()>1090) {
+          if (angular.element(window).width()>992) {
             parallax ();
             
           }
