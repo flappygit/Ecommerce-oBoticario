@@ -782,7 +782,10 @@ margin-left: -40px;
 .list-url{
 padding-bottom:30px;
 }
-.div-img-details{
+.referencia{
+  float:right;
+}
+.div-img-details{ 
   padding-left:0;padding-right:40px;
 }
 .small-p-description-product,.p-description-product {
@@ -816,7 +819,7 @@ padding-bottom:30px;
 
 .thumbnail {
     position: relative;
-    padding: 0px;overflow:hidden;
+    padding: 0px;overflow:hidden;border:none;
 }
 
 .thumbnail img {
