@@ -46,21 +46,21 @@ var correoEnviado={
                 html: mensaje // O HTMl do nosso e-mail
             };
             console.log(opciones);
-            /*transporter.sendMail(opciones, function (error, info) {
+            transporter.sendMail(opciones, function (error, info) {
                 if (error) {
                     console.log(error);
                     JSON.stringify({"success": false, "code": 1, "message": error.message}, callback);
                 } else {
 
                      var fechaAct = utiles.fechaAct();
-                     return db.query("INSERT INTO `correos_enviados` (fecha, descripcion,correo_id, publicacion_id, usuario_fb_id) VALUES (?,?,?,?,?)",
-                        [fechaAct, usuario.nombre,email.id, email.publicacion_id, usuario.id],callback);
-                     //return JSON.stringify({"success": true}, callback);
+                     db.query("INSERT INTO `correos_enviados` (fecha, descripcion,correo_id, publicacion_id, usuario_fb_id) VALUES (?,?,?,?,?)",
+                        [fechaAct, usuario.nombre,email.id, email.publicacion_id, usuario.id]);
+                     return JSON.stringify({"success": true}, callback);
 
                 }
-            });*/
+            });
 
-            return JSON.stringify({"success": true}, callback);
+            //return JSON.stringify({"success": true}, callback);
         } else {
             return JSON.stringify({"success": false, "code": 1, "message": "El email no es válido"}, callback);
         }
