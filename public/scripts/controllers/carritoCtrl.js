@@ -163,16 +163,41 @@ angular.module('ecommerceApp')
           var estado=producto.estadoFacebook;
           var imagen=producto.imagen;
           var nombre=producto.nombre;
+          var picture1;
                   Facebook.login(function(responses1) {
                   var privacy={"value":"EVERYONE"};
+                  switch (producto.imagen){
+
+              case '/images/lily/perfume1.png':
+                  picture1='images/1Lily.png'
+                  break;
+
+              case '/images/make-b/labial.png':
+                  picture1='images/3MakeB.png'
+                  break;
+
+              case '/images/nativa/cremas.png':
+                  picture1='images/2Nativa.png'
+
+                  break;
+
+              case '/images/malbec/colonia.png':
+                  picture1='images/4Malbec.png'
+                  break;
+
+              default:
+                  console.error('Producto enviado no valido en la funcion anadirProducto');
+                  verificado = false;
+                  break;
+          }
                             Facebook.api('/me/feed',
                                 'post',
                                 {   message: estado,
                                     link: "https://creeenlabelleza.com/",
-                                    picture: "https://creeenlabelleza.com/public/"+imagen,
-                                    description: "Hola amigos, ayúdenme acumulando likes para ganarme un kit de " + nombre +" de oBoticário.",
+                                    picture: "https://creeenlabelleza.com/public/"+picture1,
+                                    name:"Cree en la Belleza con oBoticário",
+                                    description: "Hola amigos,actualmente estoy participando en la campaña #CreeEnlaBelleza de #oBoticário y me gustaría que me ayudaran con un like para obtener un kit de " + nombre ,
                                     privacy: privacy,
-                                    caption:"#CreeEnLaBelleza"
 
                                 }
                                 ,function(response) {

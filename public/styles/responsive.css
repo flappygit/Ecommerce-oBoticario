@@ -295,6 +295,7 @@ h4,.h4-cart{
 
 
 @media (max-width:360px) {
+	.div-form-new{padding-left:0px;padding-right:0px;margin-top:30px;}
 	.list-prices-details{
   margin-top:0px;
 }
