@@ -23,12 +23,12 @@ router.get('/', function(req, res, next) {
 /*
  * post correo {para*, asunto*, mensaje, cabeceras, descripcion}
  */
-router.get('/posts',function(req,res,next){
+router.get('/posts',function(req,response,next){
     publicaciones.getPosted(function(err,rows){
         if(err)
         {
             console.log(err);
-            res.json({"success":false,"message":err});
+            response.json({"success":false,"message":err});
         }
         else{
             lodash.forEach(rows, function (row) {
@@ -48,7 +48,7 @@ router.get('/posts',function(req,res,next){
 
                         console.log(post);
 
-                        if (res.reactions.summary.total_count > post.likes_count) {
+                        if (res.reactions.summary.total_count != post.likes_count) {
                             var promo = 0;
                             if (post.codigo_promo != null && post.codigo_promo != '') {
                                 promo = 40;
@@ -61,38 +61,40 @@ router.get('/posts',function(req,res,next){
                                 }, function (err) {
                                     if(err){
                                         console.log('error actualizando la culminacion de los likes');
-                                        res.json({"success":false,"message":err});
+                                        response.json({"success":false,"message":err});
                                     }else{
-                                        usuarios_fb.getById(usuario_fb_id, function (err, usu) {
+                                        usuarios_fb.getById(post.usuario_fb_id, function (err, usu) {
                                             if (err){
                                                 console.log('error obteniendo el usuario');
-                                                res.json({"success":false,"message":err});
+                                                response.json({"success":false,"message":err});
                                             }else{
                                                 // Enviar Correo De posible ganador
                                                 correos.findById(2, function (err, correo) {
                                                     if (err) {
                                                         console.log('error obteniendo el correo');
-                                                        res.json({"success":false,"message":err});
+                                                        response.json({"success":false,"message":err});
                                                     }
                                                     else {
+                                                        var usuario = JSON.parse(JSON.stringify(usu))[0];
                                                         var email = JSON.parse(JSON.stringify(correo))[0];
                                                         if (email) {
-                                                            enviarCorreo.enviarcorreo(email, usu, row.producto_id, null, function(err,info){
+                                                            var mensaje = 'hola '+ usuario.nombre_fb + ' has completado los likes de '+row.prod_nombre;
+                                                            enviarCorreo.enviarcorreo(email, usuario, {id:row.producto, nombre:row.prod_nombre}, {mensaje:mensaje}, function(err,info){
                                                                 if(err)
                                                                 {
                                                                     console.log('error enviando el correo');
-                                                                    res.json({"success":false,"message":err});
+                                                                    response.json({"success":false,"message":err});
                                                                 }
                                                                 else {
                                                                     if (info.success){
-                                                                        res.json({"success":true});
+                                                                        response.json({"success":true});
                                                                     }else{
-                                                                        res.send(info);
+                                                                        response.json({"success":false, "message":info.message});
                                                                     }
                                                                 }
-                                                            })
+                                                            });
                                                         } else {
-                                                            res.json({"success": false, "code": 2, "message": "Correo no encontrado"});
+                                                            response.json({"success": false, "code": 2, "message": "Correo no encontrado"});
                                                         }
                                                     }
                                                 });
@@ -106,13 +108,12 @@ router.get('/posts',function(req,res,next){
                                     likes_count: res.reactions.summary.total_count,
                                     id_post: res.id
                                 });
+                                response.json({"success":true});
                             }
                         }
                     }
                 });
             });
-
-            res.json({"success":true});
         }
     });
 

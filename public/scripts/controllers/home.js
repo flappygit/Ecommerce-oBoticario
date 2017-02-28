@@ -124,8 +124,12 @@ angular.module('ecommerceApp')
         $scope.registrarNewsletter = function (correo) {
 
             $(function () {
+<<<<<<< HEAD
+                $(".btnsubmitnew").css({"background":"#ff9796"});
+=======
 
                 $(".btnsubmitnew").css({"background":"#ff9796"})
+>>>>>>> origin/master
                 $(".btnsubmitnew").text("Enviando ...");
             });
             if (/(.+)@(.+){2,}\.(.+){2,}/.test(correo)) {

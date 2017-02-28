@@ -14,11 +14,11 @@ Object.prototype.size = function(obj) {
 /* GET users listing. */
 router.get('/', function(req, res, next) {
     usuarios.getAll(function (err, rows) {
-        res.json(rows);
+        res.json({"success":true,"message":rows});
     });
 });
 /*
- * post usuario {usuario*, clave*, rol*, nombre correo}
+ * post usuario {usuario*, clave*, rol*, nombre, correo}
  */
 router.post('/add',function(req,res,next){
     usuarios.add(req.body,function(err,rows){
@@ -38,7 +38,7 @@ router.post('/add',function(req,res,next){
 /*
  * post usuario {usuario*, clave*}
  */
-router.get('/validar',function(req,res,next){
+router.post('/validar',function(req,res,next){
     usuarios.validar(req.body,function(err,rows){
         if(err)
         {
@@ -46,11 +46,12 @@ router.get('/validar',function(req,res,next){
             res.json({"success":false,"message":err});
         }
         else{
+            console.log(req.body);
             var rowStringyfy=JSON.stringify(rows);
             var rows1=JSON.parse(rowStringyfy);
             var size= Object.size(rows1);
             if(size==0 || size==null ){
-                res.json({"success":true,"code":0})
+                res.json({"success":false,"code":0})
             }else{
                 res.json({"success":true,"code":1, 'rows':rows})
             }

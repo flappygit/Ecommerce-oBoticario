@@ -13,7 +13,9 @@ Object.prototype.size = function(obj) {
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-    res.send('API REST USUARIOS ECOMMERCE V. 1.0.0');
+    user.getAll(function (err, rows) {
+        res.json({"success":true,"message":rows});
+    });
 });
 
 
