@@ -1164,6 +1164,7 @@ padding-bottom:30px;
   box-shadow: none;
   border-radius:none;
   height:5px;
+  font-family:EffraBold;
 }
 .progress-striped .progress-bar-success {
     background-image:none;
