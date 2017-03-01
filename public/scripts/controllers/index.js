@@ -21,6 +21,7 @@ angular.module('ecommerceApp')
         $("#nav-icon-sticky").hide();
         $(".footer").hide();
         collapseNavbar();
+        navbarmobile();
             $("#img-close").mouseover(function(){$(this).rotate({animateTo:180})});
             $("#img-close").mouseout(function(){$(this).rotate({animateTo:-180})});
             $(".footer").hide();

@@ -4,6 +4,35 @@
 $("div#divLoading").addClass('show');
         $(".navbar").hide();
 
+function navbarmobile() {
+    var pathname = window.location;
+
+    if (pathname=="https://www.creeenlabelleza.com/#/inicio") {
+      if ($(window).width()<992) {
+      $(".navbar-fixed-top").addClass("top-nav-collapse");
+        $(".navbar-custom .navbar-nav a").css({"color":"#000"});
+  
+        $("#img-black").show();
+        $(".nav-icon-sticky").show();        
+      }else{
+        if ($(".navbar").offset().top > 650) {
+
+        $(".navbar-fixed-top").addClass("top-nav-collapse");
+        $(".navbar-custom .navbar-nav a").css({"color":"#000"});
+  
+        $("#img-black").show();
+        $(".nav-icon-sticky").show();
+    } else {
+        $(".navbar-custom .navbar-nav a").css({"color":"#000"});
+        $(".nav-icon-sticky").show();
+        $("#img-black").show();
+        $(".navbar-fixed-top").removeClass("top-nav-collapse");
+    }  
+      }
+    }
+}
+
+
 function collapseNavbar() {
     var pathname = window.location;
     if (pathname!="https://www.creeenlabelleza.com/#/inicio" && pathname!="https://www.creeenlabelleza.com/") {
@@ -86,6 +115,7 @@ $(window).scroll(function() {
 });
 
       $(window).resize(function() {
+        navbarmobile();
         var vd=true;
         if ($(window).width() <= 992) {
           tinysort('.line-home>div',{attr:'title'});
