@@ -47,12 +47,12 @@ function eliminarpubli(publicacion) {
               });
 }
 
-$(function () {
-$("#myModal2").modal("hide");
-$(".modal-backdrop").hide();
-$("body").css({'overflow-y':'scroll','width':'100%'});
+        $(function () {
+        $("#myModal2").modal("hide");
+        $(".modal-backdrop").hide();
+        $("body").css({'overflow-y':'scroll','width':'100%'});
 
-      $(".footer").show();
+           $(".footer").show();
 
           
             // wait till load event fires so all resources are available

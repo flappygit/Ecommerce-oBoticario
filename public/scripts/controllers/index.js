@@ -114,7 +114,7 @@ angular.module('ecommerceApp')
         }
 
         $scope.userPerfil = function () {
-            $location.path('/user');
+            $location.path('/conteo-de-likes');
         };
 
         
