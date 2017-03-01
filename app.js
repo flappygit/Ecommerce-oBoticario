@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var cors=require('cors');
 var nodemailer = require("nodemailer");
+var compression = require('compression');
 
 // Importar controladores de rutas
 var routes = require('./routes/index');
@@ -22,7 +23,7 @@ var revision = require('./routes/revision');
 
 
 var app = express();
-
+app.use(compression());
 // uncomment after placing your favicon in /public
  app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
