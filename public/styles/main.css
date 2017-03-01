@@ -767,7 +767,7 @@ box-shadow: 0px -1px 94px -22px rgba(0,0,0,0.75);
   height:293px;
   background: url(../images/malbec/colonia.jpg) no-repeat;
   position:absolute;
-  margin-bottom:-1800px;
+  margin-bottom:-1700px;
   bottom:0px;
   right:-180px;
   -webkit-box-shadow: 0px -1px 94px -22px rgba(0,0,0,0.75);
@@ -777,12 +777,12 @@ box-shadow: 0px -1px 94px -22px rgba(0,0,0,0.75);
 
 
 .div-malbec-content{
-  margin-left:60px;
+  margin-left:50px;
   padding-top:80px;
 }
 
 .div-malbec-content p{
-  width:90%;
+  width:85%;
   line-height:30px;
 }
 
