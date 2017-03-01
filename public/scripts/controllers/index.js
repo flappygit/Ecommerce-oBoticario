@@ -1,4 +1,4 @@
-'nuse strict';
+'use strict';
 
 /**
  * @ngdoc function
