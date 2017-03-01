@@ -214,6 +214,18 @@ angular.module('ecommerceApp')
                             .then(function (request) {
                                 if (request.data.success) {
                                     if (!request.data.repeat){
+                                        
+                                    }
+                                    usrASesion(request.data.message[0]);
+                                    $scope.logged=true;
+                                    $scope.nombreFacebook=datos.name;
+                                    consultarCarrito();
+                                    $(function () {
+                                            if ($('#myModal1').is(':visible')) {
+                                                $('#myModal1').modal('hide');
+                                            }
+                                        });
+                                    if (request.data.repeat==true) {
                                         if (datos.email && datos.email != null){
                                             //Enviar correo
                                             $http({
@@ -232,22 +244,10 @@ angular.module('ecommerceApp')
                                         }else {
                                             console.log('No tiene correo');
                                         }
-                                    }
-                                    usrASesion(request.data.message[0]);
-                                    $scope.logged=true;
-                                    $scope.nombreFacebook=datos.name;
-                                    consultarCarrito();
-                                    $(function () {
-                                            if ($('#myModal1').is(':visible')) {
-                                                $('#myModal1').modal('hide');
-                                            }
-                                        });
-                                    if (request.data.repeat==true) {
-
                                     }else{
                                         
                                         $(function () {
-                                        $("#myModalWelcome").modal("show");
+                                          $("#myModalWelcome").modal("show");
                                         })
                                             
                                     }
