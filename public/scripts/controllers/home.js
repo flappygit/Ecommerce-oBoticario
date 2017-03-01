@@ -106,10 +106,8 @@ angular.module('ecommerceApp')
 
             // wait till load event fires so all resources are available
             $(".navbar-custom .navbar-nav a").css({"color":"#fff"});
-            $(".nav-icon-normal").show();
-            $(".nav-icon-sticky").hide();
-            $("#img-white").show();
-            $("#img-black").hide();
+            $(".nav-icon-normal").hide();
+            $(".nav-icon-sticky").show();
             $(".navbar-fixed-top").removeClass("top-nav-collapse");
         });
         $scope.verProducto=function (product) {

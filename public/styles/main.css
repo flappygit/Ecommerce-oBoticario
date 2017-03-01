@@ -310,7 +310,7 @@ hr{
 }
 
 .navbar-custom .navbar-toggle {
-  color: #fff;
+  color: #000;
   background-color: rgba(255, 255, 255, 0.2);
   font-size: 12px;
 }
@@ -325,13 +325,14 @@ hr{
   outline: none;
 }
 .navbar-custom a {
-  color:#fff;
+  color:#000;
 }
 .navbar-custom .nav li a {
   -webkit-transition: background 0.3s ease-in-out;
   -moz-transition: background 0.3s ease-in-out;
   transition: background 0.3s ease-in-out;
   z-index:1;
+  color:#000 !important;
 }
 .navbar-custom .nav li a:hover {
   color: #f8f8f8;
