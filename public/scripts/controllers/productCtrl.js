@@ -22,6 +22,7 @@ angular.module('ecommerceApp')
               if (publicacion.id_post!=null) {
                     $scope.addCart="COMPRADO";
               }else{
+                console.log("add ??");
                       $scope.addCart="Añadido al carrito";
               }
 

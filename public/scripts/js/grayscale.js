@@ -25,7 +25,7 @@ function collapseNavbar() {
         $(".nav-icon-normal").hide();
         $(".nav-icon-sticky").show();
     } else {
-        $(".navbar-custom .navbar-nav a").css({"color":"#fff"});
+        $(".navbar-custom .navbar-nav a").css({"color":"#000"});
         $(".nav-icon-normal").show();
         $(".nav-icon-sticky").hide();
         $("#img-white").show();
