@@ -51,7 +51,7 @@ angular
         controller: 'inicioCtrl',
         controllerAs: 'inicio'
       })
-      .when('/user', {
+      .when('/conteo-de-likes', {
         templateUrl: 'views/user-panel.html',
         controller: 'userCtrl',
         controllerAs: 'user'

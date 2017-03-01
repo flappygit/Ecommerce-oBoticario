@@ -4,7 +4,7 @@
 	<a ng-click="showView('inicio')" class="not-under f-color1">Home </a> > Likes Traking
 </div>
 
-<h4 class="h4-cart">Likes traking</h4>
+<h4 class="h4-cart">Conteo de likes/Me gusta </h4>
 
 <div class="product-shared" ng-repeat="publicacion in publicaciones">
 
@@ -36,7 +36,7 @@
         Felicitaciones, {{nombreFacebook}}, haz alcanzado los likes necesarios para {{publicacion.nombre}}. <br>
         Estaremos validando que tus likes sean verdaderos. revisa la bandeja de entrada de correo electrónico.
     </p>
-    <h4 class="f-black h4-cart" ng-if="publicacion.likes_count!=publicacion.likes" ><small class="f-black">Estas a </small> <span style="color:#1a5aa8;" > {{ +publicacion.likes - +publicacion.likes_count }} likes </span> <small class="f-black" >de conseguir {{publicacion.nombre}}</small> </h4>
+    <h4 class="f-black h4-cart" ng-if="publicacion.likes_count!=publicacion.likes" ><small class="f-black">Estás a </small> <span style="color:#1a5aa8;" > {{ +publicacion.likes - +publicacion.likes_count }} Likes </span> <small class="f-black" >de conseguir {{publicacion.nombre}}</small> </h4>
 
     <center>
 
