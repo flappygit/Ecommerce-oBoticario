@@ -44,21 +44,22 @@ function collapseNavbar() {
 
     }else{
     if ($(".navbar").offset().top > 650) {
-      if ($(window).width()>992) {
-$(".navbar-fixed-top").addClass("top-nav-collapse");
+
+        $(".navbar-fixed-top").addClass("top-nav-collapse");
         $(".navbar-custom .navbar-nav a").css({"color":"#000"});
   
         $("#img-black").show();
         $(".nav-icon-sticky").show();
-        
-      }
-
-        
     } else {
+      if ($(window).width()>992) {
+
         $(".navbar-custom .navbar-nav a").css({"color":"#000"});
         $(".nav-icon-sticky").show();
         $("#img-black").show();
         $(".navbar-fixed-top").removeClass("top-nav-collapse");
+      }
+
+        
     }  
     }
     
