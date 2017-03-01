@@ -44,12 +44,16 @@ function collapseNavbar() {
 
     }else{
     if ($(".navbar").offset().top > 650) {
-
-        $(".navbar-fixed-top").addClass("top-nav-collapse");
+      if ($(window).width()>992) {
+$(".navbar-fixed-top").addClass("top-nav-collapse");
         $(".navbar-custom .navbar-nav a").css({"color":"#000"});
   
         $("#img-black").show();
         $(".nav-icon-sticky").show();
+        
+      }
+
+        
     } else {
         $(".navbar-custom .navbar-nav a").css({"color":"#000"});
         $(".nav-icon-sticky").show();
