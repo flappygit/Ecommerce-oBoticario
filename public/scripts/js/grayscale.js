@@ -20,12 +20,10 @@ function collapseNavbar() {
         $(".navbar-custom .navbar-nav a").css({"color":"#000"});
   
         $("#img-black").show();
-        $(".nav-icon-normal").hide();
         $(".nav-icon-sticky").show();
     } else {
         $(".navbar-custom .navbar-nav a").css({"color":"#000"});
-        $(".nav-icon-normal").show();
-        $(".nav-icon-sticky").hide();
+        $(".nav-icon-sticky").show();
         $("#img-black").show();
         $(".navbar-fixed-top").removeClass("top-nav-collapse");
     }  
