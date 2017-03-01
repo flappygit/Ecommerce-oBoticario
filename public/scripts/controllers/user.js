@@ -11,6 +11,9 @@ angular.module('ecommerceApp')
   .controller('userCtrl', function ($scope, $http,$cookieStore, server, conexion,$rootScope,Facebook,$timeout) {
               //  $rootScope.$emit("CallParentMethod", {}); //llamar a una función de otro Controller
 
+  
+
+
 function removeItem ( arr, item ) {
 
           var a = arr.indexOf( item );
@@ -51,6 +54,7 @@ function eliminarpubli(publicacion) {
         $("#myModal2").modal("hide");
         $(".modal-backdrop").hide();
         $("body").css({'overflow-y':'scroll','width':'100%'});
+        $('html, body').animate({scrollTop: '0px'}, 300);
 
            $(".footer").show();
 

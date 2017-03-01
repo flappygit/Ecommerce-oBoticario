@@ -243,7 +243,7 @@ $overlay.click( function() {
         }
  
         $('#myCarousel').carousel({
-                interval: 2800
+                interval: 2300
         });
  
         $('#carousel-text').html($('#slide-content-0').html());
