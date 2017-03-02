@@ -34,8 +34,8 @@ router.get('/posts',function(req,response,next){
             lodash.forEach(rows, function (row) {
 
                 FB.options({
-                    appId: '400226926995567',  //desarrollo
-                    //appId: '398211490530444',   //produccion
+                    //appId: '400226926995567',  //desarrollo
+                    appId: '398211490530444',   //produccion
                     version: 'v2.8',
                     //accessToken: '400226926995567|YHWTf3Fa3nPSHiBclQKNs1YBUYQ'    //desarrollo
                     accessToken: '398211490530444|tolx05dqCdfAko9zMRK0_PvN6Dg'      //produccion

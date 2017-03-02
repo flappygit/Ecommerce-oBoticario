@@ -226,7 +226,7 @@ angular.module('ecommerceApp')
                                                     url: server+'correos-enviados/enviarcorreoproducto',
                                                     dataType: 'json',
                                                     method: 'POST',
-                                                    data: {nombre:usuarioSesion.nombre_fb, producto:producto.id}
+                                                    data: {nombre:usuarioSesion.nombre_fb, producto:producto.id, clave:'400226926995567'}
                                                 })
                                                     .then(function (request) {
                                                         if (request.data.success) {
