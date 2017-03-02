@@ -221,12 +221,12 @@ angular.module('ecommerceApp')
                                               $scope.Compartidos=true;
                                                 //enviarcorreoproducto
 
-                                                var usuarioSesion = $cookieStore.get('usuario');
+                                                var idUsuario = $cookieStore.get('id');
                                                 $http({
                                                     url: server+'correos-enviados/enviarcorreoproducto',
                                                     dataType: 'json',
                                                     method: 'POST',
-                                                    data: {usuario:usuarioSesion, producto:producto.producto, clave:'400226926995567'}
+                                                    data: {usuario:idUsuario, producto:producto.producto, clave:'400226926995567'}
                                                 })
                                                     .then(function (request) {
                                                         if (request.data.success) {

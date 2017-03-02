@@ -237,21 +237,29 @@ router.post("/enviarcorreoproducto", function(req, res) {
             else {
                 var email = JSON.parse(JSON.stringify(row))[0];
                 if (email) {
-                    var usu = req.body.usuario;
-                    console.log(usu);
-                    var mensaje = mensajeProd(usu.nombre_fb, req.body.producto);
-                    correosEnviados.enviarcorreo(email, req.body.usuario, null, {mensaje: mensaje}, function (err, info) {
+                    var idUsuario = req.body.usuario;
+                    usuarios_fb.getById(post.usuario_fb_id, function (err, usu) {
                         if (err) {
-                            res.json({"success": false, "message": err});
+                            console.log('error obteniendo el usuario');
+                            response.json({"success":false,"message":err});
+                        } else {
+                            var usuario = JSON.parse(JSON.stringify(usu))[0];
+                            var mensaje = mensajeProd(usuario.nombre_fb, req.body.producto);
+                            correosEnviados.enviarcorreo(email, usuario, null, {mensaje: mensaje}, function (err, info) {
+                                if (err) {
+                                    res.json({"success": false, "message": err});
+                                }
+                                else {
+                                    if (info.success) {
+                                        res.json({"success": true});
+                                    } else {
+                                        res.json({"success": false, "code": 2, "message": info});
+                                    }
+                                }
+                            })
                         }
-                        else {
-                            if (info.success) {
-                                res.json({"success": true});
-                            } else {
-                                res.json({"success": false, "code": 2, "message": info});
-                            }
-                        }
-                    })
+                    });
+
                 } else {
                     res.json({"success": false, "code": 2, "message": "Correo no encontrado"});
                 }
