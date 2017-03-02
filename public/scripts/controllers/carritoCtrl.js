@@ -226,13 +226,14 @@ angular.module('ecommerceApp')
                                                     url: server+'correos-enviados/enviarcorreoproducto',
                                                     dataType: 'json',
                                                     method: 'POST',
-                                                    data: {nombre:usuarioSesion.nombre_fb, producto:producto.producto, clave:'400226926995567'}
+                                                    data: {usuario:usuarioSesion, producto:producto.producto, clave:'400226926995567'}
                                                 })
                                                     .then(function (request) {
                                                         if (request.data.success) {
                                                            console.log('correo enviado')
                                                         }else{
-                                                            console.log('Error al enviar el mail '+producto.id);
+                                                            console.log('Error al enviar el mail '+producto.producto);
+                                                            console.log(request.data);
                                                         }
                                                     })
                                                     .finally(function () {

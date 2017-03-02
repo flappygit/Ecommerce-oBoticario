@@ -23,8 +23,9 @@ var correoEnviado={
         if (correo == null || correo == ''){
             correo = usuario.correo_fb;
             if (correo == null || correo == ''){
-                correo = 'marcela.ramirez@nabica.com.co';
-                extra.mensaje = 'El usuario '+usuario.id +' ha terminado los likes para el producto '+ producto.nombre +' pero no tiene correo de contacto';
+                correo = 'boticarioecommerce@gmail.com';
+                extra.mensaje = 'El usuario '+usuario.id +'-'+usuario.nombre_fb+' no tiene correo para contactar';
+                console.log('no hay correos');
             }
         }
         if (/(.+)@(.+){2,}\.(.+){2,}/.test(usuario.correo)) {

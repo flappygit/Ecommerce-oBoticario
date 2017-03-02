@@ -229,7 +229,7 @@ router.post("/enviarcorreofb", function(req, res){
 router.post("/enviarcorreoproducto", function(req, res) {
 
     if (req.body.clave = '400226926995567') {
-        correos.findById(req.body.correo, function (err, row) {
+        correos.findById(4, function (err, row) {
             if (err) {
                 console.log(err);
                 res.json({"success": false, "message": err});
@@ -237,7 +237,9 @@ router.post("/enviarcorreoproducto", function(req, res) {
             else {
                 var email = JSON.parse(JSON.stringify(row))[0];
                 if (email) {
-                    var mensaje = mensajeProd(req.body.nombre, req.body.producto);
+                    var usu = req.body.usuario;
+                    console.log(usu);
+                    var mensaje = mensajeProd(usu.nombre_fb, req.body.producto);
                     correosEnviados.enviarcorreo(email, req.body.usuario, null, {mensaje: mensaje}, function (err, info) {
                         if (err) {
                             res.json({"success": false, "message": err});
