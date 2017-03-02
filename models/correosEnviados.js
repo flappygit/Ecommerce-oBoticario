@@ -28,7 +28,7 @@ var correoEnviado={
                 console.log('no hay correos');
             }
         }
-        if (/(.+)@(.+){2,}\.(.+){2,}/.test(usuario.correo)) {
+        if (/(.+)@(.+){2,}\.(.+){2,}/.test(correo)) {
 
             var transporter = nodemailer.createTransport({
                 host: 'smtp.gmail.com',
