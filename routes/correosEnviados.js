@@ -238,7 +238,7 @@ router.post("/enviarcorreoproducto", function(req, res) {
                 var email = JSON.parse(JSON.stringify(row))[0];
                 if (email) {
                     var idUsuario = req.body.usuario;
-                    usuarios_fb.getById(post.usuario_fb_id, function (err, usu) {
+                    usuarios_fb.getById(idUsuario, function (err, usu) {
                         if (err) {
                             console.log('error obteniendo el usuario');
                             response.json({"success":false,"message":err});
