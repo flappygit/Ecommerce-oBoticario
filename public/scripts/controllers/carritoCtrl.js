@@ -168,20 +168,20 @@ angular.module('ecommerceApp')
                   var privacy={"value":"EVERYONE"};
                   switch (producto.imagen){
 
-              case '/images/lily/perfume1.png':
+              case '/images/lily/perfume-cart.jpg':
                   picture1='images/1Lily.png'
                   break;
 
-              case '/images/make-b/labial.png':
+              case '/images/make-b/labial-cart.jpg':
                   picture1='images/3MakeB.png'
                   break;
 
-              case '/images/nativa/cremas.png':
+              case '/images/nativa/cremas-cart.jpg':
                   picture1='images/2Nativa.png'
 
                   break;
 
-              case '/images/malbec/colonia.png':
+              case '/images/malbec/colonia-cart.jpg':
                   picture1='images/4Malbec.png'
                   break;
 
