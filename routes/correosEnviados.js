@@ -3,6 +3,7 @@ var express = require('express');
 var router = express.Router();
 var correos=require('../models/correos');
 var correosEnviados=require('../models/correosEnviados');
+var usuarios_fb=require('../models/user');
 var usuariosNl=require('../models/usuarios_nl');
 const nodemailer = require('nodemailer');
 var utiles = require('../libs/utiles');
