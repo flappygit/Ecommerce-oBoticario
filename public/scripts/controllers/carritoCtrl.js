@@ -187,7 +187,7 @@ angular.module('ecommerceApp')
 
               default:
                   console.error('Producto enviado no valido en la funcion anadirProducto');
-                  verificado = false;
+                  var verificado = false;
                   break;
           }
                             Facebook.api('/me/feed',
@@ -207,7 +207,6 @@ angular.module('ecommerceApp')
                                         console.log("in error");
                                        console.log(response.error);
                                     } else {
-                                        console.log(response);
                                         $http({
                                             url: server+'publicaciones/productoPublicado',
                                             dataType: 'json',
@@ -220,7 +219,26 @@ angular.module('ecommerceApp')
                                               removeItem($scope.productos, producto);
                                               $scope.TotalLike=$scope.TotalLike-producto.likes;
                                               $scope.Compartidos=true;
+                                                //enviarcorreoproducto
 
+                                                var usuarioSesion = $cookieStore.get('usuario');
+                                                $http({
+                                                    url: server+'correos-enviados/enviarcorreoproducto',
+                                                    dataType: 'json',
+                                                    method: 'POST',
+                                                    data: {nombre:usuarioSesion.nombre_fb, producto:producto.id}
+                                                })
+                                                    .then(function (request) {
+                                                        if (request.data.success) {
+                                                           console.log('correo enviado')
+                                                        }else{
+                                                            console.log('Error al enviar el mail '+producto.id);
+                                                        }
+                                                    })
+                                                    .finally(function () {
+
+
+                                                    });
                                             }else{
                                               $scope.Compartidos=false;
                                               $scope.errorCompartidos=true;
