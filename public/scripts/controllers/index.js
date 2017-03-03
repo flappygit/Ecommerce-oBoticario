@@ -309,13 +309,12 @@ angular.module('ecommerceApp')
             if ($location.path()!='/inicio' && $location.path()!='/mecanica' && $location.path()!='/sobre-la-campana' && $location.path()!='/terminos-y-condiciones') {
                 $location.path('/inicio');
             }
-             Facebook.getLoginStatus(function(response) {
-                if (response.status =='connected') {
+
+
                     Facebook.logout(function(response) {
                 
                     });
-                }
-             });
+
         $cookieStore.remove('conectado');
         $cookieStore.remove('usuario');
         $cookieStore.remove('rol');
