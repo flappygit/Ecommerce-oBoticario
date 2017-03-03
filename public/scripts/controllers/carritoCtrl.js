@@ -12,6 +12,7 @@ angular.module('ecommerceApp')
 
 
 
+        $scope.$parent.homevar=false;
  
 
     $scope.descuento = 0;

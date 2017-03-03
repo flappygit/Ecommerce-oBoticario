@@ -23,7 +23,6 @@
         </div>
 
         <div class="col-md-4 col-sm-4 div-text-description-cart">
-            Ref: {{producto.referencia}}
             <h2>{{producto.nombre}}</h2>
             <h4 style="margin:0;">{{producto.likes}} Likes</h4>
         </div>
@@ -53,7 +52,7 @@
     </div>
     <br><br>
     <div class="row text-center" ng-hide="error"  ng-show="productos!=null">
-        <a  href="" data-toggle="modal" data-target="#myModal2" class="btn btn1">Confirmar y pagar</a>
+        <a  href="" data-toggle="modal" data-target="#myModal2" class="btn btn1">Confirmar.</a>
         <div class="div-shared-product">
         </div>
 
@@ -118,12 +117,12 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 div-new-text text-center " style="padding-bottom:40px;">
 
-                    <h4 class="f-black">Para empezar a acumular tus likes, debes compartir una publicación <br> por cada producto que compres.</h4>
+                    <h4 class="f-black">#CreeEnlaBelleza</h4>
                     <div ng-if="Compartidos" class="alert alert-success fade in" style="">
                         <strong>¡Listo!</strong> Tu compra acaba de ser publicada en tu muro de Facebook
                     </div>
                     <div ng-if="errorCompartidos" class="alert alert-danger fade in">
-                        <strong>Error !</strong> a la hora de publicar en tu muro, por favor verifica que hayas otorgados los permisos necesarios en el inicio de sesión con facebook, vuelva a intentarlo.
+                        <strong>Error !</strong> a la hora de publicar en tu muro. Por favor verifica que hayas otorgados los permisos necesarios en el inicio de sesión con facebook, vuelva a intentarlo.
                         <br> O puedes ir a tu cuenta de Facebook> Configuración> Aplicaciones.  Buscar la app <b>Oboticário</b> <br> y otorgar todos los permisos. <a href="https://www.facebook.com/settings?tab=applications" class="f-black">https://www.facebook.com/settings?tab=applications</a>
                     </div>
                 </div>
@@ -135,12 +134,12 @@
                         <img ng-src="{{producto.imagen}}" class="img-responsive img-product-cart">
                     </div>
                     <div class="col-md-3 col-sm-3 div-text-description-cart">
-                        {{producto.nombre}}
-                        <h4 style="margin:0;">{{producto.likes}} Likes</h4>
+                        
+                        <h4 style="margin:0;">Producto <br> {{producto.nombre}}</h4>
                     </div>
                     <div class="col-lg-5 col-md-5  text-center div-share-product">
                             <input type="text" name="estadoFacebook" ng-model="producto.estadoFacebook" class="form-control text-center" placeholder="Haz un comentario...">
-                            <small><b>*Comenta con el Hashtag #CreeEnLaBelleza</b></small> <br><br>
+                            <br>
                             <a class="btnn1 btn-social btn-lg btn-facebook"  ng-click="compartirProducto(producto)" ><i class="fa fa-facebook"></i>Compartir</a>
 
                     </div>
@@ -149,7 +148,7 @@
                 <div class="col-lg-12 col-md-12 text-center" ng-if="Compartidos">
                 
                 <br>
-                    <a  class="btn btn1"   ng-href="#/conteo-de-likes">Ir a monitorear mis publicaciones</a>
+                    <a  class="btn btn1"   ng-href="#/conteo-de-likes">Ir a Conteo de Likes</a>
                 </div>
                 <div class="col-lg-12 col-md-12 text-center">
                     <a  class="f-gray btn" data-dismiss="modal" style="text-decoration:underline;font-size:16px;color:#c0c0c0;">Cerrar</a>

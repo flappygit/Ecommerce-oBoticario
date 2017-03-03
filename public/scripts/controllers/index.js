@@ -12,11 +12,24 @@ angular.module('ecommerceApp')
         logger.debug('Controller INDEX ');
 
         $rootScope.$on("CallParentMethod", function(){}); //función para usar en otros controllers
+        $scope.homevar=false;
+        if ($location.path()=="/inicio") {
+        $scope.homevar=true;
 
+        }else{
+        $scope.homevar=false;
+
+        }
 
         //Jquery 
         $(function () {
-        
+        $('.ancla').click(function(e){
+      e.preventDefault();
+        var enlace  = $(this).attr('href');
+        $('html, body').animate({
+            scrollTop: $(enlace).offset().top
+        }, 1000);
+      });
         $(".navbar").hide();
         $("#nav-icon-sticky").hide();
         $(".footer").hide();
@@ -302,6 +315,12 @@ angular.module('ecommerceApp')
             if ($location.path()!='/inicio' && $location.path()!='/mecanica' && $location.path()!='/sobre-la-campana' && $location.path()!='/terminos-y-condiciones') {
                 $location.path('/inicio');
             }
+
+
+                    Facebook.logout(function(response) {
+                
+                    });
+
         $cookieStore.remove('conectado');
         $cookieStore.remove('usuario');
         $cookieStore.remove('rol');

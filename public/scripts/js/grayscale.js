@@ -1,8 +1,10 @@
 
 
 
+
+
 $("div#divLoading").addClass('show');
-        $(".navbar").hide();
+    $(".navbar").hide();
 
 function navbarmobile() {
     var pathname = window.location;

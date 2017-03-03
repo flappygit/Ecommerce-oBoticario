@@ -11,7 +11,7 @@ angular.module('ecommerceApp')
     .controller('userCtrl', function ($scope, $http,$cookieStore, server, conexion,$rootScope,Facebook,$timeout) {
         //  $rootScope.$emit("CallParentMethod", {}); //llamar a una función de otro Controller
 
-
+        $scope.$parent.homevar=false;
 
 
         function removeItem ( arr, item ) {
@@ -67,86 +67,39 @@ angular.module('ecommerceApp')
             $("#img-white").hide();
             $("#img-black").show();
         });
-        $http({
-            url: server+'publicaciones/getPublicadoPorUsuario/'+$cookieStore.get('id'),
-            dataType: 'json',
-            method: 'GET'
-        })
-            .then(function (request) {
-                if (request.data.success) {
-                    if (request.data.code){
-                        $scope.values = [];
 
-                        if (request.data.rows!=undefined && request.data.rows!=null) {
+        if ($cookieStore.get('conectado')) {
 
+            $http({
+                url: server+'publicaciones/getPublicadoPorUsuario/'+$cookieStore.get('id'),
+                dataType: 'json',
+                method: 'GET'
+            })
+                .then(function (request) {
+                    if (request.data.success) {
+                        if (request.data.code){
+                            $scope.values = [];
 
-                            request.data.rows.forEach(function(publicacion, i) {
-
-                                if (publicacion.likes_count == null){
-                                    publicacion.likes_count = 0;
-                                }
+                            if (request.data.rows!=undefined && request.data.rows!=null) {
 
 
-                                Facebook.getLoginStatus(function(response) {
+                                request.data.rows.forEach(function(publicacion, i) {
 
-                                    if (response.status === 'connected') {
-
-
-                                        var uid = response.authResponse.userID;
-                                        var token = response.authResponse.accessToken;
-                                        Facebook.api('/'+publicacion.id_post+"/?fields=reactions.summary(1)"
-                                            ,function(response) {
-                                                console.log(response);
-                                                if (!response.error) {
+                                    if (publicacion.likes_count == null){
+                                        publicacion.likes_count = 0;
+                                    }
 
 
-                                                    publicacion.index = i;
+                                    Facebook.getLoginStatus(function(response) {
 
-                                                    if(publicacion.likes_count != response.reactions.summary.total_count) {
-                                                        publicacion.likes_count = response.reactions.summary.total_count;
-                                                        actualizarLikes(response.reactions.summary.total_count, publicacion.id_post, publicacion.id);
-                                                        $http({
-                                                            url: server+'publicaciones/getPublicadoPorUsuario/'+$cookieStore.get('id'),
-                                                            dataType: 'json',
-                                                            method: 'GET'
-                                                        })
-                                                            .then(function (request) {
-                                                                if (request.data.success) {
-                                                                    if (request.data.enviado){
-                                                                        console.log('correo enviado');
-                                                                    }else{
-                                                                        console.log('correo No enviado por falta de likes');
-                                                                    }
-                                                                }
-                                                                else{
-                                                                    console.log(request.data.message);
-                                                                }
-                                                            })
-                                                            .catch(function (error) {
-                                                                console.log(error);
-                                                            });
-                                                    }
-
-                                                    if (publicacion.codigo_promo != null && publicacion.codigo_promo != '' ){
-                                                        publicacion.likes_count += 40;
-                                                    }
+                                        if (response.status === 'connected') {
 
 
-                                                    $scope.values.push({'countTo':publicacion.likes_count,'countFrom':0,'progressValue':publicacion.likes_count*100/publicacion.likes,'idpost':publicacion.id_post});
-
-
-                                                }else{
-                                                    eliminarpubli(publicacion);
-                                                }
-
-
-                                            },{access_token: token});
-
-                                    }else{
-                                        Facebook.login(function(responses1) {
-
+                                            var uid = response.authResponse.userID;
+                                            var token = response.authResponse.accessToken;
                                             Facebook.api('/'+publicacion.id_post+"/?fields=reactions.summary(1)"
                                                 ,function(response) {
+                                                    console.log(response);
                                                     if (!response.error) {
 
 
@@ -161,24 +114,53 @@ angular.module('ecommerceApp')
                                                         }
 
 
-                                                        $scope.values.push({'countTo':publicacion.likes_count,'countFrom':0,'progressValue':publicacion.likes_count*100/publicacion.likes});
-                                                        console.log($scope.values);
+                                                        $scope.values.push({'countTo':publicacion.likes_count,'countFrom':0,'progressValue':publicacion.likes_count*100/publicacion.likes,'idpost':publicacion.id_post});
 
 
-
-                                                        $scope.restante_likes=publicacion.likes-publicacion.likes_count;
                                                     }else{
                                                         eliminarpubli(publicacion);
-
                                                     }
 
-                                                });
+
+                                                },{access_token: token});
+
+                                        }else{
+                                            Facebook.login(function(responses1) {
+
+                                                Facebook.api('/'+publicacion.id_post+"/?fields=reactions.summary(1)"
+                                                    ,function(response) {
+                                                        if (!response.error) {
 
 
-                                        }, { scope: "user_posts,publish_actions",return_scopes: true });
-                                    }
+                                                            publicacion.index = i;
 
-                                })
+                                                            publicacion.likes_count=response.reactions.summary.total_count;
+
+                                                            actualizarLikes(response.reactions.summary.total_count,publicacion.id_post,publicacion.id);
+
+                                                            if (publicacion.codigo_promo != null && publicacion.codigo_promo != '' ){
+                                                                publicacion.likes_count += 40;
+                                                            }
+
+
+                                                            $scope.values.push({'countTo':publicacion.likes_count,'countFrom':0,'progressValue':publicacion.likes_count*100/publicacion.likes});
+                                                            console.log($scope.values);
+
+
+
+                                                            $scope.restante_likes=publicacion.likes-publicacion.likes_count;
+                                                        }else{
+                                                            eliminarpubli(publicacion);
+
+                                                        }
+
+                                                    });
+
+
+                                            }, { scope: "user_posts,publish_actions",return_scopes: true });
+                                        }
+
+                                    })
 
 
 
@@ -187,28 +169,34 @@ angular.module('ecommerceApp')
 
 
 
-                            });
+                                });
 
-                        }else{
-                            console.log("request.rows null or undefined")
+                            }else{
+                                console.log("request.rows null or undefined")
+                            }
+
+                            $scope.publicaciones = request.data.rows;
+                            $scope.error = null;
+                        }else {
+                            $scope.error = 'No tiene productos publicados';
+                            console.log('no tiene productos publicados');
                         }
+                    }else{
+                        console.log('Error al traer los productos publicados');
+                        $scope.error = 'Error consultando productos publicados, intentelo más tarde';
 
-                        $scope.publicaciones = request.data.rows;
-                        $scope.error = null;
-                    }else {
-                        $scope.error = 'No tiene productos publicados';
-                        console.log('no tiene productos publicados');
                     }
-                }else{
-                    console.log('Error al traer los productos publicados');
-                    $scope.error = 'Error consultando productos publicados, intentelo más tarde';
-
-                }
-            })
-            .finally(function () {
+                })
+                .finally(function () {
 
 
-            });
+                });
+
+        }else{
+            $scope.error = 'No tiene productos publicados';
+            console.log('no tiene productos publicados');
+
+        }
 
         function percentage(num, per){return (num/100)*per;}
 

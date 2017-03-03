@@ -21,7 +21,7 @@
 
   
 </head>
-<body ng-app="ecommerceApp" ng-controller="indexCtrl" class="flexcroll" id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<body ng-app="ecommerceApp" ng-controller="indexCtrl"  id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
 
 <!--[if lte IE 8]>
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -53,7 +53,7 @@ ng-if="usrSesion.conectado"
                         <a class="page-scroll" href="" ng-if="logged==false" ng-click="FBLogin()">Ingresar con Facebook</a>
 
 
-                        <a href="" ng-if="logged==true" style="background-color:transparent;"  data-toggle="dropdown">Hola, <b" style="cursor:pointer;"> {{nombreFacebook}}</b> &nbsp; <img src="images/icons/icon-dropdown.png" >
+                        <a href="" ng-if="logged==true" style="background-color:transparent;"  data-toggle="dropdown">Hola, <b style="cursor:pointer;"> {{nombreFacebook}}</b> &nbsp; <img src="images/icons/icon-dropdown.png" >
                         <ul class="dropdown-menu" role="menu" aria-labelledby="menu1" style="background-color:transparent;border:none;box-shadow:none;padding:0;margin: 0;margin-top:-20px;margin-right:-15px;">
       <li role="presentation"><a role="menuitem" href="" ng-if="logged==true" ng-click="cerrarSesion()" tabindex="-1"><img src="images/icons/icon-sesion.png"></a></li>
     </ul>
@@ -112,7 +112,10 @@ ng-if="usrSesion.conectado"
 
         </div>
 
-
+        <header class="intro" ng-if="homevar==true">
+        <a href="#/inicio#home-welcome"  class="button-scroll f-white ancla"><img src="images/icons/icon-2.png"> </a>
+        <span class="span-scroll f-white"> Scroll para comenzar a comprar</span>
+        </header>
 <div ng-view></div>
 
   <div id="myModalWelcome"  class="modal fade modal1" role="dialog">
@@ -125,22 +128,20 @@ ng-if="usrSesion.conectado"
 
         <div class="col-lg-12 col-md-12 div-new-text text-center div-message-shared" >
 
-        <h4 class="f-black">¡Hola, Bienvenido ya puedes comenzar a comprar con likes! </h4>
+        <h4 class="f-black">¡Hola, bienvenido ya puedes comenzar a comprar con likes! </h4>
 
         </div>
-
-        <div class="col-lg-12 col-md-12"  >
-        </div>
+        <br>  
 
         <div class="col-lg-12 col-md-12 text-center">
             <a  class="f-gray btn" data-dismiss="modal" style="text-decoration:underline;font-size:16px;color:#c0c0c0;">Salir</a>
         </div>
     </div>
-      
     </div>
-
+    
   </div>
 </div>
+
 
 
 <div class="footer">

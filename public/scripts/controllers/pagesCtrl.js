@@ -12,6 +12,8 @@ angular.module('ecommerceApp')
   		$(function () {
       $(".footer").show();
       $('html, body').animate({scrollTop: '0px'}, 300);
+        $scope.homevar=false;
+        $scope.$parent.homevar=false;
 
             // wait till load event fires so all resources are available
             $(".nav-icon-normal").hide();
