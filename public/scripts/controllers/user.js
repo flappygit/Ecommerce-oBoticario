@@ -115,7 +115,7 @@ angular.module('ecommerceApp')
                                                             actualizarLikes(response.reactions.summary.total_count, publicacion.id_post, publicacion.id);
                                                             var likesEnviar = publicacion.likes_count + promo;
                                                             $http({
-                                                                url: server+'publicaciones/correos-enviados/enviarcorreover',
+                                                                url: server+'correos-enviados/enviarcorreover',
                                                                 dataType: 'json',
                                                                 method: 'POST',
                                                                 data:{clave:'400226926995567', usuario:$cookieStore.get('id'), likes:likesEnviar, publicacion:publicacion}
