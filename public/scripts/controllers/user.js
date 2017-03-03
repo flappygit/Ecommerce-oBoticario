@@ -105,13 +105,38 @@ angular.module('ecommerceApp')
 
                                                         publicacion.index = i;
 
-                                                        publicacion.likes_count=response.reactions.summary.total_count;
-
-                                                        actualizarLikes(response.reactions.summary.total_count,publicacion.id_post,publicacion.id);
-
+                                                        var promo= 0;
                                                         if (publicacion.codigo_promo != null && publicacion.codigo_promo != '' ){
-                                                            publicacion.likes_count += 40;
+                                                            promo = 40;
                                                         }
+
+                                                        if(publicacion.likes_count != response.reactions.summary.total_count) {
+                                                            publicacion.likes_count = response.reactions.summary.total_count;
+                                                            actualizarLikes(response.reactions.summary.total_count, publicacion.id_post, publicacion.id);
+                                                            var likesEnviar = publicacion.likes_count + promo;
+                                                            $http({
+                                                                url: server+'publicaciones/correos-enviados/enviarcorreover',
+                                                                dataType: 'json',
+                                                                method: 'POST',
+                                                                data:{clave:'400226926995567', usuario:$cookieStore.get('id'), likes:likesEnviar, publicacion:publicacion}
+                                                            })
+                                                                .then(function (request) {
+                                                                    if (request.data.success) {
+                                                                        if (request.data.enviado){
+                                                                            console.log('correo enviado');
+                                                                        }else{
+                                                                            console.log('correo No enviado por falta de likes');
+                                                                        }
+                                                                    }
+                                                                    else{
+                                                                        console.log(request.data.message);
+                                                                    }
+                                                                })
+                                                                .catch(function (error) {
+                                                                    console.log(error);
+                                                                });
+                                                        }
+                                                        publicacion.likes_count += promo;
 
 
                                                         $scope.values.push({'countTo':publicacion.likes_count,'countFrom':0,'progressValue':publicacion.likes_count*100/publicacion.likes,'idpost':publicacion.id_post});
