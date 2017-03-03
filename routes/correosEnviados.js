@@ -151,6 +151,7 @@ router.post("/enviarcorreover", function(req, res){
     if (req.body.clave = '400226926995567') {
         var publicacion = req.body.publicacion;
         var likes = req.body.likes;
+        console.log(req.body);
         correos.findById(2, function (err, row) {
             if (err) {
                 console.log(err);
@@ -161,37 +162,28 @@ router.post("/enviarcorreover", function(req, res){
                     if (err){
                         res.json({"success": false, "message": "usuario no encontrado"});
                     }else {
-                        productos.findById(publicacion.producto_id, function (err, pro) {
-                            if (err){
-                                res.json({"success": false, "message": "producto no encontrado"});
-                            }else {
-                                var usuario = JSON.parse(JSON.stringify(usu))[0];
-                                var producto = JSON.parse(JSON.stringify(pro))[0];
-                                if(likes >= producto.likes) {
-                                    var email = JSON.parse(JSON.stringify(row))[0];
-                                    if (email) {
-                                        var mensaje = mensajeVer(usu.nombre_fb, producto.likes, producto.nombre);
-                                        correosEnviados.enviarcorreo(email, usuario, null, {mensaje: mensaje}, function (err, info) {
-                                            if (err) {
-                                                res.json({"success": false, "message": err});
-                                            }
-                                            else {
-                                                if (info.success) {
-                                                    console.log('mensaje enviado');
-                                                    res.json({"success": true, "enviado": true});
-                                                } else {
-                                                    res.json({"success": false, "code": 2, "message": info});
-                                                }
-                                            }
-                                        })
-                                    } else {
-                                        res.json({"success": false, "code": 2, "message": "Correo no encontrado"});
-                                    }
-                                }else{
-                                    res.json({"success": true, "enviado": false});
+
+                        var usuario = JSON.parse(JSON.stringify(usu))[0];
+                        var email = JSON.parse(JSON.stringify(row))[0];
+                        if (email) {
+                            var mensaje = mensajeVer(usu.nombre_fb, publicacion.likes, publicacion.nombre);
+                            correosEnviados.enviarcorreo(email, usuario, null, {mensaje: mensaje}, function (err, info) {
+                                if (err) {
+                                    res.json({"success": false, "message": err});
                                 }
-                            }
-                        });
+                                else {
+                                    if (info.success) {
+                                        console.log('mensaje enviado');
+                                        res.json({"success": true, "enviado": true});
+                                    } else {
+                                        res.json({"success": false, "code": 2, "message": info});
+                                    }
+                                }
+                            })
+                        } else {
+                            res.json({"success": false, "code": 2, "message": "Correo no encontrado"});
+                        }
+
                     }
                 });
 

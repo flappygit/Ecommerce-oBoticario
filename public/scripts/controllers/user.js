@@ -99,7 +99,6 @@ angular.module('ecommerceApp')
                                             var token = response.authResponse.accessToken;
                                             Facebook.api('/'+publicacion.id_post+"/?fields=reactions.summary(1)"
                                                 ,function(response) {
-                                                    console.log(response);
                                                     if (!response.error) {
 
 
@@ -112,7 +111,7 @@ angular.module('ecommerceApp')
 
                                                         if(publicacion.likes_count != response.reactions.summary.total_count) {
                                                             publicacion.likes_count = response.reactions.summary.total_count;
-                                                            actualizarLikes(response.reactions.summary.total_count, publicacion.id_post, publicacion.id, promo);
+                                                            actualizarLikes(response.reactions.summary.total_count, publicacion, promo);
                                                         }
                                                         publicacion.likes_count += promo;
 
@@ -144,16 +143,11 @@ angular.module('ecommerceApp')
 
                                                             if(publicacion.likes_count != response.reactions.summary.total_count) {
                                                                 publicacion.likes_count = response.reactions.summary.total_count;
-                                                                actualizarLikes(response.reactions.summary.total_count, publicacion.id_post, publicacion.id, promo);
+                                                                actualizarLikes(response.reactions.summary.total_count, publicacion, promo);
                                                             }
                                                             publicacion.likes_count += promo;
 
-
-
                                                             $scope.values.push({'countTo':publicacion.likes_count,'countFrom':0,'progressValue':publicacion.likes_count*100/publicacion.likes});
-                                                            console.log($scope.values);
-
-
 
                                                             $scope.restante_likes=publicacion.likes-publicacion.likes_count;
                                                         }else{
@@ -168,13 +162,6 @@ angular.module('ecommerceApp')
                                         }
 
                                     })
-
-
-
-
-
-
-
 
                                 });
 
@@ -208,7 +195,9 @@ angular.module('ecommerceApp')
         function percentage(num, per){return (num/100)*per;}
 
 
-        function actualizarLikes(likecount,idpost,idpubli,promo) {
+        function actualizarLikes(likecount,publicacion,promo) {
+            var idpost = publicacion.id_post;
+            var idpubli= publicacion.id;
             $http({
                 url: server+'publicaciones/actualizarLikes',
                 dataType: 'json',
@@ -216,29 +205,36 @@ angular.module('ecommerceApp')
                 data: {likes_count:likecount, id_post:idpost, id:idpubli}
             })
                 .then(function (request) {
+
                     if (request.data.success) {
-                        var likesEnviar = publicacion.likes_count + promo;
-                        $http({
-                            url: server+'correos-enviados/enviarcorreover',
-                            dataType: 'json',
-                            method: 'POST',
-                            data:{clave:'400226926995567', usuario:$cookieStore.get('id'), likes:likesEnviar, publicacion:publicacion}
-                        })
-                            .then(function (request) {
-                                if (request.data.success) {
-                                    if (request.data.enviado){
-                                        console.log('correo enviado');
-                                    }else{
-                                        console.log('correo No enviado por falta de likes');
-                                    }
-                                }
-                                else{
-                                    console.log(request.data.message);
+                        if (publicacion.likes <= (likecount + promo)){
+                            $http({
+                                url: server + 'correos-enviados/enviarcorreover',
+                                dataType: 'json',
+                                method: 'POST',
+                                data: {
+                                    clave: '400226926995567',
+                                    usuario: $cookieStore.get('id'),
+                                    likes: (likecount + promo),
+                                    publicacion: publicacion
                                 }
                             })
-                            .catch(function (error) {
-                                console.log(error);
-                            });
+                                .then(function (request) {
+                                    if (request.data.success) {
+                                        if (request.data.enviado) {
+                                            console.log('correo enviado');
+                                        } else {
+                                            console.log('correo No enviado por falta de likes');
+                                        }
+                                    }
+                                    else {
+                                        console.log(request.data.message);
+                                    }
+                                })
+                                .catch(function (error) {
+                                    console.log(error);
+                                });
+                        }
                     }else{
                         console.log('Error al actualizar likes de la publicacion');
                         $scope.error = 'Error al actualizar likes de la publicacion';
