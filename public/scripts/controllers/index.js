@@ -310,7 +310,7 @@ angular.module('ecommerceApp')
                 $location.path('/inicio');
             }
              Facebook.getLoginStatus(function(response) {
-                if (response && response.status === 'connected') {
+                if (response.status =='connected') {
                     Facebook.logout(function(response) {
                 
                     });
