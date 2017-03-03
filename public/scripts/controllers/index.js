@@ -1,4 +1,4 @@
-'use strict';
+location 'use strict';
 
 /**
  * @ngdoc function
@@ -309,6 +309,13 @@ angular.module('ecommerceApp')
             if ($location.path()!='/inicio' && $location.path()!='/mecanica' && $location.path()!='/sobre-la-campana' && $location.path()!='/terminos-y-condiciones') {
                 $location.path('/inicio');
             }
+             Facebook.getLoginStatus(function(response) {
+                if (response && response.status === 'connected') {
+                    Facebook.logout(function(response) {
+                
+                    });
+                }
+             });
         $cookieStore.remove('conectado');
         $cookieStore.remove('usuario');
         $cookieStore.remove('rol');
