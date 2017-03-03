@@ -191,13 +191,11 @@ function eliminarpubli(publicacion) {
 
 
           });
-
-
-
+          
         }else{
                       $scope.error = 'No tiene productos publicados';
                       console.log('no tiene productos publicados');
-                      
+
         }
 
           function percentage(num, per){return (num/100)*per;}
