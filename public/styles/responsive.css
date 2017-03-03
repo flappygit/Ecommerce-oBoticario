@@ -16,6 +16,9 @@
 }
 
 @media (max-width:992px) {
+	.div-intro{
+  padding-top:50px;padding-bottom:25px;
+}
 	.links-product{
 		text-align:center;
 	}
@@ -136,7 +139,6 @@
 	.div-img-details img{
 		width:100%;
 	}
-	.intro {height:700px;}
 	.a-close-menu{
   position:absolute;top:20px;right:20px;
 }
@@ -224,6 +226,9 @@
 }
 
 @media (max-width:450px) {
+	.div-intro{
+  padding-top:30px;padding-bottom:30px;
+}
 	
 	.div-form-new{padding-left:0px;padding-right:0px;margin-top:30px;}
 	.img-products{

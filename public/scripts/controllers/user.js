@@ -11,7 +11,7 @@ angular.module('ecommerceApp')
   .controller('userCtrl', function ($scope, $http,$cookieStore, server, conexion,$rootScope,Facebook,$timeout) {
               //  $rootScope.$emit("CallParentMethod", {}); //llamar a una función de otro Controller
 
-  
+        $scope.$parent.homevar=false;
 
 
 function removeItem ( arr, item ) {

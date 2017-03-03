@@ -10,6 +10,7 @@
 angular.module('ecommerceApp')
   .controller('productCtrl', function ($scope, $cookieStore, $location, $http, logger, server, conexion) {
             var counter = 0;
+        $scope.$parent.homevar=false;
     
     $scope.addCart= "Añadir al carrito";
         if($cookieStore.get('conectado')){
@@ -21,6 +22,11 @@ angular.module('ecommerceApp')
 
               if (publicacion.id_post!=null) {
                     $scope.addCart="COMPRADO";
+                    $(function ( ) {
+                                $(".btn2").css({"background-color":"#05a301"});
+                                $("#img-button-addCart").attr("src","images/icons/verificacion.png");
+                                
+                            });
               }else{
                 console.log("add ??");
                       $scope.addCart="Añadido al carrito";
@@ -118,9 +124,20 @@ angular.module('ecommerceApp')
                       if (request.data.success) {
                           if (request.data.existente){
                               console.log('El usuario ya tiene agregado el producto: ' + datos.producto);
+                              $scope.addCart="Añadido al Carrito";
+                              $(function ( ) {
+                                $(".btn2").css({"background-color":"#05a301"});
+                                $("#img-button-addCart").attr("src","images/icons/verificacion.png");
+
+                            });
                           }else {
                             $scope.$parent.productosCarrito=$scope.$parent.productosCarrito+1;
                             $scope.addCart="Añadido al Carrito";
+                            $(function ( ) {
+                                $(".btn2").css({"background-color":"#05a301"});
+                                $("#img-button-addCart").attr("src","images/icons/verificacion.png");
+
+                            })
                               console.log('producto: ' + datos.producto + ' agregado al usuario: ' + datos.usuario_fb);
                           }
                       }else{
@@ -199,6 +216,8 @@ $overlay.click( function() {
 });
 
 
+        $(".btn2").css({"background-color":"#27a2d6"});
+        $("#img-button-addCart").attr("src","images/icons/icon-add.png");
 
 
       $('html, body').animate({scrollTop: '0px'}, 300);

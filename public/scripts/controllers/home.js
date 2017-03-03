@@ -11,6 +11,7 @@ angular.module('ecommerceApp')
     .controller('inicioCtrl', function ($scope,$location, $http, server) {
         $scope.errorEmail=false;
         $scope.errorTerminos=false;
+        $scope.$parent.homevar=true;
 
         function parallax () {
             var layer_1= document.getElementById('lirio1');

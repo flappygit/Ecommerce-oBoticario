@@ -12,7 +12,14 @@ angular.module('ecommerceApp')
         logger.debug('Controller INDEX ');
 
         $rootScope.$on("CallParentMethod", function(){}); //función para usar en otros controllers
+        $scope.homevar=false;
+        if ($location.path()=="/inicio") {
+        $scope.homevar=true;
 
+        }else{
+        $scope.homevar=false;
+
+        }
 
         //Jquery 
         $(function () {
