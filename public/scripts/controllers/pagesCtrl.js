@@ -12,6 +12,8 @@ angular.module('ecommerceApp')
   		$(function () {
       $(".footer").show();
       $('html, body').animate({scrollTop: '0px'}, 300);
+      $("html,body").css({"width":"100%"});
+      
         $scope.homevar=false;
         $scope.$parent.homevar=false;
 

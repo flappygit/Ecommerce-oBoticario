@@ -29,7 +29,7 @@ angular.module('ecommerceApp')
 
 
   	$(function () {
-
+      $("html,body").css({"width":"100%"});
       $(".footer").show();
       $('html, body').animate({scrollTop: '0px'}, 300);
 

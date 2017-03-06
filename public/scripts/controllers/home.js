@@ -61,6 +61,7 @@ angular.module('ecommerceApp')
         });
 
         angular.element(window).ready(function () {
+            $("html,body").css({"width":"100%"});
             $(function () {
                 if ($(window).width() <= 992) {
                     tinysort('.line-home>div',{attr:'title'});

@@ -204,7 +204,7 @@ hr{
   border:none;
   font-family:EffraRegular;
   font-size:15px;
-  padding:18px 60px 18px 40px;
+  padding:18px 60px 18  px 40px;
 }
 .btn2{
   background-color:#27a2d6;
@@ -322,9 +322,11 @@ hr{
 .navbar-brand img{
   margin-top:-10px;
 }
+
 .navbar-custom .navbar-brand:focus {
   outline: none;
 }
+
 .navbar-custom a {
   color:#000;
 }
