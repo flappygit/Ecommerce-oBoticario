@@ -61,10 +61,10 @@ angular
         controller: 'pagesCtrl',
         controllerAs: 'Sobre la Campaña'
       })
-      .when('/mecanica', {
+      .when('/como-ganar', {
         templateUrl: 'views/mecanica.html',
         controller: 'pagesCtrl',
-        controllerAs: 'Mecánica'
+        controllerAs: 'Cómo Ganar'
       })
       .when('/terminos-y-condiciones', {
         templateUrl: 'views/terminos.html',
