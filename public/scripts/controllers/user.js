@@ -94,14 +94,11 @@ angular.module('ecommerceApp')
 
                                         if (response.status === 'connected') {
 
-
                                             var uid = response.authResponse.userID;
                                             var token = response.authResponse.accessToken;
                                             Facebook.api('/'+publicacion.id_post+"/?fields=reactions.summary(1)"
                                                 ,function(response) {
                                                     if (!response.error) {
-
-
                                                         publicacion.index = i;
 
                                                         var promo= 0;
@@ -120,6 +117,7 @@ angular.module('ecommerceApp')
 
 
                                                     }else{
+                                                        console.log("Error "+response.error);
                                                         eliminarpubli(publicacion);
                                                     }
 
@@ -132,7 +130,6 @@ angular.module('ecommerceApp')
                                                 Facebook.api('/'+publicacion.id_post+"/?fields=reactions.summary(1)"
                                                     ,function(response) {
                                                         if (!response.error) {
-
 
                                                             publicacion.index = i;
 
@@ -148,9 +145,10 @@ angular.module('ecommerceApp')
                                                             publicacion.likes_count += promo;
 
                                                             $scope.values.push({'countTo':publicacion.likes_count,'countFrom':0,'progressValue':publicacion.likes_count*100/publicacion.likes});
-
+                                                            console.log(values);
                                                             $scope.restante_likes=publicacion.likes-publicacion.likes_count;
                                                         }else{
+                                                            console.log("Error "+response.error);
                                                             eliminarpubli(publicacion);
 
                                                         }
