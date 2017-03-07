@@ -213,13 +213,17 @@ hr{
   color:#fff;
   background-color:#1b95c8;
 }
-.btn1:focus{
+.btn2:focus{
   color:#fff;outline:none;
 
 }
-.btn1:visited{
+.btn2:visited{
   color:#fff;outline:none;
 
+}
+.btn2:active{
+  color:#fff;
+  outline:none;box-shadow:none;
 }
 .btn1{
   background-color:#e53936;
@@ -236,6 +240,10 @@ hr{
 .btn1:visited{
   color:#fff;outline:none;
 
+}
+.btn1:active{
+  color:#fff;
+  outline:none;box-shadow:none;
 }
 
 
