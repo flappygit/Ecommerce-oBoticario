@@ -114,7 +114,7 @@ angular.module('ecommerceApp')
 
 
                                                         $scope.values.push({'countTo':publicacion.likes_count,'countFrom':0,'progressValue':publicacion.likes_count*100/publicacion.likes,'idpost':publicacion.id_post});
-                                                        console.log(values);
+                                                        console.log($scope.values);
                                                     }else{
                                                         console.log("Error "+response.error);
                                                         eliminarpubli(publicacion);
@@ -144,7 +144,7 @@ angular.module('ecommerceApp')
                                                             publicacion.likes_count += promo;
 
                                                             $scope.values.push({'countTo':publicacion.likes_count,'countFrom':0,'progressValue':publicacion.likes_count*100/publicacion.likes});
-                                                            console.log(values);
+                                                            console.log($scope.values);
                                                             $scope.restante_likes=publicacion.likes-publicacion.likes_count;
                                                         }else{
                                                             console.log("Error "+response.error);
