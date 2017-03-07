@@ -204,7 +204,7 @@ hr{
   border:none;
   font-family:EffraRegular;
   font-size:15px;
-  padding:18px 60px 18  px 40px;
+  padding:18px 60px 18px 40px;
 }
 .btn2{
   background-color:#27a2d6;
@@ -1127,7 +1127,7 @@ padding-bottom:30px;
   padding:30px;
   min-width:200px;
   position:absolute;
-  top:100px;right:23%;
+  top:50%;right:2%;
   text-align:left;
   padding-bottom:15px;
 

@@ -19,7 +19,6 @@ router.get('/', function(req, res, next) {
 });
 
 
-
 router.post('/ValidUserFacebook',function(req,res,next){
     user.validUser(req.body,function(err,rows){
         if(err)

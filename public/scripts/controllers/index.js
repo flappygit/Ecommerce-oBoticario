@@ -312,7 +312,7 @@ angular.module('ecommerceApp')
 
 
             }
-            if ($location.path()!='/inicio' && $location.path()!='/mecanica' && $location.path()!='/sobre-la-campana' && $location.path()!='/terminos-y-condiciones') {
+            if ($location.path()!='/inicio' && $location.path()!='/mecanica' && $location.path()!='/sobre-cree-en-la-belleza' && $location.path()!='/terminos-y-condiciones') {
                 $location.path('/inicio');
             }
 

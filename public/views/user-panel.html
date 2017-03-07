@@ -18,6 +18,7 @@
 <progressbar class="progress-striped" style="" animate="true" max="100" ng-show="ready==true" ng-value="publicacion.likes_count*100/publicacion.likes" type="success">
 
 <img src="images/icons/icon-like-tracking.png" style="float:right;margin-top:-16px;position:absolute;">
+
 <span  style="position:absolute;margin-top:12px;margin-left:7px;">
     <h4   count-to="{{publicacion.likes_count}}" duration="1" count-from="0">
         
@@ -44,16 +45,26 @@
 
     <center>
 
-        <img  ng-src="{{publicacion.imagen}}" class="img-responsive" style="position:relative;">
-        <div ng-if="publicacion.likes_count<publicacion.likes">   
+        <div style="background:url({{publicacion.imagen}}) no-repeat center center ;
+        -webkit-background-size:300px 290px;
+  -moz-background-size:300px 290px;
+  background-size:300px 290px;
+  -o-background-size:300px 290px;">
+            <div ng-if="publicacion.likes_count<publicacion.likes">   
 
-            <div class="div-info-product-tracking hidden-sm hidden-xs"  >
-                    
+            <div class="div-info-product-tracking hidden-sm hidden-xs">
+
                 <h4 class="f-black h4-cart">{{publicacion.nombre}}</h4>
                 <h4 style="margin-top:-20px;padding:0;">{{publicacion.likes}} likes</h4>
+
             </div>
 
         </div>
+
+        </div>
+        <img  ng-src="{{publicacion.imagen}}" class="img-responsive" style="position:relative;">
+
+        
 
     
     </center>
