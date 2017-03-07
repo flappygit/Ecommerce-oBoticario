@@ -197,7 +197,7 @@ angular.module('ecommerceApp')
                                     link: "https://creeenlabelleza.com/",
                                     picture: "https://creeenlabelleza.com/public/"+picture1,
                                     name:"Cree en la Belleza con oBoticário",
-                                    description: "Hola amigos, actualmente estoy participando en la campaña #CreeEnlaBelleza de #oBoticário y me gustaría que me ayudaran con un like para obtener un kit de " + nombre ,
+                                    description: "Hola amigos, actualmente estoy participando en la campaña #CreeEnlaBelleza de #oBoticário y me gustaría que me ayudaran con un like para ganar un kit de " + nombre ,
                                     privacy: privacy,
 
                                 }
