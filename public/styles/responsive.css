@@ -16,6 +16,7 @@
 }
 
 @media (max-width:992px) {
+	
 	.div-intro{
   padding-top:50px;padding-bottom:25px;
 }
@@ -33,7 +34,7 @@
   			top:115px;right:-150px;	
   		}
 		.div-message-likes{
-			margin-top:150px;
+			margin-top:50px;
 		}
 
 		.row-progress{margin-left:0px;}
