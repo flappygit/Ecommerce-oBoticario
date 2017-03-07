@@ -11,7 +11,7 @@ angular.module('ecommerceApp')
     .controller('userCtrl', function ($scope, $http,$cookieStore, server, conexion,$rootScope,Facebook,$timeout) {
         //  $rootScope.$emit("CallParentMethod", {}); //llamar a una función de otro Controller
 
-        $scope.$parent.homevar=false;
+        $scope.$parent.homevar=false;$scope.ready=true;
 
 
         function removeItem ( arr, item ) {
@@ -111,8 +111,7 @@ angular.module('ecommerceApp')
                                                             actualizarLikes(response.reactions.summary.total_count, publicacion, promo);
                                                         }
                                                         publicacion.likes_count += promo;
-
-
+                                                        $scope.ready=true;
                                                         $scope.values.push({'countTo':publicacion.likes_count,'countFrom':0,'progressValue':publicacion.likes_count*100/publicacion.likes,'idpost':publicacion.id_post});
                                                         console.log($scope.values);
                                                     }else{
@@ -142,7 +141,7 @@ angular.module('ecommerceApp')
                                                                 actualizarLikes(response.reactions.summary.total_count, publicacion, promo);
                                                             }
                                                             publicacion.likes_count += promo;
-
+                                                            $scope.ready=true;
                                                             $scope.values.push({'countTo':publicacion.likes_count,'countFrom':0,'progressValue':publicacion.likes_count*100/publicacion.likes});
                                                             console.log($scope.values);
                                                             $scope.restante_likes=publicacion.likes-publicacion.likes_count;
