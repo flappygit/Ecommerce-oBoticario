@@ -23,6 +23,9 @@ angular.module('ecommerceApp')
 
         //Jquery 
         $(function () {
+            $('.dropdown').on('mouseenter mouseleave click tap', function() {
+                $(this).toggleClass("open");
+            });
         $('.ancla').click(function(e){
       e.preventDefault();
         var enlace  = $(this).attr('href');
