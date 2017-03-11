@@ -193,8 +193,6 @@ angular.module('ecommerceApp')
 
         //Login Facebook
         $scope.FBLogin = function () {
-        if($cookieStore.get('conectado')!==null && $cookieStore.get('conectado')){
-
         
             Facebook.login(
                 function(response) {
@@ -287,9 +285,6 @@ angular.module('ecommerceApp')
 
             }, {scope: 'email,user_posts,publish_actions',
                 return_scopes: true });
-        }else{
-            console.log("logged");
-        }
 
         };
 
