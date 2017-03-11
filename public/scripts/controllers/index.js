@@ -10,6 +10,7 @@
 angular.module('ecommerceApp')
     .controller('indexCtrl', function ($scope, $cookieStore, $location, $http, logger, server, conexion, $rootScope,Facebook,$timeout) {
         logger.debug('Controller INDEX ');
+            $scope.nombreFacebook="Ingresar con Facebook";
 
         $rootScope.$on("CallParentMethod", function(){}); //función para usar en otros controllers
         $scope.homevar=false;
@@ -66,7 +67,7 @@ angular.module('ecommerceApp')
 
             var usuario = $cookieStore.get('usuario');
             $scope.logged=true;
-            $scope.nombreFacebook=usuario.nombre_fb;
+            $scope.nombreFacebook= "Hola, "+ usuario.nombre_fb;
             $scope.$watch('usrConectado', function () {
                 $scope.usrSesion.idfacebook = usuario.id_fb;
                 $scope.usrSesion.nombre = usuario.nombre_fb;
@@ -192,6 +193,9 @@ angular.module('ecommerceApp')
 
         //Login Facebook
         $scope.FBLogin = function () {
+        if($cookieStore.get('conectado')!==null && $cookieStore.get('conectado')){
+
+        
             Facebook.login(
                 function(response) {
                 if (response.authResponse) {
@@ -282,6 +286,10 @@ angular.module('ecommerceApp')
 
             }, {scope: 'email,user_posts,publish_actions',
                 return_scopes: true });
+        }else{
+            console.log("logged");
+        }
+
         };
 
         $scope.usrSesion = {id: '', usuario: '', correo: '', conectado: '', rol: ''};
@@ -360,7 +368,7 @@ angular.module('ecommerceApp')
         $scope.openCart= function () {
 
             if($cookieStore.get('conectado')){
-                
+
                 $location.path('/Carrito');
 
             }else{
