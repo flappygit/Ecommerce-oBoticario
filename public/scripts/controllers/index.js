@@ -23,8 +23,8 @@ angular.module('ecommerceApp')
 
         //Jquery 
         $(function () {
-            $('.dropdown').on('mouseenter mouseleave click tap', function() {
-                $(this).toggleClass("open");
+            $('.dropdown').on('mouseover mouseleave click tap', function() {
+                $(".dropdown-menu").toggleClass("open");
             });
         $('.ancla').click(function(e){
       e.preventDefault();
