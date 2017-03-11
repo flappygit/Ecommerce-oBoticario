@@ -10,7 +10,6 @@
 angular.module('ecommerceApp')
     .controller('indexCtrl', function ($scope, $cookieStore, $location, $http, logger, server, conexion, $rootScope,Facebook,$timeout) {
         logger.debug('Controller INDEX ');
-            $scope.nombreFacebook="Ingresar con Facebook";
 
         $rootScope.$on("CallParentMethod", function(){}); //función para usar en otros controllers
         $scope.homevar=false;
@@ -67,7 +66,7 @@ angular.module('ecommerceApp')
 
             var usuario = $cookieStore.get('usuario');
             $scope.logged=true;
-            $scope.nombreFacebook= 'Hola, '+ usuario.nombre_fb+' &nbsp; <img src="images/icons/icon-dropdown.png" ><ul class="dropdown-menu" role="menu" aria-labelledby="menu1" style="background-color:transparent;border:none;box-shadow:none;padding:0;margin: 0;margin-top:-20px;margin-right:-15px;"><li role="presentation"><a role="menuitem" href="" ng-if="logged==true" ng-click="cerrarSesion()" tabindex="-1"><img src="images/icons/icon-sesion.png"></a></li></ul>';
+            $scope.nombreFacebook=usuario.nombre_fb;
             $scope.$watch('usrConectado', function () {
                 $scope.usrSesion.idfacebook = usuario.id_fb;
                 $scope.usrSesion.nombre = usuario.nombre_fb;
@@ -193,6 +192,8 @@ angular.module('ecommerceApp')
 
         //Login Facebook
         $scope.FBLogin = function () {
+        if($cookieStore.get('conectado')!==null && $cookieStore.get('conectado')){
+
         
             Facebook.login(
                 function(response) {
@@ -233,7 +234,7 @@ angular.module('ecommerceApp')
                                     }
                                     usrASesion(request.data.message[0]);
                                     $scope.logged=true;
-                                $scope.nombreFacebook= 'Hola, '+ datos.name+' &nbsp; <img src="images/icons/icon-dropdown.png" ><ul class="dropdown-menu" role="menu" aria-labelledby="menu1" style="background-color:transparent;border:none;box-shadow:none;padding:0;margin: 0;margin-top:-20px;margin-right:-15px;"><li role="presentation"><a role="menuitem" href="" ng-if="logged==true" ng-click="cerrarSesion()" tabindex="-1"><img src="images/icons/icon-sesion.png"></a></li></ul>';
+                                $scope.nombreFacebook=  datos.name;
                                     
                                     consultarCarrito();
                                     $(function () {
@@ -285,6 +286,9 @@ angular.module('ecommerceApp')
 
             }, {scope: 'email,user_posts,publish_actions',
                 return_scopes: true });
+        }else{
+            console.log("logged");
+        }
 
         };
 
