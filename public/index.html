@@ -50,7 +50,7 @@ ng-if="usrSesion.conectado"
                     <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
                     
                     <li>
-                        <a class="page-scroll" href="" ng-if="logged==false" ng-click="FBLogin()">Ingresar con Facebook</a>
+                        <a class="page-scroll" href="" ng-if="logged==false" ng-hide="logged==true" ng-show=="logged==false" ng-click="FBLogin()">Ingresar con Facebook</a>
 
 
                         <a href="" ng-if="logged==true" style="background-color:transparent;"  data-toggle="dropdown">Hola, <b style="cursor:pointer;"> {{nombreFacebook}}</b> &nbsp; <img src="images/icons/icon-dropdown.png" >
@@ -182,8 +182,6 @@ ng-if="usrSesion.conectado"
 </section>
 
    <div id="divLoading" class="show"> 
-<h4 class="progress" style="position:fixed;z-index:100;left:49%;
-    top:55%;color:#000;font-size:15px;background-color:transparent;">70%</h4>
 
     </div>
 
