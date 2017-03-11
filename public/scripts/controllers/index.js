@@ -85,6 +85,7 @@ angular.module('ecommerceApp')
       })
           .then(function (request) {
               if (request.data.success) {
+
                   if (request.data.code){
                       $scope.productosCarrito=request.data.rows.length;
                   }
@@ -192,8 +193,6 @@ angular.module('ecommerceApp')
 
         //Login Facebook
         $scope.FBLogin = function () {
-        if($cookieStore.get('conectado')!==null && $cookieStore.get('conectado')){
-
         
             Facebook.login(
                 function(response) {
@@ -286,9 +285,6 @@ angular.module('ecommerceApp')
 
             }, {scope: 'email,user_posts,publish_actions',
                 return_scopes: true });
-        }else{
-            console.log("logged");
-        }
 
         };
 
