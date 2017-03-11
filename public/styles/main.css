@@ -1304,4 +1304,9 @@ font-size:15px;
   padding-bottom:100px;
 }
 
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
+ }
+
 /*overlay white */
