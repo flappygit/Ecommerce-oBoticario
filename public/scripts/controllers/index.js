@@ -235,7 +235,8 @@ angular.module('ecommerceApp')
                                     }
                                     usrASesion(request.data.message[0]);
                                     $scope.logged=true;
-                                    $scope.nombreFacebook=datos.name;
+                                $scope.nombreFacebook= 'Hola, '+ datos.name+' &nbsp; <img src="images/icons/icon-dropdown.png" ><ul class="dropdown-menu" role="menu" aria-labelledby="menu1" style="background-color:transparent;border:none;box-shadow:none;padding:0;margin: 0;margin-top:-20px;margin-right:-15px;"><li role="presentation"><a role="menuitem" href="" ng-if="logged==true" ng-click="cerrarSesion()" tabindex="-1"><img src="images/icons/icon-sesion.png"></a></li></ul>';
+                                    
                                     consultarCarrito();
                                     $(function () {
                                             if ($('#myModal1').is(':visible')) {
