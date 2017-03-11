@@ -10,7 +10,6 @@
 angular.module('ecommerceApp')
   .controller('pagesCtrl', function ($scope, $cookieStore, $location, $http, logger, server, conexion) {
         angular.element(window).ready(function () {
-          alert=
         $scope.homevar=false;
         $scope.$parent.homevar=false;
       });

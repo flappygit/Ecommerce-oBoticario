@@ -49,12 +49,15 @@ ng-if="usrSesion.conectado"
                 <ul class="nav navbar-nav">
                     <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
                     
-                    <li>
-                        <a class="page-scroll" ng-click="FBLogin()" href=""  style="background-color:transparent;"  data-toggle="dropdown"><b style="cursor:pointer;" ng-bind-html="nombreFacebook"> </b>
+                    <li>  <a class="page-scroll" href="" ng-if="logged==false" ng-hide="logged==true" ng-show=="logged==false" ng-click="FBLogin()">Ingresar con Facebook</a>
+  
+  
+                        
+             <a href=""  style="background-color:transparent;"  ng-click="FBLogin()" data-toggle="dropdown"><b style="cursor:pointer;"> {{nombreFacebook}}</b> &nbsp; <img src="images/icons/icon-dropdown.png" >
+                   <ul class="dropdown-menu" role="menu" aria-labelledby="menu1" style="background-color:transparent;border:none;box-shadow:none;padding:0;margin: 0;margin-top:-20px;margin-right:-15px;">
+                            <li role="presentation"><a role="menuitem" href="" ng-if="logged==true" ng-click="cerrarSesion()" tabindex="-1"><img src="images/icons/icon-sesion.png"></a></li>
+                       </ul>
 
-                        </a> 
-                        
-                        
                     </li>
 
                     <li>
@@ -86,11 +89,12 @@ ng-if="usrSesion.conectado"
 
             <li><a  href="" ng-click="showView('inicio')">Inicio</a></li>
             <li class="hidden-lg hidden-md hidden-sm visible-xs">
-                        <a href="" style="background-color:transparent;" ng-bind-html="nombreFacebook"></a>
+                 <a class="page-scroll" href="" ng-if="logged==false" ng-click="FBLogin()">Ingresar con Facebook</a>
+                     <a href="" ng-if="logged==true" style="background-color:transparent;" >Hola, <b ng-click="userPerfil()" style="cursor:pointer;"> {{nombreFacebook}}</b></a>
 
             </li>
-            <li ng-if="logged==true" class="hidden-lg hidden-md hidden-sm visible-xs"><a  href=""  ng-click="cerrarSesion()">Cerrar Sesión</a></li>
-            <li class="hidden-lg hidden-md hidden-sm visible-xs"><a  href="" ng-click="userPerfil()">Conteo de Like/Me gusta </a></li>
+            <li ng-if="logged==true" class="hidden-lg hidden-md hidden-sm visible-xs" ><a  href=""  ng-click="cerrarSesion()">Cerrar Sesión</a></li>
+            <li class="hidden-lg hidden-md hidden-sm visible-xs" ng-if="logged==true"><a  href="" ng-click="userPerfil()">Conteo de Like/Me gusta </a></li>
             <li class="hidden-lg hidden-md hidden-sm visible-xs"><a  href="" ng-click="openCart()">Carrito de compra </a></li>
             <li><a  href="" ng-click="showView('sobre-cree-en-la-belleza')">Sobre Cree en la Belleza</a></li>
             <li><a ng-click="showView('como-ganar')" href="">¿Cómo ganar?</a></li>
