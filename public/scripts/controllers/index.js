@@ -360,7 +360,7 @@ angular.module('ecommerceApp')
         $scope.openCart= function () {
 
             if($cookieStore.get('conectado')){
-
+                
                 $location.path('/Carrito');
 
             }else{

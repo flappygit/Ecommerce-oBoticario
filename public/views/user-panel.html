@@ -33,7 +33,7 @@
 
 </div>
 
-<div class="col-lg-12 text-center div-message-likes" style="padding-bottom:100px;">
+<div class="col-lg-12 text-center div-message-likes" >
     <h4 class="f-black h4-cart" ng-if="publicacion.likes_count==publicacion.likes">Cuando te sientes linda tu vida se convierte en algo mágico</h4>
     <p class="f-black" ng-if="publicacion.likes_count>=publicacion.likes">
         Felicitaciones, {{nombreFacebook}}, haz alcanzado los likes necesarios para {{publicacion.nombre}}. <br>
@@ -46,7 +46,7 @@
     <center>
 
         <img  ng-src="{{publicacion.imagen}}" class="img-responsive" style="position:relative;">
-        
+
         <div ng-if="publicacion.likes_count<publicacion.likes">   
             <div class="div-info-product-tracking hidden-sm hidden-xs"  >
                     

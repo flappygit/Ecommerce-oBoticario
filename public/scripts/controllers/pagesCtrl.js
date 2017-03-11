@@ -9,10 +9,17 @@
  */
 angular.module('ecommerceApp')
   .controller('pagesCtrl', function ($scope, $cookieStore, $location, $http, logger, server, conexion) {
+        angular.element(window).ready(function () {
+          alert=
+        $scope.homevar=false;
+        $scope.$parent.homevar=false;
+      });
+
   		$(function () {
       $(".footer").show();
       $('html, body').animate({scrollTop: '0px'}, 300);
       $("html,body").css({"width":"100%"});
+      $("#header-home").hide();
       
         $scope.homevar=false;
         $scope.$parent.homevar=false;
@@ -29,6 +36,7 @@ angular.module('ecommerceApp')
     if (!$cookieStore.get('conectado')) {
       if ($location.path()!='/inicio') {
         $(function () {
+        $scope.$parent.homevar=false;
 
           window.setTimeout(function(){
          

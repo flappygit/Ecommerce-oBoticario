@@ -382,6 +382,20 @@ hr{
   .modal-sm{
     width:435px;
   }
+  .collapse {
+    margin-right:-45px;
+}
+
+@media (min-width: 768px){
+.navbar-collapse.collapse {
+    display: block!important;
+    height: auto!important;
+    padding-bottom: 0;
+    overflow: visible!important;
+    padding: 0 !important;
+}
+}
+
   
 }
 .button-scroll{
