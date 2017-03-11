@@ -58,7 +58,7 @@ ng-if="usrSesion.conectado"
                     </li>
 
                     <li>
-                     <a ng-click="userPerfil()" n style="background-color:transparent;"  >Conteo de Likes</b> </a>
+                     <a ng-click="userPerfil()"  style="background-color:transparent;"  >Conteo de Likes</b> </a>
 
                     </li>
 
@@ -86,8 +86,7 @@ ng-if="usrSesion.conectado"
 
             <li><a  href="" ng-click="showView('inicio')">Inicio</a></li>
             <li class="hidden-lg hidden-md hidden-sm visible-xs">
-                <a class="page-scroll" href="" ng-if="logged==false" ng-click="FBLogin()">Ingresar con Facebook</a>
-                        <a href="" ng-if="logged==true" style="background-color:transparent;" >Hola, <b ng-click="userPerfil()" style="cursor:pointer;"> {{nombreFacebook}}</b></a>
+                        <a href="" style="background-color:transparent;" ng-bind-html="nombreFacebook"></a>
 
             </li>
             <li ng-if="logged==true" class="hidden-lg hidden-md hidden-sm visible-xs"><a  href=""  ng-click="cerrarSesion()">Cerrar Sesión</a></li>
