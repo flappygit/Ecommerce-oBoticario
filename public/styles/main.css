@@ -1294,7 +1294,13 @@ font-size:15px;
 .div-message-likes{
   padding-bottom:100px;
 }
+.dropdown-menu1{
+  display:none !important;
+  list-style:none;
 
+  transition: all 0.5s ease-in-out;
+
+}
 .dropw:hover .dropdown-menu1 {
     display: block !important;
     margin:0 auto;
