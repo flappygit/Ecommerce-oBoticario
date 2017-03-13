@@ -53,7 +53,7 @@ ng-if="usrSesion.conectado"
   
   
                         
-             <a href=""  class="dropdown-toggle" data-toggle="dropdown"  ng-if="logged==true" >
+             <a href=""  class="dropdown-toggle" data-toggle="dropdown" ng-hide="logged==false"  ng-if="logged==true" >
              Hola, <b style="cursor:pointer;"> {{nombreFacebook}}</b> &nbsp;
               <img src="images/icons/icon-dropdown.png" >
               
