@@ -212,13 +212,7 @@ angular.module('ecommerceApp')
         }
 
 
-        $scope.scrollproduct = function () {
-            $(function () {
-                    $('html, body').animate({
-                        scrollTop: $("#lirio2").offset().top
-                    }, 2000)
-            })
-        }
+        
 
 
 

@@ -101,19 +101,20 @@ angular.module('ecommerceApp')
                                                     if (!response.error) {
                                                         publicacion.index = i;
 
-                                                        var promo= 0;
+                                                        $scope.promo= 0;
                                                         if (publicacion.codigo_promo != null && publicacion.codigo_promo != '' ){
-                                                            promo = 40;
+                                                            $scope.promo = 40;
                                                         }
 
                                                         if(publicacion.likes_count != response.reactions.summary.total_count) {
                                                             publicacion.likes_count = response.reactions.summary.total_count;
                                                             actualizarLikes(response.reactions.summary.total_count, publicacion, promo);
                                                         }
-                                                        publicacion.likes_count += promo;
+                                                        publicacion.likes_count += $scope.promo;
+                                                        $scope.restante_likes=publicacion.likes-publicacion.likes_count;
+
                                                         $scope.ready=true;
-                                                        $scope.values.push({'countTo':publicacion.likes_count,'countFrom':0,'progressValue':publicacion.likes_count*100/publicacion.likes,'idpost':publicacion.id_post});
-                                                        console.log($scope.values);
+
                                                     }else{
                                                         console.log("Error "+response.error);
                                                         eliminarpubli(publicacion);
@@ -131,19 +132,17 @@ angular.module('ecommerceApp')
 
                                                             publicacion.index = i;
 
-                                                            var promo= 0;
+                                                            $scope.promo= 0;
                                                             if (publicacion.codigo_promo != null && publicacion.codigo_promo != '' ){
-                                                                promo = 40;
+                                                                $scope.promo = 40;
                                                             }
 
                                                             if(publicacion.likes_count != response.reactions.summary.total_count) {
                                                                 publicacion.likes_count = response.reactions.summary.total_count;
-                                                                actualizarLikes(response.reactions.summary.total_count, publicacion, promo);
+                                                                actualizarLikes(response.reactions.summary.total_count, publicacion, $scope.promo);
                                                             }
-                                                            publicacion.likes_count += promo;
+                                                            publicacion.likes_count += $scope.promo;
                                                             $scope.ready=true;
-                                                            $scope.values.push({'countTo':publicacion.likes_count,'countFrom':0,'progressValue':publicacion.likes_count*100/publicacion.likes});
-                                                            console.log($scope.values);
                                                             $scope.restante_likes=publicacion.likes-publicacion.likes_count;
                                                         }else{
                                                             console.log("Error "+response.error);
