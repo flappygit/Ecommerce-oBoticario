@@ -1297,6 +1297,12 @@ font-size:15px;
 
 .dropw:hover .dropdown-menu {
     display: block;
+    margin:0 auto;
+    
+ }
+ .dropw:click .dropdown-menu {
+    display: block;
+    margin:0 auto;
  }
 
 /*overlay white */
