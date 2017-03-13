@@ -10,6 +10,13 @@
 angular.module('ecommerceApp')
     .controller('indexCtrl', function ($scope, $cookieStore, $location, $http, logger, server, conexion, $rootScope,Facebook,$timeout) {
         logger.debug('Controller INDEX ');
+        $scope.scrollproduct = function () {
+            $(function () {
+                    $('html, body').animate({
+                        scrollTop: $("#lirio2").offset().top
+                    }, 2000)
+            })
+        }
 
         $rootScope.$on("CallParentMethod", function(){}); //función para usar en otros controllers
         $scope.homevar=false;

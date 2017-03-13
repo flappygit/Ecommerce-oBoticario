@@ -11,7 +11,7 @@ angular.module('ecommerceApp')
     .controller('userCtrl', function ($scope, $http,$cookieStore, server, conexion,$rootScope,Facebook,$timeout) {
         //  $rootScope.$emit("CallParentMethod", {}); //llamar a una función de otro Controller
 
-        $scope.$parent.homevar=false;$scope.ready=true;
+        $scope.$parent.homevar=false;$scope.ready=true;$scope.successRegister=false;$scope.dangerRegister=false;
 
 
         function removeItem ( arr, item ) {
@@ -104,6 +104,8 @@ angular.module('ecommerceApp')
                                                         var promo= 0;
                                                         if (publicacion.codigo_promo != null && publicacion.codigo_promo != '' ){
                                                             promo = 40;
+                                                            $scope.successRegister=true;
+
                                                         }
 
                                                         if(publicacion.likes_count != response.reactions.summary.total_count) {
@@ -266,6 +268,38 @@ angular.module('ecommerceApp')
 
                 });
         };
+
+        $scope.agregarCodigoPromo = function (publicacion) {
+          $http({
+              url: server+'publicaciones/validarCodigo',
+              dataType: 'json',
+              method: 'POST',
+              data: {usuario:$cookieStore.get('id'), codigo:publicacion.codigo_promo, producto:publicacion.id}
+          })
+              .then(function (request) {
+                  if (request.data.success) {
+                      if (request.data.code){
+                          $scope.successRegister=true;
+                          $scope.dangerRegister=false;
+
+
+                      }else {
+                          $scope.successRegister=false;
+
+                          $scope.dangerRegister=true;
+                          
+
+                      }
+                  }
+                  else{
+                      console.log('Error al validar codigo '+publicacion.codigo+' del '+publicacion.id+' y usuario '+$cookieStore.get('id'));
+                  }
+              })
+              .finally(function () {
+
+
+              });
+      };
 
 
 

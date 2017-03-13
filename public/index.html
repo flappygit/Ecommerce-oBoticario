@@ -53,7 +53,10 @@ ng-if="usrSesion.conectado"
   
   
                         
-             <a href=""  style="background-color:transparent;"  ng-if="logged==true" data-toggle="dropdown">Hola, <b style="cursor:pointer;"> {{nombreFacebook}}</b> &nbsp; <img src="images/icons/icon-dropdown.png" >
+             <a href=""  style="background-color:transparent;" class="dropdown"  ng-if="logged==true" >
+             Hola, <b style="cursor:pointer;"> {{nombreFacebook}}</b> &nbsp;
+              <img src="images/icons/icon-dropdown.png" >
+              </a>
                    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1" style="background-color:transparent;border:none;box-shadow:none;padding:0;margin: 0;margin-top:-20px;margin-right:-15px;">
                             <li role="presentation"><a role="menuitem" href="" ng-if="logged==true" ng-click="cerrarSesion()" tabindex="-1"><img src="images/icons/icon-sesion.png"></a></li>
                        </ul>
@@ -61,6 +64,7 @@ ng-if="usrSesion.conectado"
                     </li>
 
                     <li>
+
                      <a ng-click="userPerfil()"  style="background-color:transparent;"  >Conteo de Likes</b> </a>
 
                     </li>
@@ -110,7 +114,7 @@ ng-if="usrSesion.conectado"
         </div>
 
         <header class="intro" ng-if="homevar==true" ng-hide="homevar==false" id="header-home">
-        <a href="#/inicio#home-welcome"  class="button-scroll f-white ancla"><img src="images/icons/icon-2.png"> </a>
+        <a ng-click="scrollproduct()"  class="button-scroll f-white ancla"><img src="images/icons/icon-2.png"> </a>
         <span class="span-scroll f-white"> Scroll para comenzar a comprar</span>
         </header>
 <div ng-view></div>

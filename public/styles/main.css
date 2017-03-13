@@ -415,7 +415,7 @@ hr{
   min-height:100%;
   text-align: center;
   color: #000;
-  background: url(../images/landing-oboticario.jpg) no-repeat bottom center;
+  background: url(../images/landing-oboticario.jpg) no-repeat center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
