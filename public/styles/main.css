@@ -1295,19 +1295,18 @@ font-size:15px;
   padding-bottom:100px;
 }
 .dropdown-menu1{
-  display:none !important;
+  display:none;
   list-style:none;
-
   transition: all 0.5s ease-in-out;
 
 }
 .dropw:hover .dropdown-menu1 {
-    display: block !important;
+    display: block;
     margin:0 auto;
 
  }
  .dropw:click .dropdown-menu1 {
-    display: block !important;
+    display: block;
     margin:0 auto;
  }
 
