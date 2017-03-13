@@ -111,8 +111,8 @@ angular.module('ecommerceApp')
                                                             actualizarLikes(response.reactions.summary.total_count, publicacion, promo);
                                                         }
                                                         publicacion.likes_count += $scope.promo;
-                                                        $scope.restante_likes=publicacion.likes-publicacion.likes_count;
-
+                                                            console.log(publicacion.likes_count);
+                                                        
                                                         $scope.ready=true;
 
                                                     }else{
@@ -142,8 +142,8 @@ angular.module('ecommerceApp')
                                                                 actualizarLikes(response.reactions.summary.total_count, publicacion, $scope.promo);
                                                             }
                                                             publicacion.likes_count += $scope.promo;
+                                                            console.log(publicacion.likes_count);
                                                             $scope.ready=true;
-                                                            $scope.restante_likes=publicacion.likes-publicacion.likes_count;
                                                         }else{
                                                             console.log("Error "+response.error);
                                                             eliminarpubli(publicacion);
