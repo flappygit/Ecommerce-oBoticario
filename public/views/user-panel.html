@@ -20,7 +20,7 @@
 <img src="images/icons/icon-like-tracking.png" style="float:right;margin-top:-16px;position:absolute;">
 
 <span  style="position:absolute;margin-top:12px;margin-left:7px;">
-    <h4   count-to="restante_likes" duration="1" count-from="0">
+    <h4   count-to="{{publicacion.likes_count+promo}}" duration="1" count-from="0">
         
     </h4>
 </span> </progressbar>
@@ -41,7 +41,7 @@
         <br>
         <br>
     </p>
-    <h4 class="f-black h4-cart" ng-if="publicacion.likes_count<publicacion.likes " ><small class="f-black">Estás a </small> <span style="color:#1a5aa8;" > {{ +publicacion.likes - +publicacion.likes_count }} Likes </span> <small class="f-black" >de conseguir {{publicacion.nombre}}</small> </h4>
+    <h4 class="f-black h4-cart" ng-if="publicacion.likes_count<publicacion.likes " ><small class="f-black">Estás a </small> <span style="color:#1a5aa8;" > {{ +publicacion.likes -  (+publicacion.likes_count + promo) }} Likes </span> <small class="f-black" >de conseguir {{publicacion.nombre}}</small> </h4>
 
     <center>
 
