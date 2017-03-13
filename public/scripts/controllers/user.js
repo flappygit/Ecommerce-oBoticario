@@ -110,10 +110,9 @@ angular.module('ecommerceApp')
                                                             publicacion.likes_count = response.reactions.summary.total_count;
                                                             actualizarLikes(response.reactions.summary.total_count, publicacion, promo);
                                                         }
-                                                        publicacion.likes_count += $scope.promo;
-                                                        console.log(request.data.rows);
 
-                                                            request.data.rows[publicacion].push({"promo":$scope.promo});
+                                                        console.log(request.data.rows);
+                                                        request.data.rows[publicacion.index].push({"promo":$scope.promo});
 
 
                                                         $scope.ready=true;
@@ -144,10 +143,12 @@ angular.module('ecommerceApp')
                                                                 publicacion.likes_count = response.reactions.summary.total_count;
                                                                 actualizarLikes(response.reactions.summary.total_count, publicacion, $scope.promo);
                                                             }
-                                                            publicacion.likes_count += $scope.promo;
-                                                            request.data.rows.publicacion[i].push({"promo":$scope.promo});
-                                                            console.log(publicacion);
+                                                            
+                                                            console.log(request.data.rows);
+                                                            request.data.rows[publicacion.index].push({"promo":$scope.promo});
+
                                                             $scope.ready=true;
+
                                                         }else{
                                                             console.log("Error "+response.error);
                                                             eliminarpubli(publicacion);
