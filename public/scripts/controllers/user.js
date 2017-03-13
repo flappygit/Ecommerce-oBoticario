@@ -112,7 +112,8 @@ angular.module('ecommerceApp')
                                                         }
 
                                                         console.log(request.data.rows[i]);
-
+                                                        var json=request.data.rows[i];
+                                                        console.log(json);
 
 
                                                         $scope.ready=true;
