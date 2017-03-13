@@ -111,9 +111,10 @@ angular.module('ecommerceApp')
                                                             actualizarLikes(response.reactions.summary.total_count, publicacion, promo);
                                                         }
                                                         publicacion.likes_count += $scope.promo;
-                                                            request.data.rows.publicacion.append({"promo":$scope.promo});
+                                                        console.log(request.data.rows.publicacion);
+                                                        
+                                                            request.data.rows.publicacion.push({"promo":$scope.promo});
 
-                                                        console.log(publicacion);
 
                                                         $scope.ready=true;
 
