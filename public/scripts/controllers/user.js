@@ -110,11 +110,9 @@ angular.module('ecommerceApp')
                                                             publicacion.likes_count = response.reactions.summary.total_count;
                                                             actualizarLikes(response.reactions.summary.total_count, publicacion, promo);
                                                         }
+                                                        publicacion.likes_count += $scope.promo;
 
-                                                        console.log(request.data.rows[i]);
-                                                        var json=request.data.rows[i];
-                                                        console.log(json);
-
+                                                        console.log(publicacion);
 
                                                         $scope.ready=true;
 
@@ -144,12 +142,8 @@ angular.module('ecommerceApp')
                                                                 publicacion.likes_count = response.reactions.summary.total_count;
                                                                 actualizarLikes(response.reactions.summary.total_count, publicacion, $scope.promo);
                                                             }
-
-                                                            console.log(request.data.rows[i]);
-                                                            
-
+                                                            publicacion.likes_count += $scope.promo;
                                                             $scope.ready=true;
-
                                                         }else{
                                                             console.log("Error "+response.error);
                                                             eliminarpubli(publicacion);
