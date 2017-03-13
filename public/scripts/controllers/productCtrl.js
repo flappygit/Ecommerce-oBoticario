@@ -84,10 +84,11 @@ angular.module('ecommerceApp')
 
       $scope.anadirProducto = function (producto) {
                   counter += 1;
-                  $scope.addCart="Añadiendo...";
                   $(function ( ) {
-                                $("#img-button-addCart").attr("src","images/icons/5.gif");
+                                $("#img-button-addCart").attr("src","images/icons/5.gif");   
                   });
+                  $scope.addCart="Añadiendo...";
+                  
 
         if($cookieStore.get('conectado')){
           var verificado = true;
