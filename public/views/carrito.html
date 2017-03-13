@@ -31,7 +31,7 @@
             <form ng-if="descuento == 0" >
                 <input type="text"  ng-model="producto.codigo_promo" placeholder="Código de descuento" class="form-control code-promo" title="Codigo de descuento"  ng-enter="agregarCodigoPromo(producto)">
             </form>
-            <span style="margin-top:35px;" ng-if="producto.codigo_promo.length>=6 &&  !successRegister"> <a class="f-black" style="color:#000;text-decoration:underline;" href=""  ng-click="agregarCodigoPromo(producto)" >Agregar código </a> </span>
+            <span style="padding-top:35px;" ng-if="producto.codigo_promo.length>=6 &&  !successRegister"> <a class="f-black" style="color:#000;text-decoration:underline;" href=""  ng-click="agregarCodigoPromo(producto)" >Agregar código </a> </span>
                 <small ng-if="producto.codigo_promo != null && successRegister==true" style="color:#05a301;" ><b>Código registrado</b></small>
                 <small ng-if="producto.codigo_promo != null && dangerRegister==true" style="color:#e53936;" ><b>Código no válido</b></small>
 
