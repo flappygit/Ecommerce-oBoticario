@@ -1295,12 +1295,12 @@ font-size:15px;
   padding-bottom:100px;
 }
 
-.dropw:hover .dropdown-menu {
+.dropw:hover .dropdown-menu1 {
     display: block !important;
     margin:0 auto;
 
  }
- .dropw:click .dropdown-menu {
+ .dropw:click .dropdown-menu1 {
     display: block !important;
     margin:0 auto;
  }
