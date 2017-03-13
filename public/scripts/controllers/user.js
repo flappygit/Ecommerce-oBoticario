@@ -11,6 +11,7 @@ angular.module('ecommerceApp')
     .controller('userCtrl', function ($scope, $http,$cookieStore, server, conexion,$rootScope,Facebook,$timeout) {
         //  $rootScope.$emit("CallParentMethod", {}); //llamar a una función de otro Controller
 
+    $scope.descuento = 0;
         $scope.$parent.homevar=false;$scope.ready=true;$scope.successRegister=false;$scope.dangerRegister=false;
 
 
@@ -105,6 +106,8 @@ angular.module('ecommerceApp')
                                                         if (publicacion.codigo_promo != null && publicacion.codigo_promo != '' ){
                                                             promo = 40;
                                                             $scope.successRegister=true;
+                                                            $scope.descuento = 40;
+
 
                                                         }
 
@@ -281,11 +284,11 @@ angular.module('ecommerceApp')
                       if (request.data.code){
                           $scope.successRegister=true;
                           $scope.dangerRegister=false;
+                          $scope.descuento = 40;
 
 
                       }else {
                           $scope.successRegister=false;
-
                           $scope.dangerRegister=true;
                           
 
