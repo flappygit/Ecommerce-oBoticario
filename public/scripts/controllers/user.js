@@ -112,7 +112,8 @@ angular.module('ecommerceApp')
                                                         }
 
                                                         console.log(request.data.rows);
-                                                        request.data.rows[publicacion.index].push({"promo":$scope.promo});
+                                                            request.data.rows[i].push("promo",$scope.promo);
+
 
 
                                                         $scope.ready=true;
@@ -143,9 +144,10 @@ angular.module('ecommerceApp')
                                                                 publicacion.likes_count = response.reactions.summary.total_count;
                                                                 actualizarLikes(response.reactions.summary.total_count, publicacion, $scope.promo);
                                                             }
-                                                            
+
                                                             console.log(request.data.rows);
-                                                            request.data.rows[publicacion.index].push({"promo":$scope.promo});
+                                                            request.data.rows[i].push("promo",$scope.promo);
+                                                            
 
                                                             $scope.ready=true;
 
