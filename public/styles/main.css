@@ -341,10 +341,10 @@ hr{
   -moz-transition: background 0.3s ease-in-out;
   transition: background 0.3s ease-in-out;
   z-index:1;
-  color:#000 !important;
+  color:#000;
 }
 .navbar-custom .nav li a:hover {
-  color: red;
+  color:#e53936;
   outline: none;
   background-color: transparent;
 }
@@ -360,7 +360,7 @@ hr{
   background-color: rgba(255, 255, 255, 0.3);
 }
 .navbar-custom .nav li.active a:hover {
-  color: red;
+  color: #e53936;
 }
 .navbar-custom {
     padding: 20px 0;
