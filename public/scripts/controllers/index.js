@@ -203,9 +203,7 @@ angular.module('ecommerceApp')
 
         //Login Facebook
         $scope.FBLogin = function () {
-        $(function () {
-        $("#li-ingresar").hide();
-        })
+        
             Facebook.login(
                 function(response) {
                 if (response.authResponse) {
@@ -246,9 +244,7 @@ angular.module('ecommerceApp')
                                     usrASesion(request.data.message[0]);
                                     $scope.logged=true;
                                 $scope.nombreFacebook=  datos.name;
-                                    $(function () {
-                                        $("#li-ingresar").show();
-                                    })
+                                    
                                     consultarCarrito();
                                     $(function () {
                                             if ($('#myModal1').is(':visible')) {
@@ -282,26 +278,18 @@ angular.module('ecommerceApp')
                                             
                                     }
                                 }else{
-                                    $(function () {
-                                        $("#li-ingresar").show();
-                                    })
                                     console.log("Error");
                                     console.log(request);
                                 }
                             })
                             .finally(function () {
-                                $(function () {
-                                        $("#li-ingresar").show();
-                                    })
+                                
 
                             });
 
 
                     });
                 } else {
-                    $(function () {
-                                        $("#li-ingresar").show();
-                                    })
                     console.log('User cancelled login or did not fully authorize.');
                 }
 
