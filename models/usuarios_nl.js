@@ -8,9 +8,8 @@ var usuarios={
         return db.query("SELECT * FROM usuarios_nl",callback);
 
     },
-    add:function(usuario,callback){
+    add:function(usuario, codigo, callback){
         var fechaAct = utiles.fechaAct();
-        var codigo = utiles.generarCodigo(usuario.correo);
         var validado = 0;
         return db.query("INSERT INTO `usuarios_nl` (correo, nombre, creacion, codigo, validado) VALUES (?,?,?,?,?)",[usuario.correo, usuario.nombre, fechaAct, codigo, validado],callback);
     },
@@ -19,6 +18,11 @@ var usuarios={
     },
     findByCodigo:function(codigo,callback){
         return db.query("SELECT * FROM `usuarios_nl` WHERE codigo = ? AND validado = 0", [codigo],callback);
+    },
+    buscarCodigo:function(codigo,callback){
+
+        console.log('buscando codigo = '+codigo);
+        return db.query("SELECT * FROM `usuarios_nl` WHERE codigo = ?", [codigo],callback);
     },
     actualizarValidacion:function(id,callback){
         return db.query("UPDATE `usuarios_nl` SET validado=1 WHERE id=?", [id],callback);

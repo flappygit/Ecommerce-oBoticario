@@ -24,18 +24,31 @@ router.get('/', function(req, res, next) {
  * post usuario {correo*, nombre}
  */
 router.post('/add',function(req,res,next){
-    usuarios.add(req.body,function(err,rows){
-        if(err)
-        {
-            console.log(err);
-            res.json({"success":false,"message":err});
-        }
-        else{
 
-            res.json({"success":true,"message":rows});
+    var codigo = utiles.codigoAleatorio(6);
+    buscarCodigo(codigo);
+    function buscarCodigo(codigo) {
+        usuarios.buscarCodigo(codigo, function (err, rows) {
+            var rowStringyfy = JSON.stringify(rows);
+            var rows1 = JSON.parse(rowStringyfy);
+            var size = Object.size(rows1);
+            if (size == 0 || size == null) {
+                usuarios.add(req.body, codigo, function (err, rows) {
+                    if (err) {
+                        console.log(err);
+                        res.json({"success": false, "message": err});
+                    }
+                    else {
+                        res.json({"success": true, "message": rows});
 
-        }
-    });
+                    }
+                });
+            }else{
+                codigo = utiles.codigoAleatorio(6);
+                buscarCodigo(codigo);
+            }
+        });
+    }
 
 });
 
