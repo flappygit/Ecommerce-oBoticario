@@ -1,4 +1,11 @@
-
+<head>
+<title>
+    Carrito de compra, Cree en la belleza, e-Commerce, oBoticário
+</title>
+<meta name="title" content="Carrito de compra, Cree en la belleza, e-Commerce, oBoticário"/>
+<meta name="description" content="Encuentra en tu carrito de compra los productos de belleza de oBoticário por lo cuales estás participando."/>
+<meta name="keywords" content="Carrito de compras, likes, belleza, oBoticário, productos, Colombia, Bogotá"/>
+</head>
 <div class="container div-content-view div-cart">
     <div class="list-url">
         <a ng-click="showView('inicio')" class="not-under f-color1">Home </a> > Carrito de Compra
@@ -31,10 +38,11 @@
             <form ng-if="descuento == 0" >
                 <input type="text"  ng-model="producto.codigo_promo" placeholder="Código de descuento" class="form-control code-promo" title="Codigo de descuento"  ng-enter="agregarCodigoPromo(producto)">
             </form>
+            
                 <small ng-if="producto.codigo_promo != null && successRegister==true" style="color:#05a301;" ><b>Código registrado</b></small>
                 <small ng-if="producto.codigo_promo != null && dangerRegister==true" style="color:#e53936;" ><b>Código no válido</b></small>
 
-                
+                <span ng-if="producto.codigo_promo.length>=6 &&  !successRegister"> <br> <a class="f-black" style="color:#000;text-decoration:underline;" href=""  ng-click="agregarCodigoPromo(producto)" >Agregar código </a> </span>
         </div>
         <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1  div-delete-product">
             <a href="" confirmed-click="eliminarProducto(producto)" ng-confirm-click="Esta seguro que desea eliminar este elemento?" ><img src="images/icons/icon-delete.png" alt="Eliminar producto"></a>
@@ -58,7 +66,7 @@
     </div>
 </div>
 
-<header ng-show="descuento == 0" class="intro-1" style="height:568px;">
+<header ng-if="descuento==0" class="intro-1" style="height:568px;display:none;">
     <div class="intro-body">
         <div class="container">
             <div class="row">

@@ -82,11 +82,6 @@ angular.module('ecommerceApp')
             window.setTimeout(function(){
                     $('#myModal').modal('show');
 
-
-                        {
-                            $('#myModal').modal('show');
-                        }
-
                     }, 30000);
 
                 })
@@ -111,6 +106,9 @@ angular.module('ecommerceApp')
             $(".nav-icon-normal").hide();
             $(".nav-icon-sticky").show();
             $(".navbar-fixed-top").removeClass("top-nav-collapse");
+            $("#myModal").modal("hide");
+            $(".modal-backdrop").hide();
+            $("body").css({'overflow-y':'scroll','width':'100%'});
         });
         $scope.verProducto=function (product) {
             $location.path('/'+product+'');
@@ -159,6 +157,10 @@ angular.module('ecommerceApp')
                                             $(function () {
                                                 $(".btnsubmitnew").css({"background":"#e53936"});
                                                 $(".btnsubmitnew").text("¡Suscrito!");
+                                                window.setTimeout(function(){
+                                                    $('#myModal').modal("hide");
+
+                                                    }, 200);
                                             })
                                         }
                                     })
@@ -184,7 +186,6 @@ angular.module('ecommerceApp')
 
                     ;
                 }else{
-                    $scope.usuarioNl.correo="";
                     $(function () {
 
 

@@ -143,6 +143,7 @@ angular.module('ecommerceApp')
                                                                 actualizarLikes(response.reactions.summary.total_count, publicacion, $scope.promo);
                                                             }
                                                             publicacion.likes_count += $scope.promo;
+                                                            
                                                             $scope.ready=true;
                                                         }else{
                                                             console.log("Error "+response.error);

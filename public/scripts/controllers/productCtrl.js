@@ -84,6 +84,11 @@ angular.module('ecommerceApp')
 
       $scope.anadirProducto = function (producto) {
                   counter += 1;
+                  $(function ( ) {
+                                $("#img-button-addCart").attr("src","images/icons/5.gif");   
+                  });
+                  $scope.addCart="Añadiendo...";
+                  
 
         if($cookieStore.get('conectado')){
           var verificado = true;
@@ -128,7 +133,6 @@ angular.module('ecommerceApp')
                               $(function ( ) {
                                 $(".btn2").css({"background-color":"#05a301"});
                                 $("#img-button-addCart").attr("src","images/icons/verificacion.png");
-
                             });
                           }else {
                             $scope.$parent.productosCarrito=$scope.$parent.productosCarrito+1;
@@ -262,7 +266,7 @@ $overlay.click( function() {
         }
  
         $('#myCarousel').carousel({
-                interval: 2300
+                interval: false
         });
  
         $('#carousel-text').html($('#slide-content-0').html());

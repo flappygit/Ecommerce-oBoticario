@@ -32,6 +32,10 @@ angular.module('ecommerceApp')
       $("html,body").css({"width":"100%"});
       $(".footer").show();
       $('html, body').animate({scrollTop: '0px'}, 300);
+      $("#myModal2").modal("hide");
+            $(".modal-backdrop").hide();
+            $("body").css({'overflow-y':'scroll','width':'100%'});
+            $('html, body').animate({scrollTop: '0px'}, 300);
 
             // wait till load event fires so all resources are available
             $(".nav-icon-normal").hide();
@@ -336,7 +340,6 @@ angular.module('ecommerceApp')
 
                   ;
               }else{
-                  $scope.usuarioNl.correo="";
                   $(function () {
 
 

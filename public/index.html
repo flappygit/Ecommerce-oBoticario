@@ -1,9 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html  lang="es"  xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:og="http://ogp.me/ns#"
+     xmlns:fb="http://www.facebook.com/2008/fbml">
 <head>
   <meta charset="utf-8">
-  <title>Cree en la Belleza - oBoticário trae a Colombia el primer e-commerce donde podrás comprar con likes </title>
-  <meta name="description" content="">
+
+<meta name="robots" content="index, follow"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="language" content="Spanish"/>
+<meta name="revisit-after" content="30 days"/>
+<meta name="author" content="oBoticário"/>
+
   <meta name="viewport" content="width=device-width">
   
   <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
@@ -49,17 +56,19 @@ ng-if="usrSesion.conectado"
                 <ul class="nav navbar-nav">
                     <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
                     
-                    <li>  <a class="page-scroll" href="" ng-if="logged==false" ng-hide="logged==true" ng-show=="logged==false" ng-click="FBLogin()">Ingresar con Facebook</a>
+                    <li class="dropdown" id="li-ingresar">  <a class="" href="" ng-if="logged==false" ng-hide="logged==true" ng-show=="logged==false" ng-click="FBLogin()">Ingresar con Facebook</a>
   
   
                         
-             <a href=""  style="background-color:transparent;" class="dropdown"  ng-if="logged==true" >
+             <a href=""  class="dropdown-toggle" data-toggle="dropdown" ng-hide="logged==false"  ng-if="logged==true" >
              Hola, <b style="cursor:pointer;"> {{nombreFacebook}}</b> &nbsp;
               <img src="images/icons/icon-dropdown.png" >
+              
               </a>
-                   <ul class="dropdown-menu" role="menu" aria-labelledby="menu1" style="background-color:transparent;border:none;box-shadow:none;padding:0;margin: 0;margin-top:-20px;margin-right:-15px;">
+              <ul class="dropdown-menu" role="menu" aria-labelledby="menu1" style="background-color:transparent;border:none;box-shadow:none;padding:0;margin: 0;margin-top:-20px;margin-right:-15px;">
                             <li role="presentation"><a role="menuitem" href="" ng-if="logged==true" ng-click="cerrarSesion()" tabindex="-1"><img src="images/icons/icon-sesion.png"></a></li>
                        </ul>
+                   
 
                     </li>
 

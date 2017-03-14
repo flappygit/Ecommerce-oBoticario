@@ -15,13 +15,17 @@ angular.module('ecommerceApp')
       });
 
   		$(function () {
-      $(".footer").show();
-      $('html, body').animate({scrollTop: '0px'}, 300);
-      $("html,body").css({"width":"100%"});
-      $("#header-home").hide();
+          $(".footer").show();
+          $('html, body').animate({scrollTop: '0px'}, 300);
+          $("html,body").css({"width":"100%"});
+          $("#header-home").hide();
+          $("#myModal1").modal("hide");
+          $(".modal-backdrop").hide();
+          $("body").css({'overflow-y':'scroll','width':'100%'});
+          $('html, body').animate({scrollTop: '0px'}, 300);
       
-        $scope.homevar=false;
-        $scope.$parent.homevar=false;
+          $scope.homevar=false;
+          $scope.$parent.homevar=false;
 
             // wait till load event fires so all resources are available
             $(".nav-icon-normal").hide();
@@ -42,7 +46,7 @@ angular.module('ecommerceApp')
                     $('#myModal1').modal('show');
 
         
-          },2000);
+          },20000);
 
         })
 
