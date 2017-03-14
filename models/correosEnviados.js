@@ -31,12 +31,15 @@ var correoEnviado={
         if (/(.+)@(.+){2,}\.(.+){2,}/.test(correo)) {
 
             var transporter = nodemailer.createTransport({
-                host: 'webmail.creeenlabelleza.com',
+                host: 'creeenlabelleza.com',
                 port: 587,
                 secure: false, // upgrade later with STARTTLS
                 auth: {
                     user: 'noreply@creeenlabelleza.com',
                     pass: 'Nabica2017boti20'
+                },
+                tls: {
+                    rejectUnauthorized: false
                 }
             });
             var mensaje = email.mensaje;
