@@ -31,12 +31,12 @@ var correoEnviado={
         if (/(.+)@(.+){2,}\.(.+){2,}/.test(correo)) {
 
             var transporter = nodemailer.createTransport({
-                host: 'smtp.gmail.com',
+                host: 'webmail.creeenlabelleza.com',
                 port: 587,
                 secure: false, // upgrade later with STARTTLS
                 auth: {
-                    user: 'boticarioecommerce@gmail.com',
-                    pass: 'boti12ecommerce34'
+                    user: 'noreply@creeenlabelleza.com',
+                    pass: 'Nabica2017boti20'
                 }
             });
             var mensaje = email.mensaje;
