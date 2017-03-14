@@ -108,7 +108,7 @@ angular.module('ecommerceApp')
 
                                                         if(publicacion.likes_count != response.reactions.summary.total_count) {
                                                             publicacion.likes_count = response.reactions.summary.total_count;
-                                                            actualizarLikes(response.reactions.summary.total_count, publicacion, promo);
+                                                            actualizarLikes(response.reactions.summary.total_count, publicacion, $scope.promo);
                                                         }
                                                         publicacion.likes_count += $scope.promo;
 
