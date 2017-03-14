@@ -41,6 +41,17 @@ var utiles={
     },
     generarCodigo:function(name){
          return crypto.createHash('md5').update(name).digest('hex');
+    },
+    codigoAleatorio:function(longitud){
+        var caracteres = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        var code = "";
+        for (var x=0; x < longitud; x++)
+        {
+            var rand = Math.floor(Math.random()*caracteres.length);
+            code += caracteres.substr(rand, 1);
+        }
+        return code;
+
     }
 };
 module.exports=utiles;

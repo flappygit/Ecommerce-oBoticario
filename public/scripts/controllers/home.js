@@ -118,9 +118,10 @@ angular.module('ecommerceApp')
 
         $scope.usuarioNl = {nombre:'', correo:''};
         $scope.terminosCondiciones = '';
+        $scope.correoRegistrado = false;
 
         $scope.registrarNewsletter = function (correo) {
-
+            $scope.correoRegistrado = false;
             $(function () {
                 $(".btnsubmitnew").css({"background":"#ff9796"});
 
@@ -162,7 +163,7 @@ angular.module('ecommerceApp')
                                                 window.setTimeout(function(){
                                                     $('#myModal').modal("hide");
 
-                                                    }, 200);
+                                                }, 200);
                                             })
                                         }
                                     })
@@ -172,21 +173,31 @@ angular.module('ecommerceApp')
                                     });
                             } else {
 
+                                console.log(request);
                                 $(function () {
                                     $(".btnsubmitnew").css({"background":"#e53936"});
                                     $(".btnsubmitnew").text("Suscribirme");
                                 });
-
-                                console.log('Error al registrar es usuario al newsletter ' + producto.id);
+                                if (request.data.message.errno == 1062){
+                                    console.log('Correo ya ha sido registrado');
+                                    $scope.correoRegistrado = true;
+                                }else{
+                                    console.log(request);
+                                    console.log('Error al registrar el usuario al newsletter ');
+                                }
                             }
-                        })
-                        .finally(function () {
+                        }).catch(function (err) {
+
+                            console.log('no se registro el usuario');
+                            console.log(err);
+
+                        }).finally(function () {
 
 
                         });
 
 
-                    ;
+
                 }else{
                     $(function () {
 
