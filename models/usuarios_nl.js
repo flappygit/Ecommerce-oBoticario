@@ -17,12 +17,12 @@ var usuarios={
         return db.query("SELECT * FROM `usuarios_nl` WHERE id = ?", [id],callback);
     },
     findByCodigo:function(codigo,callback){
-        return db.query("SELECT * FROM `usuarios_nl` WHERE codigo = ? AND validado = 0", [codigo],callback);
+        return db.query("SELECT * FROM `usuarios_nl` WHERE BINARY codigo = ? AND validado = 0", [codigo],callback);
     },
     buscarCodigo:function(codigo,callback){
 
         console.log('buscando codigo = '+codigo);
-        return db.query("SELECT * FROM `usuarios_nl` WHERE codigo = ?", [codigo],callback);
+        return db.query("SELECT * FROM `usuarios_nl` WHERE BINARY codigo = ?", [codigo],callback);
     },
     actualizarValidacion:function(id,callback){
         return db.query("UPDATE `usuarios_nl` SET validado=1 WHERE id=?", [id],callback);
