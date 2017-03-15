@@ -158,6 +158,8 @@ angular.module('ecommerceApp')
                                             $(function () {
                                                 $(".btnsubmitnew").css({"background":"#e53936"});
                                                 $(".btnsubmitnew").text("¡Suscrito!");
+                                                    $('#myModal').modal("hide");
+                                                
                                                 window.setTimeout(function(){
                                                     $('#myModal').modal("hide");
 
