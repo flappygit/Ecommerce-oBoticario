@@ -53,7 +53,6 @@ var correoEnviado={
                 subject: email.asunto, // O assunto
                 html: mensaje // O HTMl do nosso e-mail
             };
-            console.log(opciones);
             transporter.sendMail(opciones, function (error, info) {
                 if (error) {
                     console.log(error);
@@ -62,6 +61,7 @@ var correoEnviado={
 
                     var fechaAct = utiles.fechaAct();
                     if (email.id == 1 ){
+
                         db.query("INSERT INTO `correos_enviados` (fecha, descripcion,correo_id, usuario_nl_id) VALUES (?,?,?,?)",
                             [fechaAct, usuario.nombre,email.id, usuario.id],function(err,rows){
                                 if(err){

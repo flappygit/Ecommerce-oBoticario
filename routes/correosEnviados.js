@@ -8,6 +8,7 @@ var usuariosNl=require('../models/usuarios_nl');
 var productos=require('../models/productos');
 const nodemailer = require('nodemailer');
 var utiles = require('../libs/utiles');
+var publicaciones=require('../models/publicaciones');
 
 
 Object.prototype.size = function(obj) {
@@ -151,7 +152,6 @@ router.post("/enviarcorreover", function(req, res){
     if (req.body.clave = '400226926995567') {
         var publicacion = req.body.publicacion;
         var likes = req.body.likes;
-        console.log(req.body);
         correos.findById(2, function (err, row) {
             if (err) {
                 console.log(err);
@@ -162,27 +162,35 @@ router.post("/enviarcorreover", function(req, res){
                     if (err){
                         res.json({"success": false, "message": "usuario no encontrado"});
                     }else {
+                        publicaciones.actualizarCulminacion(publicacion, function (err) {
+                            if(err){
+                                console.log('error actualizando la culminacion de los likes');
+                                res.json({"success":false,"message":err});
+                            }else {
 
-                        var usuario = JSON.parse(JSON.stringify(usu))[0];
-                        var email = JSON.parse(JSON.stringify(row))[0];
-                        if (email) {
-                            var mensaje = mensajeVer(usu.nombre_fb, publicacion.likes, publicacion.nombre);
-                            correosEnviados.enviarcorreo(email, usuario, null, {mensaje: mensaje}, function (err, info) {
-                                if (err) {
-                                    res.json({"success": false, "message": err});
+                                var usuario = JSON.parse(JSON.stringify(usu))[0];
+                                var email = JSON.parse(JSON.stringify(row))[0];
+                                usuario.nombre = usuario.nombre_fb;
+                                if (email) {
+                                    var mensaje = mensajeVer(usuario.nombre_fb, publicacion.likes, publicacion.nombre);
+                                    correosEnviados.enviarcorreo(email, usuario, publicacion, {mensaje: mensaje}, function (err, info) {
+                                        if (err) {
+                                            res.json({"success": false, "message": err});
+                                        }
+                                        else {
+                                            if (info.success) {
+                                                console.log('mensaje enviado');
+                                                res.json({"success": true, "enviado": true});
+                                            } else {
+                                                res.json({"success": false, "code": 2, "message": info});
+                                            }
+                                        }
+                                    })
+                                } else {
+                                    res.json({"success": false, "code": 2, "message": "Correo no encontrado"});
                                 }
-                                else {
-                                    if (info.success) {
-                                        console.log('mensaje enviado');
-                                        res.json({"success": true, "enviado": true});
-                                    } else {
-                                        res.json({"success": false, "code": 2, "message": info});
-                                    }
-                                }
-                            })
-                        } else {
-                            res.json({"success": false, "code": 2, "message": "Correo no encontrado"});
-                        }
+                            }
+                        });
 
                     }
                 });
