@@ -19,6 +19,20 @@ router.get('/', function(req, res, next) {
         res.json({"success":true,"message":rows});
     });
 });
+
+/* GET users listing. */
+router.get('/culminados', function(req, res, next) {
+    publicaciones.getCulminados(function (err, rows) {
+        res.json({"success":true,"message":rows});
+    });
+});
+
+/* GET users listing. */
+router.get('/validados', function(req, res, next) {
+    publicaciones.getValidado(function (err, rows) {
+        res.json({"success":true,"message":rows});
+    });
+});
 /*
  * post publicaciones {id_post, id_shared, caption_tittle, description, messages_tags, usuario_fb, producto}
  */

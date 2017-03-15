@@ -75,6 +75,13 @@ var correoEnviado={
                                     console.log('error '+err);
                                 }
                             });
+                    }else if (email.id == 5 || email.id == 6){
+                        db.query("INSERT INTO `correos_enviados` (fecha, descripcion,correo_id, publicacion_id, usuario_fb_id) VALUES (?,?,?,?,?)",
+                            [fechaAct, usuario.nombre+', producto: '+producto.nombre,email.id, producto.publicacion, usuario.id],function(err,rows){
+                                if(err){
+                                    console.log('error '+err);
+                                }
+                            });
                     }else if(email.id = 3){
                         db.query("INSERT INTO `correos_enviados` (fecha, descripcion,correo_id, usuario_fb_id) VALUES (?,?,?,?)",
                             [fechaAct, usuario.id_fb+'-'+usuario.nombre_fb,email.id,usuario.id],function(err,rows){

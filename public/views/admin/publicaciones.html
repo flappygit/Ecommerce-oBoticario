@@ -9,7 +9,66 @@
             <li><a href="#/admin/usuarios-nl" class="btn btn-primary">Usuarios newsletter</a></li>
         </ul>
     </div>
+    <h2>Publicaciones por validar</h2>
+    <div>
+        <table border="1">
+            <tr>
+                <th>Id</th><th>Post</th><th>Usuario</th><th>Producto</th><th>Likes</th><th>Publicado</th><th>Código promo</th><th>Culminado</th>
+                <th>Descripcion validación</th><th>Creación</th><th>Acciones</th>
+            </tr>
+            <tr ng-repeat="campo in culminados" ng-class="seleccionado[campo.id]">
+                <td>{{campo.id}}</td>
+                <td><a ng-click="seleccionarItem(campo.id)" href="https://www.facebook.com/{{campo.id_post}}" target="_blank" class="text-info">{{campo.id_post}}</a></td>
+                <td>{{campo.usuario_fb_id}}-{{campo.nombre_fb}}</td>
+                <td>{{campo.nombre_pr}}</td>
+                <td>{{campo.likes_count}} de {{campo.likes_pr}}</td>
+                <td>{{campo.publicacion|date }}</td>
+                <td>{{campo.codigo_promo}}</td>
+                <td>{{campo.culminacion|date : 'medium'}}</td>
+                <td>
+                    <input  ng-hide="hecho[campo.id]" ng-model="campo.validacion_descripcion" type="text">
+                    <p ng-show="hecho[campo.id]">{{campo.validacion_descripcion}}</p>
+                </td>
+                <td>{{campo.creacion|date}}</td>
+                <td>
+                    <div ng-hide="hecho[campo.id]">
+                        <a ng-click="ganador(campo.id, campo.validacion_descripcion)" class="text-success">Ganador</a><br>
+                        <a ng-click="tramposo(campo.id, campo.validacion_descripcion)" class="text-danger">Trampa</a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
 
+    <br><br>
+
+    <h2>Publicaciones Validadas</h2>
+    <div>
+        <table border="1">
+            <tr>
+                <th>Id</th><th>Post</th><th>Usuario</th><th>Producto</th><th>Likes</th><th>Publicado</th><th>Código promo</th><th>Culminado</th>
+                <th>Validado</th><th>Estado Validación</th><th>Descripcion validación</th><th>Código</th><th>Creación</th>
+            </tr>
+            <tr ng-repeat="campo in validados">
+                <td>{{campo.id}}</td>
+                <td><a href="https://www.facebook.com/{{campo.id_post}}" target="_blank" class="text-info">{{campo.id_post}}</a></td>
+                <td>{{campo.usuario_fb_id}}-{{campo.nombre_fb}}</td>
+                <td>{{campo.nombre_pr}}</td>
+                <td>{{campo.likes_count}} de {{campo.likes_pr}}</td>
+                <td>{{campo.publicacion|date}}</td>
+                <td>{{campo.codigo_promo}}</td>
+                <td>{{campo.culminacion|date : 'medium'}}</td>
+                <td>{{campo.validacion_fecha|date : 'medium'}}</td>
+                <td><span ng-show="campo.validacion_estado == 1">Ganó</span><span ng-show="campo.validacion_estado == 2">Perdió</span></td>
+                <td>{{campo.validacion_descripcion}}</td>
+                <td>{{campo.codigo}}</td>
+                <td>{{campo.creacion|date}}</td>
+            </tr>
+        </table>
+    </div>
+
+    <br><br>
+    <h2>Todas las publicaciones</h2>
     <div>
         <table border="1">
             <tr>
@@ -22,14 +81,14 @@
                 <td>{{campo.usuario_fb_id}}-{{campo.nombre_fb}}</td>
                 <td>{{campo.nombre_pr}}</td>
                 <td>{{campo.likes_count}} de {{campo.likes_pr}}</td>
-                <td>{{campo.publicacion}}</td>
+                <td>{{campo.publicacion|date}}</td>
                 <td>{{campo.codigo_promo}}</td>
-                <td>{{campo.culminacion}}</td>
-                <td>{{campo.validacion_fecha}}</td>
-                <td>{{campo.validacion_estado}}</td>
+                <td>{{campo.culminacion|date : 'medium'}}</td>
+                <td>{{campo.validacion_fecha|date : 'medium'}}</td>
+                <td><span ng-show="campo.validacion_estado == 1">Ganó</span><span ng-show="campo.validacion_estado == 2">Perdió</span></td>
                 <td>{{campo.validacion_descripcion}}</td>
                 <td>{{campo.codigo}}</td>
-                <td>{{campo.creacion}}</td>
+                <td>{{campo.creacion|date}}</td>
             </tr>
         </table>
     </div>
