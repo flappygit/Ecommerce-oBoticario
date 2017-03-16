@@ -156,11 +156,11 @@ angular.module('ecommerceApp')
                                             $scope.usuarioNl.name="";
 
                                             $(function () {
-                                                $(".btnsubmitnew").css({"background":"#e53936"});
+                                                $(".btnsubmitnew").css({"background":"#05a301"});
                                                 $(".btnsubmitnew").text("¡Suscrito!");
                                                 window.setTimeout(function(){
                                                     $('#myModal').modal("hide");
-                                                }, 2000);
+                                                }, 1200);
                                                 
                                             })
                                         }
@@ -179,7 +179,7 @@ angular.module('ecommerceApp')
                                 if (request.data.message.errno == 1062){
                                     console.log('Correo ya ha sido registrado');
                                     $scope.correoRegistrado = true;
-                                    
+
 
                                 }else{
                                     console.log(request);
