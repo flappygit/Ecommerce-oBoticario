@@ -53,7 +53,6 @@ var correoEnviado={
                 subject: email.asunto, // O assunto
                 html: mensaje // O HTMl do nosso e-mail
             };
-            console.log(opciones);
             transporter.sendMail(opciones, function (error, info) {
                 if (error) {
                     console.log(error);
@@ -62,6 +61,7 @@ var correoEnviado={
 
                     var fechaAct = utiles.fechaAct();
                     if (email.id == 1 ){
+
                         db.query("INSERT INTO `correos_enviados` (fecha, descripcion,correo_id, usuario_nl_id) VALUES (?,?,?,?)",
                             [fechaAct, usuario.nombre,email.id, usuario.id],function(err,rows){
                                 if(err){
@@ -71,6 +71,13 @@ var correoEnviado={
                     }else if (email.id == 2){
                         db.query("INSERT INTO `correos_enviados` (fecha, descripcion,correo_id, publicacion_id, usuario_fb_id) VALUES (?,?,?,?,?)",
                             [fechaAct, usuario.nombre+' gano '+producto.nombre,email.id, email.publicacion_id, usuario.id],function(err,rows){
+                                if(err){
+                                    console.log('error '+err);
+                                }
+                            });
+                    }else if (email.id == 5 || email.id == 6){
+                        db.query("INSERT INTO `correos_enviados` (fecha, descripcion,correo_id, publicacion_id, usuario_fb_id) VALUES (?,?,?,?,?)",
+                            [fechaAct, usuario.nombre+', producto: '+producto.nombre,email.id, producto.publicacion, usuario.id],function(err,rows){
                                 if(err){
                                     console.log('error '+err);
                                 }

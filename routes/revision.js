@@ -78,7 +78,7 @@ router.get('/posts',function(req,response,next){
                                 promo = 40;
                             }
                             var likes = promo + res.reactions.summary.total_count;
-                            if (likes >= post.likes) {
+                            if (likes >= post.likes && post.culminacion == null) {
                                 publicaciones.actualizarCulminacion({
                                     likes_count: res.reactions.summary.total_count,
                                     id_post: res.id

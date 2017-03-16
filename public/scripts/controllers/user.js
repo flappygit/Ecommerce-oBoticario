@@ -106,13 +106,11 @@ angular.module('ecommerceApp')
                                                             $scope.promo = 40;
                                                         }
 
-                                                        if(publicacion.likes_count != response.reactions.summary.total_count) {
+                                                        //if(publicacion.likes_count != response.reactions.summary.total_count) {
                                                             publicacion.likes_count = response.reactions.summary.total_count;
                                                             actualizarLikes(response.reactions.summary.total_count, publicacion, $scope.promo);
-                                                        }
+                                                        //}
                                                         publicacion.likes_count += $scope.promo;
-
-                                                        console.log(publicacion);
 
                                                         $scope.ready=true;
 
@@ -203,7 +201,8 @@ angular.module('ecommerceApp')
                 .then(function (request) {
 
                     if (request.data.success) {
-                        if (publicacion.likes <= (likecount + promo)){
+                        console.log(publicacion);
+                        if (publicacion.likes <= (likecount + promo) && publicacion.culminacion == null){
                             $http({
                                 url: server + 'correos-enviados/enviarcorreover',
                                 dataType: 'json',

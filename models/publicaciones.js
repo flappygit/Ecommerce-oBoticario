@@ -4,12 +4,22 @@ var utiles = require('../libs/utiles');
 var publicaciones={
 
     getAll:function(callback){
-        return db.query("SELECT p.*, fb.nombre as nombre_fb, fb.correo as correo_fb, t.nombre as nombre_pr, t.likes as likes_pr " +
+        return db.query("SELECT p.*, fb.nombre_fb as nombre_fb, fb.correo as correo_fb, t.nombre as nombre_pr, t.likes as likes_pr " +
             "FROM publicaciones as p, usuarios_fb as fb, productos as t WHERE p.usuario_fb_id = fb.id AND p.producto_id = t.id ORDER BY p.likes_count Desc, p.creacion",callback);
     },
 
+    getCulminados:function(callback){
+        return db.query("SELECT p.*, fb.nombre_fb as nombre_fb, fb.correo as correo_fb, t.nombre as nombre_pr, t.likes as likes_pr " +
+            "FROM publicaciones as p, usuarios_fb as fb, productos as t WHERE p.culminacion is not NULL AND p.validacion_fecha IS NULL AND p.usuario_fb_id = fb.id AND p.producto_id = t.id ORDER BY p.culminacion Asc",callback);
+    },
+
+    getValidado:function(callback){
+        return db.query("SELECT p.*, fb.nombre_fb as nombre_fb, fb.correo as correo_fb, t.nombre as nombre_pr, t.likes as likes_pr " +
+            "FROM publicaciones as p, usuarios_fb as fb, productos as t WHERE p.validacion_fecha IS NOT NULL AND p.usuario_fb_id = fb.id AND p.producto_id = t.id ORDER BY p.culminacion Asc",callback);
+    },
+
     getPosted:function(callback){
-        return db.query("SELECT p.id_post, p.codigo_promo, p.usuario_fb_id, p.likes_count, pr.likes, pr.id as producto, pr.nombre as prod_nombre FROM publicaciones p, productos pr WHERE p.producto_id = pr.id AND p.id_post is not null AND p.id_post <> '' AND p.culminacion is null",callback);
+        return db.query("SELECT p.id_post, p.codigo_promo, p.usuario_fb_id, p.likes_count, p.culminacion, pr.likes, pr.id as producto, pr.nombre as prod_nombre FROM publicaciones p, productos pr WHERE p.producto_id = pr.id AND p.id_post is not null AND p.id_post <> '' AND p.culminacion is null",callback);
     },
 
     add:function(publicacion,callback){
@@ -38,7 +48,7 @@ var publicaciones={
             "FROM `publicaciones` p, productos pr WHERE p.usuario_fb_id=? AND p.id_post = '' AND pr.id = p.producto_id", [id],callback);
     },
     getPublicadoPorUsuario:function(id, callback){
-        return db.query("SELECT p.id, p.creacion, p.codigo_promo, p.id_post, p.likes_count, pr.id as producto, pr.referencia, pr.nombre, pr.precio, pr.likes, pr.titulo, pr.descripcion, pr.imagen, pr.cantidad " +
+        return db.query("SELECT p.id, p.creacion, p.codigo_promo, p.id_post, p.likes_count, p.culminacion, pr.id as producto, pr.referencia, pr.nombre, pr.precio, pr.likes, pr.titulo, pr.descripcion, pr.imagen, pr.cantidad " +
             "FROM `publicaciones` p, productos pr WHERE p.usuario_fb_id=? AND p.id_post <> '' AND pr.id = p.producto_id", [id],callback);
     },
     delete:function(id, callback){
@@ -65,6 +75,21 @@ var publicaciones={
         var fechaHoraAct = utiles.fechaHoraAct();
         return db.query("UPDATE `publicaciones` SET likes_count = ?, culminacion = ? WHERE `id_post` = ? OR id = ? ",
             [publicacion.likes_count, fechaHoraAct, publicacion.id_post, publicacion.id ],callback);
+    },
+    getCulminado:function(id, callback){
+        return db.query("SELECT p.*, fb.id as usuario, fb.nombre_fb as nombre_fb, fb.correo as correo, t.id as producto, t.nombre as nombre_pr, t.likes as likes_pr, t.descripcionKit as descripcionKit " +
+            "FROM publicaciones as p, usuarios_fb as fb, productos as t WHERE p.id = ? AND p.culminacion is not NULL AND p.validacion_fecha IS NULL AND p.usuario_fb_id = fb.id AND p.producto_id = t.id", [id],callback);
+    },
+    getCodigoGanador:function(producto, callback){
+        return db.query("SELECT * FROM codigos WHERE usuario_fb_id IS NULL AND producto_id = ? LIMIT 1", [producto],callback);
+    },
+    putCodigoGanador:function(id, usuario, callback){
+        return db.query("UPDATE codigos SET usuario_fb_id = ? WHERE `id` = ?", [usuario, id],callback);
+    },
+    actualizarValidacion:function(id, estado, descripcion, codigo,callback){
+        var fechaAct = utiles.fechaAct();
+        return db.query("UPDATE `publicaciones` SET validacion_fecha = ?, validacion_estado = ?, validacion_descripcion = ?, codigo = ? WHERE id = ? ",
+            [fechaAct, estado, descripcion, codigo, id],callback);
     }
 };
 module.exports=publicaciones;
