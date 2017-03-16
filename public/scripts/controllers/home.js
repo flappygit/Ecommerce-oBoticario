@@ -158,7 +158,9 @@ angular.module('ecommerceApp')
                                             $(function () {
                                                 $(".btnsubmitnew").css({"background":"#e53936"});
                                                 $(".btnsubmitnew").text("¡Suscrito!");
+                                                window.setTimeout(function(){
                                                     $('#myModal').modal("hide");
+                                                }, 2000);
                                                 
                                             })
                                         }
@@ -177,7 +179,9 @@ angular.module('ecommerceApp')
                                 if (request.data.message.errno == 1062){
                                     console.log('Correo ya ha sido registrado');
                                     $scope.correoRegistrado = true;
-                                    $('#myModal').modal("hide");
+                                    window.setTimeout(function(){
+                                                    $('#myModal').modal("hide");
+                                                }, 2000);
 
                                 }else{
                                     console.log(request);
