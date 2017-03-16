@@ -79,10 +79,10 @@ angular.module('ecommerceApp')
           }
           
           $(function () {
+
             window.setTimeout(function(){
                     $('#myModal').modal('show');
-
-                    }, 30000);
+                    }, 2000);
 
                 })
 
@@ -160,10 +160,6 @@ angular.module('ecommerceApp')
                                                 $(".btnsubmitnew").text("¡Suscrito!");
                                                     $('#myModal').modal("hide");
                                                 
-                                                window.setTimeout(function(){
-                                                    $('#myModal').modal("hide");
-
-                                                }, 200);
                                             })
                                         }
                                     })
@@ -181,6 +177,8 @@ angular.module('ecommerceApp')
                                 if (request.data.message.errno == 1062){
                                     console.log('Correo ya ha sido registrado');
                                     $scope.correoRegistrado = true;
+                                    $('#myModal').modal("hide");
+
                                 }else{
                                     console.log(request);
                                     console.log('Error al registrar el usuario al newsletter ');
@@ -200,7 +198,6 @@ angular.module('ecommerceApp')
 
                 }else{
                     $(function () {
-
 
                         $(".btnsubmitnew").css({"background":"#e53936"})
                         $(".btnsubmitnew").text("Acepte Términos y condiciones");

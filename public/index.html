@@ -107,8 +107,8 @@ ng-if="usrSesion.conectado"
 
             </li>
             <li ng-if="logged==true" class="hidden-lg hidden-md hidden-sm visible-xs" ><a  href=""  ng-click="cerrarSesion()">Cerrar Sesión</a></li>
-            <li class="hidden-lg hidden-md hidden-sm visible-xs" ng-if="logged==true"><a  href="" ng-click="userPerfil()">Conteo de Like/Me gusta </a></li>
-            <li class="hidden-lg hidden-md hidden-sm visible-xs"><a  href="" ng-click="openCart()">Carrito de compra </a></li>
+            <li class="hidden-lg hidden-md hidden-sm visible-xs" ng-if="logged==true"><a  href="" ng-click="showView('conteo-de-likes')">Conteo de Like/Me gusta </a></li>
+            <li class="hidden-lg hidden-md hidden-sm visible-xs"><a  href="" ng-click="showView('Carrito')">Carrito de compra </a></li>
             <li><a  href="" ng-click="showView('sobre-cree-en-la-belleza')">Sobre Cree en la Belleza</a></li>
             <li><a ng-click="showView('como-ganar')" href="">¿Cómo ganar?</a></li>
             <li><a href="" ng-click="showView('terminos-y-condiciones')" >Términos y condiciones</a></li></li>
