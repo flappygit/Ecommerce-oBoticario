@@ -77,7 +77,7 @@ var publicaciones={
             [publicacion.likes_count, fechaHoraAct, publicacion.id_post, publicacion.id ],callback);
     },
     getCulminado:function(id, callback){
-        return db.query("SELECT p.*, fb.id as usuario, fb.nombre_fb as nombre_fb, fb.correo as correo, t.id as producto, t.nombre as nombre_pr, t.likes as likes_pr " +
+        return db.query("SELECT p.*, fb.id as usuario, fb.nombre_fb as nombre_fb, fb.correo as correo, t.id as producto, t.nombre as nombre_pr, t.likes as likes_pr, t.descripcionKit as descripcionKit " +
             "FROM publicaciones as p, usuarios_fb as fb, productos as t WHERE p.id = ? AND p.culminacion is not NULL AND p.validacion_fecha IS NULL AND p.usuario_fb_id = fb.id AND p.producto_id = t.id", [id],callback);
     },
     getCodigoGanador:function(producto, callback){
