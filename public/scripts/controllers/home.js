@@ -179,9 +179,7 @@ angular.module('ecommerceApp')
                                 if (request.data.message.errno == 1062){
                                     console.log('Correo ya ha sido registrado');
                                     $scope.correoRegistrado = true;
-                                    window.setTimeout(function(){
-                                                    $('#myModal').modal("hide");
-                                                }, 2000);
+                                    
 
                                 }else{
                                     console.log(request);

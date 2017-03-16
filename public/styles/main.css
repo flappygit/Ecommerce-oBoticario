@@ -427,6 +427,7 @@ hr{
 }
 
 
+
 /* nav right */
 .cbp-spmenu {
   background: #ffffff;
@@ -993,6 +994,15 @@ padding-bottom:30px;
   padding-left:15px;
   padding-right:15px;
 }
+
+.img-div-new{
+  background: url(../images/new-oboticario.jpg) no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+  min-height:100%;
+}
 .div-input-name-new{
   padding-right:0;margin-left:130px;
 }
@@ -1037,7 +1047,7 @@ padding-bottom:30px;
   border-top-right-radius:5px;
 }
 .div-new-text{
-  padding:10px 30px 0px 30px;
+  padding:7px 30px 0px 30px;
 }
 
 @media screen and (min-width: 768px) { 
